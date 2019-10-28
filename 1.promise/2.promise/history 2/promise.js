@@ -1,3 +1,10 @@
+/**
+ * 1. 存储成功的所有的回调 存储所有失败的 只有pending的时候才存储
+ * 2. throw等异常处理
+ * 3. panding状态启动发布订阅模式
+ * 4. try catch不能捕获异步等异常
+ */
+
 const SUCCESS = 'fulfilled'
 const FAIL = 'rejected';
 const PENDING = 'pending'
@@ -12,6 +19,7 @@ class Promise {
         if(this.status === PENDING){
             this.value = value;
             this.status = SUCCESS;
+            // 发布状态
             this.onResolvedCallbacks.forEach(fn=>fn());
         }
     };
@@ -19,10 +27,11 @@ class Promise {
         if(this.status === PENDING){ 
             this.reason = reason;
             this.status = FAIL;
+            // 发布状态
             this.onRejectedCallbacks.forEach(fn=>fn());
         }
     };
-    try{
+    try{ // 错误时也进行
         executor(resolve,reject);
     }catch(e){
         reject(e);
@@ -36,6 +45,7 @@ class Promise {
         onRejected(this.reason);
     }
     if(this.status === PENDING){
+        //  将then后面的方法订阅。
         this.onResolvedCallbacks.push(()=>{
             onFulfilled(this.value);
         });

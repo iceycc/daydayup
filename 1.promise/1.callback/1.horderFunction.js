@@ -1,7 +1,13 @@
-// 高阶函数 函数参数如果是函数，或者这个函数返回一个新的函数 我们就叫他高阶函数
+/**
+ *  1。高阶函数 函数参数如果是函数，或者这个函数返回一个新的函数 我们就叫他高阶函数
+ *  2。gaoAOP 面向切片编程 
+ * 
+ */
 
-// AOP 面向切片编程
+// 1 高阶函数 函数参数如果是函数，或者这个函数返回一个新的函数 我们就叫他高阶函数
 
+// 2  AOP 面向切片编程 
+// 主要把一些核心业务逻辑无关对功能抽离出来，其实就是给原有的函数增一家一层，不用管原函数的内部实现
 // before函数  (this指向) 箭头函数的特点 after 函数
 function say(who){
     console.log(who+'hello');
@@ -28,3 +34,17 @@ beforeSay('我');
 // 防抖 一直触发 只触发一次
 // 节流  不停触发 按时触发 
 // lodash 防抖 + 节流
+
+function say2(who){
+    console.log(who + ' hellow');
+}
+Function.prototype.after = function(afterFn){
+    console.log(this)
+    let _this = this
+    return function(...args){
+        _this(...args)
+        afterFn()
+    }
+}
+say2('test1')
+say2.after(()=>{console.log('after')})('test2')
