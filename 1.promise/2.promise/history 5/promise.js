@@ -1,3 +1,7 @@
+/**
+ * 1> called  为了辨别这个promise 不能调用多次
+ */
+
 const PENDING = "PENDING";
 const SUCCESS = "FULFILLED";
 const FAIL = "REJECTED";
@@ -122,6 +126,5 @@ Promise.defer = Promise.deferred = function(){
 }
 module.exports = Promise;
 // npm i promises-aplus-tests -g
-
 // promise 相关方法
 // generator

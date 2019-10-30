@@ -1,3 +1,9 @@
+/**
+ * 1. then(()=>{},()=>{})
+ * 2. catch((err)=>{})  相对于 then(null,(err)=>{})
+ * 3. then 返回一个
+ */
+
 // let Promise1 = require('./promise');
 let p = new Promise1((resolve,reject)=>{
     resolve();
