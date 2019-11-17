@@ -1,9 +1,13 @@
+/**
+ * 1. new TypeError()
+ * 2. promise 有n种实现 都符合了这个规范promiseA+ 兼容别人的promise
+ */
 const PENDING = "PENDING";
 const SUCCESS = "FULFILLED";
 const FAIL = "REJECTED";
 // 返还的那个新的promise x 是then方法中的返回值 
 // let x = 1;
-// Object.defineProperty(obj,'then',{
+// Object.defineProperty(obj,'then',{ 
 //   get(){
 //     x++;
 //     if(x ===2){
@@ -11,9 +15,17 @@ const FAIL = "REJECTED";
 //     }
 //   }
 // });
+// function Promise(){
+//   let p = function(){
 
+//   }
+//   p.then = () =>{}
+//   return p
+// }
+// let p = Promise()
 function resolvePromise(promise2, x,resolve,reject) { // 考虑的非常全面
     if(promise2 === x){
+      // 相同的，死循环
        return reject(new TypeError('TypeError: Chaining cycle detected for promise #<Promise>'));
     }
     // 判断x的类型
@@ -25,11 +37,13 @@ function resolvePromise(promise2, x,resolve,reject) { // 考虑的非常全面
         let then = x.then; // 去then方法可能会出错
         if(typeof then === 'function'){ // 我就认为他是一个promise
            then.call(x,y=>{ // 如果promise是成功的就把结果向下传，如果失败的就让下一个人也失败
-              resolvePromise(promise2,y,resolve,reject); // 递归
+            // y传入的有可能还是个promise  
+            resolvePromise(promise2,y,resolve,reject); // 递归
            },r=>{
               reject(r);
-           }) // 不要使用x.then否则会在次取值
+           }) // 不要使用x.then否则会在次取值。再次取值会报错
         }else{ // {then:()=>{}}
+         // 不是函数。 
           resolve(x);
         }
       }catch(e){
@@ -73,7 +87,7 @@ class Promise {
     // 异步的特点 等待当前主栈代码都执行后才执行
     promise2 = new Promise((resolve, reject) => {
       if (this.status === SUCCESS) {
-        setTimeout(() => {
+        setTimeout(() => { // 延迟用于 promise2。
           try {
             // 调用当前then方法的结果，来判断当前这个promise2 是成功还是失败
             let x = onFulfilled(this.value);

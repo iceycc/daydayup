@@ -1,32 +1,39 @@
-// 生成器 =》 迭代器的
+/**
+ * 1. generator生成器 - 》 迭代器
+ * 2。iterator
+ * 3. yield
+ */
+
+// es6 生成器 =》 迭代器的
 // 函数 里面的声明 *  yield 来实现
 // 会暂停
-// function * read(){
-//     try{
-//         console.log(1);
-//         yield 1  // 产出
-//         console.log(2);
-//         yield 2
-//         console.log(3);
-//     }catch(err){
-//         console.log(err);
-//     }
-// }
-// let it = read(); // iterator
-// console.log(it.next());
+function * read(){
+    try{
+        console.log(1);
+        yield 1  // 产出
+        console.log(2);
+        yield 2
+        console.log(3);
+    }catch(err){
+        console.log(err);
+    }
+}
+let it = read(); // iterator
+console.log(it.next());
 // it.throw('出错了'); // 抛出错误 让tryCatch 来捕获
 
-// function * buy(){
-//     let a = yield 1;
-//     console.log(a);
-//     let b = yield 2;
-//     console.log(b);
-//     return b;
-// }
-// let it = buy();
-// it.next('hello'); // 第一次的next传递参数是无效的
-// it.next('world');
+function * buy(){
+    let a = yield 1;
+    console.log(a);
+    let b = yield 2;
+    console.log(b);
+    return b;
+}
+let it = buy();
+it.next('hello'); // 第一次的next传递参数是无效的
+it.next('world');
 // it.next('zf');
+console.log(it.next('zf'))
 
 // 先读取 name.txt 在读取age.txt
 
@@ -115,5 +122,13 @@ read().then(r=>{
 // 3） 整理一下 讲过的所有的promise方法
 // 练习
 
-
+let fs = require('fs').promises;
+function * read2(data){
+    console.log(data,'1')
+    let a = yield fs.readFile('./name.txt','utf-8')
+    console.log(a,'2')
+}
+let re = read2('101')
+re.next('102')
+re.next('103')
 

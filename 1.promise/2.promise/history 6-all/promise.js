@@ -1,3 +1,10 @@
+/**
+ * 1. resolve的结果是一个promise
+ * 2. finally : 返回一个promise时怎么处理
+ * 3. 希望测试一下这个库是否符合我们的promise A+规范 : promises-aplus-tests
+ * 4. finally的实现原理，无论如何都会执行
+ * 5. finall通过prototype挂在callback函数
+ */
 const PENDING = "PENDING";
 const SUCCESS = "FULFILLED";
 const FAIL = "REJECTED";
@@ -40,6 +47,7 @@ class Promise {
     this.onResolvedCallbacks = [];
     this.onRejectedCallbacks = [];
     const resolve = value => { 
+      // 解决resolve返回一个promis
       if(value instanceof Promise){ // resolve的结果是一个promise
          return value.then(resolve,reject); // 那么会让这个promise执行，将执行后的结果在传递给 resolve或者reject中
       }
@@ -116,8 +124,9 @@ class Promise {
     return this.then(null,errCallback)
   }
 }
-// 希望测试一下这个库是否符合我们的promise A+规范
-// promises-aplus-tests
+/**
+ * defer 延迟对象， q库 ，减少套用
+ */
 Promise.defer = Promise.deferred = function(){
   let dfd = {};
   dfd.promise = new Promise((resolve,reject)=>{
@@ -126,21 +135,37 @@ Promise.defer = Promise.deferred = function(){
   });
   return dfd;
 }
+
+
+
+/**
+ * 直接返回成功
+ */
 Promise.resolve = function(value){
   return new Promise((resolve,reject)=>{
       resolve(value);
   })
 }
+/**
+ * 直接返回失败
+ */
 Promise.reject = function(value){
   return new Promise((resolve,reject)=>{
       reject(value);
   })
 }
+/**
+ * es2018-es9
+ * finally的实现
+ * 1. finall无论成功活着失败都会执行：传入callback，失败和成功都会执行
+ * 2. 如果传入的callback是个返回promise的函数，就得等待promise执行完毕：
+ *    -> 一个.then里返回一个promise如何等待等待里面的promise执行完再传下去：
+ */ 
 Promise.prototype.finally = function(callback){
   return this.then((data)=>{
       return Promise.resolve(callback()).then(()=>data);
       // return new Promise((resolve,reject)=>{
-      //     resolve(callback()); // 如果callback是一个函数返回promise 就等待这个promise执行完毕
+      //     resolve(callback()); // 3 通过resolve ：如果callback是一个函数返回promise 就等待这个promise执行完毕
       // }).then(()=>data);
       // callback();
       // return data;
@@ -150,7 +175,7 @@ Promise.prototype.finally = function(callback){
   }); 
 };
 module.exports = Promise;
+// 希望测试一下这个库是否符合我们的promise A+规范 : promises-aplus-tests
 // npm i promises-aplus-tests -g
-
 // promise 相关方法
 // generator
