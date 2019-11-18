@@ -13,7 +13,7 @@
 // }
 // console.log(a);
 
-// babel可以将es6 转化到es5
+// babel可以es6 转化到es5
 
 // var a = 1; // es6 环境下会报错
 

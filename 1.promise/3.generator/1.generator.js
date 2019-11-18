@@ -2,7 +2,15 @@
  * 1. generator生成器 - 》 迭代器
  * 2。iterator
  * 3. yield
+ * 4. co库 ，包装
+ * 5. async + await就是 promise + generator
+ * 6. async返回的是promise：try catch捕获错误 或者 promise
  */
+// 作业 1: 柯理化  反柯理化  
+// 2) Promise.try()是如何实现的
+// 3） 整理一下 讲过的所有的promise方法
+
+
 
 // es6 生成器 =》 迭代器的
 // 函数 里面的声明 *  yield 来实现
