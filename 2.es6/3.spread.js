@@ -1,4 +1,18 @@
-// 解构赋值
+/**
+ * 1 解构赋值 
+ *      对象的解构 let {} = obj
+ *      数组的解构 let {length} = arr ;  let [a1,a2] = arr
+ * 2 展开运算符 ...
+ *      数组的展开
+ *      对象的展开
+ * 3 剩余运算符 ...
+ *      必须放到后面
+ *      数组和对象
+ *      剩余运算符只能用在最后一项，有收敛的功能，会把剩下的内容重新组装   
+ * 4 将类数组转换为数组
+ */
+
+
 
 // 结构相同 可以直接通过相同的结构来取值
 let {name:n,age} = {name:'zf',age:10};
@@ -6,11 +20,11 @@ let {name:n,age} = {name:'zf',age:10};
 // let n = obj.name;
 // let age = obj.age
 
-let {length} = [];
+let {length} = ['1','a'];
 console.log(length);
 
 // 数组省略第一项
-let [,age] = ['zf',18];
+let [name,age] = ['zf',18];
 console.log(name,age);
 
 // 对象的展开 ...  ,剩余运算符 可以在函数中使用 可以在解构中使用
@@ -22,9 +36,8 @@ let obj1 = {age:9};
 let obj2 = {...obj,...obj1}
 console.log(obj2)
 
-// 剩余运算符只能用在最后一项，有收敛的功能，会把剩下的内容重新组装
-let [a,...args] = ['zf',18,17,16];
-console.log(args);
+
+
  
 let {name,...obj} = {name:'zf',age:10}
 console.log(obj);
@@ -50,4 +63,5 @@ ajax('url','get');
 
 
 // {...obj1,...obj2} 覆盖的作用域
+
 
