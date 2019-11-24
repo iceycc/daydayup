@@ -5,7 +5,7 @@ let obj = [1,2,3]
 // 变异方法 push shift unshfit reverse sort splice pop
 // Object.defineProperty
 let oldProto = Array.prototype;
-let proto = Object.create(oldProto); // 克隆了一分
+let proto = Object.create(oldProto); // 克隆了一分。继承
 ['push','shift'].forEach(item=>{
     proto[item] = function(){
         update();
@@ -14,7 +14,7 @@ let proto = Object.create(oldProto); // 克隆了一分
 })
 function observer(value){ // proxy reflect
     if(Array.isArray(value)){
-        // AOP
+        // AOP 在原方法前面先调用
         return value.__proto__ = proto;
         // 重写 这个数组里的push shift unshfit reverse sort splice pop
     }

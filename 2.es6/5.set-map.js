@@ -1,3 +1,15 @@
+/**
+ * new Set()
+ * new Map()
+ * 
+ * 1. 去重
+ * 2. 取交集
+ * 3. 取并集
+ * 4. 取差集 
+ * 
+ * v8垃圾回收机制
+ * 
+ */
 // set map 不能放重复类型 数据结构
 
 let s = new Set([1,2,3]);
@@ -49,6 +61,7 @@ console.log(map,map.get('name'));
 
 
 // weakMap 若引用
+// WeakMap key只能是对象  弱引用 如果变量清空了，内存也会自动销毁
 // v8 垃圾回收的机制 
 // http://www.javascriptpeixun.cn/course/12
 

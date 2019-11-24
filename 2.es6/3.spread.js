@@ -10,6 +10,7 @@
  *      数组和对象
  *      剩余运算符只能用在最后一项，有收敛的功能，会把剩下的内容重新组装   
  * 4 将类数组转换为数组
+ * 5 交换位置
  */
 
 
@@ -44,6 +45,8 @@ console.log(obj);
 
 // 将类数组转化成数组 Array.from [...{}] 是通过迭代器来实现
 function ajax(){
+    
+
     //console.log(arguments)
     // generator 
     // for of
@@ -64,4 +67,30 @@ ajax('url','get');
 
 // {...obj1,...obj2} 覆盖的作用域
 
-
+/**
+ *  将类数组转换成数组
+ * 1: 数组的基本特点：从0开始的索引，
+ */
+function toArray(){
+    console.log(arguments)
+    console.log(Object.prototype.toString.call(arguments))
+    console.log(Object.prototype.toString.call(Array.from(arguments)))
+    return [...{...arguments,length:arguments.length,[Symbol.iterator]:function * (){
+        let i = 0;
+        while(this.length !== i){
+            yield this[i++]
+        }
+    }}]
+    // return [...{0:'a',1:'b',2:'c',length:3,[Symbol.iterator](){
+    //     let i = 0;
+    //         let _this = this
+    //         return {
+    //             next(){
+    //                 return {value:_this[i],done:++i==_this.length+1}
+    //             }
+    //         }
+    // }}]
+}
+let arr = toArray('a','b','c')
+console.log(arr)
+console.log(Object.prototype.toString(arr))

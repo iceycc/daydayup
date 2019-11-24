@@ -10,7 +10,7 @@
     <script>
         class MyFn{}
         let mf = new MyFn();
-        // WeakMap key只能是对象  弱引用
+        // WeakMap key只能是对象  弱引用 如果变量清空了，内存也会自动销毁
         let map = new WeakMap();
         map.set(mf,'ok');
         mf = null;

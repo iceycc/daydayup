@@ -1,7 +1,8 @@
 let path = require('path');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
-    entry:'./src/index.js',
+    // entry:'./src/index.js',
+    entry:'./mysrc/index.js',
     output:{
         filename:'bundle.js'
     },

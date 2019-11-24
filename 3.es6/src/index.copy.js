@@ -1,3 +1,27 @@
+/**
+ * es6 模块和 node模块的区别
+    * es6: esmodle
+    *      静态的：只能在最外层使用
+    * node: commonjs规范
+    *      动态： 可以在代码块使用  
+    *       export只能到处一个接口
+    *           export let a = 1
+    *           export let b = 2
+    *           let c = 1
+    *           let d = 2
+    *           export { //  接口 不是对象的赋值
+    *               c,
+    *               d          
+    *           }
+    * 区别：静态
+ * 
+ *      
+ */
+
+
+
+
+
 // npm install 
 // npm run dev
 
