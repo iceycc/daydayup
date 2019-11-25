@@ -34,29 +34,37 @@
 
 
 function Animal (){
-    // 1。 实例上的属性
+    // 实例上的属性
     this.type = '布鲁勒'
     this.featrue = {
         tall:1,
     }
 }
-Animal.height = '111'
+// 静态属性和方法。实例拿不到，只能通过类获取或调用
+Animal.height = '1米8'
 Animal.eat = function(){
     console.log('eat')
 }
-Animal.prototype.color = 'red' // 2。公共属性
-Animal.prototype.say = function(){ // 3 。 公共方法 不要箭头函数
+// 公共属性或方法
+Animal.prototype.color = 'red' // 公共属性
+Animal.prototype.say = function(){ // 公共方法 不要箭头函数
     console.log('ddd')
 }
 let animal1 = new Animal()
 let animal2 = new Animal()
+
 console.log(animal1.featrue === animal2.featrue) // false 实例属性，每个实例对象都是不一样的
 console.log(animal1.color === animal2.color) // 公共
-
 console.log(animal1)
+console.log(animal1.constructor) // 构造函数 ，类。无法拿到实例到属性。可以获取静态方法
+console.log(animal1.constructor.type) // undefined
+console.log(animal1.constructor.color) // undefined
+console.log(animal1.constructor.height) // 1米8
+
 
 // 私有属性：外边拿不到的
-//   1. 实例上的属性。
-//   2. 公共属性。prototype
+//   1. 实例上的属性。构造函数内的。实例后，不同的实例其实是无关的了
+//   2. 公共属性和方法。prototype上的，实例共享，
 // 静态属性和方法：
 // Animal.eat()
+
