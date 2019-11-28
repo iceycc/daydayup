@@ -25,7 +25,35 @@ function a(){ // 执行上下文  作用域  js静态作用域
     }
     b();
 }
-a()    
+a()   
+
+
+// ---------
+setTimeout(()=>{
+    Promise.resolve().then(()=>{
+        console.log('微 settimeout1 then1')
+    })
+    Promise.resolve().then(()=>{
+        console.log('微 settimeout1 then2')
+    })
+    Promise.resolve().then(()=>{
+        console.log('微 settimeout1 then3')
+    })
+    console.log('宏任务 settimeout1')
+})
+setTimeout(()=>{
+    Promise.resolve().then(()=>{
+        console.log('微 settimeout2 then1')
+    })
+    console.log('宏任务 settimeout2')
+})
+
+Promise.resolve().then(()=>{
+    
+    console.log('微任务 then2')
+})
+console.log('主')
+
     </script>
 </body>
 </html>

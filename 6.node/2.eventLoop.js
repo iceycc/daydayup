@@ -1,3 +1,15 @@
+/**
+ * 宏任务：script 、ajax、事件、requestFrameAnimation、setTimeout、setInterval、setImmediate、MessageChannel、I/O、ui rendering
+ * 微任务：promise.then、MutationObserver、process.nextTick
+ * 
+ * 微任务会比宏任务快？ js中会先执行script脚本
+ * 
+ * node事件环： timer poll check
+ * 
+ * 每个宏任务执行完后 会 清空微任务
+ */
+
+
 // node的事件环 libuv实现的一个事件环机制
 setImmediate(()=>{
     console.log('setImmediate')

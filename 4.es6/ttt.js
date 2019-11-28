@@ -1,4 +1,6 @@
-let str = `<!DOCTYPE html>
+let str = '';
+with(obj){
+str+=`<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,13 +8,14 @@ let str = `<!DOCTYPE html>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>`;
-
-    [1,2,3,4].forEach(item=>{
-       str+=`<li>${item}</li>`
-   })
-str+=`</body>
+<body>
+    `
+arr.forEach(item=>{
+str+=`
+        <li>${item.name}:${item.age}</li>
+    `
+})
+str+=`
+</body>
 </html>`
-
-
-console.log(str);
+} return str
