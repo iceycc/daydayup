@@ -41,7 +41,9 @@ let name = '珠峰';
 let age = 10;
 let str = "<ul><li>${name} ${age}</li>";
 // 让正则少匹配 可以使用 .+?  [^}]+
-let result = str.replace(/\$\{([^}]+)\}/g,function(){
+let result = str.replace(/\$\{([^}]+)\}/g,function(data){
+    console.log(data)
+    console.log(arguments)
     return eval(arguments[1])
 });
 console.log(result);
