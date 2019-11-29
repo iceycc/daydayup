@@ -1,3 +1,7 @@
+/**
+ * 1. 
+ */
+
 // map,reduce(filter some every forEach) find findIndex
 
 // compose
@@ -87,6 +91,9 @@ function addTag(str) {
 // console.log(newr);
 
 
+/**
+ * reduce的原理
+ */
 Array.prototype.reduce = function(callback,prev){
     for(let i = 0; i < this.length;i++){
         if(typeof prev === 'undefined'){
@@ -114,7 +121,7 @@ let some = [1,2222,3].some(item=>{
 });
 console.log(some)
 // 找到false 就返回false
-let every = [1,2,3].every(item=>item==2);
+let every = [1,2,3].every(item=>item=>0);
 console.log(every)
 // 找到后返回找到的那一项
 let find = [1,2,3].find(item=>item==2);

@@ -68,3 +68,7 @@ console.log(animal1.constructor.height) // 1米8
 // 静态属性和方法：
 // Animal.eat()
 
+
+
+
+

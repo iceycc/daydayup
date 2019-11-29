@@ -1,3 +1,10 @@
+/**
+ * 箭头函数
+ * 1. 没有this
+ * 2. 没有argument  let fn = (...args)=>{ }
+ * 3. 没有prototype
+ * 如果箭头函数的参数只有一个 可以省略括号
+ */
 // 箭头函数 特点
 // 没有this 没有 arguments  没有prototype
 // 如果箭头函数的参数是一个 可以省略括号
@@ -7,9 +14,16 @@
 // }
 // console.log(fn());
 let a = 100;
+var b = 100;
 // let this = window
 let obj = {
     a:1,
+    fn1(){
+        setTimeout(function(){
+            console.log(this.a,this)
+            console.log(this.b)
+        })
+    },
     fn:()=>{
         // let this = obj
         setTimeout(()=>{
@@ -17,7 +31,9 @@ let obj = {
         })
     }
 }
-obj.fn();
+obj.fn1(); // 浏览器中this是window
+obj.fn(); // 
+
 
 
 // 模板字符串
@@ -29,5 +45,11 @@ let result = str.replace(/\$\{([^}]+)\}/g,function(){
     return eval(arguments[1])
 });
 console.log(result);
+
+
+
+
+
+
 
 
