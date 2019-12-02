@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/10.fs/2.fs-rmdir.js"
+            "program": "${workspaceFolder}/6.node/useA.js"
         }
     ]
 }

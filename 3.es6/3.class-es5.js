@@ -60,7 +60,7 @@ console.log(littleTiger.size)
 function Lion(){}
 // Lion.prototype = Animal.prototype // 会改变父亲的公共属性
 // Lion.prototype.__proto__ = Animal.prototype // >1-继承父亲的公共属性，Lion先找自己的prototype，找不到会通过__proto__继续找父亲的prototype
-// Object.setPrototypeOf(Lion.prototype,Animal.prototype) // >2- es6方法 设置同上 设置 后者的prototype到 __proto__上
+// Object.setPrototypeOf(Lion.prototype,Animal.prototype) //  >2- es6方法 设置同上 设置 后者的prototype到 __proto__上
 Lion.prototype = Object.create(Animal.prototype,{constructor:{value:Lion}}) // >3- 原理和上面的不一样。通过创建一个新的类.注意将constructor只限
 Lion.prototype = Object.create(Animal.prototype,{constructor:{value:Lion}}) // >3- 原理和上面的不一样。通过创建一个新的类.注意将constructor只限
 
