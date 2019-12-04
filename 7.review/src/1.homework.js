@@ -131,7 +131,7 @@ child.beforeCreate();
 
 // Promise.try
 function fn(){
-  //throw new Error('err123');
+  throw new Error('err123');
   // return new Promise((resolve,reject)=>{
   //   setTimeout(()=>{
   //    reject('err')

@@ -5,6 +5,12 @@
  * compileFunction 内部方法
 **/
 
+// 实现函数柯里化和反柯理化
+// 实现new的原理
+// 实现数组扁平化 flatten方法
+// 实现简易的commonjs规范
+// 实现Promise.finnaly
+
 
 // let r = require('./a');
 let path = require('path');
@@ -61,5 +67,6 @@ console.log(r);
 // 模块就是一个对象 通过路径来创建 id,exports = {}
 // module.load 加载当前创建的模块
 // Module._extensions 根据不同的后缀名来处理逻辑 
+
 
 

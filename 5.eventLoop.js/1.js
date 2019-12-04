@@ -134,7 +134,9 @@ new Promise(function(resolve){
 }).then(function(){
     console.log('promise2')
 })
+
 console.log('script end');
+// node > 10
 // script start  
 // async1 start
 // async2
@@ -144,6 +146,25 @@ console.log('script end');
 // promise2
 // setTimeout
 
+//  浏览器材
+// script start
+// async1 start
+// async2
+// promise1
+// script end
+// async1 end
+// promise2
+// setTimeout
+
+// node < 10
+// script start
+// async1 start
+// async2
+// promise1
+// script end
+// promise2
+// async1 end
+// setTimeout
 
 let a = function b(){
 
