@@ -1,6 +1,6 @@
 /**
  * 宏任务：script 、ajax、事件、requestFrameAnimation、setTimeout、setInterval、setImmediate、MessageChannel、I/O、ui rendering
- * 微任务：promise.then、MutationObserver、process.nextTick
+ * 微任务：promise.then、MutationObserver（坚挺dom节点变化）、process.nextTick
  * 
  * 微任务会比宏任务快？ js中会先执行script脚本
  * 
