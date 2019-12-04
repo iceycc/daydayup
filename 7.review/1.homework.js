@@ -56,8 +56,10 @@ Function.prototype.uncurrying = function(){
         // let callFunction = Function.prototype.call
         // callFunction 中的this 变成 Object.prototype.toString
         // Object.prototype.toString.call(1)
-        return this.call(...args);
+        // 老方法
         // return Function.prototype.call.apply(this,args);
+        
+        return this.call(...args);
     }
 }
 let checkType = Object.prototype.toString.uncurrying();
