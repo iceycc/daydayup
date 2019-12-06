@@ -111,3 +111,8 @@ console.log(str[57]+str[56]+str[62]+str[32]); // 54+g
 console.log(Buffer.from('珠').toString('base64'))
 
 // fs 流
+
+
+// 
+
+console.log(Math.pow(2,8))
