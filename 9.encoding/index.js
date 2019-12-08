@@ -1,6 +1,6 @@
 // 一个英文字符： 1byte(字节) = 8bit
 // 一个汉字字符： 2byte = 16bit
-
+// 一个汉字在utf-8中是3个字节
 console.log(Math.pow(2,8))
 // 二进制以 0b开头
 console.log(0b111) // 1 * 4 + 1 * 2 + 1 - 3 
@@ -15,3 +15,5 @@ console.log(b == c);
 console.log(c == d);
 
 console.log(c.toString(8))
+
+
