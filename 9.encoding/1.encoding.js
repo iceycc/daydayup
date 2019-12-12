@@ -7,6 +7,8 @@
  * 
  * base64
  * 汉字的话将 3 * 8 => 4 * 6 把三个字节转换成四个字节
+ * 
+ *
  */
 
 
@@ -68,13 +70,13 @@ let buff = Buffer.alloc(12); // 声明一个buffer
 //     }
 // }
 buf1.copy(buff,0,0,6); 
-// 目标 目标的开始 
+// 目标 目标的开始 拷贝源的开始  拷贝源的结束
 // target,targetStart sourceStart sourceEnd
 buf2.copy(buff,6,0,6);
 console.log(buff.toString())
 Buffer.myconcat = function(bufferList,len =bufferList.reduce((a,b)=>a+b.length,0) ){
     let buffer = Buffer.alloc(len); // 当前buffer的总长度 
-    let offset = 0;
+    let offset = 0; // 偏移量 ，每次技术时的第一个位置
     bufferList.forEach(item => {
         item.copy(buffer,offset,0,item.length);
         offset += item.length
@@ -89,8 +91,13 @@ console.log(Buffer.isBuffer(newBuffer));
 // indexOf
 
 let buffer = Buffer.from('珠爱峰我爱你爱哈'); // n+ 1
-// console.log(buffer.indexOf('爱',1))
+console.log(buffer.indexOf('爱',6))
+console.log(buffer.indexOf('爱'))
+
+
+
 // split 方法 解析请求体
+// 根据传入的分隔符将字符串分割成数组
 Buffer.prototype.split = function(sep){
     let arr = [];
     let offset = 0;

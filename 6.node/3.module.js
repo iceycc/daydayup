@@ -20,10 +20,10 @@ let path = require('path');
 // path.extname()  path.basename()
 // 需要最近添加/时用join
 console.log('join',path.join('a','b','/')); // =》 xxx/a/b/
-console.log('join',path.join(__dirname,'a','b','/')); // =》 xxx/a/b/
+console.log('join',path.join(__dirname,'a','b','/')); // =》 /xxx/a/b/
 // process.cwd() 有/的时候需要用join  默认前面增加工作目录，可以添加 __dirname代表当前目录
-console.log('resolve',path.resolve(__dirname,'a','b','/')); //
-console.log('resolve',path.resolve(__dirname,'a','b','')); 
+console.log('resolve',path.resolve(__dirname,'a','b','/')); // =>  resolve /
+console.log('resolve',path.resolve(__dirname,'a','b',''));  // =>  resolve /xxx/a/b
 console.log('dirname',path.dirname(__dirname)); // 取父路径
 console.log('extname',path.extname('1.min.js')) // 取拓展名
 console.log('basename',path.basename('1.min.js','.js'))

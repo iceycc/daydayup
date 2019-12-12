@@ -25,7 +25,7 @@ EventEmitter.prototype.on = function (eventName, callback) { // {'吃饭':[]}
     let arr = this._events[eventName] || (this._events[eventName] = []);
     arr.push(callback)
 
-}
+} 
 EventEmitter.prototype.once = function (eventName, callback) {
     const once = (...args) => { // 高阶函数
         callback(...args); // 先执行原有的逻辑
