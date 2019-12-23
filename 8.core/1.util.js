@@ -1,3 +1,8 @@
+/**
+ * util:promisify
+ * blueBird库中有:promisifyAll     
+ */
+
 const util = require('util');
 const fs = require('fs');
 const path = require('path');
@@ -14,13 +19,15 @@ const promisify = (fn)=>(...args)=>{
         })
     })
 }
+// let read = promisify(fs.readFile)
 // require('fs').promises
 const promisifyAll = (obj)=>{
+    console.log(obj)
     for(let key in obj){
         obj[key] = promisify(obj[key]);
     }
 }
-promisifyAll(fs); // blueBird
+promisifyAll(fs); // 将fs所有异步方法promise化， blueBird库中有
 // 写一个转化所有方的promise化方法
 (async ()=>{
     let r = await fs.readFile(path.resolve(__dirname,'1.txt'),'utf8')

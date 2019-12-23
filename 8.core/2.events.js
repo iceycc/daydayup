@@ -13,7 +13,7 @@ const girl = new Girl();
 
 // 当用户绑定了data事件 我就触发此函数
 girl.on('newListener',(type)=>{
-    console.log(type);
+    console.log('newListener',type);
 })
 
 girl.on('吃饭',()=>{ // {'吃饭':[fn1,fn2]}
@@ -22,10 +22,11 @@ girl.on('吃饭',()=>{ // {'吃饭':[fn1,fn2]}
 let listener = ()=>{
     console.log('吃完前洗手')
 }
-girl.on('吃饭',listener);
+girl.on('吃饭2',listener);
 
 girl.off('吃饭',listener); // 去数组中删除掉
 
-// girl.emit('吃饭'); // Pub Sub库
+girl.emit('吃饭'); // Pub Sub库
 
 // on emit off newListener
+// on.emit('')

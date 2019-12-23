@@ -38,10 +38,44 @@ console.log(Symbol.keyFor(s4));
 // 11种
 class MyArray {  
     static [Symbol.hasInstance](instance) {
-      return Array.isArray(instance);
+      return false;
     }
+    // // static [Symbol.length](){
+
+    // }
  }
 console.log([] instanceof MyArray);
+console.log(MyArray.length)
 
 // 可以做 私有属性 默认js 中没有私有属性
+
+function Obj(){}
+console.log(Obj)
+
+
+
+var arr = {
+  [Symbol.iterator]: (() => {
+    var data = ['随', '机', '试', '一', '下'];
+    return () => {
+      var cursor = 0;
+      return {
+        next: () => {
+          if (cursor ++ < 10) {
+            return {
+              value: data[~~(5 * Math.random())],
+              done: false
+            }
+          }
+          return {
+            done: true 
+          }
+        } 
+      }
+    }
+  })()
+};
+// 这下就不用自己搞一个随机数组生成器了
+console.log([...arr]);
+
 
