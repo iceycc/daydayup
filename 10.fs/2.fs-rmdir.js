@@ -1,3 +1,15 @@
+/**
+ * 序
+ * 先序 中序 后序
+ * 方式
+ * 广度 深度
+ * 
+ * 串行和并发
+ * 异步并发：for循环 + 计数器 解决异步并发 类比promiseAll。
+ * 
+ */
+
+
 // 1) 先序深度同步遍历
 const fs = require('fs');
 const path = require('path');
@@ -27,8 +39,8 @@ const removeDir = (filePath,callback)=>{
                 dirs = dirs.map(dir=>path.join(filePath,dir));
                 let index = 0
                 function next(){ // 终止条件
-                    if(index == dirs.length) return fs.rmdir(filePath,callback);
-                    let currentDir = dirs[index++]; // e.js  e
+                    if(index == dirs.length) return fs.rmdir(filePath,callback); // 子目录删完了，删除自己
+                    let currentDir = dirs[index++]; // e.js  e  // 删除下一个子目录
                     removeDir(currentDir,()=>next()); // express
                 }
                 next();
@@ -42,7 +54,7 @@ const removeDir = (filePath,callback)=>{
 removeDir(pathUrl,()=>{
     console.log('删除成功')
 })
-// 3) 异步并发 paralle 深度先序号
+// 3) 异步并发 paralle 深度先序号。  
 const fs = require('fs');
 const path = require('path');
 let pathUrl = path.resolve(__dirname, './c');
@@ -63,6 +75,7 @@ const removeDir = (filePath,callback)=>{
                     }
                 }
                 // 如果有儿子分别删除儿子，并且成功后调用done方法
+                // for循环 + 计数器 解决异步并发 类比promiseAll。
                 for(let i = 0 ; i< dirs.length;i++){
                     removeDir(dirs[i],done);
                 }
@@ -98,10 +111,12 @@ const removeDir = async (filePath)=>{
 removeDir(pathUrl).then(data=>{
     console.log('成功')
 })
-// async + await 实现promise.all
+// async + await 实现promise.all ? 
 
 // 深度 广度
 
+
+// 广度 横向的
 let fs = require('fs');
 let path = require('path');
 let pathUrl = path.resolve(__dirname, './c');
@@ -124,9 +139,16 @@ const wideSync = (filePath) =>{
 wideSync(pathUrl);
 
 
+//
+let fs = require('fs')
+let path = require('path')
+function rmDir(){
+    let arr = (fliePath)
+}
 
 // 1).作业：异步的写法 async + await;
 
 
 // 流 流的模式 可读流 可写流 文件流  双工流  转化流
  
+

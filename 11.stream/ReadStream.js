@@ -13,19 +13,22 @@ class ReadStream extends EventEmitter {
     this.highWaterMark = options.highWaterMark || 64 * 1024;
     // 可读流默认叫非流动模式
     this.flowing = null; // 非流动模式
-    this.close = false;
+    this.close = false; 
     // 需要打开文件
-    this.open(); // 默认开启文件
+    this.open(); // 默认开启文件 异步
 
-    this.on("newListener", type => {
-      if (type === "data") {
+
+    
+    this.on("newListener", type => { // 同步的
+      if (type === "data") {// 触发data就开始设置流动并且读取文件
         this.flowing = true; // 已经开始读取文件了
         this.read(); // 开始读取数据
+        // this.fd 获取不到！
       }
     });
-    this.pos = this.start;
+    this.pos = this.start; // 每次读取的位置
   }
-  pause() {
+  pause() {// 暂停
     this.flowing = false;
   }
   resume() {
@@ -39,7 +42,7 @@ class ReadStream extends EventEmitter {
     // 读取文件,需要等待触发open事件后在执行
     // 发布订阅
     if (typeof this.fd !== "number") {
-      return this.once("open", () => this.read());
+      return this.once("open", () => this.read()); // 发布订阅！没有的话，先绑定open事件，等待open后 ，emit open事件
     }
     // 读取的时候要看有没有超过end
     // 算法就是用所有的个数 - 当前的偏移量如果小于了水位线 说明这次读取的个数不是highWaterMark个
@@ -51,6 +54,7 @@ class ReadStream extends EventEmitter {
       // 只有读取到数据后才发射结果
       if (bytesRead > 0) {
         if (this.flowing) {
+          // 正在读文件
           this.pos += bytesRead;
           this.emit(
             "data",
@@ -60,7 +64,7 @@ class ReadStream extends EventEmitter {
         }
       } else {
         this.emit("end");
-        if (this.autoClose) {
+        if (this.autoClose) {// 自动关闭
           fs.close(this.fd, () => {
             if(!this.close){
               this.emit("close");
@@ -78,7 +82,7 @@ class ReadStream extends EventEmitter {
         return this.emit("error", err);
       }
       this.fd = fd;
-      this.emit("open", fd);
+      this.emit("open", fd); // 发布订阅，打开文件拿到fd时触发open
     });
   }
   pipe(ws){

@@ -19,13 +19,21 @@ class WriteStream extends EventEmitter{
 
         this.open();
     }
+    /**
+     * ws.write
+     * @param {string | buffer} chunk 字符串或者buffer
+     * @param {utf-8} encoding 编码格式
+     * @param {function} callback 回调函数
+     * @returns {boolen} ret 返回的是是否达到预期 
+     */
     write(chunk,encoding=this.encoding,callback){
-        chunk = Buffer.isBuffer(chunk)?chunk : Buffer.from(chunk); // chunk就是buffer类型
+        chunk = Buffer.isBuffer(chunk)?chunk : Buffer.from(chunk); // 判断 chunk就是buffer类型
         this.len += chunk.length;
         // 判断写入的内容是否超过水位线
         let ret = this.highWaterMark > this.len;
         this.needDrain = !ret;
         if(this.writing){
+            // 正在写入的话，把将要写入的先放到缓存
             this.cache.push({
                 chunk,
                 encoding,
@@ -38,7 +46,7 @@ class WriteStream extends EventEmitter{
         return ret;
     }
     clearBuffer(){
-        let obj = this.cache.shift();
+        let obj = this.cache.shift(); // 从后面删除
         if(!obj){
             if(this.needDrain){
                 this.writing = false;
@@ -49,7 +57,9 @@ class WriteStream extends EventEmitter{
             this._write(obj.chunk,obj.encoding,obj.callback);
         }
     }
+    // 核心
     _write(chunk,encoding,callback){
+        // console.log(this.fd)
          if(typeof this.fd !== 'number'){
              return this.once('open',()=>this._write(chunk,encoding,callback))
          }

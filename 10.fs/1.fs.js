@@ -61,8 +61,15 @@ const resolve = filename => {
 // fs.open fs.read fs.write fs.close
 // 权限分为 读取 2 写入 4 执行 1  chmod -R 777 *   8进制
 // 分组分为三组 1） 我自己的权限 2) 我所在组的权限 3） 其它人的权限
-const mode = 0o666 // mode权限 读2写4为6,三组权限就是666。 最高权限0o777  。默认4388进制就是666
+const mode = 0o666 // mode权限 读2写4为6,三组权限就是666。 最高权限0o777  。默认438 8进制就是666
 console.log(438..toString(8)) // 666
+/*
+  fs.open(path,flags,mode,callback);
+  path - 文件的路径。
+  flags - 文件打开的行为。
+  mode - 设置文件模式(权限)，文件创建默认权限为 0666(可读，可写)。
+  callback - 回调函数，带有两个参数如：callback(err, fd)。
+*/
 fs.open(resolve("a.txt"), "r",function(err, rfd) {
   // file descriptor
   fs.open(resolve("c.txt"), "w", mode,function(err, wfd) {
@@ -71,8 +78,17 @@ fs.open(resolve("a.txt"), "r",function(err, rfd) {
     let buffer = Buffer.alloc(3);
     let roffset = 0;
     let woffset = 0;
-    // buffer表示读取到哪个内存中 0从buffer的哪个位置开始读取,3表示读取多少个字符 0 从文件的哪个位置开始读取
     let next = () => {
+      
+      /**
+       * fs.read(fd, buffer, offset, length, position, callback);
+       * fd, 使用fs.open打开成功后返回的文件描述符
+       * buffer, 一个Buffer对象，v8引擎分配的一段内存
+       * offset, 整数，向缓存区中写入时的初始位置，以字节为单位
+       * length, 整数，读取文件的长度
+       * position, 整数，读取文件初始位置；文件大小以字节为单位
+       * callback(err, bytesRead, buffer), 读取执行完成后回调函数，bytesRead实际读取字节数，被读取的缓存区对象
+       */
       fs.read(rfd, buffer, 0, 3, roffset, function(err, bytesRead) {
           if(err){
 
@@ -84,6 +100,15 @@ fs.open(resolve("a.txt"), "r",function(err, rfd) {
         } else {
           //真实读取的个数
           roffset += bytesRead;
+          /**
+           * fs.write(fd,buffer,offset,length,position,callback);
+           * fd, 使用fs.open打开成功后返回的文件描述符
+           * buffer, 一个Buffer对象，v8引擎分配的一段内存
+           * offset, 整数，从缓存区中读取时的初始位置，以字节为单位
+           * length, 整数，从缓存区中读取数据的字节数
+           * position, 整数，写入文件初始位置；
+           * callback(err, written, buffer), 写入操作执行完成后回调函数，written实际写入字节数，buffer被读取的缓存区对象
+           */
           fs.write(wfd, buffer, 0, 3, woffset, function(err, bytesWritten) {
               if(err){
                   
