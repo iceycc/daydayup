@@ -1,6 +1,7 @@
 const http = require("http");
 const url = require("url");
 
+// curl -v -X POST --data "{a:1}" http://localhost:8080
 // let obj = url.parse("http://jw:12354@www.baidu.com:8000/a?a=1&b=2#app", true);
 
 // 服务器要求必须监听端口和ip地址
@@ -19,17 +20,19 @@ server.on("request", (req, res) => {
   let arr = [];
   req.on("data", function(data) {
     // 读取请求体中的数据
+    // get请求会自动push个null 并且处罚end事件
     arr.push(data);
   });
   req.on("end", function() {
-    console.log(Buffer.concat(arr).toString());
+    console.log(Buffer.concat(arr).toString()); // 图片的话不能toString
   });
   // ----- 响应相关的 ------
   res.statusCode = 404; // 状态码
   res.setHeader("a", 1); // 设置响应头
-  res.setHeader("Content-Type", "text/plain;charset=utf-8");
+  res.setHeader("Content-Type", "text/plain;charset=utf-8");// 内容的类型 要不会乱码 // ie不认utf8需要加-
   res.write("hello"); // 设置响应体
-  res.end("你好"); // end 不调用 请求不结束
+  res.end("你好"); // 
+  // end 不调用 请求不结束
 });
 let port = 8080;
 server.listen(port, () => {
@@ -38,7 +41,7 @@ server.listen(port, () => {
 server.on("error", err => {
   // 重新启动端口
   if (err.code === "EADDRINUSE") {
-    server.listen(++port);
+    server.listen(++port); // 发布订阅模式 这里调用成功后会再执行上面绑定的回调函数
   }
 });
 // 如果端口好占用 + 1
