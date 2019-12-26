@@ -8,7 +8,7 @@
   },
   "scripts": {
     "hi": "echo \"hi\"",
-    "dev": "webpack-dev-server --mode development",
+    "dev": "echo \"hi\" && webpack-dev-server --mode development",
     "build": "webpack --mode production"
   },
   "dependencies": {
@@ -20,3 +20,4 @@
     "webpack-dev-server": "^3.9.0"
   }
 }
+
