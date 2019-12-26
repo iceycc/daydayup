@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/6.node/useA.js"
+            "program": "/Users/bingyang/Documents/iceyblog2.0/script/newNote.js"
         }
     ]
 }

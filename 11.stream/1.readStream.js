@@ -12,15 +12,15 @@
 // 实现大文件的读取的分割，分断读取
 let fs = require('fs');
 // 返回的是可读对象
-// let rs = fs.createReadStream('./a.txt',{
-//     // ...各种option 
-//     flags:'r', // 读取模式
-//     encoding:'utf8', // 读取到的结果都是buffer类型
-//     autoClose:true, // fs.close
-//     start:0,// 
-//     //end:4, // 包前又包后
-//     highWaterMark: 3 // 每次读多少，buff多长，默认64*1024。node中最小的单位是字节
-// })
+let rs = fs.createReadStream('./a.txt',{
+    // ...各种option 
+    flags:'r', // 读取模式
+    encoding:'utf8', // 读取到的结果都是buffer类型
+    autoClose:true, // fs.close
+    start:0,// 
+    //end:4, // 包前又包后
+    highWaterMark: 3 // 每次读多少，buff多长，默认64*1024。node中最小的单位是字节
+})
 // 基于fs.open fs.read fs.close封装
 // let str = ''
 // rs.on('data',function(data){
