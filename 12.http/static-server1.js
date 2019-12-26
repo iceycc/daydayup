@@ -2,7 +2,7 @@ const http = require("http");
 const url = require("url");
 const path = require("path");
 const fs = require("fs");
-const mime = require("mime"); // .html => text/html
+const mime = require("mime"); // .html => text/html 。设置Content-Type
 http
   .createServer((req, res) => {
     // /static/1.html
@@ -26,6 +26,17 @@ http
               "Content-Type",
               mime.getType(absPath) + ";charset=utf-8"
             );
+            // fs.readFile 小文件可以
+            // let rs = fs.createReadStream(absPath)
+            // rs.on('data',function(data){
+            //   // res是一个可写流
+            //   let flag = res.write(data)
+            //   if(!flag){
+            //     rs.pause()
+            //   }
+            // })
+            
+            // 把可读流导入可写流 pipe里面会自己调end方法
             fs.createReadStream(absPath).pipe(res);
           }
         });

@@ -7,17 +7,17 @@ let client = http.request(
   {
     // req
     hostname: "localhost",
-    port: 3000,
+    port: 8080,
     headers: {
       a: 1,
       //   "Content-Type": "application/x-www-form-urlencoded",
-      //   "Content-Type": "application/json",
-      "Content-Type": "text/plain"
+        "Content-Type": "application/json",
+      // "Content-Type": "text/plain"
     },
     method: "post"
   },
   function(res) {
-    // 客户端的相应是可读流
+    // 客户端的响应是可读流
     res.on("data", function(chunk) {
       console.log(chunk.toString());
     });

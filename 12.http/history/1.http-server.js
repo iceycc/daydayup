@@ -34,7 +34,7 @@ server.on("request", (req, res) => {
     console.log(Buffer.concat(arr).toString()); // 图片的话不能toString
   });
   // ----- 响应相关的 ------
-  res.statusCode = 404; // 状态码
+  res.statusCode = 304; // 状态码
   res.setHeader("a", 1); // 设置响应头
   res.setHeader("Content-Type", "text/plain;charset=utf-8");// 内容的类型 要不会乱码 // ie不认utf8需要加-
   res.write("hello"); // 设置响应体

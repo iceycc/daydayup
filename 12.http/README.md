@@ -1,6 +1,8 @@
+### 注册全局包
+1. npm init -y 初始化一个package.json
+2. bin设置 ./bin/www
+```js
 #! /usr/bin/env node
-
-// 命令行自定义工具
 // yargs(webpack) commander(tj)
 const program = require("commander");
 program
@@ -15,6 +17,15 @@ let server = new Server({
   ...opts
 });
 server.start(); // 启动服务
+```
 
-// 文件夹 发包 缓存 gzip
-// 其他的header的用法 多语言 防盗链代理koa 跨域
+3. 设置bin命令
+```json
+  "bin": {
+    "my-server": "./bin/www.js"
+  },
+```
+
+4. npm link 挂载全局
+
+5. npm unlink 取消

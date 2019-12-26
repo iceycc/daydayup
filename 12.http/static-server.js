@@ -1,10 +1,14 @@
+// 静态服务器
+
+// 手写一个http-server
+
 const http = require("http");
 const url = require("url");
 const path = require("path");
 const fs = require("fs").promises;
 const { createReadStream } = require("fs");
 const mime = require("mime");
-const chalk = require("chalk");
+const chalk = require("chalk");// 粉笔 用于美化
 class Server {
   constructor(config) {
     this.port = config.port || 3000;
@@ -34,6 +38,7 @@ class Server {
     res.end("Not Found");
   }
   start() {
+    // call上来就执行 
     let server = http.createServer(this.handleRequest.bind(this));
     server.listen(this.port, () => {
       console.log(`${chalk.yellow("Starting up http-server, serving ./")}
