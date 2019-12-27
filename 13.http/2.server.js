@@ -24,7 +24,7 @@ http.createServer((req,res)=>{
                 }
             }
             res.setHeader('Cache-Control','no-cache');
-            res.setHeader('Last-Modified',statObj.ctime.toGMTString());
+            res.setHeader('Last-Modified',statObj.ctime.toGMTString()); // ctime最后修改时间
             fs.createReadStream(absPath).pipe(res);
         }
     })
