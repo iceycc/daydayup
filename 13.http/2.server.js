@@ -1,3 +1,11 @@
+/**
+ * 协商缓存 
+ * 1. 服务端第一次请求时，服务器设置文件最后修改时间在响应头
+ * 2. 服务器第二次请求时将文件修改时间携带，服务器比对如果没改变返回304
+ * 
+ * 不准确
+ * 实际上 服务器会采用多种缓存判断机制，只要一个不满足就重新请求新资源。
+ */
 const http = require('http');
 const path = require('path');
 const fs = require('fs');
@@ -24,7 +32,7 @@ http.createServer((req,res)=>{
                 }
             }
             res.setHeader('Cache-Control','no-cache');
-            res.setHeader('Last-Modified',statObj.ctime.toGMTString()); // ctime最后修改时间
+            res.setHeader('Last-Modified',statObj.ctime.toGMTString()); //  ctime最后修改时间
             fs.createReadStream(absPath).pipe(res);
         }
     })

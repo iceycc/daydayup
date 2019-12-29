@@ -1,5 +1,8 @@
 /**
  * 缓存设置
+ * 强制缓存
+ * res.setHeader('Cache-Control','max-age=20');
+ * res.setHeader('Expires',new Date(Date.now()+20*1000).toGMTString())
  */
 
 

@@ -56,9 +56,18 @@ class Server {
     res.write(str)
     res.end();
   }
+  cache(){
+    // 返回boolean 是否需要缓存
+  }
   sendFile(req, res, filepath) {
     console.log(filepath)
-    res.setHeader('Cache-Control','max-age=20'); //强制缓存。设置缓存，状态码依旧是200。图片、logo
+    // 做缓存
+    // 5秒内 先做强制缓存
+    // 5秒
+    res.setHeader('Cache-Control','max-age=5'); //强制缓存。设置缓存，状态码依旧是200。图片、logo
+    res.setHeader('Expires',new Date(Date.now()+5*1000).toGMTString())
+    
+    
     res.setHeader("Content-Type", mime.getType(filepath) + ";charset=utf-8");
     createReadStream(filepath).pipe(res);
   }

@@ -1,3 +1,10 @@
+/**
+ * 协商缓存
+ * Etag 指纹验证
+ * 
+ * 每次请求新资源，服务器都会生成一个文件的标示（文件修改时间 + 文件大小 + 文件开头标示等的md5或者其它形式的密文），
+ * 客户端第二次请求该资源时，会携带Etag，服务器会去比对，如果相同返回304
+ */
 const http = require('http');
 const path = require('path');
 const fs = require('fs');
