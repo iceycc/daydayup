@@ -58,7 +58,7 @@ class Server {
   }
   cache(){
     // 返回boolean 是否需要缓存
-  }
+  }                                                        
   sendFile(req, res, filepath) {
     console.log(filepath)
     // 做缓存

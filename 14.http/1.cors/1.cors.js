@@ -13,16 +13,17 @@ http.createServer((req,res)=>{
     // 允许那个域 来访问我
     console.log(req.headers);
     if(req.headers.origin){ // 如果跨域了 才走跨域逻辑
-        res.setHeader('Access-Control-Allow-Origin',req.headers.origin); // 和 * 是一样
-        // 允许哪些方法访问我
+         // 和 * 是一样 但是客户端设置 xhr.withCredentials = true强制设置cookie时,不能用 * 
+        res.setHeader('Access-Control-Allow-Origin',req.headers.origin);
+         // 允许哪些方法访问我
         res.setHeader('Access-Control-Allow-Methods','GET,PUT,DELETE,POST,OPTIONS');
         // 允许携带哪些头
         res.setHeader('Access-Control-Allow-Headers','token');
-        // 设置options请求的间隔事件
+        // 设置options请求的间隔事件,永远都是以秒为单位
         res.setHeader('Access-Control-Max-Age','10');
+        // 跨域 cookie 凭证 如果跨域是不允许携带cookie/ 同时客户端要设置强制携带cookie
         res.setHeader('Access-Control-Allow-Credentials',true)
-        // 跨域 cookie 凭证 如果跨域是不允许携带cookie
-        if(method === 'OPTIONS'){
+        if(method === 'OPTIONS'){ // 处理预检请求
             res.end(); // 浏览器就知道了 我可以继续访问你
             return;
         }
