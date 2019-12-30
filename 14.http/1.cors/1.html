@@ -24,6 +24,7 @@
         xhr.responseType = 'json'; // 设置服务器的响应类型
         xhr.onload = function(){
             // eval JSON.parse
+            // xhr.response 对象等数据
             console.log(xhr.response)
         }
         xhr.send('a=1&=2');

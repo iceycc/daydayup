@@ -9,6 +9,7 @@
   "dependencies": {
     "chalk": "^2.4.2",
     "commander": "^2.20.0",
-    "mime": "^2.4.4"
+    "mime": "^2.4.4",
+    "zlib": "^1.0.5"
   }
 }
