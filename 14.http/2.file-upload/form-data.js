@@ -18,7 +18,8 @@ Buffer.prototype.split = function(sep){
 http
   .createServer((req, res) => {
     let { pathname, query } = url.parse(req.url);
-    console.log(pathname,req.method)
+    console.log('http>>>>',pathname,req.method)
+
     if (pathname === "/upload" && req.method === "POST") {
         console.log(req.headers["content-type"])
       if (req.headers["content-type"].includes("multipart/form-data")) {

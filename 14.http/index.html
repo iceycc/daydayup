@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <button id='btn'>发送ajax</button>
+  <script> 
+    btn.addEventListener('click',()=>{
+      let xhr = new XMLHttpRequest();
+      xhr.open('POST','http://localhost:3000/user',true)
+      xhr.responseType = 'json'; // 设置服务器的响应类型
+      // xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+      xhr.setRequestHeader('token','xxxx'); // 设置token 服务器需要同意设置token
+      xhr.withCredentials = true // 请求携带cookie，服务器需要同步设置允许携带
+      xhr.onload = function(){ // xhr.readyState == 4 + xhr.status == 200
+            // eval JSON.parse
+            // xhr.response 对象等数据
+            console.log(xhr.response)
+      }
+      xhr.send('a=1&b=2')
+    })
+  </script>
+</body>
+</html>

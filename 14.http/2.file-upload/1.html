@@ -7,11 +7,31 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-        <input type="file" name="avatar" multiple>
-        <input type="text" name="username">
-        <input type="text" name="password">
+    <form action="https://openapi-centretest4.bicai365.com/apis/admin/oss/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" multiple>
+        <input type="text" name="name1" value="1212121">
+        <input type="text" name="name2" value="32131231">
         <button>提交</button>
     </form>    
+    <form action="https://openapi-centretest4.bicai365.com/apis/admin/oss/down" method="POST" enctype="multipart/form-data">
+        <input type="text" name="name1" value="王亚东活体.mp4">
+        <button>下载提交</button>
+    </form>   
+    
+    <script>
+        // btn.addEventListener('click',()=>{
+        //     let xhr = new XMLHttpRequest();
+        //     // resful api get post delete put
+        //     xhr.open('POST','https://openapi-centretest4.bicai365.com/apis/admin/oss/down',true);
+        //     xhr.onload = function(){ // xhr.readyState == 4 + xhr.status == 200
+        //         // eval JSON.parse
+        //         // xhr.response 对象等数据
+        //         console.log(this.status)
+        //         console.log(this.readyState)
+        //         console.log(xhr.response)
+        //     }
+        //     xhr.send(`name1="王亚东活体.mp4"`);
+        // });
+    </script>
 </body>
 </html>
