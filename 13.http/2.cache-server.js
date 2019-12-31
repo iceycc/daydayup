@@ -5,6 +5,9 @@
  * 
  * 不准确
  * 实际上 服务器会采用多种缓存判断机制，只要一个不满足就重新请求新资源。
+ * 
+ * Last-Modified：响应：服务器告诉客户端，该资源的最后修改时间
+ * if-modified-since：请求：客户端携带现有资源的最后修改时间
  */
 const http = require('http');
 const path = require('path');

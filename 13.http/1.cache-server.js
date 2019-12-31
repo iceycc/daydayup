@@ -1,8 +1,10 @@
 /**
  * 缓存设置
  * 强制缓存
- * res.setHeader('Cache-Control','max-age=20');
- * res.setHeader('Expires',new Date(Date.now()+20*1000).toGMTString())
+ * res.setHeader('Cache-Control','max-age=20'); // 响应 服务器告诉客户端20秒内不用请求服务器
+ * res.setHeader('Expires',new Date(Date.now()+20*1000).toGMTString()) // 响应 服务告诉客户端某个时间前不用请求服务器了，注意服务器和客户端约定好时间格式。
+ * 
+ *
  */
 
 
