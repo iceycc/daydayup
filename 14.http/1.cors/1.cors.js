@@ -15,7 +15,7 @@ http.createServer((req,res)=>{
     if(req.headers.origin){ // 如果跨域了 才走跨域逻辑
          // 和 * 是一样 但是客户端设置 xhr.withCredentials = true强制设置cookie时,不能用 * 
         res.setHeader('Access-Control-Allow-Origin',req.headers.origin);
-         // 允许哪些方法访问我
+          // 允许哪些方法访问我
         res.setHeader('Access-Control-Allow-Methods','GET,PUT,DELETE,POST,OPTIONS');
         // 允许携带哪些头
         res.setHeader('Access-Control-Allow-Headers','token');
