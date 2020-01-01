@@ -11,12 +11,13 @@
 //  异步创建目录 核心next递归
 const fs = require('fs');
 const path = require('path')
-let pathUrl = path.resolve(__dirname, './c/b/c/d/e');
-console.log(pathUrl)
+let pathUrl = path.resolve(__dirname, './wc/b/c/d/e');
 // 1) 同步创建
 const mkdirSync = (pathUrl) => {
+  pathUrl = pathUrl.replace(/\\/g, '/'); // 兼容windows
   let pathArr = pathUrl.split('/');
   for (let i = 0; i < pathArr.length; i++) {
+    console.log(pathArr[i])
     if(pathArr[i]=='') continue // 第一项为空
     // for循环是同步的
     let current = pathArr.slice(0, i + 1).join('/');
@@ -32,7 +33,7 @@ mkdirSync(pathUrl)
 // 2）异步创建
 let fs = require('fs');
 let path = require('path')
-let pathUrl = path.resolve(__dirname, './c/b/c/d/e');
+let pathUrl = path.resolve(__dirname, './cc/b/c/d/e');
 console.log(pathUrl)
 const mkdir = (pathUrl, cb) => { // next
   let pathArr = pathUrl.split('/');

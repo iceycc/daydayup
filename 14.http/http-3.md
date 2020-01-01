@@ -85,7 +85,7 @@
 
 - defer & async ／ preload & prefetch
 
-  - defer 和 async 在网络读取的过程中都是异步解析
+  - defer 和 async 在网络读取的过程中都是异步解析 ？
 
   - defer是有顺序依赖的，async只要脚本加载完后就会执行
 

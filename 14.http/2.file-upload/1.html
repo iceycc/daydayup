@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="https://openapi-centretest4.bicai365.com/apis/admin/oss/upload" method="POST" enctype="multipart/form-data">
+    <!-- <form action="https://openapi-centretest4.bicai365.com/apis/admin/oss/upload" method="POST" enctype="multipart/form-data">
         <input type="file" name="file" multiple>
         <input type="text" name="name1" value="1212121">
         <input type="text" name="name2" value="32131231">
@@ -16,22 +16,18 @@
     <form action="https://openapi-centretest4.bicai365.com/apis/admin/oss/down" method="POST" enctype="multipart/form-data">
         <input type="text" name="name1" value="王亚东活体.mp4">
         <button>下载提交</button>
-    </form>   
-    
-    <script>
-        // btn.addEventListener('click',()=>{
-        //     let xhr = new XMLHttpRequest();
-        //     // resful api get post delete put
-        //     xhr.open('POST','https://openapi-centretest4.bicai365.com/apis/admin/oss/down',true);
-        //     xhr.onload = function(){ // xhr.readyState == 4 + xhr.status == 200
-        //         // eval JSON.parse
-        //         // xhr.response 对象等数据
-        //         console.log(this.status)
-        //         console.log(this.readyState)
-        //         console.log(xhr.response)
-        //     }
-        //     xhr.send(`name1="王亚东活体.mp4"`);
-        // });
-    </script>
+    </form>    -->
+    <form action="http://localhost:3000/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" multiple>
+        <input type="text" name="name1" value="1212121">
+        <input type="text" name="name2" value="32131231">
+        <button>提交 :3000</button>
+    </form>  
+    <form action="http://localhost:3001/upload" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file1" multiple>
+        <input type="text" name="name1" value="1212121">
+        <input type="text" name="name2" value="32131231">
+        <button>提交 :3001</button>
+    </form>  
 </body>
 </html>

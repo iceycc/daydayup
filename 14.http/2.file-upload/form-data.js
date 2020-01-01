@@ -2,6 +2,7 @@
  * 多文件上传
  * 通过 \r\n\r\n 截取上传的文件或文本时，内容内也有怎么办
  */
+// nodemon ./form-data.js 
 const http = require("http");
 const fs = require("fs");
 const url = require("url");
@@ -36,6 +37,7 @@ http
         });
         req.on("end",function(){
             const content = Buffer.concat(arr); // 二进制数据
+            console.log(content)
             let lines = content.split(boundary).slice(1,-1);
             let obj = {};
             // http协议规范 \r\n\r\n 分割不同的

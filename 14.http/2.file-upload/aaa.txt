@@ -1,0 +1,14 @@
+------WebKitFormBoundary40MAWMcZYeIifIXy
+Content-Disposition: form-data; name="file"; filename="a.txt"
+Content-Type: text/plain
+
+123456789012345612
+------WebKitFormBoundary40MAWMcZYeIifIXy
+Content-Disposition: form-data; name="name1"
+
+1212121
+------WebKitFormBoundary40MAWMcZYeIifIXy
+Content-Disposition: form-data; name="name2"
+
+32131231
+------WebKitFormBoundary40MAWMcZYeIifIXy--
