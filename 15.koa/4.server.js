@@ -3,6 +3,7 @@ const Koa = require('./koa/application');
 const app = new Koa();
 const fs = require('fs');
 app.use(async ctx=>{
+    // 默认是下载事件。
    ctx.body = fs.createReadStream('./package.json')
 })
 app.on('error',(err)=>{

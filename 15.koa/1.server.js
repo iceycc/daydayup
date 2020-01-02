@@ -27,7 +27,7 @@ app.use(ctx=>{ // 在koa源码中需要创建一个ctx对象 内部封装req和r
     console.log(ctx.request.path); // koa封装
     console.log(ctx.url); // ctx.request.url
 
-    ctx.response.body = 'hello'; // res.end()
+    ctx.response.body = 'hello'; // 不是res.end()
     ctx.body = '111'; // 这个方法只是给ctx.body赋予值
 })
 app.listen(3000,()=>{

@@ -2,7 +2,7 @@ const Koa = require('koa');
 
 const app = new Koa();
 // next指代的是下一个use中注册的方法
-// koa 中只要是异步逻辑 就把他封装成一个promise
+// koa 中只要是异步逻辑 就把他封装成一个promise！！！！不能用回调。待会再说
 const logger = ()=>{
     return new Promise((resolve,reject)=>{
         setTimeout(()=>{
@@ -32,4 +32,27 @@ app.use((ctx,next)=>{
     next();
     console.log(6);
 });
+app.listen(3000);
+// 洋葱模型 
+
+
+
+
+const Koa = require('koa');
+const app = new Koa();
+app.use((ctx,next)=>{
+    console.log(1)
+    next()
+    console.log(2)
+})
+app.use((ctx,next)=>{
+    console.log(3)
+    next()
+    console.log(4)
+})
+app.use((ctx,next)=>{
+    console.log(5)
+    next()
+    console.log(6)
+})
 app.listen(3000);

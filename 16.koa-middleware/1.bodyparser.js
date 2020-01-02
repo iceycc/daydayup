@@ -5,21 +5,21 @@ const app = new Koa();
 // 1)中间执行的逻辑
 // 2) 可以在我们的ctx上扩展一些属性或者方法
 // 3) 决定是否向下执行 权限
-const bodyParser = ()=>{ // 自定义中间件的写法 就是返还一个async函数 如果需要乡下执行就调用next
-    return async (ctx,next)=>{
-        await new Promise((resolve,reject)=>{
-            let arr = [];
-            ctx.req.on('data',(chunk)=>{
-                arr.push(chunk);
-            })
-            ctx.req.on('end',function(){
-                // 实现判断json 表单 上传文件
-                ctx.request.body = Buffer.concat(arr).toString();
-                resolve();
-            })
-        })
-        await next();
-    }
+const bodyParser = () => { // 自定义中间件的写法 就是返还一个async函数 如果需要乡下执行就调用next
+  return async (ctx, next) => {
+    await new Promise((resolve, reject) => {
+      let arr = [];
+      ctx.req.on('data', (chunk) => {
+        arr.push(chunk);
+      })
+      ctx.req.on('end', function () {
+        // 实现判断json 表单 上传文件
+        ctx.request.body = Buffer.concat(arr).toString();
+        resolve();
+      })
+    })
+    await next();
+  }
 }
 app.use(bodyParser()); // ctx.request.body
 app.use(async (ctx, next) => {
@@ -35,7 +35,22 @@ app.use(async (ctx, next) => {
     await next();
   }
 });
-// 此async方法 是不会等待内部的异步代码执行完毕
+// 第一版 此时是无法正常执行的 思考以下为啥不行呢？
+// app.use(async ctx => {
+//   // 此async方法 是不会等待内部的异步代码执行完毕
+//   if (ctx.method === "POST" && ctx.path === "/login") {
+//     const arr = [];
+//     ctx.req.on("data", chunk => {
+//       arr.push(chunk);
+//     });
+//     ctx.req.on("end", () => {
+//       ctx.body = Buffer.concat(arr).toString());
+//     });
+//   }
+// })
+
+
+// 第二版
 // const bodyParser = ctx => {
 //   return new Promise((resolve, reject) => {
 //     const arr = [];
@@ -47,7 +62,16 @@ app.use(async (ctx, next) => {
 //     });
 //   });
 // };
-// 中间件
+// app.use(async ctx => {
+//   if (ctx.method === "POST" && ctx.path === "/login") {
+//     ctx.body = await bodyParser()
+//   }
+// });
+
+
+
+
+// 抽离后的 中间件
 app.use(async ctx => {
   if (ctx.method === "POST" && ctx.path === "/login") {
     ctx.body = ctx.request.body;

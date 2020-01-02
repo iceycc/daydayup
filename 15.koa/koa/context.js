@@ -5,11 +5,13 @@ let context = {};
 // context 代理
 function defineGetter(property, key) {
   context.__defineGetter__(key, function() { // getter
+    // context != this
     return this[property][key];
   });
 }
 function defineSetter(property,key){
   context.__defineSetter__(key,function(value){ // setter
+    // context != this
     this[property][key] =value;
   })
 }
