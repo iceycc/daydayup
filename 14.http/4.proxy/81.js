@@ -1,11 +1,14 @@
 const http = require('http');
 // 代理服务器
 // https://github.com/http-party/node-http-proxy
-const proxy = require('http-proxy').createProxy();
+const httpProxy = require('http-proxy')
+// const proxy = httpProxy.createProxy();
+const proxy = httpProxy.createProxyServer();
+
 // http-proxy http.request
 let map = {
-    'a.zhufeng.cn:81':'http://localhost:3000',
-    'b.zhufeng.cn:81':'http://localhost:4000'
+    '3000.web.com:81':'http://localhost:3000',
+    '4000.web.com:81':'http://localhost:4000'
 }
 // a.zhufeng b.zhufeng
 http.createServer((req,res)=>{
@@ -14,6 +17,11 @@ http.createServer((req,res)=>{
         target:map[req.headers.host]
     })
 }).listen(81);
+
+//
+// Create your proxy server and set the target in the options.
+//
+httpProxy.createProxyServer({target:'http://localhost:3000'}).listen(8000); // See (†)
 
 
 // koa express http
