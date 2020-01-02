@@ -28,7 +28,7 @@ module.exports = class  extends EventEmitter{
         // 创建好的上下文返回去即可
         return ctx;
     }
-    compose(ctx){ // ctx代表的是上下文对象
+    2compose(ctx){ // ctx代表的是上下文对象
 
         // let dispatch = async (index)=>{
         //     if(index == this.middlewares.length) return Promise.resolve();
