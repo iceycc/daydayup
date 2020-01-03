@@ -70,8 +70,8 @@ module.exports = class  extends EventEmitter{
                 return res.end(_body+'');
             }else if( _body instanceof Stream){
                 // 下载header
-                // res.setHeader('Content-type', 'application/octet-stream');
-                // res.setHeader('Content-Disposition', 'attachment;filename='+encodeURIComponent('下载'));
+                res.setHeader('Content-type', 'application/octet-stream');
+                res.setHeader('Content-Disposition', 'attachment;filename='+encodeURIComponent('下载'));
                 _body.pipe(res);
                 return
             }else if(typeof _body === 'object'){
