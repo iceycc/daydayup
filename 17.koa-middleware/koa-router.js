@@ -14,9 +14,14 @@ class Router{
         this.stack = [];// 这里面存放着所有的路由关系
     }
     get(pathname,callback){
+        // this.stack.push({
+        //     callback,
+        //     pathname,
+        //     method:'get',
+        // }) // 下面抽离出一个类，方便拓展
         // 我们次调用get方法都会像内部数组放一层
         let layer = new Layer('get',pathname,callback)
-        this.stack.push(layer)
+        this.stack.push(layer)  // 
     }
     compose(fns,ctx,next){
         // compose原理
@@ -29,7 +34,7 @@ class Router{
     }
     routes(){
        return async (ctx,next)=>{
-            // 获取请求的路径
+            // 获取请求的路径，然后去stack依次匹配
             let path = ctx.path; // /hello
             let method = ctx.method; // get
             let fns = this.stack.filter(layer=>layer.match(path,method));

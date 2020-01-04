@@ -1,7 +1,7 @@
 const http = require('http');
 const querystring = require('querystring');
 const crypto = require('crypto');
-const secret = 'zf';
+const secret = 'zf'; // 密钥 拥有sha256加盐算法
 http.createServer((req,res)=>{
     req.getCookie = function(key,options={}){
         // 解析cookie 通过对应的key 取到对应的值
@@ -30,10 +30,13 @@ http.createServer((req,res)=>{
             args.push(`max-age=${options.maxAge}`);
         }
         if(options.signed){
-            // sha256 加盐算法 md5
+            // 增加签名
+            // sha256 加盐算法
+            // md5
             let sign = crypto.createHmac('sha256',secret).update(value+'').digest('base64').replace(/\/|\+|\=/g,'');
             value = value+'.'+sign;
         }
+    
         arr.push(`${key}=${value}`+'; '+args.join('; ')); // name=zf; httpOny:true; max-age:10 age=10
         res.setHeader('Set-Cookie',arr);
     }
@@ -43,7 +46,7 @@ http.createServer((req,res)=>{
     }
     if(req.url === '/write'){
         // 一般情况下服务端要设置httpOnly让客户端不能随意更改
-        // 签名 加一个签名 如果客户端改掉了 我就不识别你
+        // 增加安全性：签名 加一个签名 如果客户端改掉了 我就不识别你
         res.setCookie('name','zf',{httpOnly:true,maxAge:100,signed:true});
         res.setCookie('age',10);
         return res.end('write ok');

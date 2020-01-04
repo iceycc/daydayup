@@ -1,6 +1,10 @@
 const http = require('http');
 const querystring = require('querystring');
 const uuid = require('uuid');
+// 1 用户第一次访问客户端
+// 2 服务端会设置个小本本 session
+// 3 生产一个唯一的编号 对应 改用户真实数据，存放在cookie
+// 4 客户端第二次后携带编号 服务端去查编号对应的信息
 const session = { // 存放卡号和对应的信息
 
 }
