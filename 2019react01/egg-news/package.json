@@ -1,0 +1,31 @@
+{
+  "name": "egg-news",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env EGG_SERVER_ENV=local  egg-bin dev",
+    "start": "cross-env EGG_SERVER_ENV=prod egg-scripts start --workers=2 --daemon",
+    "stop":"cross-env EGG_SERVER_ENV=prod  egg-scripts stop",
+    "test": "cross-env EGG_SERVER_ENV=test egg-bin test",
+    "cov": "cross-env EGG_SERVER_ENV=test egg-bin cov"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "egg": "^2.22.2",
+    "egg-mock": "^3.23.1",
+    "egg-scripts": "^2.11.0",
+    "egg-sequelize": "^5.0.0",
+    "egg-view-nunjucks": "^2.2.0",
+    "moment": "^2.24.0",
+    "mysql2": "^1.6.5"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "egg-bin": "^4.13.0",
+    "factory-girl": "^5.0.4",
+    "sequelize-cli": "^5.4.0"
+  }
+}

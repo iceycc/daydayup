@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 写一个表格组件 轮播图组件 -->
+    <div id="app">
+        <Aa-A></Aa-A>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 组件 复用、方便维护、减少渲染
+        // 全局组件  局部组件  指令 
+        // 如果把vue 在html中使用 要注意1：html 不支持 自定义自闭合标签 2) 标签名不要和原生的一样 3) 如果组件名有大写的情况  html中标签没有大写,并且全部采用小写 + 短横线方式
+        // 组件特点 独立 每个组件间应该是不相关的， 单向数据流
+        let obj = {}
+        Vue.component('aa-a',{
+            template:`<div>my组建</div>`,
+            data(){
+                return obj
+            },
+             beforeMount(){
+              console.log('挂载前1')
+             },
+             mounted(){
+                 console.log('挂载后1')
+             }
+        });
+        let vm = new Vue({
+            el:'#app',
+            beforeMount(){
+                console.log('挂载前')
+            },
+            mounted(){
+                console.log('挂载后')
+            }
+        })
+    </script>
+</body>
+</html>

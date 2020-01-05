@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">{{n}}</div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            // el:'#app',
+            // 当前这个实例他的父亲是谁 儿子谁，有一套发布订阅 $on $emit $off
+            // 如果父 套了一个子
+            beforeCreate(){ // 回调函数
+                // 创建之前
+                // console.log(this); // 混合 我希望在每个组件中增加一些特定的属性，可以采用这个钩子, 基本上业务逻辑是不需要他的
+                console.log('before create')
+            },
+            created(){
+                // 当前这个组件实例 已经实现了 数据劫持,把方法 计算属性也都挂载到了实例, 不能获取到真实的dom元素
+                console.log('created'); // 创建完成 ajax, 不能操作dom
+                console.log(this);
+                debugger;
+            },
+            // render(){ // 如果有了render 就不会使用template
+            //     console.log('render');
+            // },
+            // template:`<div>hello</div>`,
+            data(){
+                return {n:1}
+            },
+            beforeMount(){ // 在挂载之前会调用render方法
+                console.log('挂载之前'); // 调用render 但是一般不会增加业务逻辑
+            },
+            // 这个过程中 会渲染子组件
+            mounted(){ // 直接把ajax 的操作直接放到mounted中
+                console.log('当前组件挂载完成');
+                console.log(vm.$el)
+            },
+            beforeUpdate(){ // 数据是应用到视图上
+                console.log('更新之前'); // 可以在这里，增加一些数据更新，不会导致视图多次更新
+            },
+            updated(){ // 不要再去更新数据  可能会发生死循环
+                this.n = Math.random(); // 不要在这里改数据
+                console.log('更新完成')
+            },
+            // 生命周期 和 钩子函数 区别?
+            beforeDestroy(){
+                // 销毁前 // 事件的移除 清空定时器
+                console.log('销毁前')
+            },
+            destroyed(){
+                console.log('销毁后')
+            }
+            // 组件化的好处 方便复用.比较好维护, 减少不必要的渲染
+            // vue的更新方式是组件级别的s
+        })
+        // $mount 可以指定一个元素,不指定元素的话 内部会默认渲染到一个内存中的节点
+        vm.$mount('#app');
+        // 我可以自己将渲染好的元素插入到自己想放的节点中
+        // document.body.appendChild(vm.$el);
+
+        // 手动移除组件 路由切换
+        vm.$destroy(); // 移除所有的观察者，移除监听事件
+        console.log(vm);
+
+        // 每个组件都有这套流程
+    </script>
+</body>
+</html>

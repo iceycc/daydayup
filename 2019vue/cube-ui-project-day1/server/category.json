@@ -1,0 +1,81 @@
+[{
+        "name": "Node课程",
+        "id": 0,
+        "children": [{
+                "id": "node",
+                "title": "标题1",
+                "price": 2000,
+                "pic": "http://www.javascriptpeixun.cn/files/course/2019/10-13/20510264fa40871768.png"
+            },
+            {
+                "id": "0-2",
+                "title": "标题2",
+                "price": 2000,
+                "pic": "http://www.javascriptpeixun.cn/files/course/2019/10-13/205026260901250131.png"
+            },
+            {
+                "id": "0-3",
+                "title": "标题3",
+                "price": 2000,
+                "pic": "http://www.javascriptpeixun.cn/files/course/2019/10-13/205026260901250131.png"
+            },
+            {
+                "id": "0-4",
+                "title": "标题4",
+                "price": 2000,
+                "pic": "http://www.javascriptpeixun.cn/files/course/2019/10-18/122910674b2d376420.png"
+            }
+        ]
+    },
+    {
+        "name": "React课程",
+        "id": 1,
+        "children": [{
+                "id": "1-1",
+                "title": "标题5",
+                "price": 2000,
+                "pic": "http://www.javascriptpeixun.cn/files/course/2019/10-13/205303f76f28949307.png"
+            },
+            {
+                "id": "1-2",
+                "title": "标题6",
+                "price": 2000,
+                "pic": "http://www.javascriptpeixun.cn/files/course/2019/10-13/2058433f3952027076.png"
+            },
+            {
+                "id": "1-3",
+                "title": "标题7",
+                "price": 2000,
+                "pic": "http://www.javascriptpeixun.cn/files/course/2019/10-13/210719744a26341671.png"
+            },
+            {
+                "id": "1-4",
+                "title": "标题8",
+                "price": 2000,
+                "pic": "http://www.javascriptpeixun.cn/files/course/2019/10-13/212327f5a05b921128.png"
+            }
+        ]
+    },
+    {
+        "name": "其他课程",
+        "id": 2,
+        "children": [{
+                "id": "2-1",
+                "title": "标题9",
+                "price": 2000,
+                "pic": "http://www.javascriptpeixun.cn/files/course/2019/10-13/212212432205480074.png"
+            },
+            {
+                "id": "2-2",
+                "title": "标题10",
+                "price": 2000,
+                "pic": "http://www.javascriptpeixun.cn/files/course/2019/10-13/212117d849a7566307.png"
+            }, {
+                "id": "2-3",
+                "title": "标题11",
+                "price": 2000,
+                "pic": "http://www.javascriptpeixun.cn/files/course/2019/10-13/2120386020cc149382.png"
+            }
+        ]
+    }
+]

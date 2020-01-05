@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">{{name}} {{age.age}}</div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:'#app',
+            data(){
+                return {name:'zf',age:{}}
+            }
+        });
+        // 1) vue有个特点 不会在本轮代码执行的时候 去重新渲染dom
+        // 2) 下一个事件环中执行 (promie.then mutationobserver setimmediate settimeout)
+
+        // 这里会等待数据更新后重新调用回调函数
+        // 视图是异步更新的
+        vm.$watch("name",function (newValue,oldValue) {
+         console.log(newValue,'后');
+        });
+
+        // vm.name = 'jw';
+        // vm.name = 'zf1';
+        // 数据更新后会有一个队列 将watch的callback放到队列中,会将nextTick往后叠加
+        vm.$nextTick(()=>{
+            console.log(vm.$el.innerHTML); // 渲染后的真实dom
+        });
+        console.log('vm的数据',vm.$data); // 代表 当前实例的数据
+        console.log('vm中的options',vm.$options);
+
+        // vm.$set vm.$delete 帮我更新属性的 
+        // 新增的属性不会导致视图更新 ，更改数组索引也不会更新 
+        // vm.age.age = 100;
+        vm.$set(vm.age,'age',100); // Object.defineProperty
+        // vm.$set([1,2,3],'0',100);
+
+        // vm.$el
+        // vm.$options
+        // vm.$watch
+        // vm.$nextTick
+        // vm.$set
+    </script>
+</body>
+</html>

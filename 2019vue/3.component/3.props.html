@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 将父组件的数据 通过儿子的属性传入 -->
+        {a:1,b:2,c:3}
+        <my a=1 b=2 c=3></my>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 单向数据流 父组件将数据传递给儿子
+        //  每个组件都应该有三部分 1) html  2) js 3) 样式
+        let component = {
+            template:`<div>儿子 {{mny}} <button @click="change">更改</button></div>`,
+            // props:['mny'], // this.mny = 100
+            props:{ // 表示 我要对属性进行校验
+                mny:{
+                    // 普通类型直接写 默认值即可 如果是对象或者是数组 必须写成函数返回值的效果
+                    type:Object, // 类型校验
+                    default:()=>({a:1})// 默认值校验
+                    // required:true //必填校验
+                }
+            },  
+            methods:{
+                change(){
+                    this.mny = 200; // 不靠谱，不应该儿子去更改父亲数据
+                }
+            },
+            data(){
+                return {m:1}
+            },
+            beforeCreate(){ // 这里可以描述 父子关系 
+                console.log(this.$parent.$children[0] === this);
+            },
+        }
+        // Vue.component('my',component)
+        let vm = new Vue({
+            el:'#app',
+            beforeCreate(){
+                console.log(this.$children);
+                debugger;
+            },
+            data:{
+                arr:[1,2,3],
+                mny:'100'
+            },
+            components:{ // 在实例上注册组件
+                my:component
+            }
+        });
+        // 组件的使用 三部 1）导入一个组件 2） 注册 3) 使用 在当前组件定义的模板中使用
+    </script>
+</body>
+</html>

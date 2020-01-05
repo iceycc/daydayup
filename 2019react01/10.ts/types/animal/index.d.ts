@@ -1,0 +1,3 @@
+interface Animal{
+    age:number
+}

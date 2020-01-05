@@ -1,0 +1,11 @@
+const path = require('path');
+module.exports = {
+    //指定配置文件路径 
+    config:path.join(__dirname,'database/config.json'),
+    //存放表结构的文件路径
+    'migrations-path':path.join(__dirname,'database/migrations'),
+    //存放种子文件
+    'seeders-path':path.join(__dirname,'database/seeders'),
+    //存放模型文件 mongoose
+    'models-path':path.join(__dirname,'app/model'),
+}

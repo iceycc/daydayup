@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="root" style="border:3px solid red;height:200px">  </div>
+<button onclick="push('/a')">/a</button>
+<button onclick="push('/b')">/b</button>
+<button onclick="push('/c')">/c</button>
+<script>
+let container = document.getElementById('root');
+//监听弹出状态的事件
+window.onpopstate = function(event){
+  //console.log(event);
+  container.innerHTML= event.state.to;
+}
+window.onpushstate = function(state,title,url){
+  //console.log(event);
+  container.innerHTML= state.to||url;
+}
+let oldPush = window.history.pushState;
+window.history.pushState = function(state,title,url){
+    oldPush.call(window.history,state,title,url);
+    window.onpushstate(state,title,url);
+}
+function push(to){
+   //pushState 三个参数 新的状态对象 标题(已经废弃) to 跳转到的路径
+   window.history.pushState({to},null,to);
+}
+
+</script>
+</body>
+</html>

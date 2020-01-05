@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul li {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        li img {
+            width: 150px;
+            height: 80px;
+        }
+
+        .cart {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            width: 150px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background: chartreuse;
+        }
+
+        .animate {
+            position: absolute;
+            width: 150px;
+            height: 80px;
+            display: block;
+            transition:all 1s linear ;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(list,index) in lists" ref="lists">
+                <img :src="list.cover">
+                <button @click="addCart(index)">加入购物车</button>
+            </li>
+        </ul>
+        <div class="cart" ref="cart">快进来!!!</div>
+        <transition @enter="enter" @after-enter="after">
+            <!-- span 进入写动画-->
+            <span class="animate" v-if="isShow"></span>
+        </transition>
+    </div>
+
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            methods: {
+                enter(el,done){ // el当前动画元素  done 动画完事了 需要调用done方法
+                    // 如果将ref 添加到v-for 可以通过 this.$refs.lists = ['真是dom'];
+                    let li = this.$refs.lists[this.currentIndex];
+                    let {x,y} = li.getBoundingClientRect();
+                    el.style.left = x+'px';
+                    el.style.top = y+'px';
+                    el.style.background = `url(${this.lists[this.currentIndex].cover})`;
+                    el.style.backgroundSize = `100% 100%`;
+
+                    let {x:a,y:b} = this.$refs.cart.getBoundingClientRect();
+                    // volicaty
+                    el.style.transform = `translate3d(${a-x}px,${b-y}px,0) scale(0,0)`;
+                    el.addEventListener('transitionend',done);
+                },
+                after(){
+                    this.isShow = false;
+                },
+                addCart(index){
+                    this.currentIndex = index; // 点击谁就保存起来
+                    this.isShow = true;
+                }
+            },
+            data() {
+                return {
+                    isShow: false,
+                    currentIndex:-1,
+                    lists: [{
+                            cover: 'http://www.javascriptpeixun.cn/files/course/2019/10-13/20510264fa40871768.png',
+                            id: 1,
+                        },
+                        {
+                            cover: 'http://www.javascriptpeixun.cn/files/course/2019/10-13/21114956089d654633.png',
+                            id: 2,
+                        },
+                        {
+                            cover: 'http://www.javascriptpeixun.cn/files/course/2019/10-13/2048331a9c5a183234.png',
+                            id: 3,
+                        }
+                    ]
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{getFullname}} {{b}}
+        全选 、 非全选
+        <input type="checkbox" v-model="checkAll">
+        <input type="checkbox" v-for="(check,index) in checks" v-model="check.value">
+    </div>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+    <script>
+        // method 是没有缓存
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                firstname: '珠',
+                lastname:'峰',
+                b:2,
+                checks:[{value:true},{value:true},{value:false}]
+            },
+            computed:{ //  内部是defineProperty
+                checkAll:{
+                    get(){ // 如果一个为false 就为false
+                        return this.checks.every(check=>check.value)
+                    },
+                    set(newValue){ // 用set 比较少
+                        this.checks.forEach(check => {
+                            check.value = newValue
+                        });
+                    }
+                },
+                getFullname(){ // get方法
+                    console.log(1)
+                    return this.firstname+this.lastname
+                }
+            }
+
+        });
+    </script>
+</body>
+
+</html>

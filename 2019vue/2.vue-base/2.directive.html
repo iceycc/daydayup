@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-focus.color="color">
+    </div>
+    <!-- 指令有几部分组成 v-model.a.b.c="abc" -->
+     <script src="node_modules/vue/dist/vue.js"></script>
+     <!-- 让输入框自动获取焦点 -->
+     <!-- 全局指令  所有组件 实例都可以使用 -->
+     <script>
+         // el代表当前指令元素
+         // bindings绑定属性 
+         // vnode 虚拟节点 context上下文，当前指令所在的上下文
+         // bind inserted -> update -> unbind
+
+         // v-click-outside
+         Vue.directive('focus',{
+             inserted(el,bindings,vnode){ // 指令元素插入到页面时执行
+                if(bindings.modifiers.color){
+                    el.style.background = bindings.value
+                }
+                el.focus();
+             },
+             unbind(){ // 指令销毁的时候 会触发此函数
+
+             }
+            //  bind(el,bindings,vnode){ // bind + update
+            //     // 此方法 默认只在绑定的时候 才会执行 和 更新的时候也会重新执行(只有依赖的数据发生变化才会重新执行)
+            //     console.log(el,bindings,vnode);
+            //     Vue.nextTick(()=>{
+            //         el.focus();
+            //     })
+            //  },
+            //  update(el,bindings,vnode){ // bind + update
+            //     // 此方法 默认只在绑定的时候 才会执行 和 更新的时候也会重新执行(只有依赖的数据发生变化才会重新执行)
+            //     console.log(el,bindings,vnode);
+            //     el.focus();
+            //  }
+         })
+         let vm = new Vue({
+             el:'#app',
+             data:{
+                a:1,b:2,
+                color:'blue'
+             }
+         });
+     </script>
+</body>
+</html>

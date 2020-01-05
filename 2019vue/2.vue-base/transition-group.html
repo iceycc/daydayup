@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .nav,
+        .nav-item {
+            width: 50px;
+            height: 50px;
+            background: red;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            margin-left: -25px;
+            color: #fff;
+            transform: translate(0);
+            opacity: 1;
+        }
+        /* 我已经设置好了结束为止  */
+        .nav-list :nth-child(1) {
+            transform: translate(-80px);
+        }
+
+        .nav-list :nth-child(2) {
+            transform: translate(-60px, -60px);
+        }
+        .nav-list :nth-child(3) {
+            transform: translate(0px, -80px);
+        }
+        .nav-list :nth-child(4) {
+            transform: translate(60px, -60px);
+        }
+        .nav-list :nth-child(5) {
+            transform: translate(80px, 0);
+        }
+        /* 最初位置*/
+        .nav-list .nav-item.move-enter{
+            opacity: 0;
+            transform: translate(0,0);
+        }
+         .nav-list .nav-item.move-enter-active,.nav-list .nav-item.move-leave-active{
+           transition: all 0.5s linear;
+         }
+         .nav-list .move-leave-to{
+              transform: translate(0,0);
+              opacity: 0;
+         }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="nav-list" ref="box">
+            <!-- enter-active-class="xxx" -->
+            <!-- leave-active-class="xxx" -->
+            <transition-group name="move" >
+                <div class="nav-item" v-for="i in count" v-show="isShow" :key="i">{{i}}</div>
+            </transition-group>
+        </div>
+        <div class="nav" @click="change">导航</div>
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            methods:{
+                change(){
+                    this.isShow = !this.isShow
+                }
+            },
+            data() {
+                return {count: 6,isShow:false }
+            }
+        })
+    </script>
+</body>
+
+</html>
+<!-- 组件通信 vue中组局 -->
+<!-- vue-cli 写几个组件 全局组件 命令式调用 -->
+<!-- vue-cli 常见的配置-->
+
+
+
+<!-- vue-router vuex  -->

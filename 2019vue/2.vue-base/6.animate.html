@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style >
+        .content{
+            width: 100px;height: 100px;background: red;;
+        }
+        .v-enter{ /*进入前*/
+            background: blue;;
+        }
+        .v-enter-active{
+            background: purple;
+            transition: all 10s linear;
+        }
+        .v-enter-to{
+            background: chartreuse;
+        }
+        /* 默认变成红色 */
+        .v-leave{
+            background: rgb(98, 0, 255);
+        }
+        .v-leave-active{
+            background: crimson;
+            transition: all 10s linear;
+        }
+        .v-leave-to{
+            background: yellow;
+        }   
+        /*最终 消失 */
+    </style>
+</head>
+
+<body>
+    <!-- VUE 中的动画 v-if v-for v-show 路由切换 -->
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+    <div id="app">
+        <button @click="change">点击我</button>
+        <transition>
+            <div v-if="isShow" class="content">
+                content
+            </div>
+        </transition>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                isShow: false
+            },
+            methods: {
+                change() {
+                    this.isShow = !this.isShow
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

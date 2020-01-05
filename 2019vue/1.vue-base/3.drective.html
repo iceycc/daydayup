@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- {{}} 小胡子语法 取值 能运算（算出来得有返回结果） 做三元表达式 -->
+        {{name}}
+        {{1+1}}
+        {{[1,2,3]}}
+        {{true?'是':null}}
+        <!-- 取对象  必须空格隔开 -->
+        {{ {name:'123'} }}
+        <span v-once>一次 {{name}}</span>
+        <!-- 不要将用户输入的内容显示到页面上 xss攻击 -->
+        <!-- 后端返回的数据 可以通过v-html来格式化 -->
+        <span v-html="tmp"></span>
+        <!-- 动态绑定 -->
+        <div v-bind:title="name">你好</div>
+        <!-- 绑定的是一个变量属性 -->
+        <div :title="name">你好</div>
+
+        <!-- v-for 循环数据 数组 对象 数字 (字符串) -->
+        <!-- 要循环谁 就将 v-for 写到谁的身上 -->
+
+        <!-- vue的中的key 有什么作用 区分元素,如果我有个按钮做反序 -->
+        <!-- 只是静态展示可以使用这个索引  使用唯一的key 来区分元素-->
+        <!-- 每次循环时候可以自己拼接一些内容保证唯一性 -->
+        不渲染
+        <div v-if="false">
+            <template v-for="(fruit,index) in arr" >
+                <li :key="`name_${index}`">
+                    {{fruit.name}}
+                </li>
+                <li :key="`color_${index}`">
+                    {{fruit.color}}
+                </li>
+            </template>
+        </div>
+        <!-- v-if (操作dom是否显示))  v-show（显示隐藏 style） -->
+        <!-- 指令的功能是封装dom 操作的 --> 
+        <!-- v-for 和 v-if 不要一起用 -->
+        <!-- v-show 不能和template一起用 -->
+
+        <!-- vue默认会采用复用的策略 会复用代码 -->
+        <template v-if="isShow">
+            <span>你好</span>
+            <input type="text" key="1">
+        </template>
+        <template v-else>
+            <span>不好</span>
+            <input type="text" key="2">
+        </template>
+
+        <!-- 双向绑定 只要能改的 组件也可以双向绑定 -->
+        <br>
+        <!-- 如何绑定方法 v-on是@的全拼-->
+        <!-- $event指代的是事件源 -->
+        <input type="text" :value="value" @input="fn($event)">
+        <!-- 很长 -->
+        <input type="text" :value="value" @input="e=>value=e.target.value">
+
+        <!-- v-model 他就是上面的简写 语法糖 -->
+        <input type="text" v-model="value">
+        {{value}}
+    </div>
+    <!-- 
+        v-once
+        v-html
+        v-bind
+        v-for
+        v-if / else show
+        v-model 双向绑定
+     -->
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            methods:{// 就是把所有的方法的this 都变成vm,bind了 多次bind 不会生效
+                fn(e){ // this指代的都是window
+                     this.value = e.target.value
+                }
+            },
+            data() {
+                return {
+                    value:'你好',
+                    isShow:true,
+                    tmp:'<h1>我很帅</h1>',
+                    name: 'zf',
+                    arr:[{name:'橘子',color:'绿色'},{name:'香蕉',color:' 黄色'}]
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+<!-- 预定正式课会占用三周 2周  2 4  -->
+
+<!-- 
+    今天 和明天
+
+
+ -->

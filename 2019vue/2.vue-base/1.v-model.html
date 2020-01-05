@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- vue MVVM双向绑定  用户可以更改视图 表单 input select radio checkbox textarea -->
+    <div id="app">
+        <!-- input textarea -->
+        <textarea v-model="text"></textarea>
+        <!-- select -->
+        <!-- {{selectValue}}  多个选择值都是数组 -->
+        {{selectValue}}
+        <select v-model="selectValue" multiple>
+            <!-- 默认值 -->
+            <option value="" disabled>请选择</option>
+            <option :value="o.id" v-for="o of selectOptions">{{o.value}}</option>
+        </select>
+
+        <!-- radio男女 分组 根据v-model取对应的值 -->
+        {{radioValue}}  
+        <input type="radio" value="男" v-model="radioValue">
+       <input type="radio" value="女" v-model="radioValue">
+        <!-- checkbox默认值是不选择 true false -->
+        {{check}}
+        爱好:
+       <input type="checkbox" v-model="check" value="游泳">
+       <input type="checkbox" v-model="check" value="健身">
+
+       <!-- 修饰符 -->
+       <!-- trim 去前后空格 只能输入number 可以限制只能输入数字 -->
+       <input type="text" v-model.number="text">
+
+       <!-- 如何自定义指令：操作dom元素的 可以把操作dom元素的功能封装到一起 -->
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:'#app',
+            data:{
+                text:'珠峰',
+                selectValue:[],
+                radioValue:'男',
+                check:[],
+                selectOptions:[
+                    {value:'香蕉',id:1},
+                    {value:'苹果',id:2}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

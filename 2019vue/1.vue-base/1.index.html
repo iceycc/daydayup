@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        {{name[0].n}} {{name[1]}}
+    </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script>
+        // view model
+        let vm = new Vue({
+            el:'#container' , // querySelector
+            data(){
+                // 这里就是model层
+                return {name:[{n:100},2]};
+            }
+        });
+        // vue是响应式变化 如果数据更新了 默认会刷新视图
+        // vm.name[0].n = 200;
+        vm.name[1] = 500
+        // 绑定的数据类型, 什么样的数据可以响应式变化
+
+        // vue源码中是如何实现响应式变化的
+        // 如果数组里放的是对象 那么更改对象中的属性是可以导致视图更新的
+    </script>
+</body>
+</html>

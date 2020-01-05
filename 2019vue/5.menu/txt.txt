@@ -1,0 +1,19 @@
+
+<!-- 循环可能根据有没有children 来显示 是submenu menu-item -->
+  <div>
+    <template v-for="menu in data">
+      <zf-submenu v-if="menu.children" :key="menu.id">
+        <template slot="title">{{menu.name}}</template>
+
+
+        <Sub :data="menu.children"></Sub>
+        <!-- 循环孩子组件 应该不停的去重复 -->
+        <!-- <template v-for="m in menu.children">
+                     <zf-menu-item :key="m.id">
+                        {{m.name}}
+                    </zf-menu-item>
+        </template>-->
+      </zf-submenu>
+      <zf-menu-item v-else :key="menu.id">{{menu.name}}</zf-menu-item>
+    </template>
+  </div>

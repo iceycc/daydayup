@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>珠峰聊天室</title>
+    <style>
+        .user{
+            color:red;
+            cursor: pointer;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.1/css/bootstrap.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-md-6">
+                               <button id="join-red" class="btn btn-danger" onclick="join('red')">进入红房间</button>
+                               <button id="leave-red" class="btn btn-danger" onclick="leave('red')">离开红房间</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button id="join-green" class="btn btn-success" onclick="join('green')">进入绿房间</button>
+                                <button id="leave-green" class="btn btn-success" onclick="leave('green')">离开绿房间</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <ul style="height:400px;overflow-y: auto" class="list-group" id="messages" onclick="selectUser(event)">
+
+                        </ul>
+                    </div>
+                    <div class="panel-footer">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" id="txtMsg">
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-primary" onclick="send()">发言</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        let txtMsg = document.getElementById('txtMsg');
+        let messagesUl = document.getElementById('messages');
+        const socket = io.connect('/');
+        socket.on('connect',function(){
+            console.log('连接成功!');    
+            socket.emit('getAllMessages');
+        });
+        function formatMessage(msgObj){
+            return `<span class="user">${msgObj.username}</span>:${msgObj.content}<button class="btn btn-danger" onclick="del('${msgObj.id}')">删除</button><span class="pull-right">${new Date(msgObj.createAt).toLocaleString()}</span>`;
+        }
+        socket.on('message',function(msgObj){
+           let li = document.createElement('li');
+           li.id = `message_${msgObj.id}`;
+           li.className='list-group-item';
+           li.innerHTML= formatMessage(msgObj);
+           messagesUl.appendChild(li);
+           messagesUl.scrollTop = messagesUl.scrollHeight;
+        });
+        socket.on('allMessages',function(messages){
+            let lis = messages.map(msgObj=>(
+                `<li class="list-group-item">${formatMessage(msgObj)}</li>`
+            )).join('');
+            messagesUl.innerHTML=lis;
+            messagesUl.scrollTop = messagesUl.scrollHeight;
+        });
+        socket.on('disconnect',function(){
+          console.log('服务端断开连接!')
+        });
+        socket.on('error',function(error){
+            console.log('客户端发生错误!',error)
+        });
+        socket.on('deled',function(id){
+            let li = document.getElementById(`message_${id}`);
+            if(li){
+                li.parentNode.removeChild(li);
+            }
+        });
+        function send(){
+            let value = txtMsg.value;
+            if(!value){
+                return alert('发言内容不能为空!');
+            }
+            socket.emit('message',value);
+            txtMsg.value='';
+        }
+        function del(id){
+            //emit第一个参数是消息的类型，del ，还要把id传过去
+            socket.emit('del',id);
+        }
+        function selectUser(event){
+            if(event.target.className=='user'){
+                txtMsg.value =`@${event.target.innerText} `;
+            }
+        }
+        function join(roomName){
+            socket.emit('join',roomName);
+        }
+        function leave(roomName){
+            socket.emit('leave',roomName);
+        }
+    </script>
+</body>
+</html>

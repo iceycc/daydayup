@@ -1,0 +1,15 @@
+<body>
+    <div id="a">{{arr}}</div>
+</body>
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+    const vm = new Vue({
+        el: '#a',
+        data() {
+            return {
+                arr: [1, 2, 3]
+            }
+        },
+    })
+     vm.arr.push(5)
+</script>

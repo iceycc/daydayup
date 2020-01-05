@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">{{name}}</div>
+    <script src="node_modules/vue/dist/vue.min.js"></script>
+    <script>
+        // computed 和 watch的区别 有的时候可以实现相同的功能
+        // 计算 会根据其他的值来算
+        // watch  监控 监控某个值的变化 这两个方法都是基于 vm.$watch
+
+
+        // watch 每次值变化后 都能执行对应的回调 
+        // computed 计算属性 多次取值是用缓存效果的，如果依赖的值变化 会重新执行
+        // computed defineProperty get / set
+        let vm = new Vue({
+            el:'#app',
+            data:{
+                name:'zf'
+            },
+            computed:{
+                // computed 内部具有缓存 如果依赖的属性没有变化 不会重新执行对应函数
+                fullname(){ // new Watch  vm.$watch 
+                    return this.name; 
+                }
+            },
+            // 当一个值变化 可以做一件事 调用ajax
+            watch:{
+                name:{
+                    handler(newValue){
+                        console.log(newValue)
+                    },
+                    immediate:true, // 立即执行handler
+                    deep:true, // 深度监控
+                    lazy:true // 就是compouted的实现
+                }
+            }
+            
+        });
+        vm.fullname
+        vm.name = 'jw';
+
+
+
+        vm.$watch(function(){ // 依赖收集
+            return vm.name
+        },function (newValue) {
+            console.log(newValue)
+        })
+        // angular1.0 脏值检测
+        // let dirty = true;
+        // function initComputed(key,handler) {
+        //     let value;
+        //     Object.defineProperty(vm,key,{
+        //         get(){
+        //             if(dirty){
+        //                 value = handler();
+        //                 dirty = false;
+        //             }
+        //             return value
+        //         }
+        //     })
+        // }
+        // initComputed('fullname',()=>{
+        //     console.log('刷新')
+        //     return vm.name + 'jw';
+        // })
+        // // 计算属性最大的特点 可以缓存
+        // vm.fullname
+        // vm.fullname
+        // vm.name = 'jw';
+        // dirty = true;
+        // console.log(vm.fullname)
+
+        // function initWatch(watch){
+        //     for(let key in watch){
+        //         vm.$watch(key,watch[key]);
+        //     }
+        // }
+        // initWatch(
+        //     {
+        //         name(newValue){
+        //             console.log(newValue)
+        //         }
+        //     }
+        // )
+    </script>
+</body>
+</html>
