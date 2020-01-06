@@ -33,7 +33,7 @@ export function initMixin (Vue: Class<Component>) {
     if (options && options._isComponent) {
       // optimize internal component instantiation
       // since dynamic options merging is pretty slow, and none of the
-      // internal component options needs special treatment.
+      // internal component options needs special treatment
       initInternalComponent(vm, options)
     } else {
       vm.$options = mergeOptions(
@@ -50,12 +50,14 @@ export function initMixin (Vue: Class<Component>) {
     }
     // expose real self
     vm._self = vm
-    initLifecycle(vm) // 初始化父子关系
-    initEvents(vm) // 初始化events属性 {}
-    initRender(vm) // 初始化 vm.$createElement
-    callHook(vm, 'beforeCreate') // 调用 breforeCreate。错误处理
+
+
+    initLifecycle(vm) // 初始化家族关系
+    initEvents(vm) // 初始化events属性 {} 给实例增加 event属性
+    initRender(vm) // 初始化 vm.$createElement  在实例上增加createElement方法。
+    callHook(vm, 'beforeCreate') // 调用 breforeCreate方法。
     initInjections(vm) // 初始化注入数据 vm._injected  //  resovlveInject //   resolve injections before data/props
-    initState(vm) // 初始化状态 响应式原理 
+    initState(vm) // 初始化状态 props,method,data,watch 响应式原理 
     initProvide(vm) // vm._provided   // resolve provide after data/props
     callHook(vm, 'created') // 调用了created
 

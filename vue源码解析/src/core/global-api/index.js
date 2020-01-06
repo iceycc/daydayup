@@ -18,6 +18,10 @@ import {
   defineReactive
 } from '../util/index'
 
+/**
+ * 初始化Vue
+ * @param {} Vue 
+ */
 export function initGlobalAPI (Vue: GlobalAPI) {
   // config
   const configDef = {}
@@ -42,8 +46,8 @@ export function initGlobalAPI (Vue: GlobalAPI) {
   }
 
   Vue.set = set
-  Vue.delete = del
-  Vue.nextTick = nextTick
+  Vue.delete = del 
+  Vue.nextTick = nextTick // 浏览器事件环
 
   // 2.6 explicit observable API
   Vue.observable = <T>(obj: T): T => {
@@ -64,8 +68,8 @@ export function initGlobalAPI (Vue: GlobalAPI) {
 
   extend(Vue.options.components, builtInComponents)
 
-  initUse(Vue)
-  initMixin(Vue)
-  initExtend(Vue)
+  initUse(Vue) // 初始化 Vue.use , 默认会调用当前插件大install方法。
+  initMixin(Vue) // 初始化 Vue.mixin 混合 将传人大属性混合到this.options中
+  initExtend(Vue) // 初始化Vue.extend 会创建个子类 继承于父类
   initAssetRegisters(Vue)
 }

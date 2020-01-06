@@ -18,7 +18,7 @@ const idToTemplate = cached(id => {
 // 找到入口文件 入口文件 
 const mount = Vue.prototype.$mount
 // aop 如果有模版 就把 模版变成 render函数 对mount函数进行包装
-
+// 挂载组件的方法
 // vm.$options.el
 Vue.prototype.$mount = function ( 
   el?: string | Element,
@@ -47,6 +47,7 @@ Vue.prototype.$mount = function (
       // 3 判断template类型
       if (typeof template === 'string') {
         // 3 看模版是不是 # 方式传人
+        // el:'#app'
         if (template.charAt(0) === '#') { 
           template = idToTemplate(template)
           /* istanbul ignore if */

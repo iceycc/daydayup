@@ -19,7 +19,7 @@
 ### 5. 入口 src/platforms/web/
 1. entry-runtime-with-compiler.js   aop函数劫持  $mount
 2. runtime/index.js
-   1. Vue.prototype.__patch__  ：比对dom 重新渲染 
+   1. Vue.prototype.__patch__  ：dom-diff原理 比对dom 重新渲染 
    2. Vue.prototype.$mount => /src/core/instance/lifecycle.js
 
 ### 6. 核心 src/core/
