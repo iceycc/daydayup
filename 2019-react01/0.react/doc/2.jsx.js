@@ -1,3 +1,6 @@
+// jsx原理 ： 
+// babel转义：https://www.babeljs.cn/repl
+// <h1>hello</h1>  => React.createElement("h1", null, "hello")
 import React from 'react';
 import ReactDOM from 'react-dom';
 /**
@@ -13,8 +16,8 @@ console.log(JSON.stringify(element));
 /**
 React元素 就是一个普通的JS对象 虚拟DOM
 {
-	"type": "h1",
-	"props": {
+	"type": "h1", // 类型
+	"props": { // 属性对象
 		"className": "title",
 		"children": ["hello", {
 			"type": "span",
