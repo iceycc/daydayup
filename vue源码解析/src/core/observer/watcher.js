@@ -91,20 +91,27 @@ export default class Watcher {
         )
       }
     }
+    // 实例创建时就会执行
     this.value = this.lazy
       ? undefined
-      : this.get() // 一new Watch 会执行get方法
+      : this.get() // 一 new Watch 会执行get方法
   }
 
   /**
    * Evaluate the getter, and re-collect dependencies.
    */
   get () {
-    pushTarget(this) // 放到全局 dep
+    pushTarget(this)  // 先把自己保存下来
     let value
     const vm = this.vm
     try {
+
+      // 获取被依赖的数据
+      // == 》 获取依赖数据的目的就是触发该数据的getter，
+      // == 》 然后触发 dep.depend 进行依赖收集 。
+      //  == 》 然后触发 watcher.addDep(this) 
       value = this.getter.call(vm, vm)
+    
     } catch (e) {
       if (this.user) {
         handleError(e, vm, `getter for watcher "${this.expression}"`)
@@ -130,9 +137,9 @@ export default class Watcher {
     const id = dep.id
     if (!this.newDepIds.has(id)) {
       this.newDepIds.add(id)
-      this.newDeps.push(dep)
+      this.newDeps.push(dep) 
       if (!this.depIds.has(id)) {
-        dep.addSub(this)
+        dep.addSub(this) // 将依赖放入依赖管理器dep
       }
     }
   }
@@ -168,6 +175,7 @@ export default class Watcher {
       this.dirty = true
     } else if (this.sync) {
       this.run()
+  // 调用数据更新的回调函数
     } else {
       queueWatcher(this) // 队列 下一次更新
     }

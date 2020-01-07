@@ -17,23 +17,27 @@ export default class Dep {
 
   constructor () {
     this.id = uid++
-    this.subs = []
+    this.subs = [] // 初始化数组，存放依赖实例队列
   }
 
   addSub (sub: Watcher) {
     this.subs.push(sub)
   }
 
+  // 删除一个依赖
   removeSub (sub: Watcher) {
     remove(this.subs, sub)
   }
 
+  // 增加一个依赖
   depend () {
-    if (Dep.target) {
+    if (Dep.target) { // 
+      // 给当前watcher 挂载当前的dep
       Dep.target.addDep(this)
     }
   }
 
+  // 通知依赖更新
   notify () {
     // stabilize the subscriber list first
     const subs = this.subs.slice()
@@ -43,6 +47,8 @@ export default class Dep {
       // order
       subs.sort((a, b) => a.id - b.id)
     }
+
+    // 遍历所有依赖 即 watcher 实例
     for (let i = 0, l = subs.length; i < l; i++) {
       subs[i].update()
     }
@@ -53,11 +59,11 @@ export default class Dep {
 // This is globally unique because only one watcher
 // can be evaluated at a time.
 Dep.target = null
-const targetStack = []
+const targetStack = [] // 依赖实例队列
 
 export function pushTarget (target: ?Watcher) {
-  targetStack.push(target)
-  Dep.target = target
+  targetStack.push(target) // 保存下来
+  Dep.target = target // 添加到依赖管理器
 }
 
 export function popTarget () {

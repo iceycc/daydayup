@@ -57,7 +57,7 @@ export function initMixin (Vue: Class<Component>) {
     initRender(vm) // 初始化 vm.$createElement  在实例上增加createElement方法。
     callHook(vm, 'beforeCreate') // 调用 breforeCreate方法。
     initInjections(vm) // 初始化注入数据 vm._injected  //  resovlveInject //   resolve injections before data/props
-    initState(vm) // 初始化状态 props,method,data,watch 响应式原理 
+    initState(vm) // 初始化状态 props,method,data,watch 响应式原理 => 
     initProvide(vm) // vm._provided   // resolve provide after data/props
     callHook(vm, 'created') // 调用了created
 
@@ -69,7 +69,7 @@ export function initMixin (Vue: Class<Component>) {
     }
 
     if (vm.$options.el) {
-      vm.$mount(vm.$options.el)
+      vm.$mount(vm.$options.el) // 挂载元素
     }
   }
 }

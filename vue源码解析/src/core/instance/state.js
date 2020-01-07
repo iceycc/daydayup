@@ -61,14 +61,18 @@ export function initState (vm: Component) {
   }
 }
 
+// 初始化属性
 function initProps (vm: Component, propsOptions: Object) {
+  
   const propsData = vm.$options.propsData || {}
   const props = vm._props = {}
+  // 将所有的属性放到_props上
   // cache prop keys so that future props updates can iterate using Array
   // instead of dynamic object key enumeration.
   const keys = vm.$options._propKeys = []
   const isRoot = !vm.$parent
   // root instance props should be converted
+  // 如果是跟节点将属性变成响应式的属性
   if (!isRoot) {
     toggleObserving(false)
   }
@@ -103,12 +107,14 @@ function initProps (vm: Component, propsOptions: Object) {
     // during Vue.extend(). We only need to proxy props defined at
     // instantiation here.
     if (!(key in vm)) {
-      proxy(vm, `_props`, key)
+      proxy(vm, `_props`, key) // 通过vm代理_props上的属性
     }
   }
   toggleObserving(true)
 }
 
+// 初始化数据
+// 响应式原理
 function initData (vm: Component) {
   let data = vm.$options.data
   data = vm._data = typeof data === 'function'
@@ -166,6 +172,7 @@ export function getData (data: Function, vm: Component): any {
 
 const computedWatcherOptions = { lazy: true }
 
+// 初始化计算属性
 function initComputed (vm: Component, computed: Object) {
   // $flow-disable-line
   const watchers = vm._computedWatchers = Object.create(null)
@@ -259,8 +266,10 @@ function createGetterInvoker(fn) {
   }
 }
 
+// 初始化方法
 function initMethods (vm: Component, methods: Object) {
   const props = vm.$options.props
+  // 在实例上增加对应的方法
   for (const key in methods) {
     if (process.env.NODE_ENV !== 'production') {
       if (typeof methods[key] !== 'function') {
@@ -287,6 +296,7 @@ function initMethods (vm: Component, methods: Object) {
   }
 }
 
+// 初始化watch
 function initWatch (vm: Component, watch: Object) {
   for (const key in watch) {
     const handler = watch[key]
