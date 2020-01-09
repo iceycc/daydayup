@@ -10,6 +10,9 @@
  * of making flow understand it is not worth it.
  */
 
+ // dom-diff 创建节点
+ 
+
 import VNode, { cloneVNode } from './vnode'
 import config from '../config'
 import { SSR_ATTR } from 'shared/constants'
@@ -94,13 +97,14 @@ export function createPatchFunction (backend) {
     }
     remove.listeners = listeners
     return remove
-  }
-
+    }
+  
+    // 删除节点
   function removeNode (el) {
-    const parent = nodeOps.parentNode(el)
+    const parent = nodeOps.parentNode(el) // 获取父节点
     // element may have already been removed due to v-html / v-text
     if (isDef(parent)) {
-      nodeOps.removeChild(parent, el)
+      nodeOps.removeChild(parent, el) // 调用父节点removeChild
     }
   }
 
@@ -148,6 +152,8 @@ export function createPatchFunction (backend) {
     const data = vnode.data
     const children = vnode.children
     const tag = vnode.tag
+
+
     if (isDef(tag)) {
       if (process.env.NODE_ENV !== 'production') {
         if (data && data.pre) {
@@ -163,9 +169,10 @@ export function createPatchFunction (backend) {
         }
       }
 
+     
       vnode.elm = vnode.ns
-        ? nodeOps.createElementNS(vnode.ns, tag)
-        : nodeOps.createElement(tag, vnode)
+        ? nodeOps.createElementNS(vnode.ns, tag) 
+        : nodeOps.createElement(tag, vnode)  // 创建元素节点
       setScope(vnode)
 
       /* istanbul ignore if */
@@ -180,6 +187,8 @@ export function createPatchFunction (backend) {
           }
           insert(parentElm, vnode.elm, refElm)
         }
+
+        // 创建元素节点的子节点
         createChildren(vnode, children, insertedVnodeQueue)
         if (appendAsTree) {
           if (isDef(data)) {
@@ -192,6 +201,8 @@ export function createPatchFunction (backend) {
         if (isDef(data)) {
           invokeCreateHooks(vnode, insertedVnodeQueue)
         }
+
+        // 插入到DOM中
         insert(parentElm, vnode.elm, refElm)
       }
 
@@ -199,11 +210,11 @@ export function createPatchFunction (backend) {
         creatingElmInVPre--
       }
     } else if (isTrue(vnode.isComment)) {
-      vnode.elm = nodeOps.createComment(vnode.text)
-      insert(parentElm, vnode.elm, refElm)
+      vnode.elm = nodeOps.createComment(vnode.text) // 创建注释节点
+      insert(parentElm, vnode.elm, refElm) // 插入到dom中
     } else {
-      vnode.elm = nodeOps.createTextNode(vnode.text)
-      insert(parentElm, vnode.elm, refElm)
+      vnode.elm = nodeOps.createTextNode(vnode.text) // 创建文本节点
+      insert(parentElm, vnode.elm, refElm) // 插入到dom中
     }
   }
 
@@ -498,6 +509,9 @@ export function createPatchFunction (backend) {
     }
   }
 
+
+
+  // 更新节点
   function patchVnode (
     oldVnode,
     vnode,
@@ -506,10 +520,11 @@ export function createPatchFunction (backend) {
     index,
     removeOnly
   ) {
+    // 完全一样 不需要更新
     if (oldVnode === vnode) {
       return
     }
-
+  
     if (isDef(vnode.elm) && isDef(ownerArray)) {
       // clone reused vnode
       vnode = ownerArray[index] = cloneVNode(vnode)
@@ -530,6 +545,7 @@ export function createPatchFunction (backend) {
     // note we only do this if the vnode is cloned -
     // if the new node is not cloned it means the render functions have been
     // reset by the hot-reload-api and we need to do a proper re-render.
+    // vnode和oldVnode是否都是静态节点？若是，退出程序
     if (isTrue(vnode.isStatic) &&
       isTrue(oldVnode.isStatic) &&
       vnode.key === oldVnode.key &&
@@ -551,6 +567,7 @@ export function createPatchFunction (backend) {
       for (i = 0; i < cbs.update.length; ++i) cbs.update[i](oldVnode, vnode)
       if (isDef(i = data.hook) && isDef(i = i.update)) i(oldVnode, vnode)
     }
+    // vnode有text属性？ 若没有：
     if (isUndef(vnode.text)) {
       if (isDef(oldCh) && isDef(ch)) {
         if (oldCh !== ch) updateChildren(elm, oldCh, ch, insertedVnodeQueue, removeOnly)

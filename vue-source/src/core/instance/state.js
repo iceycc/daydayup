@@ -45,6 +45,7 @@ export function proxy (target: Object, sourceKey: string, key: string) {
   Object.defineProperty(target, key, sharedPropertyDefinition)
 }
 
+// 初始化 props method data computed watch
 export function initState (vm: Component) {
   vm._watchers = []
   const opts = vm.$options
@@ -116,12 +117,13 @@ function initProps (vm: Component, propsOptions: Object) {
 // 初始化数据
 // 响应式原理
 function initData (vm: Component) {
-  let data = vm.$options.data
+  let data = vm.$options.data // 推荐data为函数 
   data = vm._data = typeof data === 'function'
     ? getData(data, vm)
     : data || {}
   if (!isPlainObject(data)) {
     data = {}
+    // 不是函数
     process.env.NODE_ENV !== 'production' && warn(
       'data functions should return an object:\n' +
       'https://vuejs.org/v2/guide/components.html#data-Must-Be-a-Function',
