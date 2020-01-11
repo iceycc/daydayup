@@ -126,6 +126,8 @@ export function createPatchFunction (backend) {
 
   let creatingElmInVPre = 0
 
+
+  //  创建节点
   function createElm (
     vnode,
     insertedVnodeQueue,
@@ -292,6 +294,7 @@ export function createPatchFunction (backend) {
     }
   }
 
+  // 创建子节点
   function createChildren (vnode, children, insertedVnodeQueue) {
     if (Array.isArray(children)) {
       if (process.env.NODE_ENV !== 'production') {
@@ -412,6 +415,8 @@ export function createPatchFunction (backend) {
     }
   }
 
+
+  // 更新子节点
   function updateChildren (parentElm, oldCh, newCh, insertedVnodeQueue, removeOnly) {
     let oldStartIdx = 0
     let newStartIdx = 0
@@ -460,15 +465,21 @@ export function createPatchFunction (backend) {
         idxInOld = isDef(newStartVnode.key)
           ? oldKeyToIdx[newStartVnode.key]
           : findIdxInOld(newStartVnode, oldCh, oldStartIdx, oldEndIdx)
-        if (isUndef(idxInOld)) { // New element
+        if (isUndef(idxInOld)) { // New element 新增节点
+          // 如果在oldChildren里找不到当前循环的newChildren里的子节点
+          // 新增节点并插入到合适位置
           createElm(newStartVnode, insertedVnodeQueue, parentElm, oldStartVnode.elm, false, newCh, newStartIdx)
         } else {
+          // 如果在oldChildren里找到了当前循环的newChildren里的子节点
           vnodeToMove = oldCh[idxInOld]
-          if (sameVnode(vnodeToMove, newStartVnode)) {
+          if (sameVnode(vnodeToMove, newStartVnode)) { // 如果两个节点相同
+            // 更新节点
             patchVnode(vnodeToMove, newStartVnode, insertedVnodeQueue, newCh, newStartIdx)
             oldCh[idxInOld] = undefined
+            // 是否需要移动节点，如果为true表示需要移动，则移动节点，如果为false则不移动。
             canMove && nodeOps.insertBefore(parentElm, vnodeToMove.elm, oldStartVnode.elm)
           } else {
+            // 相同的key但是不同的元素，需要重新创建一个
             // same key but different element. treat as new element
             createElm(newStartVnode, insertedVnodeQueue, parentElm, oldStartVnode.elm, false, newCh, newStartIdx)
           }

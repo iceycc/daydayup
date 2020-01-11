@@ -1,15 +1,22 @@
+/**
+ * react-dom
+ * @param {*} element 
+ * @param {*} parentNode 
+ */
 function render(element,parentNode){
-    if(typeof element == 'string'||typeof element == 'number'){
+    if(typeof element == 'string'||typeof element == 'number'){ //文本
        return  parentNode.appendChild(document.createTextNode(element));
     }
     let type,props;
     type = element.type;//Welcome1
     props = element.props;
     if(type.isReactComponent){
+        // 类组件
         let returnedElement = new type(props).render();
         type = returnedElement.type;//"h1"
         props = returnedElement.props;//{id:'welcome'}
-    }else if(typeof type == 'function'){
+    }else if(typeof type == 'function'){ 
+        // 如果是函数 就是函数组件
         let returnedElement = type(props);
         type = returnedElement.type;//"h1"
         props = returnedElement.props;//{id:'welcome'}
