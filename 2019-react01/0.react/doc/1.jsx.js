@@ -1,3 +1,7 @@
+/**
+ * 1. jsx语法
+ */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 /**

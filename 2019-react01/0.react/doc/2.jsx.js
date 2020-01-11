@@ -1,3 +1,11 @@
+/**
+ * jsx的原理
+ * ast
+ * 
+ * 虚拟dom
+ */
+
+
 // jsx原理 ： 
 // babel转义：https://www.babeljs.cn/repl
 // <h1>hello</h1>  => React.createElement("h1", null, "hello")
