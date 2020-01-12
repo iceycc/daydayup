@@ -8,8 +8,8 @@ export default function (Component) {
         }
         componentDidMount() {
            fetch('http://localhost:3000/translation.json').then(response=>response.json()).then(result=>{
-           debugger;    
-           this.setState({value:result[this.props.val]});
+            // debugger;    
+            this.setState({value:result[this.props.val]});
            })
            //{"zhangsan":"张三","lisi":"李四"}
         }

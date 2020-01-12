@@ -7,12 +7,16 @@ export default class LifeCycle extends Component {
   }
   constructor(props){
       //Must call super constructor in derived class before accessing 'this' or returning from derived constructor
-    super();//this.props = props;
+    super(props);//this.props = props;
+    // super();//this.props = props;
     this.state = {number:0,users:[]};//初始化默认的状态对象
     console.log('1. constructor 初始化 props and state');
+    // 在这里获取数据如果时间过长会造成阻塞
   
   }  
   //componentWillMount在渲染过程中可能会执行多次
+  // ssr时服务端会执行一次客户端会执行一次
+  // react16后 被设计成可执行多次
   componentWillMount(){
     console.log('2. componentWillMount 组件将要挂载');
     //localStorage.get('userss');

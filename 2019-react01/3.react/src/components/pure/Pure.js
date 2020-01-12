@@ -1,12 +1,9 @@
-import React, { Component} from 'react'
+import React, { Component,} from 'react'
+// import { PureComponent,} from 'react'
 import  PureComponent from './PureComponent';
+// PureComponent
+// setState触发时，数据没有改变也会触发render，比如 0 ++ 
 
-class Counter extends PureComponent{
-    render(){
-        console.log('Counter render')
-        return <div>{this.props.number}</div>
-    }
-}
 export default class App extends PureComponent {
   constructor(props){
     super();
@@ -31,12 +28,22 @@ export default class App extends PureComponent {
   }
 }
 
+// Counter 类组件 计数器
+class Counter extends PureComponent{
+    render(){
+        console.log('Counter render')
+        return <div>{this.props.number}</div>
+    }
+}
+
+// Title1 类组件 + PureComponent
 class Title1 extends PureComponent{
     render(){
         console.log('Title render')
         return <div>{this.props.title}</div>
     }
 }
+// Title 函数组件 + React.memo()（将函数组件转换成继承PureComponent的类组件）
 function Title(props){
     console.log('Title render ')
     return <div>{props.title}</div>

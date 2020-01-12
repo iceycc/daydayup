@@ -110,16 +110,8 @@ export default class Page extends Component {
             <ThemeContext.Provider value={ctx}>
                  <div style={{ border: '5px solid red', padding: '5px' }}>
                     Page
-                    <Header>
-                        <Title>
-
-                        </Title>
-                    </Header>
-                    <Main>
-                        <Content>
-
-                        </Content>
-                    </Main>
+                    <Header><Title/></Header>
+                    <Main><Content/></Main>
                 </div>
             </ThemeContext.Provider>
            

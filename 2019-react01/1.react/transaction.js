@@ -1,6 +1,10 @@
 function setState(){
  console.log('setState')
 }
+
+// 事务机
+// 切片 aop
+// 包装类 先依次执行所有的初始化方法，再执行真正的方法，最后依次执行关闭方法
 class Transaction{
     constructor(wrappers){
         this.wrappers = wrappers;//{initialize,close}

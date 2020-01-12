@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './modal.css'
+// ReactDOM.createPortal
 class Modal extends Component {
   constructor(){
     super();

@@ -1,3 +1,7 @@
+/**
+ * 组件初始状态
+ * 更新状态：setState
+ */
 import React from 'react';
 import ReactDOM from 'react-dom';
 class Clock extends React.Component{

@@ -1,8 +1,6 @@
 import React,{Component} from 'react';
 import MouseTracker from './MouseTracker';
-function withMouseTracker(Comp){
-   return props=><MouseTracker render={data=><Comp {...props} {...data}/>}/>;
-}
+
 class Picture extends Component {
     render() {
         return (
@@ -13,4 +11,18 @@ class Picture extends Component {
         )
     }
 }
+function withMouseTracker(Comp){
+    // 方法一：放到children 就从children取
+    // return props=>{
+    //     <MouseTracker>
+    //         {
+    //             data=><Comp {...props} {...data}/>
+    //         }
+    //     </MouseTracker>
+    // };
+
+    // render props
+    return props=><MouseTracker render={data=><Comp {...props} {...data}/>}/>;
+
+ }
 export default withMouseTracker(Picture);

@@ -9,9 +9,13 @@ let props = {
     position:{x:100,y:100} //拥有x y属性的对象
   }
 export default class Person extends Component {
+  // stateTypes不需要，因为时自己写的，
+
+
   static defaultProps = {
       isMarried:false
-  }  
+  }
+  // 属性校验，给外部看的  
   static propTypes = {
       name:PropTypes.string.isRequired,
       age:PropTypes.number.isRequired,

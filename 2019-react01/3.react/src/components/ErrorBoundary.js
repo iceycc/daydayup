@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-
+// 错误边界
 class ErrorBoundary extends Component{
   constructor(){
         super();

@@ -5,11 +5,13 @@ export default class PureComponent extends Component {
   isPureComponent = true
   //传入新的属性对象和状态对象，然后返回一个是否需要更新的boolean值
   shouldComponentUpdate(nextProps,nextState){
+     // 判断 只要有一个不相等性返回true更新。否则false不更新
      return !shallowEqual(this.props,nextProps)||!shallowEqual(this.state,nextState);
   }
 }
 
-//浅比较 比较obj1和obj2是否相等，如果相等的话则返回true,不相等返回false,只比较第一层
+// 浅比较 性格高 
+// 比较obj1和obj2是否相等，如果相等的话则返回true,不相等返回false,只比较第一层
 function shallowEqual(obj1,obj2){
   if(obj1 === obj2){
     return true;

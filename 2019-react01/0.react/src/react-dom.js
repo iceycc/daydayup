@@ -1,4 +1,5 @@
 /**
+ * 简单实现一个render
  * react-dom
  * @param {*} element 
  * @param {*} parentNode 
@@ -10,6 +11,7 @@ function render(element,parentNode){
     let type,props;
     type = element.type;//Welcome1
     props = element.props;
+    // isReactComponent 类组件的父类的属性
     if(type.isReactComponent){
         // 类组件
         let returnedElement = new type(props).render();
@@ -21,6 +23,7 @@ function render(element,parentNode){
         type = returnedElement.type;//"h1"
         props = returnedElement.props;//{id:'welcome'}
     }
+    // 创建dom元素
     let domElement = document.createElement(type);//span
     for(let propName in props){
         if(propName == 'className'){
@@ -36,12 +39,14 @@ function render(element,parentNode){
              }).join(';');
             domElement.style.cssText = 'color:red;font-size:50px';
         }else if(propName == 'children'){
+            // 递归
             //let children = Array.isArray(props.children)?props.children:[props.children];
             props.children.forEach(child=>render(child,domElement));
         }else{
             domElement.setAttribute(propName,props[propName]);
         }
     }
+    将生成的dom挂载到父节点上
     parentNode.appendChild(domElement);
     //componentDidMount
 }
