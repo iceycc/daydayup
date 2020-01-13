@@ -67,6 +67,7 @@ function Counter4() {
         </div>
     )
 }
+// 传入的是老的不会重复触发
 function Counter5() {
     let [state, setState] = useState(function () {
         return { number: 0, name: '计数器' };

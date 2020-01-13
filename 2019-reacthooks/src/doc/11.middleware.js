@@ -23,6 +23,7 @@ function useLogger(reducer, initialState) {
     useEffect(() => console.log('新状态', state));
     return [state, loggerDispatch];
 }
+// 派发一个函数
 function useThunk(reducer, initialState) {
     let [state, dispatch] = useReducer(reducer, initialState);
     function thunkDispatch(action) {
@@ -34,6 +35,7 @@ function useThunk(reducer, initialState) {
     }
     return [state, thunkDispatch];
 }
+// 派发一个Promise 延迟效果
 function usePromise(reducer, initialState) {
     let [state, dispatch] = useReducer(reducer, initialState);
     function promiseDispatch(action) {
@@ -46,18 +48,30 @@ function usePromise(reducer, initialState) {
     return [state, promiseDispatch];
 }
 function App() {
-    let [state, dispatch] = usePromise(reducer, initialState);
+    // let [state, dispatch] = useLogger(reducer, initialState);
+    let [state, dispatch] = useThunk(reducer, initialState);
+    // let [state, dispatch] = usePromise(reducer, initialState);
     return (
         <div>
             <p>{state.number}</p>
+            <hr/>
+            <button onClick={() => dispatch({ type: INCREMENT })}>+</button>
+            <hr/>
             <button onClick={() => dispatch(new Promise(function (resolve) {
                 setTimeout(function () {
                     resolve({ type: INCREMENT });
                 }, 1000);
-            }))}>+</button>
+            }))}>派发promise +</button>
+            <hr/>
+            <button onClick={() => dispatch(function(dispatch,getState){
+                dispatch({ type: DECREMENT })
+            })}>useThunk派发函数 -</button>
+            <hr/>
             <button onClick={() => dispatch({ type: DECREMENT })}>-</button>
+
         </div>
     )
 
 }
-ReactDOM.render(<App />, document.getElementById('root'));
+export default App
+// ReactDOM.render(<App />, document.getElementById('root'));

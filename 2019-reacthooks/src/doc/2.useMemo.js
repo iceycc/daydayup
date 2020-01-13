@@ -1,6 +1,6 @@
 import React, { useState, memo, useCallback, useMemo } from 'react';
 import ReactDOM from 'react-dom';
-
+//  useCallback useMemo  memo
 function Child(props) {
     console.log('render Child');
     return (
@@ -18,6 +18,7 @@ function App() {
     const addClick = useCallback(() => setNumber(number + 1), [number]);
     console.log('lastAddClick === addClick', lastAddClick === addClick);
     lastAddClick = addClick;
+    // 变量
     const data = useMemo(() => ({ number }), [number]);
     console.log('lastData === data', lastData === data);
     lastData = data;

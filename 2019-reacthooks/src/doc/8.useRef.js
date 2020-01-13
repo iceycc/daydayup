@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef, useImperativeHandle } from 'react';
 import ReactDOM from 'react-dom';
 import { AST_PropAccess } from '_terser@4.4.2@terser';
 /* let currentRefObject;
+// 简单实现useRef
 function useRef() {
     if (!currentRefObject) {
         currentRefObject = { current: null };
@@ -13,8 +14,8 @@ function useRef() {
 function Child(props, ref) {
     //let refObject = React.createRef();//refObject={current:要引用的组件}
     //console.log('lastRef === refObject', lastRef === refObject);
-    //lastRef = refObject;
-    let refObject1 = useRef();
+    //lastRef = refObject; // false 传统的方法 每次创建的ref都不是一个
+    let refObject1 = useRef(); // true
     let refObject2 = useRef();
     useImperativeHandle(ref, () => ({
         focus() {
@@ -40,7 +41,7 @@ function Child(props, ref) {
  * Did you mean to use React.forwardRef()?
  * 直接这样传递的话破坏了封装的原则，很危险!
  */
-let ForwardChild = React.forwardRef(Child);
+let ForwardChild = React.forwardRef(Child); // 给函数组件挂载ref
 function Parent() {
     let [number, setNumber] = useState(0);
     let refObject = useRef();
