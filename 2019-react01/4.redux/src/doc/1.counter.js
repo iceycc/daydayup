@@ -1,4 +1,4 @@
-import {createStore} from './redux';
+import {createStore} from 'redux';
 let initState = 0;
 const INCREMENT = 'INCREMENT';
 const DECREMENT = 'DECREMENT';
@@ -17,21 +17,26 @@ function reducer(state=initState,action){
          return state;    
    }
 }
+// 创建仓库
 let store = createStore(reducer);
 
 let counterValue = document.getElementById('counter-value');
 let incrementBtn = document.getElementById('increment-btn');
 let decrementBtn = document.getElementById('decrement-btn');
 
+// 渲染页面的函数
 function render(){
     counterValue.innerHTML =store.getState();
 }
 render();
+
+// subscribe定期发布
 let unsubscribe = store.subscribe(render);
 setTimeout(()=>{
   unsubscribe();
 },3000);
 incrementBtn.addEventListener('click',function(){
+    // 派发store
     store.dispatch({type:INCREMENT});
 })
 decrementBtn.addEventListener('click',function(){

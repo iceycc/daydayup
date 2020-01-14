@@ -1,6 +1,6 @@
 import * as types from '../action-types';
-import { dispatch } from '../../../../../../../Users/张仁阳/AppData/Local/Microsoft/TypeScript/3.4.3/node_modules/rxjs/internal/observable/pairs';
-import { resolveObject } from 'url';
+// import { dispatch } from '../../../../../../../Users/张仁阳/AppData/Local/Microsoft/TypeScript/3.4.3/node_modules/rxjs/internal/observable/pairs';
+// import { resolveObject } from 'url';
 export default   {
     increment(){
         //store.dispatch({type:INCREMENT})
