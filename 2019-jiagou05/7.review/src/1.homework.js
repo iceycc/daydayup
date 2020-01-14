@@ -5,7 +5,7 @@ function add(a, b, c, d) {
 // 把函数拆分成若干小的部分,方便组合
 function currying(fn, args = []) {
   // 我每次都到这个数组中
-  let len = fn.length;
+  let len = fn.length; // 函数参数的个数
   return (..._) => {
     args.push(..._);
     if (args.length < len) {
@@ -16,6 +16,7 @@ function currying(fn, args = []) {
   };
 }
 const fn = currying(add)(1, 2)(2); // 先保存每次调用后的参数
+console.log(fn(1))
 const isType = (type, content) => {
   return Object.prototype.toString.call(content) === `[object ${type}]`;
 };

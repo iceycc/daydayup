@@ -1,6 +1,6 @@
-import React, { useCallback, useReducer, useState, useContext } from 'react';
+import React, { useCallback, useReducer, useState, useContext,createContext } from 'react';
 import ReactDOM from 'react-dom';
-let MyContext = React.createContext();
+let MyContext = createContext();
 function Counter() {
     let { state, setState } = useContext(MyContext);
     return (
