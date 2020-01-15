@@ -11,6 +11,7 @@ export default function bindActionCreators(actionCreators,dispatch){
         return bindActionCreator(actionCreators,dispatch);
     }
     const boundActionCreators = {};
+    // 迭代action是的key 进行依次
     for(const key in actionCreators){
         boundActionCreators[key] = bindActionCreator(actionCreators[key],dispatch);
     }
