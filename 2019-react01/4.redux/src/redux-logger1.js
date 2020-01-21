@@ -1,3 +1,5 @@
+// redux中间件
+
 export default function logger1({getState}){
     return function(next){
         return function(action){

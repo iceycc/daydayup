@@ -23,8 +23,11 @@ function compose1(...funcs){
     return result;
   }
 }
+
+//  
 //let result = compose(add1,add2,add3)('zhufeng');
 //console.log(result);// 123zhufeng
+
 function compose(...funcs){
   return funcs.reduce((a,b)=>(...args)=>a(b(...args)));
 }

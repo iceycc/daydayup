@@ -4,6 +4,7 @@ import ReduxContext from './context';
 export default function(mapStateToProps,mapDispatchToProps){
    return function(WrappedComponent){
      return class extends Component{
+       // HOC
           static contextType = ReduxContext
           constructor(props,context){
               super(props);//context={store:this.props.store}
