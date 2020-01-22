@@ -8,3 +8,11 @@ let reducers = combineReducers({
 }); */
 
 export default counter;
+
+
+function combineReducers(reducers){
+  let newState = {}
+  newState.counter1 = counter1(state.counter1.action)
+  newState.counter2 = counter2(state.counter2.action)
+  return newState
+}

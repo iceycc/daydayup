@@ -6,7 +6,6 @@ import store from './store';
 import My from './my'
 ReactDOM.render((
     <Provider store={store}>
-        {/* <Counter/> */}
-        <My/>
+         <Counter/> 
     </Provider>
 ),document.getElementById('root'));

@@ -1,4 +1,5 @@
 
+
 export default function(reducers){
   const reducerKeys = Object.keys(reducers);//['counter1','counter2']
   return function (state={},action){//state={counter1:0,counter:0}
