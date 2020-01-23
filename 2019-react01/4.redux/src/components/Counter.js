@@ -29,5 +29,6 @@ const mapDispatchToProps = (dispatch) => {
 //conect负责连接仓库和组件
 export default connect(
     mapStateToProps,
+    // mapDispatchToProps,
     actions
 )(Counter);

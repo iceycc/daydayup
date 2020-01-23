@@ -7,8 +7,8 @@ export default function(reducers){
     for(let i=0;i<reducerKeys.length;i++){
         const key = reducerKeys[i];//counter1
         const reducer = reducers[key];//counter1
-        const previousStateForKey = state[key];
-        const nextStateForKey = reducer(previousStateForKey,action);
+        const previousStateForKey = state[key]; //  老状态
+        const nextStateForKey = reducer(previousStateForKey,action); // 新状态
         nextState[key] = nextStateForKey;
     }
     return nextState;
