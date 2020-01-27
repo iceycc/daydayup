@@ -5,6 +5,7 @@
 # to abstract the file object into it's own degenerate key/value store.
 # (Degenerate because you can't pick the keys, and it never releases storage,
 # even when it becomes unreachable!)
+# 存储物理结构
 
 import os
 import struct

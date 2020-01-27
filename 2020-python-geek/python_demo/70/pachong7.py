@@ -20,7 +20,7 @@ def craw2(url):
     response = requests.get(url, headers=headers)
 
     soup = BeautifulSoup(response.text, 'lxml')
-
+    # print(soup)
     for title_href in soup.find_all('div', class_='news_type_block'):
         print([title.get('title')
               for title in title_href.find_all('a') if title.get('title')])

@@ -1,0 +1,10 @@
+node_modules/
+public/
+yarn.lock
+.vscode
+.DS_Store
+.idea
+venv/
+venv3.6
+python_demo/70/download
+# a505093f591fe3e4feeda1e3cc12aac7326558b2

@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import os
 import shutil
-
+# ？增加多线程！
 headers = {
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
     "Accept-Language": "zh-CN,zh;q=0.8",
@@ -25,7 +25,7 @@ url = 'http://www.infoq.com/presentations'
 
 def download_jpg(image_url, image_localpath):
     response = requests.get(image_url, stream=True)
-    if response.status_code == 200:
+    if response.status_code == 200: # 防止服务器文件删除 程序假死
         with open(image_localpath, 'wb') as f:
             response.raw.deconde_content = True
             shutil.copyfileobj(response.raw, f)
@@ -38,11 +38,11 @@ def craw3(url):
     for pic_href in soup.find_all('div', class_='items__content'):
         for pic in pic_href.find_all('img'):
             imgurl = pic.get('src')
-            dir = os.path.abspath('.')
+            dir = os.path.abspath('./download')
             filename = os.path.basename(imgurl)
             imgpath = os.path.join(dir, filename)
             print('开始下载 %s' % imgurl)
-            download_jpg(imgurl, imgpath)
+            download_jpg(imgurl, imgpath )
 
 
 # craw3(url)

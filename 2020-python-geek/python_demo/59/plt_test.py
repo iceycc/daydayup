@@ -1,28 +1,33 @@
-import matplotlib.pyplot as plt
-#
+# import matplotlib.pyplot as plt
 # #绘制简单的曲线
 # plt.plot([1, 3, 5], [4, 8, 10])
 # plt.show()
 
 import numpy as np
 
+
+## 1 绘制一条曲线
 # x= np.linspace(-np.pi,np.pi,100) # x轴的定义域为 -3.14~3.14，中间间隔100个元素
 # plt.plot(x,np.sin(x))
 # #显示所画的图
 # plt.show()
 
+## 2 绘制多条曲线
 # x = np.linspace(-np.pi * 2, np.pi * 2, 100)  # 定义域为： -2pi 到 2pi
 # plt.figure(1, dpi=50)  # 创建图表1
 # for i in range(1, 5):  # 画四条线
 #         plt.plot(x, np.sin(x / i))
 # plt.show()
-#
+
+## 3 绘制柱状图
 # plt.figure(1, dpi=50)  # 创建图表1，dpi代表图片精细度，dpi越大文件越大，杂志要300以上
 # data = [1, 1, 1, 2, 2, 2, 3, 3, 4, 5, 5, 6, 4]
 # plt.hist(data)  # 只要传入数据，直方图就会统计数据出现的次数
 #
 # plt.show()
 
+
+# 4 绘制散点图
 # x = np.arange(1,10)
 # y = x
 # fig = plt.figure()
@@ -30,10 +35,12 @@ import numpy as np
 # plt.show()
 
 
+## 5 pandas 处理数据 +  matplotlib绘制散点图
 # import matplotlib.pyplot as plt
 # import numpy as np
 # import pandas as pd
 #
+# # 判断读取处理数据
 # iris = pd.read_csv("./iris_training.csv")
 # print (iris.head() )
 #
@@ -42,7 +49,9 @@ import numpy as np
 #
 # # 没啥用，只是让pandas 的plot() 方法在pyCharm上显示
 # plt.show()
-#
+
+
+## 6 seaborn绘制
 # import matplotlib.pyplot as plt
 # import numpy as np
 # import pandas as pd
@@ -59,6 +68,8 @@ import numpy as np
 # # 没啥用，只是让pandas 的plot() 方法在pyCharm上显示
 # plt.show()
 
+
+# 7 warnings忽略警告 + seaborn设置颜色
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
@@ -75,8 +86,7 @@ sns.set(style="white", color_codes=True)
 # hue 彩色显示分类0/1/2
 # plt.scatter 绘制散点图
 # add_legend() 显示分类的描述信息
-# sns.FacetGrid(iris, hue="virginica", size=5).map(plt.scatter, "120", "4").add_legend()
-
-sns.FacetGrid(iris, hue="virginica", size=5).map(plt.scatter, "setosa", "versicolor").add_legend()
+sns.FacetGrid(iris, hue="virginica", size=5).map(plt.scatter, "120", "4").add_legend()
+# sns.FacetGrid(iris, hue="virginica", size=5).map(plt.scatter, "setosa", "versicolor").add_legend()
 # 没啥用，只是让pandas 的plot() 方法在pyCharm上显示
 plt.show()

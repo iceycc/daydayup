@@ -17,7 +17,9 @@ def usage():
     print("\tpython -m dbdb.tool DBNAME delete KEY", file=sys.stderr)
 
 
+# 处理参数
 def main(argv):
+    # 判断长度
     if not (4 <= len(argv) <= 5):
         usage()
         return BAD_ARGS
@@ -28,7 +30,7 @@ def main(argv):
     db = dbdb.connect(dbname)
     try:
         if verb == 'get':
-            sys.stdout.write(db[key])
+            sys.stdout.write(db[key]) # 控制台输出
         elif verb == 'set':
             db[key] = value
             db.commit()
