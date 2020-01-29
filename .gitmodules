@@ -1,3 +1,3 @@
-[submodule "2020-leetcode"]
-	path = 2020-leetcode
+[submodule "D-leetcode"]
+	path = D-leetcode
 	url = git@github.com:iceycc/leetcode.git
