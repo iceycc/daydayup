@@ -1,8 +1,8 @@
 import pandas as pd
 import tensorflow as tf
 
-TRAIN_URL = "http://download.tensorflow.org/data/iris_training.csv"
-TEST_URL = "http://download.tensorflow.org/data/iris_test.csv"
+TRAIN_URL = "http://download.tensorflow.org/data/iris_training.csv" # 训练数据
+TEST_URL = "http://download.tensorflow.org/data/iris_test.csv" # 测试数据
 
 CSV_COLUMN_NAMES = ['SepalLength', 'SepalWidth',
                     'PetalLength', 'PetalWidth', 'Species']
