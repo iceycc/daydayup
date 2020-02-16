@@ -5,6 +5,7 @@ yarn.lock
 .DS_Store
 .idea
 venv/
-venv3.6
+venv3.6/
+env3.7/
 python_demo/70/download
 # a505093f591fe3e4feeda1e3cc12aac7326558b2

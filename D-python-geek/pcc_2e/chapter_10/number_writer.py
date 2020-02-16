@@ -16,3 +16,10 @@ try:
         json.dump(user, f)
 except FileExistsError:
     print('file is not found')
+
+
+with open('numbers.json') as f:
+    print(json.load(f))
+
+with open('user.json') as f:
+    print(json.load(f))
