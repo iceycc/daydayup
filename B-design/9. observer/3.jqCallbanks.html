@@ -12,6 +12,7 @@
 
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script>
+        let callBCs = $.Callbacks()
         function Callbacks() {
             let observers = [];
             function add(observer) {
@@ -24,16 +25,16 @@
                 observers.forEach(item => item());
             }
             return {
-                add,
-                remove,
-                fire
+                add,// 添加一个函数
+                remove,// 删除一个函数
+                fire // 触发
             }
         }
         let callbacks = Callbacks();
         const handler1 = () => console.log(1);
         const handler2 = () => console.log(2);
         const handler3 = () => console.log(3);
-        callbacks.add(handler1);
+        callbacks.add(handler1);// 注册
         callbacks.add(handler2);
         callbacks.add(handler3);
         callbacks.remove(handler2);

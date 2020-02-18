@@ -5,11 +5,11 @@ const path = require('path');
 
 function unZip(src) {
     console.log('解压zip', src);
-    /*  let gunzip = zlib.createGunzip();
+     let gunzip = zlib.createGunzip();
      let inputStream = fs.createReadStream(src);
      let outputStream = fs.createWriteStream(src.slice(0, -3));
      //gunzip transform Stream 
-     inputStream.pipe(gunzip).pipe(outputStream); */
+     inputStream.pipe(gunzip).pipe(outputStream); 
 }
 function unRar(src) {
     console.log('解压Rar', src);

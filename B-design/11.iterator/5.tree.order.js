@@ -11,8 +11,10 @@ function make(array) {
     if (array.length == 1) return new Tree(null, array[0], null);
     return new Tree(make(array[0]), array[1], make(array[2]));
 }
+// 构建树
 let tree = make([[['D'], 'B', ['E']], 'A', [['F'], 'C', ['G']]]);
-
+console.log(tree)
+// 前序遍历
 function* leftOrder(tree) {
     if (tree) {
         yield tree.value;
@@ -37,7 +39,7 @@ function* rightOrder(tree) {
     }
 }
 let result = [];
-for (let node of rightOrder(tree)) {
+for (let node of leftOrder(tree)) {
     result.push(node);
 }
 console.log(result);
