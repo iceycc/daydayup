@@ -1,12 +1,11 @@
 export { }
-/* abstract class Star {
+ abstract class Star {
     abstract answerPhone(): void;//接电话
-} */
-interface Star {
-    answerPhone(): void;
+} 
+// interface Star {
+//     answerPhone(): void;
 
-}
-
+// }
 class Angelababy implements Star {
     //是否有空的意思
     available: boolean = false
@@ -15,6 +14,15 @@ class Angelababy implements Star {
     }
 }
 
+// class Angelababy implements Star {
+//     //是否有空的意思
+//     available: boolean = false
+//     answerPhone(): void {
+//         console.log('你好,我是Angelababy');
+//     }
+// }
+
+// 代理
 class AngelababyAgent implements Star {
     angelababy
     //让经纪人保持一个对angelababy引用

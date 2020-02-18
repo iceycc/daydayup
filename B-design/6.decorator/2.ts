@@ -63,7 +63,7 @@ namespace b {
     console.log(Person.prototype.protoName);
 }
 
-//let { deprecate } = require('core-decorators');
+let { deprecate } = require('core-decorators');
 //console.log(readonly);
 
 namespace d {
@@ -73,6 +73,7 @@ namespace d {
             writable: false
         });
     } */
+    // 提示将来会被遗弃的提示去
     function deprecate(target, methodName, descriptor) {
         let oldVal = descriptor.value;//先缓存老的函数 
         descriptor.value = function (...args) {

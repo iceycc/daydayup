@@ -24,17 +24,22 @@
                 }
             }
         }
+
         function registerFn(event) {
             console.log('提交表单');
         }
-        /*  registerFn = registerFn.before(function () {
-             let username = document.getElementById('username').value;
-             if (!username) {
-                 return alert('用户名不能为空')
-             }
-             return true;
-         }); */
+        //  registerFn = registerFn.before(function () {
+        //      let username = document.getElementById('username').value;
+        //      if (!username) {
+        //          return alert('用户名不能为空')
+        //      }
+        //      return true;
+        //  }); 
         registerFn = registerFn.before(function () {
+            let username = document.getElementById('username').value;
+            if (!username) {
+                return alert('用户名不能为空')
+            }
             let password = document.getElementById('password').value;
             if (!password) {
                 return alert('密码不能为空')

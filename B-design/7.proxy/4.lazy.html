@@ -52,12 +52,31 @@
         <div class="image">
             <img data-src="/images/bg10.jpg" />
         </div>
+
+        <div class="image">
+                <img data-src="/images/bg10.jpg" />
+            </div>
+
+        <div class="image">
+                <img data-src="/images/bg10.jpg" />
+            </div>
+
+        <div class="image">
+                <img data-src="/images/bg10.jpg" />
+            </div>
+
+        <div class="image">
+                <img data-src="/images/bg10.jpg" />
+            </div>
     </div>
     <script>
         const images = document.getElementsByTagName('img');
+        // 当前可趋势的高度
         let clientHeight = window.innerHeight || document.documentElement.clientHeight;
+        // 
         function lazyLoad() {
             for (let i = 0; i < images.length; i++) {
+                // console.log(images[i].getBoundingClientRect())
                 if (images[i].getBoundingClientRect().top < clientHeight) {
                     images[i].src = images[i].dataset.src;
                 }

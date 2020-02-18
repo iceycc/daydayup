@@ -27,6 +27,8 @@
     <script>
         let container = document.getElementById('container');
         let lastTime = Date.now();
+        // 节流 只会有一个定时器
+        // 防抖 
         function throttle(callback, interval) {
             let lastExecuteTime;//上一次执行时间
             return function () {

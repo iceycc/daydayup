@@ -1,7 +1,20 @@
 /**
+ * 缓存代理 空间换时间
  * 阶乘
  * 正整数的阶乘是所有小于及等于该数的正整数的积 0的阶乘为1
  */
+// const factorial1 = function(num){
+//     if(num<=1){
+//         return 1
+//     }else{
+//         return factorial1(num-1) * num 
+//     }
+// }
+// console.log(factorial1(3))
+// console.log(factorial1(3))
+// console.log(factorial1(3))
+
+//  // 
 let count = 0;
 const factorial = function (num) {
     count++;
@@ -11,6 +24,8 @@ const factorial = function (num) {
         return num * factorial(num - 1)
     }
 }
+// 缓存代理 将每次计算的数据进行缓存
+
 const proxy = function (fn) {
     const cache = {};
     return function (num) {

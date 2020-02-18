@@ -1,4 +1,6 @@
 export { }
+// 反向代理
+// 类比nginx
 let http = require('http');
 const httpProxy = require('http-proxy');
 const proxy = httpProxy.createProxyServer();
