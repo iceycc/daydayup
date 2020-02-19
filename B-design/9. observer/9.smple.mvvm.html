@@ -14,6 +14,7 @@
     <script>
         let name = document.getElementById('name');
         let age = document.getElementById('age');
+        // 依赖
         class Dep {
             subs = []
             addSub(sub) {
@@ -23,6 +24,7 @@
                 this.subs.forEach(sub => sub());
             }
         }
+        // 观察者
         function observe(target) {
             Object.keys(target).forEach(key => {
                 let val = target[key];
