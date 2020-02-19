@@ -117,10 +117,10 @@ function defineRefPropWarningGetter(props, displayName) {
 const ReactElement = function(type, key, ref, self, source, owner, props) {
   const element = {
     // This tag allows us to uniquely identify this as a React Element
-    $$typeof: REACT_ELEMENT_TYPE,
+    $$typeof: REACT_ELEMENT_TYPE, // reactElement的标示
 
     // Built-in properties that belong on the element
-    type: type,
+    type: type, // 节点类型 原生组件、类组件、函数组件 还是内置组件
     key: key,
     ref: ref,
     props: props,
@@ -173,6 +173,8 @@ const ReactElement = function(type, key, ref, self, source, owner, props) {
 /**
  * Create and return a new ReactElement of the given type.
  * 根据 type 返回一个新的 ReactElement
+ * type：节点类型 
+ * config: props key ref 等
  * See https://reactjs.org/docs/react-api.html#createelement
  */
   export function createElement(type, config, children) {
@@ -203,7 +205,7 @@ const ReactElement = function(type, key, ref, self, source, owner, props) {
     // 遍历配置，把内建的几个属性剔除后丢到 props 中
     for (propName in config) {
       if (
-        hasOwnProperty.call(config, propName) &&
+        hasOwnProperty.call(config, propName) && // 内建等props
         !RESERVED_PROPS.hasOwnProperty(propName)
       ) {
         props[propName] = config[propName];
