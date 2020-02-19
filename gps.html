@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      font-size: 30px;
+    }
+
+    span {
+      display: inline-block;
+      width: 30%;
+    }
+  </style>
+  <script type="text/javascript" src="https://webapi.amap.com/maps?v=1.4.15&key=871d2a4aa0469066deeab99597ba6925">
+  </script>
+</head>
+
+<body>
+  <!-- <button id="btn">点击获取地址</button> -->
+  <div id='pre'>
+    获取地址中。。。
+  </div>
+  <script>
+    function getLocation(onSuccess, onError) {
+      var options = {
+        enableHighAccuracy: true,
+        maximumAge: 1000
+      }
+      if (navigator.geolocation) {
+        //浏览器支持geolocation
+        // alert("浏览器支持geolocation");
+        navigator.geolocation.getCurrentPosition(onSuccess, onError, options);
+      } else {
+        //浏览器不支持geolocation
+        alert("浏览器不支持geolocation");
+      }
+    }
+    pre.addEventListener('click', function () {
+      getGpS()
+    })
+    // getGpS()
+    function getGpS() {
+      getLocation(function (position) {
+        console.log('position', position)
+        latitude = position.coords.latitude; //获取纬度
+        longitude = position.coords.longitude; //获取经度
+        if (latitude && longitude) {
+          alert(JSON.stringify({
+            latitude: latitude,
+            longitude: longitude
+          }))
+        }
+      }, function (err) {
+        console.log(err)
+        alert(JSON.stringify({
+          err:err.message
+        }))
+      })
+    }
+    getAMA()
+    function getAMA() {
+      mapObj = new AMap.Map('iCenter');
+      mapObj.plugin('AMap.Geolocation', function () {
+        geolocation = new AMap.Geolocation({
+          enableHighAccuracy: true, //是否使用高精度定位，默认:true
+          timeout: 10000, //超过10秒后停止定位，默认：无穷大
+          maximumAge: 0, //定位结果缓存0毫秒，默认：0
+          convert: true, //自动偏移坐标，偏移后的坐标为高德坐标，默认：true
+          showButton: true, //显示定位按钮，默认：true
+          buttonPosition: 'LB', //定位按钮停靠位置，默认：'LB'，左下角
+          buttonOffset: new AMap.Pixel(10, 20), //定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+          showMarker: true, //定位成功后在定位到的位置显示点标记，默认：true
+          showCircle: true, //定位成功后用圆圈表示定位精度范围，默认：true
+          panToLocation: true, //定位成功后将定位到的位置作为地图中心点，默认：true
+          zoomToAccuracy: true //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+        });
+        mapObj.addControl(geolocation);
+        geolocation.getCurrentPosition();
+        AMap.event.addListener(geolocation, 'complete', onComplete); //返回定位信息
+        AMap.event.addListener(geolocation, 'error', onError); //返回定位出错信息
+      });
+
+      function onComplete(data) {
+        console.log(data)
+        var str = ''
+        let pos = data.position
+        Object.keys(pos).forEach(key => {
+          str += "<p>" + "<span>" + key + "</span>" + ": " + pos[key] + "</p>"
+        })
+        pre.innerHTML = str
+      }
+
+      function onError(err) {
+        console.log(err)
+
+        pre.innerHTML = "<p>" + err.type + " :" + "</p>" + err.message
+        alert(err.message)
+      }
+    }
+  </script>
+</body>
+
+</html>

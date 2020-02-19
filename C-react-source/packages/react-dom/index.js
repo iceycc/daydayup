@@ -14,3 +14,4 @@ const ReactDOM = require('./src/client/ReactDOM');
 // TODO: decide on the top-level export form.
 // This is hacky but makes it work with both Rollup and Jest.
 module.exports = ReactDOM.default || ReactDOM;
+// https://git.imooc.com/coding-309/react-class-source-cod

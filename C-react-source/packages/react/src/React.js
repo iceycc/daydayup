@@ -22,7 +22,7 @@ import {
   createFactory,
   cloneElement,
   isValidElement,
-} from './ReactElement';
+} from './ReactElement'; 
 import {createContext} from './ReactContext';
 import {lazy} from './ReactLazy';
 import forwardRef from './forwardRef';
