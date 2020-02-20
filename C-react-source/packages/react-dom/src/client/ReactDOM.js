@@ -23,7 +23,7 @@ import {
   findHostInstanceWithNoPortals,
   updateContainerAtExpirationTime,
   flushRoot,
-  createContainer,
+  createContainer,// createFiberRoot
   updateContainer,
   batchedUpdates,
   unbatchedUpdates,
@@ -36,7 +36,7 @@ import {
   findHostInstance,
   findHostInstanceWithWarning,
   flushPassiveEffects,
-} from 'react-reconciler/inline.dom';
+} from 'react-reconciler/inline.dom'; // 操作平台无关的节点的调和操作 和 任务调度的操作
 import {createPortal as createPortalImpl} from 'shared/ReactPortal';
 import {canUseDOM} from 'shared/ExecutionEnvironment';
 import {setBatchingImplementation} from 'events/ReactGenericBatching';
@@ -214,7 +214,7 @@ ReactBatch.prototype.render = function(children: ReactNodeList) {
   this._children = children;
   const internalRoot = this._root._internalRoot;
   const expirationTime = this._expirationTime;
-  const work = new ReactWork();
+  const work = new ReactWork(); // ?
   updateContainerAtExpirationTime(
     children,
     internalRoot,
@@ -371,6 +371,7 @@ function ReactRoot(
   hydrate: boolean,
 ) {
   // 这个 root 指的是 FiberRoot
+  // DOMRenderer.createContainer =》createFiberRoot 创建 FiberRoot
   const root = createContainer(container, isConcurrent, hydrate);
   this._internalRoot = root;
 }
@@ -476,7 +477,7 @@ function getReactRootElementInContainer(container: any) {
   if (!container) {
     return null;
   }
-
+  // 判断是否有子节点，判断是否需要调和
   if (container.nodeType === DOCUMENT_NODE) {
     return container.documentElement;
   } else {
@@ -486,10 +487,11 @@ function getReactRootElementInContainer(container: any) {
 
 function shouldHydrateDueToLegacyHeuristic(container) {
   const rootElement = getReactRootElementInContainer(container);
+  // 如何富有原型已经存在的dom节点
   return !!(
-    rootElement &&
+    rootElement && // 是否是
     rootElement.nodeType === ELEMENT_NODE &&
-    rootElement.hasAttribute(ROOT_ATTRIBUTE_NAME)
+    rootElement.hasAttribute(ROOT_ATTRIBUTE_NAME) // 老版本的服务端渲染
   );
 }
 
@@ -500,12 +502,13 @@ setBatchingImplementation(
 );
 
 let warnedAboutHydrateAPI = false;
-
+// 创建一个 root 出来
 function legacyCreateRootFromDOMContainer(
   container: DOMContainer,
   forceHydrate: boolean,
 ): Root {
-  // 还是和 SSR 有关，不管这部分
+  // 还是和 SSR 有关，不管这部分 
+  // 服务端渲染
   const shouldHydrate =
     forceHydrate || shouldHydrateDueToLegacyHeuristic(container);
   // First clear any existing content.
@@ -673,6 +676,7 @@ const ReactDOM: Object = {
     return findHostInstance(componentOrElement);
   },
 
+  // 和render差不多 服务端渲染 提高性能
   hydrate(element: React$Node, container: DOMContainer, callback: ?Function) {
     invariant(
       isValidContainer(container),
@@ -692,7 +696,7 @@ const ReactDOM: Object = {
       null,
       element,
       container,
-      true,
+      true,// 与render不同的就是
       callback,
     );
   },
