@@ -49,7 +49,7 @@ import {error, warn} from './withComponentStack';
 import {enableStableConcurrentModeAPIs} from 'shared/ReactFeatureFlags';
 
 const React = {
-  Children: {
+  Children: {// Children
     map,
     forEach,
     count,
@@ -80,14 +80,14 @@ const React = {
   useRef,
   useState,
 
-  Fragment: REACT_FRAGMENT_TYPE,
+  Fragment: REACT_FRAGMENT_TYPE,// Symbol
   Profiler: REACT_PROFILER_TYPE,
-  StrictMode: REACT_STRICT_MODE_TYPE,
-  Suspense: REACT_SUSPENSE_TYPE, // callback
+  StrictMode: REACT_STRICT_MODE_TYPE,// 快过时的api提醒
+  Suspense: REACT_SUSPENSE_TYPE,
 
   createElement: __DEV__ ? createElementWithValidation : createElement,
   cloneElement: __DEV__ ? cloneElementWithValidation : cloneElement,
-  createFactory: __DEV__ ? createFactoryWithValidation : createFactory,
+  createFactory: __DEV__ ? createFactoryWithValidation : createFactory,// 对createElement的封装
   isValidElement: isValidElement,
 
   version: ReactVersion,

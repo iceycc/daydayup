@@ -184,6 +184,7 @@ function validateChildKeys(node, parentType) {
  *
  * @param {ReactElement} element
  */
+
 function validatePropTypes(element) {
   const type = element.type;
   if (type === null || type === undefined || typeof type === 'string') {

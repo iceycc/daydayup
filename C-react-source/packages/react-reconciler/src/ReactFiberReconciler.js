@@ -134,11 +134,12 @@ function scheduleRootUpdate(
       );
     }
   }
-  // 创建一个 update，就是内部有几个属性的对象
+  // 创建一个 update，就是内部有几个属性的对象 
+  // 标记react需要更新的地点的
   const update = createUpdate(expirationTime);
   // Caution: React DevTools currently depends on this property
   // being called "element".
-  update.payload = {element};
+  update.payload = {element};// 设置属性
 
   callback = callback === undefined ? null : callback;
   if (callback !== null) {
@@ -152,6 +153,7 @@ function scheduleRootUpdate(
   }
 
   flushPassiveEffects();
+  // 任务优先级的概念。
   // 把 update 入队，内部就是一些创建或者获取 queue（链表结构），然后给链表添加一个节点的操作
   enqueueUpdate(current, update);
   scheduleWork(current, expirationTime);
@@ -181,14 +183,15 @@ export function updateContainerAtExpirationTime(
       }
     }
   }
-  // 获取 context 并赋值，这里肯定取不到值得，因为 parentComponent 为 null
+  // 获取 context 并赋值，这里肯定取不到值得，因为 parentComponent 为 null 
   const context = getContextForSubtree(parentComponent);
   if (container.context === null) {
-    container.context = context;
+    container.context = context;// 大多都是null
   } else {
     container.pendingContext = context;
   }
 
+  // 进入
   return scheduleRootUpdate(current, element, expirationTime, callback);
 }
 
@@ -278,6 +281,7 @@ export function createContainer(
   isConcurrent: boolean,
   hydrate: boolean,
 ): OpaqueRoot {
+  // 创建 FiberRoot
   return createFiberRoot(containerInfo, isConcurrent, hydrate);
 }
 
@@ -292,7 +296,7 @@ export function updateContainer(
   // 计算时间
   const currentTime = requestCurrentTime();
   // expirationTime 代表优先级，数字越大优先级越高
-  // sync 的数字是最大的，所以优先级也是最高的
+  // sync 的数字是最大的，所以优先级也是最高的  计算Expiration， 优先级
   const expirationTime = computeExpirationForFiber(currentTime, current);
   return updateContainerAtExpirationTime(
     element,

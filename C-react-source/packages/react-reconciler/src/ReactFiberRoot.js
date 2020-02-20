@@ -172,7 +172,7 @@ export function createFiberRoot(
 ): FiberRoot {
   // FiberRootNode 内部创建了很多属性
   const root: FiberRoot = (new FiberRootNode(containerInfo, hydrate): any);
-
+  
   // Cyclic construction. This cheats the type system right now because
   // stateNode is any.
   // 创建一个 root fiber，这也是 React 16 中的核心架构了

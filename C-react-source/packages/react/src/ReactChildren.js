@@ -65,6 +65,8 @@ function escapeUserProvidedKey(text) {
 
 const POOL_SIZE = 10;
 const traverseContextPool = [];
+// 记录 对象重用池 : 避免对象频繁创建删除造成内存抖动
+// 多层嵌套很有用
 function getPooledTraverseContext(
   mapResult,
   keyPrefix,
@@ -89,7 +91,7 @@ function getPooledTraverseContext(
     };
   }
 }
-
+// 清空
 function releaseTraverseContext(traverseContext) {
   traverseContext.result = null;
   traverseContext.keyPrefix = null;
@@ -374,6 +376,7 @@ function mapIntoWithKeyPrefixInternal(children, array, prefix, func, context) {
     func,
     context,
   );
+  // 重点
   traverseAllChildren(children, mapSingleChildIntoContext, traverseContext);
   releaseTraverseContext(traverseContext);
 }
