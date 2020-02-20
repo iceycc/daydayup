@@ -370,6 +370,7 @@ function ReactRoot(
   isConcurrent: boolean,
   hydrate: boolean,
 ) {
+  // 1 创建
   // 这个 root 指的是 FiberRoot
   // DOMRenderer.createContainer =》createFiberRoot 创建 FiberRoot
   const root = createContainer(container, isConcurrent, hydrate);

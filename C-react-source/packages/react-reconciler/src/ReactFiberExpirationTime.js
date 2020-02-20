@@ -62,6 +62,7 @@ function computeExpirationBucket(
 
 // TODO: This corresponds to Scheduler's NormalPriority, not LowPriority. Update
 // the names to reflect.
+// 低权限的
 export const LOW_PRIORITY_EXPIRATION = 5000;
 export const LOW_PRIORITY_BATCH_SIZE = 250;
 
@@ -86,6 +87,8 @@ export function computeAsyncExpiration(
 //
 // In production we opt for better UX at the risk of masking scheduling
 // problems, by expiring fast.
+
+// 高权限的
 export const HIGH_PRIORITY_EXPIRATION = __DEV__ ? 500 : 150;
 export const HIGH_PRIORITY_BATCH_SIZE = 100;
 

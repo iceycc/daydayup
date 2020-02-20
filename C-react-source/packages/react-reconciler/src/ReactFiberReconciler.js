@@ -294,7 +294,7 @@ export function updateContainer(
   // 取出容器的 fiber 对象，也就是 fiber root
   const current = container.current;
   // 计算时间
-  const currentTime = requestCurrentTime();
+  const currentTime = requestCurrentTime();// 这里有两个版本
   // expirationTime 代表优先级，数字越大优先级越高
   // sync 的数字是最大的，所以优先级也是最高的  计算Expiration， 优先级
   const expirationTime = computeExpirationForFiber(currentTime, current);

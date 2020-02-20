@@ -37,11 +37,11 @@ type BaseFiberRootProperties = {|
   // 容器，也就是 render 的第二个参数
   containerInfo: any,
   // Used only by persistent updates.
-  // 只在持续更新中使用
+  // 只在持续更新中使用 
   pendingChildren: any,
   // The currently active root fiber. This is the mutable root of the tree.
   // 当前的 fiber 对象，也就是 root fiber
-  current: Fiber,
+  current: Fiber,// Fiber树的顶端
 
   // The following priority levels are used to distinguish between 1)
   // uncommitted work, 2) uncommitted work that is suspended, and 3) uncommitted
@@ -69,7 +69,7 @@ type BaseFiberRootProperties = {|
   // If an error is thrown, and there are no more updates in the queue, we try
   // rendering from the root one more time, synchronously, before handling
   // the error.
-  didError: boolean,
+  didError: boolean,// 是否有出现错误
 
   pendingCommitExpirationTime: ExpirationTime,
   // A finished work-in-progress HostRoot that's ready to be committed.
@@ -78,7 +78,7 @@ type BaseFiberRootProperties = {|
   // it's superseded by a new one.
   timeoutHandle: TimeoutHandle | NoTimeout,
   // Top context object, used by renderSubtreeIntoContainer
-  context: Object | null,
+  context: Object | null,// 
   pendingContext: Object | null,
   // Determines if we should attempt to hydrate on the initial mount
   // 这个属性说过好几次了

@@ -263,7 +263,7 @@ let lastUniqueAsyncExpiration: number = Sync - 1;
 // Represents the expiration time that incoming updates should use. (If this
 // is NoWork, use the default strategy: async updates in async mode, sync
 // updates in sync mode.)
-let expirationContext: ExpirationTime = NoWork;
+let expirationContext: ExpirationTime = NoWork; // ?
 
 let isWorking: boolean = false;
 
@@ -1649,8 +1649,10 @@ function computeExpirationForFiber(currentTime: ExpirationTime, fiber: Fiber) {
     // No explicit expiration context was set, and we're not currently
     // performing work. Calculate a new expiration time.
     if (fiber.mode & ConcurrentMode) {
+      // 异步更新
       if (isBatchingInteractiveUpdates) {
         // This is an interactive update
+        // 大多事件执行回走这个 低
         expirationTime = computeInteractiveExpiration(currentTime);
       } else {
         // This is an async update
@@ -1662,6 +1664,7 @@ function computeExpirationForFiber(currentTime: ExpirationTime, fiber: Fiber) {
         expirationTime -= 1;
       }
     } else {
+      // 同步更新
       // This is a sync update
       expirationTime = Sync;
     }
@@ -2001,11 +2004,12 @@ function scheduleWork (fiber: Fiber, expirationTime: ExpirationTime) {
   }
 }
 
+// 
 function deferredUpdates<A>(fn: () => A): A {
   const currentTime = requestCurrentTime();
   const previousExpirationContext = expirationContext;
   const previousIsBatchingInteractiveUpdates = isBatchingInteractiveUpdates;
-  expirationContext = computeAsyncExpiration(currentTime);
+  expirationContext = computeAsyncExpiration(currentTime);// 
   isBatchingInteractiveUpdates = false;
   try {
     return fn();
@@ -2015,6 +2019,7 @@ function deferredUpdates<A>(fn: () => A): A {
   }
 }
 
+// Sy
 function syncUpdates<A, B, C0, D, R>(
   fn: (A, B, C0, D) => R,
   a: A,
@@ -2074,7 +2079,7 @@ if (__DEV__) {
 }
 
 function recomputeCurrentRendererTime() {
-  const currentTimeMs = now() - originalStartTimeMs;
+  const currentTimeMs = now() - originalStartTimeMs;// js加载完成到执行到这里的时间
   currentRendererTime = msToExpirationTime(currentTimeMs);
 }
 
@@ -2174,6 +2179,7 @@ function onCommit(root, expirationTime) {
   root.finishedWork = null;
 }
 
+// 老的
 function requestCurrentTime() {
   // requestCurrentTime is called by the scheduler to compute an expiration
   // time.
@@ -2194,12 +2200,14 @@ function requestCurrentTime() {
   // But the scheduler time can only be updated if there's no pending work, or
   // if we know for certain that we're not in the middle of an event.
 
+    // 再一次render中，加入了一个新的任务进来了。正在rendering中
+
   if (isRendering) {
     // We're already rendering. Return the most recently read time.
     return currentSchedulerTime;
   }
   // Check if there's pending work.
-  findHighestPriorityRoot();
+  findHighestPriorityRoot();// 从调度队列找到
   if (
     nextFlushedExpirationTime === NoWork ||
     nextFlushedExpirationTime === Never

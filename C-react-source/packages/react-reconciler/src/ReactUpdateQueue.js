@@ -194,9 +194,10 @@ function cloneUpdateQueue<State>(
 
 export function createUpdate(expirationTime: ExpirationTime): Update<*> {
   return {
+    // update对象
     expirationTime: expirationTime,
 
-    tag: UpdateState,
+    tag: UpdateState,// 0 1 2 3
     // setState 的第一二个参数
     payload: null,
     callback: null,
@@ -222,6 +223,8 @@ function appendUpdateToQueue<State>(
 
 export function enqueueUpdate<State>(fiber: Fiber, update: Update<State>) {
   // Update queues are created lazily.
+  // 初始或者更新fiber上的updateQueue的过程
+
   // 获取 fiber 的镜像
   const alternate = fiber.alternate;
   let queue1;
@@ -233,10 +236,12 @@ export function enqueueUpdate<State>(fiber: Fiber, update: Update<State>) {
     queue1 = fiber.updateQueue;
     queue2 = null;
     if (queue1 === null) {
+      // 创建
       // UpdateQueue 是一个链表组成的队列
       queue1 = fiber.updateQueue = createUpdateQueue(fiber.memoizedState);
     }
   } else {
+    // 更新
     // There are two owners.
     queue1 = fiber.updateQueue;
     queue2 = alternate.updateQueue;
@@ -264,6 +269,7 @@ export function enqueueUpdate<State>(fiber: Fiber, update: Update<State>) {
   }
   // 获取队列操作完毕以后，就开始入队了
   // 以下的代码很简单，熟悉链表的应该清楚链表添加一个节点的逻辑
+  // ???TODO
   if (queue2 === null || queue1 === queue2) {
     // There's only a single queue.
     appendUpdateToQueue(queue1, update);

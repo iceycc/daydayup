@@ -178,10 +178,11 @@ export function applyDerivedStateFromProps(
   }
 }
 
+// classCompoent初始化时拿到的update对象
 const classComponentUpdater = {
   isMounted,
   enqueueSetState(inst, payload, callback) {
-    const fiber = getInstance(inst);
+    const fiber = getInstance(inst);// 获取fiber对象
     const currentTime = requestCurrentTime();
     const expirationTime = computeExpirationForFiber(currentTime, fiber);
 
@@ -204,7 +205,7 @@ const classComponentUpdater = {
     const expirationTime = computeExpirationForFiber(currentTime, fiber);
 
     const update = createUpdate(expirationTime);
-    update.tag = ReplaceState;
+    update.tag = ReplaceState; // 指定tag
     update.payload = payload;
 
     if (callback !== undefined && callback !== null) {
