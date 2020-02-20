@@ -16,8 +16,8 @@ export function lazy<T, R>(ctor: () => Thenable<T, R>): LazyComponent<T> {
     $$typeof: REACT_LAZY_TYPE,
     _ctor: ctor,
     // React uses these fields to store the result.
-    _status: -1,
-    _result: null,
+    _status: -1,// padding 状态 
+    _result: null,// 记录Thenable对象resolve之后返回的属性。后期渲染直接用
   };
 
   if (__DEV__) {

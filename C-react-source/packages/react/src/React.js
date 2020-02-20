@@ -7,7 +7,7 @@
 
 import ReactVersion from 'shared/ReactVersion';
 import {
-  REACT_CONCURRENT_MODE_TYPE,
+  REACT_CONCURRENT_MODE_TYPE,// hasSymbol
   REACT_FRAGMENT_TYPE,
   REACT_PROFILER_TYPE,
   REACT_STRICT_MODE_TYPE,
@@ -63,7 +63,7 @@ const React = {
 
   createContext,
   forwardRef,
-  lazy,
+  lazy, // --
   memo,
 
   error,
@@ -83,7 +83,7 @@ const React = {
   Fragment: REACT_FRAGMENT_TYPE,
   Profiler: REACT_PROFILER_TYPE,
   StrictMode: REACT_STRICT_MODE_TYPE,
-  Suspense: REACT_SUSPENSE_TYPE,
+  Suspense: REACT_SUSPENSE_TYPE, // callback
 
   createElement: __DEV__ ? createElementWithValidation : createElement,
   cloneElement: __DEV__ ? cloneElementWithValidation : cloneElement,
@@ -102,7 +102,7 @@ const React = {
 // don't modify the React object to avoid deopts.
 // Also let's not expose their names in stable builds.
 
-if (enableStableConcurrentModeAPIs) {
+if (enableStableConcurrentModeAPIs) {// -- ConcurrentMode
   React.ConcurrentMode = REACT_CONCURRENT_MODE_TYPE;
   React.unstable_ConcurrentMode = undefined;
 }

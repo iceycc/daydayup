@@ -19,7 +19,7 @@ import warning from 'shared/warning';
 // 假如一个子组件需要父组件的一个属性，但是中间间隔了好几层，这就会出现开发和维护的一个成本。这时候就可以通过这个 API 来解决
 export function createContext<T>(
   defaultValue: T,
-  calculateChangedBits: ?(a: T, b: T) => number,
+  calculateChangedBits: ?(a: T, b: T) => number, // 计算新老context的变化
 ): ReactContext<T> {
   if (calculateChangedBits === undefined) {
     calculateChangedBits = null;
@@ -44,7 +44,7 @@ export function createContext<T>(
     // Fabric (secondary); React DOM (primary) and React ART (secondary).
     // Secondary renderers store their context values on separate fields.
     // 以下两个属性是为了适配多平台
-    _currentValue: defaultValue,
+    _currentValue: defaultValue,// 记录最新的context的值
     _currentValue2: defaultValue,
     // Used to track how many concurrent renderers this context currently
     // supports within in a single renderer. Such as parallel server rendering.

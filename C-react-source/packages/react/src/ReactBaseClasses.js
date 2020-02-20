@@ -40,7 +40,7 @@ function Component(props, context, updater) {
   this.updater = updater || ReactNoopUpdateQueue;
 }
 
-Component.prototype.isReactComponent = {};
+Component.prototype.isReactComponent = {};// ?
 
 /**
  * Sets a subset of the state. Always use this to mutate
@@ -71,14 +71,16 @@ Component.prototype.isReactComponent = {};
 // 用法不说了，如果不清楚的把上面的注释和相应的文档看一下就行
 // 一开始以为 setState 一大堆逻辑，结果就是调用了 updater 里的方法
 // 所以 updater 还是个蛮重要的东西
+// ！更新组件状态
 Component.prototype.setState = function(partialState, callback) {
-  invariant(
+  invariant( // 提醒
     typeof partialState === 'object' ||
       typeof partialState === 'function' ||
       partialState == null,
     'setState(...): takes an object of state variables to update or a ' +
       'function which returns an object of state variables.',
   );
+  // reactDom上的代码
   this.updater.enqueueSetState(this, partialState, callback, 'setState');
 };
 
@@ -97,6 +99,7 @@ Component.prototype.setState = function(partialState, callback) {
  * @protected
  */
 // 这个 API 用的很好，不清楚作用的看文档吧
+// 强制更新
 Component.prototype.forceUpdate = function(callback) {
   this.updater.enqueueForceUpdate(this, callback, 'forceUpdate');
 };
@@ -108,6 +111,7 @@ Component.prototype.forceUpdate = function(callback) {
  */
 if (__DEV__) {
   const deprecatedAPIs = {
+    // 即将废弃
     isMounted: [
       'isMounted',
       'Instead, make sure to clean up subscriptions and pending requests in ' +
@@ -151,7 +155,7 @@ function PureComponent(props, context, updater) {
   this.context = context;
   // If a component has string refs, we will assign a different object later.
   this.refs = emptyObject;
-  this.updater = updater || ReactNoopUpdateQueue;
+  this.updater = updater || ReactNoopUpdateQueue; // ?
 }
 
 const pureComponentPrototype = (PureComponent.prototype = new ComponentDummy());
@@ -159,6 +163,6 @@ pureComponentPrototype.constructor = PureComponent;
 // Avoid an extra prototype jump for these methods.
 Object.assign(pureComponentPrototype, Component.prototype);
 // 通过这个变量区别下普通的 Component
-pureComponentPrototype.isPureReactComponent = true;
+pureComponentPrototype.isPureReactComponent = true; 
 
 export {Component, PureComponent};
