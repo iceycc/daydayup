@@ -13,7 +13,18 @@
 5. Fiber Scheduler
 6. 
 
-
+## 第二章 基础知识
+1. JSX到Javascript的转换
+2. react-element
+3. react-component
+4. react-ref
+5. forward-ref
+6. context
+7. concurrent-mode
+8. suspense-and-lazy
+9. hooks
+10. children
+11. others
 ## 第3章 React中的更新
 ### 3-1：react-dom-render
 1. react render是个整体的
@@ -56,7 +67,7 @@
 1. 异步的情况：过期时间，异步的任务优先级低，可能会被优先级高的打断，所以设置了过期时间，过了过期时间 如果还没执行，就会强制执行
 2. 同步的任务：computeExpiratioUnForFiber
     1. Sync模式：优先级最高，创建即更新 syncUpdates flushSync
-    2. 异步模式：有过期时间
+    2. 异步模式：有过期时间。只要在expirationTime时间之前更新就行，如果超过就强制执行了
     3. 指定context
 3. flushSync?
 4. expirationContext:
@@ -76,11 +87,12 @@
 
 ## 第四章 fiber scheduler
 ### 4-1 总结
-1. 16之前 setState更新，从头到尾，会阻塞，卡顿
+1. 16之前 setState更新，从头到尾更新完成再执行后面的代码，会阻塞，卡顿
 2. 16后，把整个react一整个树的应用更新的流程拆成单个fiber对象为单元的更新的流程，这种把更新流程拆分后，可以给每个不同的任务提供优先级，在更新的过程中可以中断去执行优先级高的，回过头也可以继续更新
 3. C-react-source\packages\react-reconciler\src\ReactFiberScheduler.js
-4. 重点
+4. 重点：C-react-source/packages/react-reconciler/src/ReactFiberScheduler.js
    1. Scheduler的整体流程
-   2. 调度过程中各种全局变量一览
+   2. 调度过程中各种全局变量一览：https://react.jokcy.me/book/flow/scheduler-global.html
    3. 构建任务调度的概念
-5. 
+5. 一个应用会存在多个root，多次调用 reactDOMRender会创建多个root，每个root下组件更新都需要进行调度
+6. 
