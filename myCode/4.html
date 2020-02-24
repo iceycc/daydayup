@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Person(name){
+            this.name = name
+        } 
+        // person的引用计数
+        let set = new Set()
+        let p1 = new Person('zzzz') // 1
+        set.add(p1) // 2
+        p1 = null // 1
+        let timer = setTimeout(()=>{
+            set = null // 0
+        },4000)
+        </script>
+</body>
+</html>
