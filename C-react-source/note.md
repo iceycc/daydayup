@@ -1,3 +1,15 @@
+## 其它知识
+http://react-china.org/t/react/25167
+1. flow
+2. Rollup 
+
+## 文档
+https://react.jokcy.me/
+
+
+## react基本原理及性能优化
+1. react做了什么
+
 ## 基础
 1. ref的三种创建方式
 2. Context两种方式
@@ -11,7 +23,6 @@
    5. UpdateQueue
    6. expirationTime
 5. Fiber Scheduler
-6. 
 
 ## 第二章 基础知识
 1. JSX到Javascript的转换

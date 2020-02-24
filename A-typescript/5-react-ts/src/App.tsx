@@ -24,7 +24,7 @@ export const Logo: React.SFC<IProps>  = props => {
 class State {
   public children?: Array<React.ReactElement<any>> | React.ReactElement<any> | never[] = []
   public speed?: number = 500
-  public height!: number
+  public height: number=100
   public animation?: string = 'easeInOutQuad'
   public isAuto?: boolean = true
   public autoPlayInterval?: number = 4500
@@ -43,6 +43,9 @@ export default class extends React.Component<Props,State>{
       height:1
     })
   }
+  // setState(arg0: { height: number; }) {
+  //   throw new Error("Method not implemented.");
+  // }
   render(){
     // this.state.height
     return<>
