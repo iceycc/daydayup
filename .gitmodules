@@ -4,6 +4,3 @@
 [submodule "D-public"]
 	path = D-public
 	url = git@gitee.com:jw-speed/zhufeng-public.git
-[submodule "B-interview"]
-	path = B-interview
-	url = git@gitee.com:jw-speed/zhufeng-public.git

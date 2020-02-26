@@ -70,7 +70,6 @@ global.objA = {
 }
 
 
-
 // 堆和栈怎么联系的
 
 // 栈内存很小 基本不需要回收
@@ -96,5 +95,6 @@ global.objA = {
 // mark-compact 最慢 空间开销少 需要移动对象
 // scavenge ： 最快，双倍空间 无碎片 需要移动对象 （新生代）
 
-// mark-compact需要移动对象，执行速度不快，V8主要用mark-sweep
+// mark-compact 需要移动对象，执行速度不快，V8主要用mark-sweep
 // 1. 空间不足 2 对从新生代升级过来的对象 =》才会使用mark-compact
+

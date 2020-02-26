@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+// (async function() {
+//   try {
+//       return await doSomething();// 关注点,这里我们省略了await 产生了更我们设想不太一样的结果
+//   } catch (err) {
+//       console.log('do something ignore');
+//   }
+// })()
+//   .then(function() {
+//       console.log('ok');
+//   })
+//   .catch(function(err) {
+//       console.error('fail');
+//   });
+
+async function waitAndMaybeReject() {
+  // 等待1秒
+  await new Promise(r => setTimeout(r, 1000));
+
+  const isHeads = Boolean(Math.round(Math.random()));
+
+  if (isHeads) {
+    return 'yay';
+  } else {
+    throw Error('Boo!');
+  }
+}
+async function foo() {
+  try {
+    waitAndMaybeReject();
+  }
+  catch (e) {
+    return 'caught';
+  }
+}
+foo()
+    </script>
+</body>
+</html>
