@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>珠峰培训 - 微信：18310612838</title>
+	<!-- IMPORT CSS -->
+</head>
+
+<body>
+	<!-- IMPORT JS -->
+	<script>
+		/*
+		 * JS中的相等比较 == / ===
+		 *   ==在比较的时候可以转换左右两边的数据类型
+		 *     + 对象==对象   比较地址
+		 *     + 对象==字符串  对象变为字符串
+		 *     + NaN==NaN  NaN和自己以及其它值都不相等
+		 *     + null==undefined  在两个等于号下相等，三个等于号下不相等，并且和其它值都不相等
+		 *     + 剩下的情况，只要两边类型不同，最后都转换为数字
+		 *
+		 * 对象.toString()   涉及 Object.prototype.toString.call()
+		 *
+		 * Object.is()  相对于 ==/=== 的比较有哪些好处   => 深度比较  => 深度克隆
+		 */
+
+
+		/*
+		 * 浏览器也有自己的内存回收机制
+		 *    + 标记清除法 谷歌
+		 *    + 引用计数法 IE  （弊端：很多情况下，会导致记录的数字不是很准确，导致很多应该被清除的内存，没有被清除掉  =>内存泄漏）
+		 */
+		// 堆内存释放：  变量 = null  
+		// 栈内存释放： 函数执行完，形成的执行上下文中，没有东西被上下文以外的内容占用，此上下文就会从执行环境栈中移除（释放），如果有被占用，则压缩到栈的底部（没有释放  =>闭包）
+	</script>
+
+	<!-- 
+		JQ中的EACH方法，是用来遍历数组、类数组、对象的
+	 -->
+	<script>
+		Object.prototype.each = function each(callback) {
+			// this:调用方法的实例(数组\类数组\对象)
+			let length = this.length;
+			// 数组和类数组
+			if (typeof length === "number" && (length - 1) in this) {
+				for (let i = 0; i < length; i++) {
+					let item = this[i];
+					let result = callback(item, i);
+					if (result === false) {
+						break;
+					}
+					this[i] = result;
+				}
+				return;
+			}
+			// 对象
+			for (let key in this) {
+				if (!this.hasOwnProperty(key)) break;
+				let value = this[key];
+				let result = callback(value, key);
+				if (result === false) {
+					break;
+				}
+				this[key] = result;
+			}
+		};
+
+		[10, 20, 30, 40].each(function (item, index) {
+			console.log(item);
+		});
+
+		({
+			name: 'xxx',
+			age: 25,
+			sex: 0
+		}).each(function (item, index) {
+			console.log(item);
+		});
+
+		document.getElementsByTagName('*').each(function (item, index) {
+			console.log(item);
+		});
+	</script>
+
+
+	<script>
+		// Generator函数执行：不会让函数立即执行，返回结果是Interator迭代器（ES6:for of循环）
+		/* function* gen() {
+			console.log(1);
+			yield 1; //=>每一个yield控制一个状态节点 
+
+			yield 2;
+
+			yield 3;
+
+		}
+		const inter = gen();
+		console.log(inter.next()); // {value: 1, done: false}
+		console.log(inter.next()); // {value: 2, done: false}
+		console.log(inter.next()); // {value: 3, done: fasle}
+		console.log(inter.next()); // {value: undefined, done: true} */
+
+
+		/* function* gen() {
+			console.log(1);
+			let v1 = yield 1;
+			console.log(v1);
+			let v2 = yield 2;
+			console.log(v2);
+			let v3 = yield 3;
+			console.log(v3);
+		}
+		const inter = gen();
+		inter.next();  {value:1}
+		inter.next(1); */
+
+		/* async function fn() {
+			let v1 = await Promise.resolve(100);
+			console.log(v1);
+
+			let v2 = await Promise.resolve(200);
+			console.log(v2);
+		}
+		fn(); */
+
+		function yieldPromise(generator) {
+			let interator = generator();
+			interatorNext.call(interator);
+		}
+
+		function interatorNext(value) {
+			let interator = this,
+				result = interator.next(value);
+			if (result.done) return;
+			let val = result.value;
+			Promise.resolve(val).then(val => {
+				interatorNext.call(interator, val);
+			});
+		}
+
+		yieldPromise(function* () {
+			let v1 = yield Promise.resolve(100);
+			console.log(v1);
+			let v2 = yield Promise.resolve(200);
+			console.log(v2);
+		});
+	</script>
+</body>
+
+</html>

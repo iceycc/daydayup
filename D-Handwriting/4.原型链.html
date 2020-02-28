@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<!-- 基于原型链的继承 -->
+<script>
+    ; (function () {
+        /**
+    * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
+      原型对象 prototype
+      [[prototype]], __proto__ 
+   **/
+
+        // let f =function(){
+        //     this.a = 1;
+        //     this.b = 2;
+        // }
+
+        function fn() {
+            this.a = 1
+            this.b = 2
+        }
+        console.log('============ fn ==============')
+        fn.prototype.b = 3;
+        fn.prototype.c = 4;
+        console.dir(fn)
+        console.log('============ fn ==============')
+
+        console.log('============ o ==============')
+        let o = new fn()
+        console.log(o.d) // undefined
+        fn.prototype.d = 5;
+        // {a:1, b:2} ---> {b:3, c:4, d:5} ---> Object.prototype---> null
+        console.dir(o)
+        console.log(o.a); // 1
+        // a是o的自身属性吗？是的，该属性的值为 1
+        console.log(o.b) // 属性遮蔽
+        console.log(o.c)
+        console.log(o.d) // 5
+        // console.log(o.__proto__ === fn.prototype) // true
+        // console.log(o.__proto__.constructor === fn) // true
+        // console.log(o.__proto__.__proto__ === Object.prototype) // true
+        // console.log(o.__proto__.__proto__.constructor === Object) // true
+        // console.log(Object.getPrototypeOf(o) === o.__proto__) // true
+        // console.log(Object.getPrototypeOf(o) === fn.prototype) // true
+        // console.log(o.constructor === fn) // true
+        console.log(o instanceof fn) // true
+        console.log('============ o ==============')
+    })();
+
+    ; (function () {
+        console.log('============ 原型方法==============')
+        var o = {
+            a: 2,
+            m: function () {
+                return this.a + 1;
+            }
+        };
+
+        console.log(o.m()); // 3
+        // 当调用 o.m 时，'this' 指向了 o.
+
+        var p = Object.create(o);
+        // p是一个继承自 o 的对象
+
+        p.a = 4; // 创建 p 的自身属性 'a'
+        console.log(p.m()); // 5
+        // 调用 p.m 时，'this' 指向了 p
+        // 又因为 p 继承了 o 的 m 函数
+        // 所以，此时的 'this.a' 即 p.a，就是 p 的自身属性 'a' 
+    })()
+</script>
+<!-- 使用不同的方法来创建对象和生成原型链 -->
+<script>
+        ; (function () {
+            console.log('============ 使用语法结构创建的对象==============')
+            // 使用语法结构创建的对象
+            var o = { a: 1 };
+
+            // o 这个对象继承了 Object.prototype 上面的所有属性
+            // o 自身没有名为 hasOwnProperty 的属性
+            // hasOwnProperty 是 Object.prototype 的属性
+            // 因此 o 继承了 Object.prototype 的 hasOwnProperty
+            // Object.prototype 的原型为 null
+            // 原型链如下:
+            // o ---> Object.prototype ---> null
+
+            var a = ["yo", "whadup", "?"];
+            console.log(a.__proto__ === Array.prototype)
+            // 数组都继承于 Array.prototype 
+            // (Array.prototype 中包含 indexOf, forEach 等方法)
+            // 原型链如下:
+            // a ---> Array.prototype ---> Object.prototype ---> null
+
+            function f() {
+                return 2;
+            }
+            console.dir(f)
+            console.log(f.__proto__ === Function.prototype)
+            console.log(f.prototype.__proto__ === Object.prototype)
+
+            // 函数都继承于 Function.prototype
+            // (Function.prototype 中包含 call, bind等方法)
+            // 原型链如下:
+            // f ---> Function.prototype ---> Object.prototype ---> null
+
+            console.log(Function.__proto__ === Function.prototype) // true
+            console.log(Function.__proto__.__proto__ === Object.prototype) // true
+            console.log(Function.prototype instanceof Object) // true
+        })()
+
+        ; (function () {
+            console.log('============ 使用构造器创建的对象==============')
+            function Graph() {
+                this.vertices = [];
+                this.edges = [];
+            }
+
+            Graph.prototype = {
+                addVertex: function (v) {
+                    this.vertices.push(v);
+                }
+            };
+            function new1() {
+                let obj = {}
+                // let Consturctor = [].shift.call(arguments)
+                let [Consturctor, ...args] = arguments
+                obj.__proto__ = Consturctor.prototype
+                let result = Consturctor.apply(obj, args)
+                return result instanceof Object ? result : obj
+            }
+            function new2() {
+                let [Consturctor, ...args] = arguments
+                let obj = Object.create(Consturctor.prototype)
+                let result = Consturctor.apply(obj, args)
+                return result instanceof Object ? result : obj
+            }
+            // var g = new Graph();
+            var g = new2(Graph);
+            console.log(g.__proto__ === Graph.prototype) // true
+            console.log(g instanceof Graph)
+            // g 是生成的对象，他的自身属性有 'vertices' 和 'edges'。
+            // 在 g 被实例化时，g.[[Prototype]] 指向了 Graph.prototype。
+        })()
+        ; (function () {
+            console.log('============ 使用 Object.create 创建的对象==============')
+            var a = { a: 1 };
+            // a ---> Object.prototype ---> null
+
+            var b = Object.create(a);
+            // b ---> a ---> Object.prototype ---> null
+            console.log(b.a); // 1 (继承而来)
+
+            var c = Object.create(b);
+            // c ---> b ---> a ---> Object.prototype ---> null
+
+            var d = Object.create(null);
+            // d ---> null
+            console.log(d.hasOwnProperty); // undefined, 因为d没有继承Object.prototype
+
+        })()
+
+        ; (function () {
+            "use strict";
+
+            class Polygon {
+                constructor(height, width) {
+                    this.height = height;
+                    this.width = width;
+                }
+            }
+
+            class Square extends Polygon {
+                constructor(sideLength) {
+                    super(sideLength, sideLength);
+                }
+                get area() {
+                    return this.height * this.width;
+                }
+                set sideLength(newLength) {
+                    this.height = newLength;
+                    this.width = newLength;
+                }
+            }
+
+            var square = new Square(2);
+            console.log(square.__proto__ == square.prototype)
+        })()
+</script>
+
+</html>
