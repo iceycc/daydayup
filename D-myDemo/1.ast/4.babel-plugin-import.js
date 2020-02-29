@@ -37,3 +37,4 @@ let r =babel.transform(code,{
 })
 
 console.log(r.code)
+module.exports = importPlugin
