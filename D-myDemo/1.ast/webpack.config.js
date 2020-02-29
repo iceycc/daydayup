@@ -1,7 +1,7 @@
 // yarn add webpack webpack-cli babel-loader babel-preset-env babel-preset-react babel-core -D
 // yarn add antd react
 module.exports = {
-  entry: "./4.import.js",
+  entry: "./5.import.js",
   output: {
     filename: 'bundle.js',
     path: __dirname
@@ -16,7 +16,7 @@ module.exports = {
             'env',
             'react'
           ],
-          plugins: []
+          plugins: ['my-import']
         }
       },
       exclude:/node_modules/
