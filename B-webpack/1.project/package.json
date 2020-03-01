@@ -1,14 +1,19 @@
 {
   "name": "1.project",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
   "license": "MIT",
-  "scripts":{
-    "dev":"webpack-dev-server -open"
+  "scripts": {
+    "dev": "webpack-dev-server -open"
   },
   "devDependencies": {
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack-manifest-plugin": "^2.2.0"
   }
 }

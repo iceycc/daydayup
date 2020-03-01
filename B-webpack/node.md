@@ -14,3 +14,6 @@ http://www.javascriptpeixun.cn/my/course/279
 - 图片： file-loader,url-loader
 - 分离css: 
   - mini-css-extract-plugin
+
+## entry
+1. 单个入口
