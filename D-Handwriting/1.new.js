@@ -24,8 +24,7 @@ let p1 = new1(Person,'小白1')
 console.log(p1.name)
 p1.say('new1 Hi')
 
-
-// 模拟2 讲构造函数和实例化参数区分
+// 模拟3 讲构造函数和实例化参数区分
 function new2(Constructor){
     return function(){
         let obj = {}
@@ -37,3 +36,14 @@ function new2(Constructor){
 let p2 = new2(Person)('小白2')
 console.log(p2.name)
 p2.say('new2 Hi')
+
+// 3
+function new3(fn,...args){
+    let obj = {}
+    obj.__proto__ = fn.prototype
+    let result = fn.call(obj,...args)
+    return result instanceof Object ? result : obj
+}
+let p3 = new3(Person,'Tom3')
+console.log(p3.name)
+p3.say('new3 hi')
