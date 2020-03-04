@@ -33,7 +33,12 @@
         fn.prototype.b = 3;
         fn.prototype.c = 4;
         console.dir(fn)
-        console.log('============ fn ==============')
+        console.log(fn.prototype)
+        console.log(fn.__proto__ === Function.prototype) // true
+        console.dir(Function.__proto__)
+        console.log(Function.__proto__ === Function.prototype) // true
+        console.log(Function.prototype.__proto__ === Object.prototype) // true
+        console.log(Function.__proto__.__proto__ === Object.prototype)// true
 
         console.log('============ o ==============')
         let o = new fn()
@@ -54,7 +59,6 @@
         // console.log(Object.getPrototypeOf(o) === fn.prototype) // true
         // console.log(o.constructor === fn) // true
         console.log(o instanceof fn) // true
-        console.log('============ o ==============')
     })();
 
     ; (function () {
@@ -170,6 +174,7 @@
         })()
 
         ; (function () {
+            console.log('============ 使用  class 创建的对象==============')
             "use strict";
 
             class Polygon {
@@ -193,7 +198,7 @@
             }
 
             var square = new Square(2);
-            console.log(square.__proto__ == square.prototype)
+            console.log(square.__proto__ == Square.prototype) // true
         })()
 </script>
 
