@@ -3,6 +3,8 @@ async function fn1(){
     console.log(v1)
     let v2 = await Promise.resolve(200)
     console.log(v2)
+    let v3 = await '122222'
+    console.log(v3)
     return await Promise.resolve(202)
 }
 fn1().then(data=>{
@@ -63,4 +65,4 @@ function spawn(genF) {
         console.log(v2)  
     })
   }
-  fn()
+  // fn()
