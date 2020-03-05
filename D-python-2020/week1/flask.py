@@ -7,5 +7,5 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
     return 'hello,world'
-
-app.run
+# k8s
+app.run()
