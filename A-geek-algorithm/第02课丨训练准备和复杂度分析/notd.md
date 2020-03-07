@@ -12,5 +12,15 @@
 - 主定理 zh.wikipedia.org/wiki/%E4%B8%BB%E5%AE%9A%E7%90%86
 
 
-## 时间和空间复杂度
-Big O notation
+
+## 时间复杂度
+big O notation
+- O(1): 常熟复杂度
+- O(log n)
+- O(n ^ 2)
+- O(n ^ 3)
+- O(2 ^ n)
+- O(n!)
+
+## 空间复杂度
+
