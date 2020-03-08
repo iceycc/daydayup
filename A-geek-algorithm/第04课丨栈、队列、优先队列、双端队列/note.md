@@ -42,4 +42,8 @@ https://leetcode.com/problems/trapping-rain-water/
 - api
   - comparator
 
+## 套路
+- 用栈实现队列
+- 用队列实现栈
+
 
