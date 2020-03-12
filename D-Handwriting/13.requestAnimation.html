@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+  <div id='SomeElementYouWantToAnimate' class="box" style="width: 10px; height: 10px; background: red;"></div>
+</body>
+<script>
+  // let box = document.querySelector('.box');
+  // let num = 0;
+  // function step(){
+  //   console.log('1111111111')
+  //   num++;
+  //   box.style.transform = 'translateX(' + num + 'px)';
+    
+  // }
+  // window.requestAnimationFrame(step);
+
+
+  var start = null;
+  var element = document.getElementById('SomeElementYouWantToAnimate');
+  element.style.position = 'absolute';
+
+  function step(timestamp) {
+    if (!start) start = timestamp;
+    var progress = timestamp - start;
+    element.style.left = Math.min(progress / 10, 1000) + 'px';
+    if (progress < 6000) {
+      window.requestAnimationFrame(step);
+    }
+  }
+
+  window.requestAnimationFrame(step);
+</script>
+
+</html>

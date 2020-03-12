@@ -30,34 +30,7 @@ class Observer{ // 观察者
 let o1 = new Observer('爸爸');
 let o2 = new Observer('妈妈');
 let s = new Subject('小宝宝');
-s.attach(o1); // 将观察者放到被观察者内部
+s.attach(o1); // 添加观察者：将观察者放到被观察者内部
 s.attach(o2);
 s.setState('不开心');
 
-class Subject2{
-    constructor(){
-        this.stack = []; // 堆
-        this.status = '开心'
-    }
-    attach(ob){
-        this.stack.push(ob)
-    }
-    setState(newState){
-        this.status = newState
-        this.stack.forEach(ob=>{ob.update(newState)});
-    }
-}
-class Observer2 {
-    constructor(name){
-        this.name = name
-    }
-    update(newState){
-        console.log(this.name + '小宝贝' + newState)
-    }
-}
-let ob1 = new Observer2('爸爸');
-let ob2 = new Observer2('妈妈');
-let s2 = new Subject2('小宝贝');
-s2.attach(ob1);
-s2.attach(ob2);
-s2.setState('饿了')

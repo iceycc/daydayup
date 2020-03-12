@@ -19,7 +19,7 @@ let fs = require('fs');
 // 解决异步并发问题 计数器
 function after(times,callback){
     let school = {}
-    return function out(key,value){
+    return function(key,value){
         school[key] = value;
         if(--times === 0){
             callback(school);
@@ -50,21 +50,3 @@ fs.readFile('./1.promise/age.txt','utf8',function(err,data){ // 3s
 //         console.log(22)
 //     }
 // }
-function after2(times,callback){
-    let sc = {}
-    return function(key,value){
-        sc[key] = value
-        if(--times == 0){
-            callback(sc)
-        }
-    }
-}
-let out2 = after2(2,(sc)=>{
-    console.log(sc)
-})
-fs.readFile('./1.promise/name.txt','utf8',function(err,data){
-    out2('name',data)
-})
-fs.readFile('./1.promise/age.txt','utf8',function(err,data){
-    out2('age',data)
-})

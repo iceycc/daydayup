@@ -1,5 +1,5 @@
 /**
- * 1. inally 的特点 无论如何都执行 ，但是如果返回的是一个promise需要等待这个promise之行完在继续向下执行
+ * 1. finally 的特点 无论如何都执行 ，但是如果返回的是一个promise需要等待这个promise之行完在继续向下执行
  * 2. 如何终止promise链？ 返回一个等待的promise
  * 3  延迟对象
  * 3. 封装 defer 减少套用
