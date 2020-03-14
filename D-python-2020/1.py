@@ -21,7 +21,7 @@ def get_url_name(myurl):
 
 # 生成包含所有页面的元组
 urls = tuple(f'https://book.douban.com/top250?start={ page * 25 }&filter=' for page in range(10))
-
+# print(urls)
 
 from time import sleep
 

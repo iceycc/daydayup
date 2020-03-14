@@ -39,7 +39,7 @@ class Human(object):
 
 h1 = Human('Adam')
 h2 = Human('Eve')
-# __getattr__ 拦截任意属性
+# __getattr__ 默认拦截不存在的属性，拦截任意属性
 # __getattribute__ 返回存在的属性，如果不存在抛出  AttributeError 异常，继续访问__getattr__函数
 # 可以根据原理改造 __getattribute__ 实现 __getattr__
 # 如果同时存在，执行顺序是 __getattribute__ > __getattr__ > __dict__
