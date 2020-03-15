@@ -35,3 +35,26 @@ Node
   - 异步加载
 - 播放页
   - API服务器
+
+## 什么是技术预研
+
+- 分析要做的需求，找出技术难点
+- 针对每个技术难点进行攻克
+- BFF层：Backend for Frontend
+  - chrome <---> node  <-----> 微服务:`['播放服务','播放服务','个人信息','广告']`
+  - 对用户侧提供HTTP服务
+  - 使用后端RPC服务
+- nodejs是怎么跑起来的
+  
+
+## nodejs环境搭建
+- chrome安装 + vscode安装 +
+- node安装
+  - 官方：LTS稳定 current最新版
+- 查看是否安装成功 node -v  node -v
+- window 安装 和 mac安装  全局环境变量
+
+## 第一个node.js程序 - 石头剪头布游戏
+- 运行方式
+- node全局变量
+
