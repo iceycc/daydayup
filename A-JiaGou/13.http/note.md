@@ -2,7 +2,7 @@
 - Expires
 - Cache-Control
 - if-none-match etag
-- if-modified-since if-none-match
+- if-modified-since last-modified
 
 - accept-encoding  content-encoding
 - userAgent (区分 是pc 还是 mobile)  Location 301 / 302
