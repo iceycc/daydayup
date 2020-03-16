@@ -8,5 +8,5 @@
 	path = B-zfInterView
 	url = git@gitee.com:zhufengpeixun/zhufenginterview.git
 [submodule ".\\D-geek\\04-geek-nodejs"]
-	path = .\\D-geek\\04-geek-nodejs
+	path = D-geek/04-geek-nodejs
 	url = git@github.com:iceycc/geek-nodejs.git
