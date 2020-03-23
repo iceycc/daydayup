@@ -57,4 +57,15 @@ Node
 ## 第一个node.js程序 - 石头剪头布游戏
 - 运行方式
 - node全局变量
+  
+
+## commonjs
+- script标签  
+  - 脚本变多时，需要手动管理加载顺序
+  - 不同脚本之间逻辑调用，需要通过全局变量通过全局变量的方式
+  - 没有html
+- commonjs模块规范
+  - JavaScript社区发起，nodejs应用推广
+  - 影响到了浏览器端端Javascript
+- 
 
