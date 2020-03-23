@@ -174,6 +174,14 @@ JWT
 32. react-catch
 33. React.Lazy
 
+## domdiff
+1. 操作真实dom的成本高
+2. 在react中，用户对dom对操作其实就是对虚拟dom的操作，用户操作产生的数据改变或者state改变都会保存在虚拟dom上，然后对改变进行domdiff对计算，对比操作前后的虚拟dom树，把更改后的变化再同步到真实dom上。
+3. 在react事件机制和声明周期钩子函数中，setState是批量更新的
+4. domdiff的过程
+   1. 对操作前后的dom树同一层节点进行对比，一层一层对比
+   2. 只要碰到不一样的节点，就直接将原来的节点替换，包括子节点树
+
 
 ## react hooks
 1. useState

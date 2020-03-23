@@ -1,1 +1,14 @@
-王冰洋
+componetWillMount
+
+componetWillReceiveProps
+
+componetWillUpdate
+
+
+construct
+getDerivedStateFromProps
+render
+componetDidMount
+
+getDerivedStateFromProps
+shouldCompoentUpdate
