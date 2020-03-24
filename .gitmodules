@@ -10,3 +10,6 @@
 [submodule ".\\D-geek\\04-geek-nodejs"]
 	path = D-geek/04-geek-nodejs
 	url = git@github.com:iceycc/geek-nodejs.git
+[submodule "D-geek/05-electron"]
+	path = D-geek/05-electron
+	url = git@github.com:geektime-geekbang/geektime-electron.git
