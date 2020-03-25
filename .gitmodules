@@ -13,3 +13,6 @@
 [submodule "D-geek/05-electron"]
 	path = D-geek/05-electron
 	url = git@github.com:geektime-geekbang/geektime-electron.git
+[submodule "D-python/Python000-class01"]
+	path = D-python/Python000-class01
+	url = git@github.com:iceycc/Python000-class01.git
