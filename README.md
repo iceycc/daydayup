@@ -1,5 +1,20 @@
-## git
-1. 增加子模块：
+## git子模块 submodule
+- 子模块的添加
+  - git submodule add <url> <path>：其中，url为子模块的路径，path为该子模块存储的目录路径。
+- 子模块的使用
+  - git submodule init
+  - git submodule update
+  - 或 git submodule update --init --recursive
+- 子模块的更新
+  - 在项目中，进入到子模块目录下，执行 git pull更新，查看git log查看相应提交。
+  - 完成后返回到项目目录，可以看到子模块有待提交的更新，使用git add，提交即可。
+- 删除子模块
+  - rm -rf 子模块目录 删除子模块目录及源码
+  - vi .gitmodules 删除项目目录下.gitmodules文件中子模块相关条目
+  - vi .git/config 删除配置项中子模块相关条目
+  - rm .git/module/* 删除模块下的子模块目录，每个子模块对应一个目录，注意只删除对应的子模块目录即可
+  - 如果还报错：删除后，需要提交.gitmodule；git rm --cached 子模块名称
+
 
 ## promise
 1. 高阶函数 
