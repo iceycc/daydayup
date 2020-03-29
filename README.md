@@ -1,4 +1,5 @@
-## git子模块 submodule
+## git
+### git子模块 submodule
 - 子模块的添加
   - git submodule add <url> <path>：其中，url为子模块的路径，path为该子模块存储的目录路径。
 - 子模块的使用
@@ -15,6 +16,10 @@
   - rm .git/module/* 删除模块下的子模块目录，每个子模块对应一个目录，注意只删除对应的子模块目录即可
   - 如果还报错：删除后，需要提交.gitmodule；git rm --cached 子模块名称
 
+### git
+- git config --global user.name 'xxx'
+- git conifg --global user.email 'xxx@qq.com'
+- ssh-keygen -t rsa -C 'xxx@qq.com'
 
 ## promise
 1. 高阶函数 
