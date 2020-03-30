@@ -1,3 +1,18 @@
+
+
+## vim
+1. mac vim安装配置：https://blog.csdn.net/weixin_38169413/article/details/83098902
+2. vim分屏：https://blog.csdn.net/derkampf/article/details/72629875
+## mac环境配置
+- homebre
+  - 官网：https://brew.sh/
+  - 切换源：https://www.jianshu.com/p/bb60d6b8a043 
+3. node 
+   1. npm
+   2. nvm [nvm](https://github.com/nvm-sh/nvm/blob/master/README.md)
+   3. nrm
+4. git
+
 ## git
 ### git子模块 submodule
 - 子模块的添加
