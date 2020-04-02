@@ -30,6 +30,7 @@
   - vi .git/config 删除配置项中子模块相关条目
   - rm .git/module/* 删除模块下的子模块目录，每个子模块对应一个目录，注意只删除对应的子模块目录即可
   - 如果还报错：删除后，需要提交.gitmodule；git rm --cached 子模块名称
+- 保留代码回退：git reset --soft HEAD^
 
 ### git
 - git config --global user.name 'xxx'
