@@ -16,3 +16,9 @@
 [submodule "D-python/Python000-class01"]
 	path = D-python/Python000-class01
 	url = git@github.com:iceycc/Python000-class01.git
+[submodule "D-FE-01-geek"]
+	path = D-FE-01-geek
+	url = git@github.com:iceycc/Frontend-01-Template.git
+[submodule "D-python/code_demo"]
+	path = D-python/code_demo
+	url = git@github.com:iceycc/code_demo.git

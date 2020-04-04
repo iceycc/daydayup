@@ -12,7 +12,25 @@
    2. nvm [nvm](https://github.com/nvm-sh/nvm/blob/master/README.md)
    3. nrm
 4. git
+## liunx
+ssh root@xxx.xxx.xxx.xxx -p 22
 
+198.181.58.233
+
+29074
+
+xkGfcDTPWW4L
+1. 安装wget：`yum install wget`
+2. wget下载node：`wget https://npm.taobao.org/mirrors/node/v12.16.1/node-v12.16.1-linux-arm64.tar.xz`
+3. 解压：`tar -xf xxx.zip`
+4. 移动 `mv xxx xxx`
+5. 添加环境变量：
+   1. `vim /etc/profile`
+   2. 设置
+      ````
+      export NODE_HOME=/root/zuo/env/node-v8.11.3-linux-x64   # { 这里填解压之后node的路径}
+      export PATH=$PATH:$NODE_HOME/bin
+      ````
 ## git
 ### git子模块 submodule
 - 子模块的添加
