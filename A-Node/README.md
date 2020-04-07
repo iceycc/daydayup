@@ -74,4 +74,66 @@ Node
 
 
 ## Node.js 的非阻塞 I/O
+-  I/O 即 Input/Output，一个系统的输入和输出。
+-  阻塞 I/O 和非阻塞 I/O 的区别就在于系统接收输入再到输出期间，能不能接收其 他输入。
+-  事件环
+
+## 事件循环
+
+
+## Node.js 异步编程 - callback
+- 回调函数规范
+  - error-first callback
+  - node-style callback
+- 异步流程控制
+- npm: async.js
+- thunk
+
+
+## Node.js 异步编程 - Promise
+- promise
+  - 当前事件循环得不到的结果，但未来的事件循环会给到你结果
+  - 状态机
+    - pending
+    - fulfilled / resolved
+    - rejected
+  - .then 和 .catch
+    - resolved 状态的 Promise 会回调后面的第一个 .then
+    - rejected 状态的 Promise 会回调后面的第一个 .catch
+    - 任何一个 rejected 状态且后面没有 .catch 的 Promise，都会造成 浏览器 /node 环境 的全局错误
+  - 执行 then 和 catch 会返回一个新 Promise，该 Promise 最终状态根据 then 和 catch 的回调函数的执行结果决定
+    -  如果回调函数最终是 throw，该 Promise 是 rejected 状态
+    -  如果回调函数最终是 return，该 Promise 是 resolved 状态
+    -  但如果回调函数最终 return 了一个 Promise ，该 Promise 会和回调函数 return 的 Promise 状态保持一致
+- Node.js 异步编程 – async/await
+ -  async/await
+    -  async function 是 Promise 的语法糖封装
+    -  异步编程的终极方案 – 以同步的方式写异步
+       -  await关键字可以“暂停”asyncfunction的执行
+       -  await关键字可以以同步的写法获取Promise的执行结果
+       -  try-catch可以获取await所得到的错误
+    - 一个穿越事件循环存在的 function
+
+## 什么是 HTTP 服务?
+- 什么是 HTTP 服务?
+  - 解析进来的 HTTP 请求报文
+  - 返回对应的 HTTP 返回报文
+- http模块
+- fs模块
+- url模块
+- queryString模块
+
+
+## express
+- 特点
+  - 路由
+  - 高性能
+  - 高测试
+  - 处理http，重定向、缓存等
+  - 模版引擎 14+
+  - 脚手架快速搭建
+- 洋葱模型
+  - 问题：异步问题。
+- 中间价
+
 
