@@ -70,9 +70,21 @@
 
 
 
-4.2
+4.2 
 1. 说个具体场景吧，之前做C端产品。有段if else 语句  大约有16个else 。
 直接拿函数式重构了， 优化掉了嵌套的 if else。 
 后来，仔细看了一下。发现是该产品 的一组  不同的状态处理逻辑。
 遂改成 用状态模式 重构， 一来oop的代码好读，方便其他开发者清晰看明白。二来，大家看到状态模式，一眼便知道是啥了。便于理解
+
+
+
+4.7 
+1. serverless
+2. Paas 
+3. Saas
+4. amis
+ https://duanjin.doushen.com/wiki/#/team/351m4Jax/space/KP2Frkts/page/7ForA2jV
+ https://baidu.github.io/amis/docs/getting-started
+ https://fex-team.github.io/amis-editor/#/hello-world
+ https://baidu.github.io/amis/docs/api 
 

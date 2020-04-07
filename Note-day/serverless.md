@@ -1,0 +1,1 @@
+- You may uninstall it by running: serverless config tabcompletion uninstall

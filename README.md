@@ -12,6 +12,68 @@
    2. nvm [nvm](https://github.com/nvm-sh/nvm/blob/master/README.md)
    3. nrm
 4. git
+5. 设置环境变量：
+   1. vim ～/.bash_profile // bash
+   2. vim ～/.zshrc // zsh
+   3. source ~/.bash_profile // 在～/.zshrc中添加改语句可以同时刷新bash配置
+6. mysql
+   1. 下载：https://dev.mysql.com/downloads/mysql/5.5.html
+   2. zwwl: root zwwl123456
+   3. 
+   4. 配置环境变量：
+      - vim ~/.bash_profile
+      ```shell
+      # 添加下面话
+      export PATH=$PATH:/usr/local/mysql/bin
+      export PATH=$PATH:/usr/local/mysql/support-files
+      ```
+      - source ~/.bash_profile 
+      - echo $PATH
+   5. MySQL服务的启停和状态的查看
+      ```shell
+      # 停止MySQL服务
+      sudo mysql.server stop
+
+      # 重启MySQL服务
+      sudo mysql.server restart
+
+      # 查看MySQL服务状态
+      sudo mysql.server status
+      ```
+   6. 启动
+      1. sudo mysql.server start
+      2. mysql -u root -p
+      3. 初始化设置`set password = password('root');`
+   7. 退出  exit
+   8. 配置：
+      1. 进入到 /usr/local/mysql/support-files 目录。里面有个文件:my-default.cnf
+      2. 将其复制到桌面上，改名为my.cnf，将内容替换为。
+         ```shell
+         [mysqld]
+         default-storage-engine=INNODB
+         character-set-server=utf8
+         port = 3306
+
+         [client]
+         default-character-set=utf8
+         ``` 
+      3. 检测修改结果 `$mysql>>>show variables like '%char%';`
+7. redis
+   1. 下载：https://redis.io/
+   2. 解压：tar zxvf redis-4.0.10.tar.gz
+   3. 移动到： mv redis-4.0.10 /usr/local/
+   4. 切换到：cd /usr/local/redis-4.0.10/
+   5. 编译测试 sudo make test
+   6. 编译安装 sudo make install
+   7. 启动：redis-server
+   8. 测试：redis-cli
+   9. 常用命令
+      - set key value	设置 key 的值
+      - get key	获取 key 的值
+      - exists key	查看此 key 是否存在
+      - keys *	查看所有的 key
+      - flushall	消除所有的 key
+
 ## liunx
 ssh root@xxx.xxx.xxx.xxx -p 22
 
@@ -252,12 +314,13 @@ JWT
 9. useLayoutEffect =》return =》useEffect
 10. 自己实现 useLogger 、useThunk、usePromise、useAjax
 
-## 项目配置
+## create-react-app 项目配置
+1. 安装
 ``` js
 create-react-app zhufeng_tract
 yarn add customize-cra react-app-rewired --dev // 增强配置
 ```
-
+2. 项目根目录
 config-overrides.js
 ```js
 const {
@@ -467,5 +530,3 @@ jsconfig.json
    4. 前端代码异常
    
 
-## 链接
-http://www.javascriptpeixun.cn/course/12
