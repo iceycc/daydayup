@@ -315,6 +315,7 @@ JWT
 10. 自己实现 useLogger 、useThunk、usePromise、useAjax
 
 ## create-react-app 项目配置
+https://www.cnblogs.com/musiq66/p/11463393.html
 1. 安装
 ``` js
 create-react-app zhufeng_tract
@@ -328,7 +329,7 @@ const {
  addDecoratorsLegacy,
 } = require("customize-cra");
 module.exports = override(
- addDecoratorsLegacy(),
+ addDecoratorsLegacy(),// 装饰器
 );
 ```
 
