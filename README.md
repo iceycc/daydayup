@@ -58,6 +58,10 @@
          default-character-set=utf8
          ``` 
       3. 检测修改结果 `$mysql>>>show variables like '%char%';`
+   9. node链接mysql8报错：
+      1.  use mysql;
+      2.  alter user root@localhost identified with mysql_native_password by zwwl123456;
+      3.  flush privileges;
 7. redis
    1. 下载：https://redis.io/
    2. 解压：tar zxvf redis-4.0.10.tar.gz
