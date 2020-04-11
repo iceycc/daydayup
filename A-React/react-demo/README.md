@@ -25,3 +25,12 @@ HOC等应用：redux的connect，监控组件性能的日志组件等。
 
 
 ## 2. 展示组件(Presentational component)和容器组件(Container component)之间有何不同?
+
+## 3. React 中 refs 的作用是什么？
+
+
+## 4. (组件的)状态(state)和属性(props)之间有何不同？
+Props，组件的属性，配置项，接受父组件的参数传递，对于使用它的组件来说，是只读的，要想修改Props，只能通过该组件的父组件修改，但是子组件defaultProps可以设置默认值。
+state，组件的状态，是一种数据结构，组件默认挂载时所需的数据，state可以通过setSate进行修改。
+
+

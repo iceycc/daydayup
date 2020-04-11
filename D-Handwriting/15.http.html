@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ <script>
+// TODO
+function http({
+                method = 'GET',
+                url,
+                success,
+                error,
+                data,
+                params
+            }){
+                let xhr = new XMLHttpRequest();
+                xhr.open(method,url,true)
+                xhr.responseType = 'json'
+                xhr.onload = function(data){
+                    success && success(data)
+                }
+                xhr.onerror = function(err){
+                    error && error()
+                }
+                var data;
+                if(method == 'POST'){
+                    if (type === "formdata") {
+                        data = new FormData();
+                        data.append("key", "value");
+                    } else if (type === "json") {
+                        xhr.setRequestHeader("Content-Type", "application/json");
+                        data = JSON.stringify({"key": "value"});
+                    } else if (type === "text") {
+                        data = "key=value";
+                    } else if (type === "www") {
+                        // 这个header 其实是 传统post 表单的格式
+                        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                        data = "key=value";
+                    }
+                }
+                if(method == 'GET'){
+                    
+                }
+                xhr.send(data);
+            }
+ </script>   
+</body>
+</html>

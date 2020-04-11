@@ -59,6 +59,10 @@
          default-character-set=utf8
          ``` 
       3. 检测修改结果 `$mysql>>>show variables like '%char%';`
+   9. node链接mysql8报错：
+      1.  use mysql;
+      2.  alter user root@localhost identified with mysql_native_password by zwwl123456;
+      3.  flush privileges;
 7. redis
    1. 下载：https://redis.io/
    2. 解压：tar zxvf redis-4.0.10.tar.gz
@@ -315,6 +319,7 @@ JWT
 10. 自己实现 useLogger 、useThunk、usePromise、useAjax
 
 ## create-react-app 项目配置
+https://www.cnblogs.com/musiq66/p/11463393.html
 1. 安装
 ``` js
 create-react-app zhufeng_tract
@@ -328,7 +333,7 @@ const {
  addDecoratorsLegacy,
 } = require("customize-cra");
 module.exports = override(
- addDecoratorsLegacy(),
+ addDecoratorsLegacy(),// 装饰器
 );
 ```
 

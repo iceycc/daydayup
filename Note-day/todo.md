@@ -88,3 +88,15 @@
  https://fex-team.github.io/amis-editor/#/hello-world
  https://baidu.github.io/amis/docs/api 
 
+
+ 4.9
+ - amis
+ - 编辑器：
+   - 生成页面配置 json
+   - 只能编辑单个页面
+ - node：
+   - 存储页面配置
+   - 做角色权限处理
+- severless:https://www.kancloud.cn/yunye/axios/234845/
+- amis:https://duanjin.doushen.com/wiki/#/team/351m4Jax/space/KP2Frkts/page/7ForA2jV
+
