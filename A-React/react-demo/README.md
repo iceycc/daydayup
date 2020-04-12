@@ -3,6 +3,7 @@ http://www.javascriptpeixun.cn/course/1291/task/62037/show
 
 react面试题
 https://gitee.com/zhufengpeixun/zhufengreactinterview2020
+https://gitee.com/zhufengpeixun/zhufengreactinterview2020/blob/master/%E6%AF%8F%E6%97%A5%E9%9D%A2%E8%AF%95%E9%A2%98.md
 
 ## 1. 什么是高阶组件?你在工作中是如何应用的?
 - 高阶组件（HOC）是传入一个组件返回一个新的组件的函数，将一个组件转化成另一个组件，主要用于复用组件逻辑。类比于高阶函数，借助Aop切片思想和装饰器模式，对组件进行包装，不改变原始组件，增加可服用对逻辑。
@@ -33,4 +34,7 @@ HOC等应用：redux的connect，监控组件性能的日志组件等。
 Props，组件的属性，配置项，接受父组件的参数传递，对于使用它的组件来说，是只读的，要想修改Props，只能通过该组件的父组件修改，但是子组件defaultProps可以设置默认值。
 state，组件的状态，是一种数据结构，组件默认挂载时所需的数据，state可以通过setSate进行修改。
 
+## 5. redux的理解
+
+## 6. 什么是受控组件和非受控组件？
 
