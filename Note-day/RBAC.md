@@ -59,4 +59,5 @@
 - 路由添加鉴权的中间件
 
 ## 前端 umi
-- yarn global add create-umi 
+- 
+- sudo yarn global add umi
