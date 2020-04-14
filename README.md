@@ -13,11 +13,13 @@
    3. nrm
 
 4. git
-5. 设置环境变量：
+5. Transmit + terminal
+6. iterm2
+7. 设置环境变量：
    1. vim ～/.bash_profile // bash
    2. vim ～/.zshrc // zsh
    3. source ~/.bash_profile // 在～/.zshrc中添加改语句可以同时刷新bash配置
-6. mysql
+8. mysql
    1. 下载：https://dev.mysql.com/downloads/mysql/5.5.html
    2. zwwl: root zwwl123456
    3. 
@@ -63,7 +65,7 @@
       1.  use mysql;
       2.  alter user root@localhost identified with mysql_native_password by zwwl123456;
       3.  flush privileges;
-7. redis
+9. redis
    1. 下载：https://redis.io/
    2. 解压：tar zxvf redis-4.0.10.tar.gz
    3. 移动到： mv redis-4.0.10 /usr/local/
@@ -86,9 +88,9 @@ ssh root@xxx.xxx.xxx.xxx -p 22
 
 29074
 
-xkGfcDTPWW4L
+L
 1. 安装wget：`yum install wget`
-2. wget下载node：`wget https://npm.taobao.org/mirrors/node/v12.16.1/node-v12.16.1-linux-arm64.tar.xz`
+2. wget下载node：`wget https://nodejs.org/dist/v12.16.2/node-v12.16.2-linux-x64.tar.xz`
 3. 解压：`tar -xf xxx.zip`
 4. 移动 `mv xxx xxx`
 5. 添加环境变量：
@@ -98,6 +100,9 @@ xkGfcDTPWW4L
       export NODE_HOME=/root/zuo/env/node-v8.11.3-linux-x64   # { 这里填解压之后node的路径}
       export PATH=$PATH:$NODE_HOME/bin
       ````
+- https://www.jianshu.com/p/9728b67a92e2
+
+
 ## git
 ### git子模块 submodule
 - 子模块的添加
@@ -173,7 +178,7 @@ xkGfcDTPWW4L
 11. Symbol Symbol.for Symbol.keyfor
 12. 迭代器 iterator
     1. 元编程：Symbol.iterator
-13. spread ...
+13. spread ...  pswd:xkGfcDTPWW4
     1.  解构赋值
     2.  展开运算符
     3.  剩余运算符
