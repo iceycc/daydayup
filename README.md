@@ -102,6 +102,9 @@ L
       ````
 - https://www.jianshu.com/p/9728b67a92e2
 
+## nginx
+- pid丢失：https://blog.csdn.net/qq_41642932/article/details/88668913?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1&utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1
+
 
 ## git
 ### git子模块 submodule
