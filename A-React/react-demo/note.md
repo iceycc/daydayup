@@ -26,4 +26,4 @@
 
 ## React生命周期
 
-## Reactg
+## smart组件和react组件
