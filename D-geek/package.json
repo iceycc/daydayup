@@ -1,0 +1,16 @@
+{
+  "name": "D-geek",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "graphql": "^15.0.0",
+    "protocol-buffers": "^4.1.2"
+  }
+}

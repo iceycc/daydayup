@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // mdn : type Array
+        // Float 
+        /**
+         var a = 0.1;
+        var b = 0.2;
+        const memory = new Float64Array(1);
+        memory[0] = a;
+        console.log(memory)
+        const intarr = new Uint8Array(memory.buffer)
+        console.log(intarr) // Uint8Array(8) [154, 153, 153, 153, 153, 153, 185, 63]
+        for(let i = 0;i<8;i++){
+            let s = (intarr[i].toString(2));
+            console.log(new Array(9-s.length).join('0')+s);
+        }
+         **/
+
+         /*
+            Math.abs(0.1 + 0.2 - 0.3) <= Number.EPSILON
+         */
+        // padStart
+        // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Float64Array
+         var a = 0.1;
+         var b = 0.2;
+         const intarr = new Uint8Array(8);
+         const memory = new Float64Array(intarr.buffer);
+         intarr[0] = 0b00001000
+         intarr[1] = 0b00000000
+    </script>   
+</body>
+</html>
