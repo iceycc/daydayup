@@ -4,6 +4,9 @@ import {observable, autorun} from "mobx";
 // var likes = observable.array([{title:'xxxx'}])
 // console.log(likes.length)
 
+
+
+//
 var todos = observable([
     { title: "Spoil tea", completed: true },
     { title: "Make coffee", completed: false }

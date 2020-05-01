@@ -22,6 +22,7 @@ myMap.forEach((key,value)=>{
 })
 console.log(myMap.toJS())
 console.log(myMap.toJSON())
+myMap.intercept()
 export default ()=>{
     return <div>
         7777
