@@ -1,6 +1,3 @@
-[submodule "D-leetcode"]
-	path = D-leetcode
-	url = git@github.com:iceycc/leetcode.git
 [submodule "D-public"]
 	path = D-public
 	url = git@gitee.com:jw-speed/zhufeng-public.git

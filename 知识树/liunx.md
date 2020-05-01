@@ -1,3 +1,4 @@
+##  起步
 ssh root@xxx.xxx.xxx.xxx -p 22
 1. 安装wget：`yum install wget`
 2. wget下载node：`wget https://nodejs.org/dist/v12.16.2/node-v12.16.2-linux-x64.tar.xz`
@@ -11,5 +12,10 @@ ssh root@xxx.xxx.xxx.xxx -p 22
       export PATH=$PATH:$NODE_HOME/bin
       ````
 - https://www.jianshu.com/p/9728b67a92e2
-- 解决centos下nodejs使用了ccap验证码报错version `GLIBC_2.14' not found的问题: https://segmentfault.com/a/1190000008891935
+- centos6.5安装node12，解决centos下nodejs使用了ccap验证码报错version `GLIBC_2.14' not found的问题: https://segmentfault.com/a/1190000008891935
+
+## 记录
+-  Linux下查看Nginx安装目录、版本号信息?：
+   -  ps  -ef | grep nginx
+   -  https://www.cnblogs.com/hellowzd/p/6228144.html
 
