@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    var ws = new WebSocket("wss://echo.websocket.org");
+    console.log('a',ws.readyState) // 0
+    // 连接
+    ws.onopen = function(evt) {
+      console.log("Connection open ..."); 
+      console.log('b',ws.readyState) // 1 
+      ws.send("Hello WebSockets!");
+    };
+    ws.addEventListener('open', function (event) {
+      ws.send('Hello Server! -----------1');
+    });     
+
+    // 接受信息
+    ws.onmessage = function(event){
+      if(typeof event.data === String) {
+        console.log("Received data string");
+      }
+
+      if(event.data instanceof ArrayBuffer){
+        var buffer = event.data;
+        console.log("Received arraybuffer");
+      }
+    }
+    
+    // 发送信息
+    ws.send('send message!!')
+    
+    // 关闭信息
+    ws.onclose = function(evt) {
+      console.log("Connection closed.");
+      console.log('d',ws.readyState) // 3
+    }; 
+  </script>
+</body>
+</html>

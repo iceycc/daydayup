@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const ws = new WebSocket('ws://MacBook-Pro.local:8080/')
+
+        ws.addEventListener('open',(evt)=>{
+            console.log('Connection open...')
+            ws.send('Hello WebSocket!! aaaaaaaa')
+        })
+
+        ws.addEventListener('message',(evt)=>{
+            console.log( "Received Message: " + evt.data);
+            // setTimeout(()=>{
+            //     ws.close()
+            // },1000 * 10)
+        })
+
+        ws.addEventListener('close',(evt)=>{
+            console.log('Connection close...')
+        })
+
+        ws.addEventListener('error',(evt)=>{
+            console.log(evt)
+
+        })
+
+    </script>   
+</body>
+</html>
