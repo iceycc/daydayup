@@ -19,3 +19,7 @@ ssh root@xxx.xxx.xxx.xxx -p 22
    -  ps  -ef | grep nginx
    -  https://www.cnblogs.com/hellowzd/p/6228144.html
 
+
+1. 权限相关 https://blog.csdn.net/u013197629/article/details/73608613
+2. 
+
