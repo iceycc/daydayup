@@ -60,6 +60,10 @@ function bsearch(A,x){
         guess
 
     while(l<=r){
-        
+        guess = Math.floor((l+r)/2)
+        if(A[guess] === x) return guess
+        else if(A[guess]>x) r = guess -1
+        else l = guess+ 1
     }
+    return -1
 }
