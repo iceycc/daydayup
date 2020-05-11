@@ -59,34 +59,50 @@ function insert3(A,x){
         A[p+1] = A[p] // 表
         p--
     }
-    A[p +1] = x
+    
 }
 insert3(A,2)
 console.log('3',A)
 
 
-const arr = [3,1,4,7,5,10,2,6]
-function insert4(A,i,x){
-    let p = i -1 // p指向下一个需要比较的元素，刚开始第2个和第一个比较
-    while(p>=0 && A[p]>x){ // 执行时间不固定
-        // (N^2-n)/2
-        A[p+1] = A[p]
-        p--
-    }
-    A[p+1] = x
-}
+// const arr = [3,1,4,7,5,10,2,6]
+// function insert4(A,i,x){
+//     let p = i -1 // p指向下一个需要比较的元素，刚开始第2个和第一个比较
+//     while(p>=0 && A[p]>x){ // 执行时间不固定
+//         // (N^2-n)/2
+//         A[p+1] = A[p]
+//         p--
+//     }
+//     A[p+1] = x
+// }
 
-// 第二步：完整的插入排序
-function insertion_sort(A){
-    for(let i = 1;i<A.length;i++){
-        console.log(arr)
-        insert4(A,i,A[i]) // 主程序 N-1
-    }
-}
+// // 第二步：完整的插入排序
+// function insertion_sort(A){
+//     for(let i = 1;i<A.length;i++){
+//         console.log(arr)
+//         insert4(A,i,A[i]) // 主程序 N-1
+//     }
+// }
 
-insertion_sort(arr)
-console.log('insertion_sort',arr)
+// insertion_sort(arr)
+// console.log('insertion_sort',arr
 
 //  思考 如何使用类似二分查找优化插入排序的insert过程
 //     速度会变快吗。怎么写
 
+
+function insert(A,i,x){
+    let p = i
+    while(p>0 && A[p]>x){
+        A[p+1] = A[p]
+        p--
+    }
+    P[p+1] = x
+}
+
+
+function insert_sort(arr){
+    for(let i = 1; i<arr.length;i++){
+        insert(arr,i,x)
+    }
+}
