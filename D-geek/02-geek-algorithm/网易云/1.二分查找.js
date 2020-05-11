@@ -52,3 +52,14 @@ let x3 = 44
 console.log(bsearch(arr,x1))
 console.log(bsearch(arr,x2))
 console.log(bsearch(arr,x3))
+
+
+function bsearch(A,x){
+    let l = 0,
+        r = A.length - 1,
+        guess
+
+    while(l<=r){
+        
+    }
+}
