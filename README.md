@@ -1,4 +1,7 @@
 
+## 打包优化
+https://github.com/flytam/blog/issues/6
+https://github.com/babel/babel/issues/8829
 
 ## vim
 1. mac vim安装配置：https://blog.csdn.net/weixin_38169413/article/details/83098902
