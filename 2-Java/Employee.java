@@ -6,7 +6,7 @@ public class Employee{
     private String designation;
     private static double salary; // 静态对私有变量
 
-    public static final String DEP = '开发人员';
+    public static final String DEP = "开发人员";
 
     // Employee构造器
     public Employee(String empName){

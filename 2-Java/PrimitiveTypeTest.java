@@ -25,29 +25,29 @@ public class PrimitiveTypeTest{
 }
 
 
-public class Test{
-    static boolean bool;
-    static byte by;
-    static short sh;
-    static long lo;
-    static int in;
-    static float fl;
-    static double do;
-    static char ch;
-    static String str;
+// public class Test{
+//     static boolean bool;
+//     static byte by;
+//     static short sh;
+//     static long lo;
+//     static int in;
+//     static float fl;
+//     static double dou;
+//     static char ch;
+//     static String str;
 
-    public static void main(String[] args){
-        System.out.println("Bool :" + bool);
-        System.out.println("Byte :" + by);
-        System.out.println("Character:" + ch);
-        System.out.println("Double :" + d);
-        System.out.println("Float :" + f);
-        System.out.println("Integer :" + i);
-        System.out.println("Long :" + l);
-        System.out.println("Short :" + sh);
-        System.out.println("String :" + str);
-    }
-}
+//     public static void main(String[] args){
+//         System.out.println("Bool :" + bool);
+//         System.out.println("Byte :" + by);
+//         System.out.println("Character:" + ch);
+//         System.out.println("Double :" + dou);
+//         System.out.println("Float :" + fl);
+//         System.out.println("Integer :" + in);
+//         System.out.println("Long :" + lo);
+//         System.out.println("Short :" + sh);
+//         System.out.println("String :" + str);
+//     }
+// }
 
 // int decimal = 100;
 // int octal = 0144;
