@@ -13,9 +13,6 @@
 [submodule "D-FE-01-geek"]
 	path = D-FE-01-geek
 	url = git@github.com:iceycc/Frontend-01-Template.git
-[submodule "D-python/code_demo"]
-	path = D-python/code_demo
-	url = git@github.com:iceycc/code_demo.git
 [submodule "U-updating/1.zf-react-interview2020"]
 	path = U-updating/1.zf-react-interview2020
 	url = git@gitee.com:zhufengpeixun/zhufengreactinterview2020.git
