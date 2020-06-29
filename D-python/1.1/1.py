@@ -34,4 +34,3 @@ class Preson:
 
 me = Preson('Wang','Bingyang')
 print(f'{me}')
-repr(f'{me}'
