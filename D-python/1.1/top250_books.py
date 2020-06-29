@@ -29,6 +29,12 @@ urls = tuple(f'https://book.douban.com/top250?start={ page * 25}' for page in ra
 ##     astring = 'https://book.douban.com/top250?start={ page * 25}'
 ##     urls = tuple(astring)
 
+# urls = []
+# for page in range(10):
+#     urls.append('https://book.douban.com/top250?start='+str(page* 25))
+
+# print(urls)
+
 
 from time import sleep
 ## autopep8 或者其他 IDE 会自动调整 import from 到文件最开头，
