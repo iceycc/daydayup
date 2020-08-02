@@ -25,6 +25,7 @@ from time import ctime,sleep
 
 def outer2(func):
     def inner2(*args,**kwargs):
+        print(args,kwargs)
         print("%s called at %s"%(func.__name__,ctime()))
         func(*args,**kwargs)
     return inner2
@@ -35,7 +36,7 @@ def foo2(a,b,c):
     
 foo2(1,3,5)
 sleep(2)
-foo2(1,2,3)
+foo2(1,2,c=3)
 
 ############################################
 

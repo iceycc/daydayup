@@ -1,6 +1,6 @@
 # 用在哪里
 
-# 注册
+# 注册 flask
 @route('index',methods=['GET','POST'])
 def static_html():
     return  render_templete('index.html')

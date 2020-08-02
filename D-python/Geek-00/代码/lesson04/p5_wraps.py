@@ -25,9 +25,11 @@ def outer_arg(bar):
 
 @outer_arg('foo_arg')
 def foo(a,b,c):
+    """ __doc__ foo  doc """
     return (a+b+c)
     
-print(foo.__name__)
+print(foo.__name__) # 不加wraps打印的是inner函数的信息
+print(foo.__doc__)
 
 
 ########################
