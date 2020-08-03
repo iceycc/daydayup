@@ -49,7 +49,7 @@ def func_demo():
     pass
 
 ########################
-
+# 打印日志！！
 from functools import wraps
  
 def logit(logfile='out.log'):
