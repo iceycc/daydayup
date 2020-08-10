@@ -1,6 +1,6 @@
 # Python 2.6 开始添加类装饰器
 from functools import wraps
- 
+## self \ cls
 class MyClass(object):
     def __init__(self, var='init_var', *args, **kwargs):
         self._v = var

@@ -15,10 +15,15 @@ h1.gender
 # AttributeError:
 h2.gender = 'F'
 
+# __getaddt__
+# __getattribute__
+# __get__
+# @property
 
 
 #################
-# GOD
+# GOD 
+# 中间处理
 class Human2(object):
     def __init__(self):
         self._gender = None
@@ -42,6 +47,8 @@ h = Human2()
 h.gender2 = 'F'
 h.gender2
 del h.gender2
+
+
 # 另一种property写法
 # gender  = property(get_, set_, del_, 'other property')
 
@@ -88,3 +95,8 @@ class Property(object):
 
     def deleter(self, fdel):
         return type(self)(self.fget, self.fset, fdel, self.__doc__)
+
+
+class Human3(object):
+    def __getattribute__(self, name):
+        return super().__getattribute__(name)

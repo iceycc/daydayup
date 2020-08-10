@@ -7,7 +7,7 @@ from werkzeug.utils import cached_property
 class Foo(object):
     @cached_property
     def cal(self):
-        print('show me one time')
+        print('show me one time') # 第一次打印类 ，第二次没有 已经缓存类
         var1 = 'cached info'
         return var1
 
@@ -79,7 +79,7 @@ class XXYunBase(object):
     
     @property
     def eip_(self):
-        return partial(xxyun_client, 'eip', self.ak, self.sk)
+        return partial(xxyun_client, 'eip', self.ak, self.sk) # 偏函数
     
     @property
     def vpc_(self):

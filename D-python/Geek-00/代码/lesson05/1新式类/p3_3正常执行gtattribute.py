@@ -13,6 +13,10 @@ h1 = Human2()
 print(h1.age)
 # 存在的属性返回取值
 print(h1.noattr)
-# 不存在的属性返回 AttributeError:
+# 不存在的属性返回 AttributeError: AttributeError: 'Human2' object has no attribute 'noattr'
 
+# __getaddt__
+# __getattribute__
+# __get__
+# @property
 

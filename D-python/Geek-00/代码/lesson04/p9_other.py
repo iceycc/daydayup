@@ -19,7 +19,7 @@ class MyClass:
 def attrs(**kwds):
     def decorate(f):
         for k in kwds:
-            setattr(f, k, kwds[k])
+            setattr(f, k, kwds[k]) # 给函数增加一个字典类型的key value
         return f
     return decorate
 
@@ -157,11 +157,23 @@ class MyClass:
     def __init__(self, var_a, var_b):
         self.var_a = var_a
         self.var_b = var_b
+    def __eq__(self,other):
+        if self.__class__ is not other.__class__:
+            return False
+        return (self.var_a,self.var_b) == (other.var_a,other.var_b)
 
+var3 = MyClass('x','y')
+var4 = MyClass('x','y')
+
+var3 == var4
 @dataclass
 class MyClass:
     var_a: str
     var_b: str
+
+## 不用在类中重新封装 __eq__
+var_1 == var_2
+## 存在问题；var_a var_b不能作为类属性访问，数据类型str的声明是无效的？3.7
 
 ############################################
 

@@ -1,3 +1,4 @@
+
 # I have a dream
 class MyFirstClass:
     pass
@@ -21,7 +22,7 @@ class Human(object):
     # 静态字段
     live = True
 
-    def __init__(self, name):
+    def __init__(self, name): # 不是构造函数
         # 普通字段
         self.name = name
 
