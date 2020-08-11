@@ -30,6 +30,6 @@ if __name__ == '__main__':
     print(s.get_apple_to_eve())
     print(Story.get_apple_to_eve())
     print(type(s).__dict__['get_apple_to_eve'].__get__(s,type(s)))
-    print(type(s).__dict__['get_apple_to_eve'].__get__(s,type(s)) == s.get_apple_to_eve)
+    print(type(s).__dict__['get_apple_to_eve'].__get__(s,type(s)) == s.get_apple_to_eve) # 判断下类上的该方法和实例的是一个
 
 

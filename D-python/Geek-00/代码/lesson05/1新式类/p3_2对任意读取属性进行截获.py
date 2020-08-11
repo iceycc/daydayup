@@ -10,5 +10,5 @@ class Human2(object):
 
 h1 = Human2()
 
-h1.age
-h1.noattr
+h1.age # 存在属性
+h1.noattr # 不存在的属性

@@ -5,7 +5,7 @@ class Human2(object):
         """
         print('Human2:__getattribute__')
         try:
-            return super().__getattribute__(item)
+            return super().__getattribute__(item) # super??-> 返回父类的，返回自己的会死循环
         except Exception as e:
             self.__dict__[item] = 100
             return 100

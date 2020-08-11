@@ -5,7 +5,7 @@ import scrapy
 import sys
 import io
 
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding = 'gb18030')
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding = 'gb18030') # windows输出乱码
 
 class ExampleSpider(scrapy.Spider):
     name = 'example'
@@ -15,4 +15,4 @@ class ExampleSpider(scrapy.Spider):
     def parse(self, response):
         print(response.url)
         print(response.text) 
-        new_response = str(response.body, encoding='utf-8')
+        new_response = str(response.body, encoding='utf-8') # windows乱码
