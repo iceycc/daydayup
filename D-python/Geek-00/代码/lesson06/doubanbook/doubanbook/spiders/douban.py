@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from bs4 import BeautifulSoup
-from doubanbook.items import DoubanbookItem
+from doubanbook.items import DoubanbookItem ## --？
 
 
 class DoubanSpider(scrapy.Spider):
@@ -18,7 +18,7 @@ class DoubanSpider(scrapy.Spider):
     def start_requests(self):
         for i in range(0, 10):
             url = f'https://book.douban.com/top250?start={i*25}'
-            yield scrapy.Request(url=url, callback=self.parse)
+            yield scrapy.Request(url=url, callback=self.parse) # 创建请求给引擎，放入队列中
             # url 请求访问的网址
             # callback 回调函数，引擎回将下载好的页面(Response对象)发给该方法，执行数据解析
             # 这里可以使用callback指定新的函数，不是用parse作为默认的回调参数

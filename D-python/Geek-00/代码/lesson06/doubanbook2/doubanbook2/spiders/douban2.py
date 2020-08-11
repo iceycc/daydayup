@@ -29,12 +29,16 @@ class Douban2Spider(scrapy.Spider):
     #         # print('-----------')
     #         print(title.extract_first().strip())
     #         print(link.extract_first().strip())
-    # import scrapy.crawler.settings
+
+    # import scrapy.crawler.settings  获取settings里的配置
 
 
-
+    # 自动限速
+    # 延迟请求
 
     # 7.4 login  
+    # settings修改cookie携带为ture
+   
     def start_requests(self):
         yield scrapy.FormRequest(
             url = 'https://accounts.douban.com/j/mobile/login/basic',
