@@ -13,9 +13,9 @@ def f(name):
     print(f'hello {name}')
 
 if __name__ == '__main__':
-    p = Process(target=f, args=('john',))
+    p = Process(target=f, args=('john',)) # 元组的逗号不能省略
     p.start()
-    p.join()
+    p.join() # 父进程在子进程结束后才能结束
 # join([timeout])
 # 如果可选参数 timeout 是 None （默认值），则该方法将阻塞，
 # 直到调用 join() 方法的进程终止。如果 timeout 是一个正数，

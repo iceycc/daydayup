@@ -9,11 +9,11 @@ def write(q):
     print("结束Write子进程：%s" % os.getpid())
 
 def read(q):
-    print("启动Write子进程：%s" % os.getpid())
+    print("启动Read子进程：%s" % os.getpid())
     while True:  # 阻塞，等待获取write的值
         value = q.get(True)
         print(value)
-    print("结束Write子进程：%s" % os.getpid())  # 不会执行
+    print("结束Read子进程：%s" % os.getpid())  # 不会执行
 
 if __name__ == "__main__":
     # 父进程创建队列，并传递给子进程

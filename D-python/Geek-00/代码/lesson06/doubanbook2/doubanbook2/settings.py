@@ -88,10 +88,10 @@ COOKIES_ENABLED = True
 
 # Enable and configure HTTP caching (disabled by default)
 # # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
-# HTTPCACHE_ENABLED = True
-# HTTPCACHE_EXPIRATION_SECS = 0
-# HTTPCACHE_DIR = 'httpcache'
-# HTTPCACHE_IGNORE_HTTP_CODES = []
+# HTTPCACHE_ENABLED = True # 缓存
+# HTTPCACHE_EXPIRATION_SECS = 0 # 缓存时间
+# HTTPCACHE_DIR = 'httpcache' 
+# HTTPCACHE_IGNORE_HTTP_CODES = [] # 忽略的code码
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 # from scrapy.extensions.httpcache import FilesystemCacheStorage
