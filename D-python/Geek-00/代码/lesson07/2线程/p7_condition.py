@@ -1,5 +1,6 @@
 import threading
- 
+
+# 条件锁
 def condition():
     ret = False
     r = input(">>>")
