@@ -52,13 +52,13 @@ df.T
 df.T.T
 
 # 索引重塑
-df2 = pd.DataFrame([
+df4 = pd.DataFrame([
                      ['a', 'b', 'c'], 
                      ['d', 'e', 'f']
                     ],
                     columns= ['one', 'two', 'three'],
                     index = ['first', 'second']
                    )       
-df2.stack()
-df2.unstack()    
-df2.stack().reset_index()             
+df4.stack() # 数据的透视表
+df4.unstack()    
+df4.stack().reset_index()             

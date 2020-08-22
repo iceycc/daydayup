@@ -1,7 +1,8 @@
-import pandas as pd
+import pandas as pd 
 import numpy as np
-import matplotlib as plt
+import matplotlib as plt # 绘图 
 
+## 读文件 分析
 df = pd.read_csv('book_utf8.csv')
 # 输出全部内容
 print(df)
@@ -26,7 +27,7 @@ df [ df['star'] == '力荐' ]
 # 缺失数据
 df.dropna()
 
-# 数据聚合
+# 数据聚合 # spark的时候
 df.groupby('star').sum()
 
 # 创建新列

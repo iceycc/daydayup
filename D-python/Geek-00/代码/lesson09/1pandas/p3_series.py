@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-
+## Series
 # 从列表创建Series
 pd.Series(['a', 'b', 'c'])
 # 0    a

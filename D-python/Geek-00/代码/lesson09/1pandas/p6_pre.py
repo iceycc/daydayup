@@ -14,7 +14,7 @@ df3=pd.DataFrame({"A":[5,3,None,4],
                  "C":[4,3,8,5], 
                  "D":[5,4,2,None]}) 
 df3.ffill() # 前一列
-df3.ffill(axis=1)  #前一行
+df3.ffill(axis=1).ffill()  #前一行
 
 # 缺失值删除
 excel1 = pd.read_excel(r'0321.xlsx')
