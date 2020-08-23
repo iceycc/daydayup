@@ -6,7 +6,7 @@
 from sqlalchemy import create_engine
 
 engine = create_engine(
-        "mysql+pymysql://root:rootroot@localhost:3306/test?charset=utf8", 
+        "mysql+pymysql://root:zwwl123456@localhost:3306/rbac?charset=utf8mb4", 
         echo=True)
 # echo=True：用于显示SQLAlchemy在操作数据库时所执行的SQL语句情况，
 # 相当于一个监视器，可以清楚知道执行情况。
@@ -26,6 +26,7 @@ class Mytable(Base):
     name = Column(String(10), unique=True)
     age = Column(Integer)
 
+############## 创建表
 Base.metadata.create_all(engine)
 
 ############## 删除表
@@ -58,6 +59,7 @@ get_data = session.query(Mytable).all()
 for i in get_data:
     print(f'我的名字:{i.name}')
     print(f'我的年龄:{i.age}')
+
 session.close()
 
 # 设置筛选条件
@@ -65,7 +67,9 @@ get_data = session.query(Mytable.name, Mytable.age).filter_by(id=1).all()
 for i in get_data:
     print(f'我的名字:{i.name}')
     print(f'我的年龄:{i.age}')
+
 session.close()
+
 
 # 多条件查询
 # and

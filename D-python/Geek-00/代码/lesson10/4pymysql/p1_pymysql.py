@@ -13,7 +13,7 @@ dbInfo = {
     'db' : 'rbac'
 }
 
-sqls = ['select 1', 'select VERSION()']
+sqls = ['select 1', 'select VERSION()','select * from role']
 
 result = []
 
@@ -41,7 +41,7 @@ class ConnDB(object):
         try:
             for command in self.sqls:
                 cur.execute(command)
-                result.append(cur.fetchone())
+                result.append(cur.fetchall())
             # 关闭游标
             cur.close()
             conn.commit()
