@@ -22,6 +22,7 @@ def sim_10(word, n=10):
     all_dists = [(gv.itos[i], torch.dist(word, w)) for i, w in enumerate(gv.vectors)]
     return sorted(all_dists, key=lambda t: t[1])[:n]
 sim_10(get_wv('tokyo'))
+# [('tokyo', tensor(0.)), ('osaka', tensor(3.2893)), ('seoul', tensor(3.3802)), ('shanghai', tensor(3.6196)), ('japan', tensor(3.6599)), ('japanese', tensor(4.0788)), ('singapore', tensor(4.1160)), ('beijing', tensor(4.2423)), ('taipei', tensor(4.2454)), ('bangkok', tensor(4.2459))]
 
 def analogy(w1, w2, w3, n=5, filter_given=True):
     print(f'[ {w1} : {w2} :: {w3} : ? ]')

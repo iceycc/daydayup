@@ -14,7 +14,7 @@ star_to_number = {
 }
 df['new_star'] = df['star'].map(star_to_number)
 # 用第一个评论做测试
-first_line = df[df['new_star'] == 3].iloc[0]
+first_line = df[df['new_star'] == 1].iloc[0]
 text = first_line['shorts']
 s = SnowNLP(text)
 print(f'情感倾向: {s.sentiments} , 文本内容: {text}')

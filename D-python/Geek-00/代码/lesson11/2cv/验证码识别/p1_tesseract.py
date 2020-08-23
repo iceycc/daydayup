@@ -19,7 +19,7 @@ im.show()
 
 # 灰度图片
 gray = im.convert('L')
-gray.save('c_gray2.jpg')
+gray.save('c_gray3.jpg')
 im.close()
 
 # 二值化

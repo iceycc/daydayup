@@ -5,24 +5,24 @@ s = SnowNLP(text)
 # 1 中文分词
 s.words
 
-# 2 词性标注
+# 2 词性标注 隐马尔可夫模型
 list(s.tags)
 
-# 3 情感分析
-s.sentiments
+# 3 情感分析  朴素贝叶斯分类器
+s.sentiments # 1更正向  snowNLP主要用电商评论来对。
 text2 = '这本书烂透了'
 s2 = SnowNLP(text2)
 s2.sentiments
 
-# 4 拼音
+# 4 拼音 (Trie树)
 s.pinyin
 
-# 5 繁体转简体
+# 5 繁体转简体 
 text3 = '後面這些是繁體字'
 s3 = SnowNLP(text3)
 s3.han
 
-# 6 提取关键字
+# 6 提取关键字 提取关键字还是用jieba
 s.keywords(limit=5)
 
 # 7 信息衡量
@@ -34,3 +34,6 @@ from snownlp import seg
 seg.train('data.txt')
 seg.save('seg.marshal')
 # 修改snownlp/seg/__init__.py的 data_path 指向新的模型即可
+
+# china   beijing
+#   ?     tokyo
