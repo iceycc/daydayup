@@ -7,7 +7,7 @@ import multiprocessing
 def info(title):
     print(title)
     print('module name:', __name__)
-    print('parent process:', os.getppid())
+    print('parent process:', os.getppid()) # 父进程的id
     print('process id:', os.getpid())
 
 def f(name):
@@ -19,7 +19,7 @@ if __name__ == '__main__':
     p = Process(target=f, args=('bob',))
     p.start()
 
-    for p in multiprocessing.active_children():
+    for p in multiprocessing.active_children(): # 正在运行的进程，
         print(f'子进程名称: {p.name}  id: { str(p.pid) }' )
     print('进程结束')
     print(f'CPU核心数量: { str(multiprocessing.cpu_count()) }')

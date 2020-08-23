@@ -17,3 +17,6 @@ lastname = 'wilson'
 print('Hello, %s %s.' % (lastname, firstname)) print('Hello, {1} {0}.'.format(firstname, lastname)) print(f'Hello, {lastname} {firstname}.')
 ```
 4. 编写爬虫需要掌握的 HTTP 、HTML 基础知识
+
+## 面向对象
+属性

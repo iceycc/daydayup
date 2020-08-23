@@ -1,13 +1,20 @@
+import os
+from os import path
 import numpy as np
 from wordcloud import WordCloud,STOPWORDS,ImageColorGenerator
 from PIL import Image
 from matplotlib import pyplot as plt
 from matplotlib.pyplot import imread
 import random
-text_list = ['汤川', '东野', '短篇', '故事', '伽利略', '系列', '汤川学', '魔术', '神探', '扩写']
+text_list = ['炒菜不放姜', '栩栩', '北冰洋','短篇', '故事', '伽利略', '系列', '汤川学', '魔术', '神探', '扩写']
 
 text_string = ','.join(text_list)
-
+# 当前文件所在目录
+dir = path.dirname(__file__)
+# 读取背景图片
+background_Image = np.array(Image.open(path.join(dir, 'sp_background.jpg')))
+# 提取背景图片颜色
+img_colors = ImageColorGenerator(background_Image)
 # 生成词云
 wc = WordCloud(
   width = 600,      #默认宽度
@@ -15,7 +22,7 @@ wc = WordCloud(
   margin = 2,       #边缘
   ranks_only = None, 
   prefer_horizontal = 0.9,
-  mask = None,      #背景图形,如果想根据图片绘制，则需要设置    
+  mask = background_Image,      #背景图形,如果想根据图片绘制，则需要设置    
   color_func = None,
   max_words = 200,  #显示最多的词汇量
   stopwords = None, #停止词设置，修正词云图时需要设置
@@ -35,14 +42,15 @@ wc = WordCloud(
   max_font_size = 200)
 
 wc.generate_from_text(text_string)
-
+# 根据图片色设置背景色
+wc.recolor(color_func = img_colors)
 
 # 显示图像
 plt.imshow(wc, interpolation = 'bilinear')
 plt.axis('off')
 plt.tight_layout()
 # 存储图像
-wc.to_file('book.png')
+wc.to_file('book1.png')
 
 plt.show()
 

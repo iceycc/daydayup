@@ -1,3 +1,4 @@
+# 自定义异常
 class UserInputError(Exception):
     def __init__(self, ErrorInfo):
         super().__init__(self, ErrorInfo)

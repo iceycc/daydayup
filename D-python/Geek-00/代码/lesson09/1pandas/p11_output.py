@@ -22,3 +22,9 @@ inf_rep = 0
 
 # 导出为.csv文件
 to_csv()
+
+# 性能
+df.to_pickle('xx.pkl') # pandas格式，性能高，但是普及低
+
+egg(sum) # 直接用pandas的原声函数会快
+egg(lambda x: x:sum()) # 慢 python的方法

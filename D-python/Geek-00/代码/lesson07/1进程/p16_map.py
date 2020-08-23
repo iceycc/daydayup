@@ -17,4 +17,4 @@ if __name__ == '__main__':
         print(it.next(timeout=1))           # prints "4" unless your computer is *very* slow
 
         result = pool.apply_async(time.sleep, (10,))
-        print(result.get(timeout=1))        # raises multiprocessing.TimeoutError
+        print(result.get(timeout=1))        # raises multiprocessing.TimeoutError # 超时异常

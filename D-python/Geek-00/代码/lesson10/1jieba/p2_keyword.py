@@ -3,8 +3,8 @@ text = '机器学习，需要一定的数学基础，需要掌握的数学基础
 # 基于TF-IDF算法进行关键词抽取
 tfidf = jieba.analyse.extract_tags(text,
 topK=5,                   # 权重最大的topK个关键词
-withWeight=False)         # 返回每个关键字的权重值
-# 基于TextRank算法进行关键词抽取
+withWeight=True)         # 返回每个关键字的权重值
+# 基于TextRank算法进行关键词抽取  page
 textrank = jieba.analyse.textrank(text,
 topK=5,                   # 权重最大的topK个关键词
 withWeight=False)         # 返回每个关键字的权重值

@@ -5,7 +5,7 @@ def ex1():
     return 3
 
 def ex2():
-    ex1_result = yield from ex1()
+    ex1_result = yield from ex1() # 将后面的函数执行 如果有yield
     print(f'ex1 : {ex1_result}')
     yield None
 

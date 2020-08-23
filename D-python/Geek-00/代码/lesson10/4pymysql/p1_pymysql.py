@@ -9,8 +9,8 @@ dbInfo = {
     'host' : 'localhost',
     'port' : 3306,
     'user' : 'root',
-    'password' : 'rootroot',
-    'db' : 'test'
+    'password' : 'zwwl123456',
+    'db' : 'rbac'
 }
 
 sqls = ['select 1', 'select VERSION()']
@@ -53,3 +53,9 @@ class ConnDB(object):
 if __name__ == "__main__":
     db = ConnDB(dbInfo, sqls)
     print(result)
+
+
+## 开始连接：ip port username password db
+## 创建连接 
+## 创建游标
+## 数据库操作：增删该查

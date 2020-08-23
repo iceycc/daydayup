@@ -1,4 +1,4 @@
-import aiohttp
+import aiohttp # 可以用协程的方式实现协程的http客户端
 import asyncio
 
 url = 'http://httpbin.org/get'

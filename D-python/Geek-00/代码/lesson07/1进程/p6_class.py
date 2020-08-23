@@ -15,6 +15,7 @@ class NewProcess(Process): #继承Process类创建一个新类
 
 for i in range(2):
     p = NewProcess(i)
-    p.start()
+    p.start() # 执行run了
 # 当不给Process指定target时，会默认调用Process类里的run()方法。
 # 这和指定target效果是一样的，只是将函数封装进类之后便于理解和调用。
+

@@ -8,5 +8,6 @@ class Open:
     def __call__(self):
         pass
 
+##  上下文协议
 with Open() as f:
     pass

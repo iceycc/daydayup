@@ -7,7 +7,7 @@ urls = [
     'http://httpbin.org/ip',
     'http://httpbin.org/headers'
 ]
-
+# 用协程同时爬四个网站
 async def  crawler():
     async with aiohttp.ClientSession() as session:
         futures = map(asyncio.ensure_future, map(session.get, urls))
