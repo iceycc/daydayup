@@ -10,6 +10,7 @@ def index():
 def about():
    return 'about'
 
+# 模版测试
 @app.template_test('current_link')
 def current_link(link):
     return link == request.path

@@ -7,13 +7,15 @@
     {% set links=[
             ('Home', url_for('.index')), 
             ('About', url_for('.about')), 
+            ('Home1', url_for('.home1')), 
+            ('Home2', url_for('.home2')),
             ]
     %}
-
+    <!--  loop.index loop.index0 loop.first loop.last loop.lenght-->
     <nav>
         {% for label, href in links %}
             {% if loop.index is odd %} | {% endif %}
-                <a href="{{ href }}">{{ label }}</a>
+            <a href="{{ href }}">{{ label }}</a>
         {% endfor %}
     </nav>
 
