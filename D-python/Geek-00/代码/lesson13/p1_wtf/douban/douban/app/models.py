@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String, Float
 from flask_sqlalchemy import SQLAlchemy
 from app import db
 
+# 模型
 class T1(db.Model):
     __tablename__ = 't1'
 
@@ -9,3 +10,7 @@ class T1(db.Model):
     n_star = db.Column(db.Integer)
     short = db.Column(db.String(255))
     sentiment = db.Column(db.Float)
+
+# ORM -
+
+# pymysql conn select close

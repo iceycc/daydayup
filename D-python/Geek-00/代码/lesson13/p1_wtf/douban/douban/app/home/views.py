@@ -13,7 +13,8 @@ def dashboard():
 
 @home.route('/result')
 def result():
-        shorts = T1.query.all()[0:10]
+        # shorts = T1.query.all()
+        shorts =[{'id':1,'short':'xxxxx','n_star':11,'sentiment':11111111}]
         return render_template('/home/result.html', shorts=shorts)
 
 # 使用request登陆
@@ -78,7 +79,7 @@ def delcookie():
 from flask import session
 @home.route('/setsession')
 def setsession():
-    session['name'] = 'wilson'
+    session['name'] = 'wilson' # 实际生产session需要集群共享。需要放到radius之类的东西里
     return 'session设置成功'
 
 @home.route('/getsession')

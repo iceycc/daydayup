@@ -20,10 +20,12 @@ from flask import Flask
 from flask_script import Manager
 
 manager = Manager(app)
+# 定制命令行 manager / click模块
+# 
 
 @manager.command
 def dev():
-    from livereload import Server
+    from livereload import Server # 自动刷新
     live_server = Server(app.wsgi_app)
     live_server.watch("**/*.*")
     live_server.serve(open_url=True)
