@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container">
+        <button onclick="start()">开始监听</button>
+        <button onclick="changeAttribute()">修改属性</button>
+        <button onclick="addChild()">添加子节点，然后3秒后再把这个子节点删除</button>
+    </div>
+    <script>
+        let container = document.getElementById('container');
+        //后来呢浏览器实出一个功能，可以让我们监听DOM添加事件
+        //如果采用同步，就会出卡顿
+        //如果采用异步 会出现回调函数执行不及时的情况
+        //异步+微任务
+        /*  for (let i = 0; i < 10000; i++) {
+             container.appendChild(document.createElement('div'));
+         } */
+        let config = { attributes: true, childList: true, subtree: true };
+        function callback(mutationsList) {
+            for (let item of mutationsList) {
+                console.log(item);
+                if (item.type === 'childList') {
+                    console.log('一个子节点被添加或删除了');
+
+                } else if (item.type == 'attributes') {
+                    console.log('属性[' + item.attributeName + ']改变');
+                }
+            }
+        }
+        let observer = new MutationObserver(callback);
+        function start() {
+            observer.observe(container, config);
+        }
+        function changeAttribute() {
+            container.setAttribute('data-name', '新的名字');
+        }
+        function addChild() {
+            let child = document.createElement('div');
+            child.innerHTML = '子节点';
+            container.appendChild(child);
+            setTimeout(() => {
+                container.removeChild(child);;
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

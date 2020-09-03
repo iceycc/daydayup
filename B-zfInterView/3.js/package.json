@@ -1,0 +1,18 @@
+{
+  "name": "3.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1.js",
+  "dependencies": {
+    "react": "^16.13.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.23"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //给定一组url，利用js的异步实现并发请求，并按顺序输出结果
+        // 1 2 3
+        /* function printOrder(urls) {
+            Promise.all(
+                urls.map(url => new Promise(function (resolve, reject) {
+                    let xhr = new XMLHttpRequest();
+                    xhr.open('GET', url);
+                    xhr.responseType = 'json';
+                    xhr.onload = function (event) {
+                        console.log(event.target.response);
+                        resolve(event.target.response);
+                    }
+                    xhr.send();
+                }))
+            ).then(result => {
+                console.log(result);
+            });
+        } */
+        function printOrder(urls) {
+            let result = [];
+            let count = 0;
+            function sendRequest(url, index) {
+                let xhr = new XMLHttpRequest();
+                xhr.open('GET', url);
+                xhr.responseType = 'json';
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4) {
+                        if (xhr.status == 200) {
+                            result[index] = event.target.response;
+                            count++;
+                            if (count === urls.length) {
+                                console.log(result);
+                            }
+                        } else {
+                            result[index] = xhr.statusText;
+                            count++;
+                            if (count === urls.length) {
+                                console.log(result);
+                            }
+                        }
+                    }
+                }
+                /* xhr.onload = function (event) {
+                    result[index] = event.target.response;
+                    count++;
+                    if (count === urls.length) {
+                        console.log(result);
+                    }
+                }
+                xhr.onerror = function (error) {
+                    debugger;
+                    result[index] = xhr.response;
+                    count++;
+                    if (count === urls.length) {
+                        console.log(result);
+                    }
+                } */
+                xhr.send();
+            }
+            urls.forEach((url, index) => {
+                sendRequest(url, index);
+            });
+        }
+        printOrder(['/1.json', '/2.json', '/3.json']);
+
+    </script>
+</body>
+
+</html>

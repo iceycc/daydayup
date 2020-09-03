@@ -1,9 +1,6 @@
 [submodule "D-public"]
 	path = D-public
 	url = git@gitee.com:jw-speed/zhufeng-public.git
-[submodule "B-zfInterView"]
-	path = B-zfInterView
-	url = git@gitee.com:zhufengpeixun/zhufenginterview.git
 [submodule ".\\D-geek\\04-geek-nodejs"]
 	path = D-geek/04-geek-nodejs
 	url = git@github.com:iceycc/geek-nodejs.git

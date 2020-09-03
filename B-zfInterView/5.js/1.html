@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        document.body.style = 'background:red';
+        setTimeout(() => {
+            document.body.style = 'background:yellow';
+            setTimeout(() => {
+                document.body.style = 'background:blue';
+            }, 100);
+        }, 100);
+    </script>
+</body>
+
+</html>

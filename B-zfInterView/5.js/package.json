@@ -1,0 +1,15 @@
+{
+  "name": "5.js",
+  "version": "1.0.0",
+  "description": "- pm2 核数 4\r - 1. node是属于单进程单线程\r - node node.js",
+  "main": "2.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}

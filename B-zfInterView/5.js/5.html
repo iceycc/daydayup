@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a id="link" href="http://www.baidu.com">aaa</a>
+    <script>
+        let link = document.getElementById('link');
+        let nextTick = new Promise(function (resolve) {
+            link.addEventListener('click', resolve, { once: true });
+            //link.addEventListener('click', (e)=>e.preventDefault(), { once: true });
+        });
+        nextTick.then(event => {
+            event.preventDefault();
+            console.log('preventDefault');
+        });
+        link.click();
+        console.log(1);
+        alert(2);
+
+    </script>
+</body>
+
+</html>

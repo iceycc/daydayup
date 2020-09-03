@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*  console.time('cost');
+         function task() {
+             console.log('zhufeng');
+             console.timeEnd('cost');
+         }
+         function exec() {
+             setTimeout(task, 0);
+             let start = Date.now();
+             let end = start + 500;
+             while (Date.now() < end) {
+
+             }
+         }
+         exec(); */
+    </script>
+    <script>
+        //如果说timeout嵌套超过5层 嵌套定时器的最小间隔为4ms
+
+        setTimeout(() => {
+            setTimeout(() => {
+                setTimeout(() => {
+                    setTimeout(() => {
+                        setTimeout(() => {
+                            console.time('cost');
+                            setTimeout(() => {
+                                console.timeEnd('cost');
+                            }, 0);
+                        }, 0);
+                    }, 0);
+                }, 0);
+            }, 0);
+        }, 0);
+
+    </script>
+</body>
+
+</html>

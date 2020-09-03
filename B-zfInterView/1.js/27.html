@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //blob是啥
+        //arrayBuffer 和 blob有啥区别
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', '/data');
+        xhr.responseType = 'arraybuffer';
+        xhr.onload = function (event) {
+            let buffer = xhr.response;//响应体是arraybuffer 类型
+            //array Buffer 二进制的字节数组
+            //TypeArray类型组件  DateView
+            /*  var array = new Int16Array(buffer, 4);
+             //array.length?
+             console.log(array.length);
+             for (let i = 0; i < array.length; i++) {
+                 console.log(array[i]);
+             } */
+            var dataView = new DataView(buffer);
+            console.log(dataView.getInt8(0));
+            console.log(dataView.getInt8(1));
+            console.log(dataView.getInt8(2));
+            //blob
+            
+
+        }
+        xhr.send();
+    </script>
+</body>
+
+</html>
