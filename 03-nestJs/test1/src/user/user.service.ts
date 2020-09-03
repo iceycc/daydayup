@@ -1,7 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable,OnModuleInit } from '@nestjs/common';
 
 @Injectable()
-export class UserService {
+export class UserService implements OnModuleInit {
+  onModuleInit(){
+    console.log(`The module has been initialized.`);
+  }
   getUser(): Record<string, any>[] {
     return [
       {
