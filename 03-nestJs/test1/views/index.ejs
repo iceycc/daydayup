@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %> </title>
-</head>
+<%- include('template/head') %> 
 <body>
     <h1><%= title %> </h1>
     <p><%= username %> </p>
+    <p><%= userkey %> </p>
 </body>
-<script src="/static/lib/jq.min.js"></script>
+
 <script>
     $('h1').on('click',function(){
         alert('点击了: ' + $(this).text())

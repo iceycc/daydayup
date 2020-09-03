@@ -1,13 +1,18 @@
-import { Controller, Get, Render, Query } from '@nestjs/common';
+import { Controller, Get, Render, Query, Request } from '@nestjs/common';
 
 @Controller('home')
 export class HomeController {
     @Get()
     @Render('index')
-    index(@Query('username') username:string):Record<string,any>{
+    index(@Request() req:any):Record<string,any>{
+        const cookies = req.signedCookies || {}
+        const username = cookies.username || ''
+        console.log(req.session)
+        const userkey = req.session!.userkey
         return {
-            title:'欢迎来的index页面',
-            username
+            title:'欢迎home',
+            username,
+            userkey
         }
     }
 }

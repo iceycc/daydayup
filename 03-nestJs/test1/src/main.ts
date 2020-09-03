@@ -2,6 +2,8 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { NestExpressApplication } from '@nestjs/platform-express'
 import "dotenv/config"
+import * as cookieParser from 'cookie-parser'
+import * as expressSession from 'express-session'
 import { join } from 'path'
 const PORT = process.env.PORT || 8080;
 async function bootstrap() {
@@ -13,6 +15,12 @@ async function bootstrap() {
   app.useStaticAssets(join(__dirname,'..','public'),{
     prefix:'/static/'
   })
+  app.useStaticAssets(join(__dirname,'..','bootstrap'),{
+    prefix:'/bootstrap/'
+  })
+  app.useStaticAssets(join(__dirname,'..','demo'),{
+    prefix:'/demo/'
+  })
   
   // 3. 配置视图
   app.setBaseViewsDir(join(__dirname,'..','views'))
@@ -20,6 +28,12 @@ async function bootstrap() {
   // 4. 配置模版引擎
   app.setViewEngine('ejs')
   
+  // 5. cookie
+  app.use(cookieParser(process.env.SECRET))
+
+  // 7. session 
+  app.use(expressSession({secret:process.env.SECRET,cookie:{maxAge:60 * 1000}}))
+
   // 监控端口,运行项目后浏览器直接访问localhost:3000
   await app.listen(PORT,()=>{
     console.log('启动了: http://127.0.0.1:'+PORT)
