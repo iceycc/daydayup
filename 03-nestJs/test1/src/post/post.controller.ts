@@ -1,26 +1,37 @@
-import { Controller, Get, Render, Post, Body, Response } from '@nestjs/common';
-let posts = [
-    {id:1,title:'post1',content:'x1111111'},
-    {id:2,title:'post2',content:'x222'},
-    {id:3,title:'post3',content:'x1331111'},
-    {id:4,title:'post4',content:'4411111'},
-    {id:5,title:'post5',content:'555511111'},
-]
+import { Controller, Get, Render, Post, Body, Response, Delete } from '@nestjs/common';
+import { PostService } from './post.service';
+
 @Controller('post')
 export class PostController {
+    constructor(private readonly postService: PostService) {
+
+    }
+
     @Post()
-    addPost(@Body() body:any,@Response() res:any){
-        console.log(body)
-        posts.push(body)
-        return posts
-    }    
+    async addPost(@Body() body: any, @Response() res: any) {
+        if (!body.title) {
+            return this.postPage()
+        }
+        await this.postService.addPost(body)
+        res.redirect('/post'); // 重定向到用户首页
+    }
 
     @Get()
     @Render('post')
-    postPage(){
+    async postPage() {
+        const posts = await this.postService.getPostList()
         return {
-            posts:posts
+            title: '文章2',
+            posts
         }
+    }
+
+    @Delete()
+    async delPost(@Body('id') id: any) {
+        if(id){
+            const posts = await this.postService.delPost(id)
+        }
+        return this.postPage()
     }
 
 }

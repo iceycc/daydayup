@@ -1,5 +1,5 @@
 import { Controller, Get, Render, Post, Body, Response, Request, Delete } from '@nestjs/common';
-import {Request as Req, Response as Res} from 'express'
+// import {Request as Req, Response as Res} from 'express'
 @Controller('login')
 export class LoginController {
     
@@ -22,7 +22,7 @@ export class LoginController {
     }
     
     @Delete()
-    loginOut(@Request() req:Req,@Response() res:Res){
+    loginOut(@Request() req:any,@Response() res:any){
         // 删除cookie：1 直接置为空 2 设置cookie maxAge =0
         // req.signedCookies.username = '' 
         req.signedCookies.username.maxAge = 0

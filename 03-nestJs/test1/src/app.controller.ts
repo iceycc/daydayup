@@ -1,7 +1,7 @@
 import { Controller, Get, Response,Param, Render } from '@nestjs/common';
 import { AppService } from './app.service';
 import { join } from 'path'; 
-import {Response as Res} from 'express'
+// import {Response as Res} from 'express'
 const fs = require('fs');
 @Controller() // 使用nestjs的装饰器装饰表示该类是一个控制器
 export class AppController {
