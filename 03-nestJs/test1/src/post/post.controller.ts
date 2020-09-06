@@ -1,4 +1,4 @@
-import { Controller, Get, Render, Post, Body, Response, Delete } from '@nestjs/common';
+import { Controller, Get, Render, Post, Body, Response, Delete, Patch } from '@nestjs/common';
 import { PostService } from './post.service';
 
 @Controller('post')
@@ -30,6 +30,14 @@ export class PostController {
     async delPost(@Body('id') id: any) {
         if(id){
             const posts = await this.postService.delPost(id)
+        }
+        return this.postPage()
+    }
+
+    @Patch()
+    async patchPost(@Body() body:any){
+        if(body.id){
+            const posts = await this.postService.patchPost(body)
         }
         return this.postPage()
     }

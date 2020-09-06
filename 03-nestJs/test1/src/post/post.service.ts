@@ -30,4 +30,16 @@ export class PostService {
         console.log(posts)
         return posts
     }
+
+    patchPost(post){
+        let id = post.id
+        posts.forEach((item,index)=>{
+            if(item.id==id){
+                posts[index] = post
+                posts[index].id = item.id
+            }
+        })
+        console.log('patchPost',posts)
+        return posts
+    }
 }

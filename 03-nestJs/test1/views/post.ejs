@@ -36,7 +36,10 @@
                     <td><%= element.title %> </td>
                     <td><%= element.author %> </td>
                     <td><%= element.desc %> </td>
-                    <td> <button type="button" class="btn btn-primary" data-id="<%= element.id %> " onclick="delpost(event)">删除</button> </td>
+                    <td>
+                        <button type="button" class="btn btn-primary" data-id="<%= element.id %> " onclick="post(event)">删除</button>
+                        <button type="button" class="btn btn-primary" data-id="<%= element.id %> " onclick="post(event,'PATCH')">编辑</button>
+                    </td>
                 </tr>
             <% }) %>
            
@@ -44,17 +47,22 @@
     </table>
 </body>
 <script>
-    function delpost(event){
+    let index = 0
+    function post(event,type="DELETE"){
         console.log(event.target)
        let id = $(event.target).attr('data-id')
        $.ajax({
-           type:"DELETE",
+           type,
            data:JSON.stringify({
                id,
+               title:'tett' +index,
+               author:'aaa' + index,
+               desc:'desc' + index
            }),
           contentType:"application/json",
           success:(res)=>{
               window.location.reload()
+              index++
           } 
        })
 

@@ -1,52 +1,44 @@
-import { Controller, Headers,Get, Query, Post, Body ,Response, Patch, Delete, Param, Inject} from '@nestjs/common';
+import { Controller, Post, Body, Delete, Param, ParseIntPipe, Patch, Get } from '@nestjs/common';
 import { UserService } from './user.service';
-import { LoggerService } from '../logger/logger.service'
-@Controller('user')
+
+
+@Controller('users')
 export class UserController {
-    constructor(
-        private readonly userService:UserService,
-        // @Inject('LOGGER') readonly loggerServer:LoggerService,
-        private readonly loggerServer:LoggerService,
-        @Inject('USER_NAME') readonly userName:string,
-        @Inject('IS_DEV') readonly isDev:{isDev:boolean}
-        ){
-       
-    }
-    @Get()
-    getUserAll(name:string):string{
-        if(this.isDev){
-            console.log(this.isDev,this.userName)
-        }
-        return '11'
-        // return this.userService.getUser()
-    }
-    
-    @Get(':id')
-    getUser(@Param('id') id:number,@Headers() headers:any){
-        this.loggerServer.log('id '+id)
-        console.log('headers '+ JSON.stringify(headers))
-        if(id){
-            return [{id:id,name:'wby'}]
-        }else{
-            return [{id:id,name:'wby'},{id:2,name:'bbbbss'}]
-        }
-    }
+  constructor (
+    private readonly userService: UserService,
+  ) { }
 
-    @Post()
-    addUser(@Body() body:any,@Response() res:any){
-        console.log(body)
-        res.end('添加用户成功')
-    }
+  @Post()
+  addUser(
+    @Body() body: { [propsName: string]: any }
+  ): string {
+    return this.userService.addUser(body);
+  }
 
-    @Patch()
-    updateUser(@Body() body:any,@Response() res:any){
-        console.log(body)
-        res.end('更新用户成功')
-    }
+  @Delete(':id')
+  deleteUserById(
+    @Param('id', new ParseIntPipe()) id: number
+  ): string {
+    return this.userService.deleteUserById(id);
+  }
 
-    @Delete()
-    deleteUser(@Body() body:any,@Response() res:any){
-        console.log(body)
-        res.end('删除用户成功')
-    }
+  @Patch(':id')
+  modifyUserById(
+    @Param('id', new ParseIntPipe()) id: number,
+    @Body() body: { [propsName: string]: any }
+  ): string {
+    return this.userService.modifyUserById(id, body);
+  }
+
+  @Get()
+  list(): any[] {
+    return this.userService.list();
+  }
+
+  @Get(':id')
+  userById(
+    @Param('id', new ParseIntPipe()) id: number,
+  ): { [propsName: string]: any } {
+    return this.userService.userById(id);
+  }
 }
