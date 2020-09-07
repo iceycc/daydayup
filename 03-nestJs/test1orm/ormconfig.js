@@ -17,7 +17,6 @@ require('dotenv').config({
 });
 const DB_HOST = process.env.DB_HOST
 const DB_PASSWORD = process.env.DB_PASSWORD
-console.log('----', DB_HOST, DB_PASSWORD)
 const isInit = false
 module.exports = {
     "type": "mysql",

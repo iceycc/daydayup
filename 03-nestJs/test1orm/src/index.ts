@@ -15,14 +15,14 @@ userExtend.mobile = '1341234' + num;
 userExtend.address = '中国';
 userExtend.user = user
 // createConnect() // 连接
-for(let i=1;i<10;i++){
-    addUser(user,userExtend) //新增user
-}
+// for(let i=1;i<10;i++){
+    // addUser(user,userExtend) //新增user
+// }
 // removeOneById(4) // 删除user
 // updateUser(id) // 更新uer
 // findUser(3) // 查找user
 // findAll() // 全部查询
-// addPost();
+addPost();
 // addTags()
 function createConnect(callback) {
     createConnection().then(async connection => {
@@ -88,25 +88,33 @@ function addPost() {
     createConnect(async connection => {
         // 帖子一
         const posts1 = new Posts();
-        posts1.title = '文章一';
-        posts1.content = '文章一内容';
+        posts1.title = '文章一'+num;
+        posts1.content = '文章一内容'+num;
 
         // 帖子二
         const posts2 = new Posts();
-        posts2.title = '文章二';
-        posts2.content = '文章二内容';
+        posts2.title = '文章二'+num;
+        posts2.content = '文章二内容'+num;
 
         // 创建一个用户
         const user = new User();
-        user.username = '王五';
+        user.username = 'wang '+num;
         user.password = '123456';
         user.posts = [posts1, posts2];
 
+        const userExtend = new UserExtend()
+        userExtend.mobile = '1341234' + num;
+        userExtend.address = '中国';
+        userExtend.user = user
+
         const userRepository = connection.getRepository(User);
         const postsRepository = connection.getRepository(Posts);
+        const userExtendPepository = connection.getRepository(UserExtend);
         await postsRepository.save(posts1);
         await postsRepository.save(posts2);
         await userRepository.save(user);
+        await userExtendPepository.save(userExtend)
+
         console.log('添加数据成功');
     })
 }
