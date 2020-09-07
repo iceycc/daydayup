@@ -18,7 +18,7 @@ require('dotenv').config({
 const DB_HOST = process.env.DB_HOST
 const DB_PASSWORD = process.env.DB_PASSWORD
 console.log('----', DB_HOST, DB_PASSWORD)
-const isInit = true
+const isInit = false
 module.exports = {
     "type": "mysql",
     "host": DB_HOST,
@@ -29,7 +29,7 @@ module.exports = {
     "timezone": "+8",
     "entityPrefix": "",
     "synchronize":isInit,
-    "dropSchema": isInit ? 'utf8mb4' : false, //utf8mb4 
+    "dropSchema": false, //utf8mb4 
     "logging": false,
     "entities": [
         "src/entity/**/*.ts"

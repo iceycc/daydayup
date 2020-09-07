@@ -15,13 +15,15 @@ userExtend.mobile = '1341234' + num;
 userExtend.address = '中国';
 userExtend.user = user
 // createConnect() // 连接
-// addUser(user,userExtend) //新增user
+for(let i=1;i<10;i++){
+    addUser(user,userExtend) //新增user
+}
 // removeOneById(4) // 删除user
 // updateUser(id) // 更新uer
 // findUser(3) // 查找user
 // findAll() // 全部查询
 // addPost();
-addTags()
+// addTags()
 function createConnect(callback) {
     createConnection().then(async connection => {
         callback && callback(connection)

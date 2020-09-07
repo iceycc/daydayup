@@ -15,6 +15,7 @@
       "typeorm": "0.2.25"
    },
    "scripts": {
-      "start": "cross-env CODE_ENV=test ts-node src/index.ts"
+      "start": "cross-env CODE_ENV=test ts-node src/index.ts",
+      "find": "cross-env CODE_ENV=test ts-node src/find.ts"
    }
 }
