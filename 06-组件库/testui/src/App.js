@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Button from 'doushen-ui-react/dist/components/button'
-import { GlobalStyle } from "doushen-ui-react/dist/components/shared/global";
+import { GlobalStyle } from "doushen-ui-react";
 function App() {
 	return (
 		<div className="App">
