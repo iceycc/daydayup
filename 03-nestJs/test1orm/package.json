@@ -19,9 +19,9 @@
       "db": "cross-env CODE_ENV=test ts-node ./node_modules/typeorm/cli.js migration:run",
       "start": "cross-env CODE_ENV=test ts-node src/index.ts",
       "find": "cross-env CODE_ENV=test ts-node src/find.ts",
-      "query":"cross-env CODE_ENV=test ts-node src/query.ts",
-      "insert":"cross-env CODE_ENV=test ts-node src/insert.ts",
-      "update":"cross-env CODE_ENV=test ts-node src/update.ts",
-      "delete":"cross-env CODE_ENV=test ts-node src/delete.ts"
+      "query": "cross-env CODE_ENV=test ts-node src/query.ts",
+      "insert": "cross-env CODE_ENV=test ts-node src/insert.ts",
+      "update": "cross-env CODE_ENV=test ts-node src/update.ts",
+      "delete": "cross-env CODE_ENV=test ts-node src/delete.ts"
    }
 }

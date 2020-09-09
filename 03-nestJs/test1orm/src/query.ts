@@ -31,13 +31,20 @@ createConnection().then(async connection => {
     //     .getMany();
     // console.log(result);
 
-    let username = '人造人'
+    // let username = '人造人'
+    // const result = await getConnection()
+    //     .createQueryBuilder(User, 'user')
+    //     .select(['user.id', 'user.username'])
+    //     .where('user.username like :username', { username: `%${username}%` })
+    //     .where('user.username IN (:...username)', { username: ['人造人088', '人造人714'] })
+    //     .getMany();
+    // console.log(result);
+
     const result = await getConnection()
         .createQueryBuilder(User, 'user')
-        .select(['user.id','user.username'])
-        .where('user.username like :username',{username:`%${username}%`})
-        .where('user.username IN (:...username)',{username:['人造人088','人造人714']})
-        .getMany();
+        // 使用了聚合函数就要使用getRawOne或者getRawMany方法
+        .select('SUM(user.id)', 'sum')
+        .getRawOne();
     console.log(result);
 })
 

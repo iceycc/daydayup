@@ -22,17 +22,17 @@ createCon(async connection => {
     // console.log(result)
 
     // 7.使用join
-    // const userRepository = connection.getRepository(User);
-    // const result = await userRepository.find({
-    //     join: {
-    //         alias: 'user',
-    //         leftJoinAndSelect: {
-    //             detail: 'user.userDetail',
-    //             posts: 'user.posts'
-    //         }
-    //     }
-    // });
-    // console.log(result);
+    const userRepository = connection.getRepository(User);
+    const result = await userRepository.find({
+        join: {
+            alias: 'user',
+            leftJoinAndSelect: {
+                detail: 'user.userDetail',
+                posts: 'user.posts'
+            }
+        }
+    });
+    console.log(result);
 
     // 8、order排序查询
     // const userRepository = connection.getRepository(User);
@@ -60,9 +60,9 @@ createCon(async connection => {
     // });
     // console.log(result);
 
-    const userRepository = connection.getRepository(User);
-    const result = await userRepository.findByIds([1,3,4]);
-    console.log(result);
+    // const userRepository = connection.getRepository(User);
+    // const result = await userRepository.findByIds([1,3,4]);
+    // console.log(result);
 })
 
 
