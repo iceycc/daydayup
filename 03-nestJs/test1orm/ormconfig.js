@@ -19,17 +19,17 @@ const DB_HOST = process.env.DB_HOST
 const DB_PASSWORD = process.env.DB_PASSWORD
 const isInit = false
 module.exports = {
-    "type": "mysql",
-    "host": DB_HOST,
-    "port": "3306",
-    "username": "amis",
+    "type": process.env.DB_TYPE,
+    "host": process.env.DB_HOST,
+    "port": process.env.DB_PORT,
+    "username": process.env.DB_USERNAME,
     "password": DB_PASSWORD,
-    "database": "ormdb",
+    "database": process.env.DB_DATABASE,
     "timezone": "+8",
     "entityPrefix": "",
     "synchronize":isInit,
     "dropSchema": false, //utf8mb4 
-    "logging": false,
+    "logging": process.env.DB_LOGGING,
     "entities": [
         "src/entity/**/*.ts"
     ],

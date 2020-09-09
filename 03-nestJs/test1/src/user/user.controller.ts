@@ -1,12 +1,24 @@
 import { Controller, Post, Body, Delete, Param, ParseIntPipe, Patch, Get } from '@nestjs/common';
 import { UserService } from './user.service';
-
+import { UserEntity } from './user.entity';
 
 @Controller('users')
 export class UserController {
-  constructor (
+  constructor(
     private readonly userService: UserService,
   ) { }
+
+  @Post('create')
+  async createUser(
+    @Body() data: { [propName: string]: any }
+  ): Promise<UserEntity> {
+    return await this.userService.createUser(data);
+  }
+
+  @Get('find')
+  async userList(): Promise<UserEntity[]> {
+    return await this.userService.userList();
+  }
 
   @Post()
   addUser(
