@@ -35,7 +35,7 @@ export class UserService {
         });
       }).then(res => {
         console.log(res)
-        return "创建成功2"
+        return "创建成功"
       }).catch(err => {
         return "创建失败"
       })
