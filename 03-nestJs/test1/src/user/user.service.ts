@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, getManager, EntityManager } from 'typeorm';
 import { UserEntity } from './user.entity';
+import { UserExtend } from './userExtend.entity';
 @Injectable()
 export class UserService {
   constructor(
@@ -10,8 +11,34 @@ export class UserService {
   ) { }
 
   // 创建数据,传递一个对象类型的数据
-  async createUser(data: { [propName: string]: any }): Promise<UserEntity> {
-    return await this.userRepository.save(data);
+  async createUser(data: Extract<any, any>) {
+    // return await this.userRepository.save(data);
+    console.log('111', data)
+    const { name, password, email, mobile, gender, qq, address } = data
+    return getManager()
+      .transaction(async (entityManage: EntityManager) => {
+        const user: { [propName: string]: any } = await entityManage.save(
+          UserEntity,
+          {
+            name,
+            password,
+          }
+        )
+        console.log(user)
+        await entityManage.save(UserExtend, {
+          userId: user.id,
+          qq,
+          address,
+          email,
+          mobile,
+          gender
+        });
+      }).then(res => {
+        console.log(res)
+        return "创建成功2"
+      }).catch(err => {
+        return "创建失败"
+      })
   }
 
   // 查询全部的数据
