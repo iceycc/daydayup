@@ -463,7 +463,7 @@ Button.defaultProps = {
 	isLoading: false,
 	loadingText: null,
 	isLink: false,
-	appearance: APPEARANCES.tertiary,
+	// appearance: APPEARANCES.tertiary,
 	isDisabled: false,
 	isUnclickable: false,
 	containsIcon: false,
