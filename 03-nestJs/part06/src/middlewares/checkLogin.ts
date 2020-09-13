@@ -4,8 +4,9 @@ import { Request, Response } from 'express';
 export const checkLoginMiddleWares = (/*可以往中间件中传递参数*/) => {
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     return (req: Request, res: Response, next: any) => {
-        console.log(req.headers)
+        // console.log(req.headers)
         let token = req.headers.token
+        // console.log(req.body)
         if(token){
              next();
         }else{
