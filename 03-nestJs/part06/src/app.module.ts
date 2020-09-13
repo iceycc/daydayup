@@ -1,9 +1,11 @@
-import { Module } from '@nestjs/common';
+import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { UsersModule } from './modules/users/users.module';
 import { PostsModule } from './modules/posts/posts.module';
 import { RoleModule } from './modules/role/role.module';
 import { TypeOrmModule } from '@nestjs/typeorm'
 import 'dotenv/config'
+import { LogMiddleware } from './middlewares/log.middleware'
+import { UsersController } from './modules/users/users.controller'
 @Module({
   imports: [TypeOrmModule.forRoot({
     type: 'mysql',
@@ -19,4 +21,10 @@ import 'dotenv/config'
     ]
   }), UsersModule, PostsModule, RoleModule],
 })
-export class AppModule { }
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(LogMiddleware)
+      .forRoutes('users');
+  }
+}

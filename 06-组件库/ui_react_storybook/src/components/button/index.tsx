@@ -3,7 +3,7 @@ import React, {
   ReactNode,
   AnchorHTMLAttributes,
   PropsWithChildren,
-  useMemo
+  useMemo,
 } from "react";
 import styled from "styled-components";
 import { color, typography } from "../shared/styles";
@@ -28,7 +28,7 @@ type AppearancesObj = {
   [key in btnType]: btnType;
 };
 
-export const APPEARANCES: AppearancesObj = {
+export const APPEARANCES = {
   primary: "primary",
   primaryOutline: "primaryOutline",
   secondary: "secondary",
@@ -45,7 +45,7 @@ type sizeType = "small" | "medium";
 type sizeObj = {
   [key in sizeType]: sizeType;
 };
-export const SIZES: sizeObj = {
+export const SIZES = {
   small: "small",
   medium: "medium",
 };
@@ -437,38 +437,39 @@ const StyledButton = styled.button<ButtonProps>`
   
   `;
 
-
 function Button(props: PropsWithChildren<ButtonProps>) {
-	const { isLoading, loadingText, isLink, children } = props;
-	const buttonInner = (
-		<>
-			<Text>{children}</Text>
-			{isLoading && <Loading>{loadingText || "Loading..."}</Loading>}
-		</>
-	);
-	const btnType = useMemo(() => {
-		if (isLink) {
-			return "a";
-		}
-	}, [isLink]);
+  const { isLoading, loadingText, isLink, children } = props;
+  const buttonInner = (
+    <>
+      <Text>{children}</Text>
+      {isLoading && <Loading>{loadingText || "Loading..."}</Loading>}
+    </>
+  );
+  const btnType = useMemo(() => {
+    if (isLink) {
+      return "a";
+    }
+  }, [isLink]);
 
-	return (
-		<StyledButton as={btnType} {...props}>
-			{buttonInner}
-		</StyledButton>
-	);
+  return (
+    <StyledButton as={btnType} {...props} data-testid="button">
+      {buttonInner}
+    </StyledButton>
+  );
 }
 
 Button.defaultProps = {
-	isLoading: false,
-	loadingText: null,
-	isLink: false,
-	// appearance: APPEARANCES.tertiary,
-	isDisabled: false,
-	isUnclickable: false,
-	containsIcon: false,
-	// size: SIZES.medium,
-	ButtonWrapper: undefined,
+  isLoading: false,
+  loadingText: null,
+  // isLink: false,
+  appearance: APPEARANCES.tertiary,
+  //   appearance: 'tertiary',
+  isDisabled: false,
+  isUnclickable: false,
+  containsIcon: false,
+  size: SIZES.medium,
+  size: "medium",
+  ButtonWrapper: undefined,
 };
 
 export default Button;

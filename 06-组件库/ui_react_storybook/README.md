@@ -10,3 +10,15 @@
 
 ## part2 编写第一个组件Button
 - polished ： 为了在styled-components里像scss等预处理器一样写常用函数，还需要安装下polished这个库。
+- 需求分析：
+  - 颜色：背景颜色、边框颜色、文字颜色
+  - 大小
+  - loading
+  - disabled
+- 步骤：
+  - 定义类型：颜色、大小、配置项
+  - 用styled编写组件
+  - 导出组件、渲染
+  - 编写story文档
+  - 编写jest测试用例
+- 
