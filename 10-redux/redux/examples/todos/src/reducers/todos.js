@@ -9,7 +9,7 @@ const todos = (state = [], action) => {
           completed: false
         }
       ]
-    case 'TOGGLE_TODO':
+    case 'TOGGLE_TODO': // 切换todo状态
       return state.map(todo =>
         (todo.id === action.id)
           ? {...todo, completed: !todo.completed}

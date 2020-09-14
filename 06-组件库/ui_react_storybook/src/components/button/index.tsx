@@ -468,7 +468,7 @@ Button.defaultProps = {
   isUnclickable: false,
   containsIcon: false,
   size: SIZES.medium,
-  size: "medium",
+//   size: "medium",
   ButtonWrapper: undefined,
 };
 
