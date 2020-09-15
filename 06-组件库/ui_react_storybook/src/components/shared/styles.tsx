@@ -1,10 +1,10 @@
-import { rgbToColorString } from 'polished'
+// import { rgbToColorString } from 'polished'
 // 颜色
 export const color = {
 	// Palette
 	primary: "#FF4785",
 	secondary: "#1EA7FD",
-	tertiary: rgbToColorString({ red: 221, green: 221, blue: 221 }),
+	tertiary: "#DDDDDD",
 
 	orange: "#FC521F",
 	gold: "#FFAE00",

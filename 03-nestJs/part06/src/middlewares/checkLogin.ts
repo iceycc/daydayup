@@ -11,6 +11,7 @@ export const checkLoginMiddleWares = (/*可以往中间件中传递参数*/) => 
              next();
         }else{
             res.send('没有token')
+            // next()
         }
     }
 }
