@@ -9,7 +9,7 @@ var bodyParser = require('body-parser')
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.use(test1MiddleWares())
-  // app.use(checkLoginMiddleWares())
+  app.use(checkLoginMiddleWares())
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded())
   await app.listen(process.env.PORT, () => {
