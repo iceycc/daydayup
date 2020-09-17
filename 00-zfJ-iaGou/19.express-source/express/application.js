@@ -60,7 +60,7 @@ Application.prototype._init = function(){
         req.query = url.parse(req.url,true).query
         // send方法
         res.send = function(value){
-            if(typeof value === 'string' ||Buffer.isBuffer(value)){
+            if(typeof value === 'string' || Buffer.isBuffer(value)){
                 res.end(value);
             }else if(typeof value==='object'){
                 res.end(JSON.stringify(value))
@@ -97,6 +97,7 @@ Application.prototype.use = function(path,handler){
     // 交给路由来处理中间件的逻辑 
     this.router.use(path,handler);
 }
+// console.log(methods,'methods')
 methods.forEach(method=>{
     Application.prototype[method] = function(path,...handler){
         // 如果是get方法 并且参数只有一个 就回到set方法把参数传回去

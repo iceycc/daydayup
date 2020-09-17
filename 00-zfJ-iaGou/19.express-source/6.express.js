@@ -7,7 +7,7 @@
  * 
  */
 
-const express = require('./express');
+const express = require('express');
 const path = require('path');
 const app = express();
 // 内置的静态服务中间件
@@ -21,9 +21,15 @@ app.use((req,res,next)=>{
   // res.sendFile = (absPath)=>{
   //   fs.createReadSteam(absPath).pipe(res)
   // }
+  console.log(1)
   next()
+  console.log(2)
 })
-
+app.use((req,res,next)=>{
+  console.log(3)
+  next()
+  console.log(4)
+})
 // 内置的模板引擎
 app.set('views','views1');// 设置模板存放位置
 // 告诉.html后缀 需要用 __express这个方法来渲染
