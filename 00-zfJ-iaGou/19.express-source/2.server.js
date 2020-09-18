@@ -1,7 +1,7 @@
 /**
  * 简单版 路由的 
  */
-const express = require('./express');
+const express = require('express');
 const app = express(); 
 
 app.post('/',function(req,res,next){
