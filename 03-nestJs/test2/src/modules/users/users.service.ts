@@ -3,11 +3,17 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { UsersEntity } from './users.entity';
 import { Repository, getManager, EntityManager } from 'typeorm';
 import { UsersExtendEntity } from './usersExtend.entity';
+import { LoginDto } from './login/dto/login.dto';
+import { ToolsService } from '../../service/tool/tool.service';
+import jwt from 'jsonwebtoken'
 @Injectable()
 export class UsersService {
     constructor(
         @InjectRepository(UsersEntity)
-        private readonly usersRepository: Repository<UsersEntity>
+        private readonly usersRepository: Repository<UsersEntity>,
+        @InjectRepository(UsersEntity)
+        private readonly userRepository: Repository<UsersEntity>,
+        private readonly toolsService: ToolsService,
     ) { }
 
     async create(data) {
@@ -15,11 +21,12 @@ export class UsersService {
         // return await this.usersRepository.save(data);
         const { username, password, email, mobile, gender, qq, address } = data
         return await getManager().transaction(async (entityManager: EntityManager) => {
-            const user: Record<string, any> = await entityManager.save(UsersEntity, {
+            const user: Record<string, any> = await this.userRepository.create({
                 username,
                 password,
                 email
-            })
+            });
+            await entityManager.save(UsersEntity, user)
             // throw Error('主动异常')
             console.log('userid', user.id)
             const userExtend = await entityManager.save(UsersExtendEntity, {
@@ -61,5 +68,25 @@ export class UsersService {
 
     async getUserById(id) {
         return await this.usersRepository.findOne(id, { relations: ['userDetail', 'posts', 'roles'] })
+    }
+
+    async login(data: LoginDto): Promise<any | string> {
+        // 根据用户名去查询数据,然后验证密码
+        const { username, password } = data;
+        const user = await this.userRepository.findOne({ where: { username } });
+        if (user && this.toolsService.checkPassword(password, user.password)) {
+            // 登录成功生成token、获取该用户的资源存到redis中
+            // 1.生成token
+            const token = jwt.createToken(String(user.id));
+            // 2.token存到到redis中
+            const redisData = {
+                token,
+                user,
+            }
+            // this.redisUtilsService.set(String(user.id), redisData);
+            return { ...user, token };
+        } else {
+            return '账号或密码错误';
+        }
     }
 }

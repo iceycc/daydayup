@@ -11,6 +11,7 @@ import { UsersController } from './modules/users/users.controller'
 import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core'
 import { UserGuard } from './guard/user.guard'
 import { LoggingInterceptor } from './interceptors/logging.interceptor';
+import { RedisUtilsModule } from './modules/redis-utils/redis-utils.module';
 @Module({
   imports: [
     // 配置加载配置文件
@@ -33,7 +34,8 @@ import { LoggingInterceptor } from './interceptors/logging.interceptor';
     }),
     UsersModule,
     PostsModule,
-    RoleModule
+    RoleModule,
+    RedisUtilsModule
   ],
   providers: [
     // { // 模块内使用守卫
@@ -44,8 +46,7 @@ import { LoggingInterceptor } from './interceptors/logging.interceptor';
     //   provide: APP_INTERCEPTOR, 
     //   useClass: LoggingInterceptor
     // }
-  ],
-
+  ]
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {

@@ -1,11 +1,18 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn, OneToMany, ManyToMany } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToOne, JoinColumn, OneToMany, ManyToMany, BeforeInsert } from "typeorm";
 import { UsersExtendEntity } from "./usersExtend.entity";
 import { PostEntity } from "../posts/posts.entity";
 import { RoleEntity } from "../role/role.entity";
 import { Exclude, Expose } from "class-transformer";
-
+import NodeAuth from 'node-auth0';
+import jwt from "jsonwebtoken" 
 @Entity({ name: 'users' })
 export class UsersEntity {
+    @Exclude()
+    private nodeAuth: NodeAuth
+    constructor() {
+        this.nodeAuth = new NodeAuth();
+    }
+
     @PrimaryGeneratedColumn({
         type: 'int',
         name: 'id',
@@ -35,12 +42,12 @@ export class UsersEntity {
     password: string
 
     @Column({
-        type:'varchar',
-        length:50,
-        name:'email',
+        type: 'varchar',
+        length: 50,
+        name: 'email',
         comment: '邮箱'
     })
-    email:string
+    email: string
 
     @Column({
         type: 'tinyint',
@@ -66,15 +73,56 @@ export class UsersEntity {
 
     @Expose()
     isDelStr(): string {
-    return this.isDel ? '删除' : '正常';
+        return this.isDel ? '删除' : '正常';
     }
 
-    @OneToOne(type=>UsersExtendEntity,usersExtend=>usersExtend.user)
-    userDetail:UsersExtendEntity
+    @OneToOne(type => UsersExtendEntity, usersExtend => usersExtend.user)
+    userDetail: UsersExtendEntity
 
-    @OneToMany(type=>PostEntity,post=>post.user)
-    posts:PostEntity[]
+    @OneToMany(type => PostEntity, post => post.user)
+    posts: PostEntity[]
 
-    @ManyToMany(type=>RoleEntity,role=>role.user)
-    roles:RoleEntity[]
+    @ManyToMany(type => RoleEntity, role => role.user)
+    roles: RoleEntity[]
+
+    @BeforeInsert()
+    makePassword(): void {
+        this.password = this.nodeAuth.makePassword(this.password)
+    }
+
+
+    @Expose()
+    private get token() {
+        const { id, username, } = this;
+        // 生成签名
+        return jwt.sign(
+            {
+                id,
+                username,
+            },
+            process.env.SECRET, // 加盐
+            {
+                expiresIn: '7d', // 过期时间
+            },
+        );
+    }
+
+    /**
+     * @Description: 定义返回数据,用了这个函数后上面的Exclude和Expose就失效了
+     * @param {type} 
+     * @return {type} 
+     */
+    public toResponseObject(isShowToken = true): { [propsName: string]: any } {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const { nodeAuth, password, token, username, ...params } = this;
+        const responseData = {
+            username,
+            ...params,
+        }
+        if (isShowToken) {
+            return Object.assign(responseData, { token });
+        } else {
+            return responseData;
+        }
+    }
 }
