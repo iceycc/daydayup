@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    video{
+        border: 2px solid red;
+    }
+</style>
+<body>
+
+ 
+    <video autoplay playsinline id="deskVideo" width="960" height="720"></video>
+    <div>
+        <button id="record">开始录制</button>
+        <button id="play">播放录播</button>
+        <button id="download">下载录播</button>
+    </div>
+    <video playsinline id="recplay"></video>
+   <script>
+        let buffer;
+        let mediaRecorder;
+        const deskVideo = document.querySelector("video#deskVideo")
+        const recplayVideo = document.querySelector("video#recplay")
+        const btnRecord = document.querySelector("button#record")
+        const btnPlay = document.querySelector("button#play")
+        const btnDownLoad = document.querySelector("button#download")
+        btnRecord.addEventListener('click',function(){
+            if(this.textContent === '开始录制'){
+                startRecord()
+                this.textContent = '停止录制'
+            }else{
+                stopRecord()
+                this.textContent = '开始录制'
+            }
+        })
+        btnPlay.addEventListener('click',function(){
+            startPlay()
+        })
+        btnDownLoad.addEventListener("click",function(){
+            downLoadVideo()
+        })
+        shareDeskTop()
+        
+        function shareDeskTop() {
+            if(!navigator.mediaDevices || !navigator.mediaDevices.getDisplayMedia){
+                console.log('getDisplayMedia is not supported');
+                return;
+            }
+            const constraints = {
+                video:{
+                    width:960,
+                    heigth:720,
+                    frameRate:15
+                },
+                auto: false
+            }
+            navigator.mediaDevices.getDisplayMedia({
+                    video: true
+                })
+                .then(stream => {
+                    deskVideo.srcObject = stream
+                    window.stream = stream
+                }).catch(err => {
+                    console.log(err)
+                })
+        }
+        // 开始录制         
+        function startRecord(){
+            // 定义数组，用于缓存桌面数据，最终将数据存储到文件中
+            buffer = [];
+            const options = {
+                miniType:'video/webm;codecs=vp8'
+            }
+            if(!MediaRecorder.isTypeSupported(options.miniType)){
+                console.error(`${options.miniType} is not supported!`);
+                return
+            }
+            try{    
+                mediaRecorder = new MediaRecorder(window.stream,options)
+            }catch(err){
+                console.error(err)
+            }
+            mediaRecorder.ondataavailable = function(e){
+                // 该事件可用于获取录制的媒体资源 (在事件的 data 属性中会提供一个可用的 Blob 对象.)
+                if(e && e.data && e.data.size > 0){
+                    console.log(e.data)
+                    buffer.push(e.data)
+                }
+            }
+            mediaRecorder.start(5)
+        }
+
+        function stopRecord(){
+            mediaRecorder.stop()
+        }
+        function startPlay(){
+            var blob = new Blob(buffer,{type:'video/webm'});
+            recplayVideo.src = window.URL.createObjectURL(blob);
+            recplayVideo.srcObject = null;
+            recplayVideo.controls = true;
+            recplayVideo.play()
+        }
+        function downLoadVideo(){
+            var blob = new Blob(buffer,{type:'video/webm'});
+            var url = window.URL.createObjectURL(blob)
+            window.open(url)
+        }
+    </script>
+</body>
+
+</html>

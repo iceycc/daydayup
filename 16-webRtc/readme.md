@@ -66,3 +66,29 @@ css滤镜处理的图片，下载后滤镜效果不存在了。如何处理
 
 # 4. 如何把采集下来的视频录制下来
 
+# 5. 浏览器抓取桌面，共享桌面
+共享桌面的处理过程：抓屏、压缩编码、传输、解码、显示、控制
+
+共享桌面的协议：
+- RDP Remote DeskTop Protocal
+- VNC Virtual NetWork Console
+
+远程桌面协议一般分：
+- 桌面数据处理：
+  - 抓取 采集 ：DirectX等
+  - 编码 压缩：webRtc采用的是视频编码技术，H264/VP8等；RDP/VNC采用图片压缩技术
+  - 传输：通过流媒体传输协议。webRTC数据可以丢失。RDP/VNC不能丢
+  - 解码：对比编码
+  - 渲染：通过openGL/D3D进行渲染，webRTC和RDP/VNC可素
+- 信令控制
+  - 键盘事件
+  - 鼠标事件
+  - 事件消息处理
+
+
+1. 抓取桌面  getDisplayMedia
+ ```js
+var promise = navigator.mediaDevices.getDisplayMedia(constraints);
+ ```
+
+2. 
