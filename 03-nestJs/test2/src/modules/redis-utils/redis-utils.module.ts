@@ -7,8 +7,8 @@ import { RedisUtilsService } from './redis-utils.service';
   imports: [
     RedisModule.register({ // 配置redis的基本信息
       port: 6379,
-      host: '127.0.0.1',
-      password: '',
+      host: '101.201.150.143',
+      password: 'zwworm!',
       db: 0
     })
   ],

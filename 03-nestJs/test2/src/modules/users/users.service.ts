@@ -5,7 +5,9 @@ import { Repository, getManager, EntityManager } from 'typeorm';
 import { UsersExtendEntity } from './usersExtend.entity';
 import { LoginDto } from './login/dto/login.dto';
 import { ToolsService } from '../../service/tool/tool.service';
-import jwt from 'jsonwebtoken'
+// import * as jwt from 'jsonwebtoken'
+import { jwt } from '../../utils/jwt'
+import { RedisUtilsService } from '../redis-utils/redis-utils.service';
 @Injectable()
 export class UsersService {
     constructor(
@@ -14,6 +16,7 @@ export class UsersService {
         @InjectRepository(UsersEntity)
         private readonly userRepository: Repository<UsersEntity>,
         private readonly toolsService: ToolsService,
+        private readonly redisUtilsService:RedisUtilsService
     ) { }
 
     async create(data) {
@@ -83,7 +86,7 @@ export class UsersService {
                 token,
                 user,
             }
-            // this.redisUtilsService.set(String(user.id), redisData);
+            this.redisUtilsService.set(String(user.id), redisData);
             return { ...user, token };
         } else {
             return '账号或密码错误';

@@ -9,7 +9,8 @@ import * as path from 'path'
 import { UserMiddleware } from './middlewares/user.middleware'
 import { UsersController } from './modules/users/users.controller'
 import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core'
-import { UserGuard } from './guard/user.guard'
+// import { UserGuard } from './guard/user.guard'
+import { AuthGuard } from './guard/auth.guard';
 import { LoggingInterceptor } from './interceptors/logging.interceptor';
 import { RedisUtilsModule } from './modules/redis-utils/redis-utils.module';
 @Module({
@@ -40,7 +41,7 @@ import { RedisUtilsModule } from './modules/redis-utils/redis-utils.module';
   providers: [
     // { // 模块内使用守卫
     //   provide: APP_GUARD,
-    //   useClass: UserGuard
+    //   useClass: AuthGuard
     // },
     // { // // 模块内使用拦截器
     //   provide: APP_INTERCEPTOR, 

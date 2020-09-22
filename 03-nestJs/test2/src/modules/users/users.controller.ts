@@ -3,6 +3,7 @@ import { UsersService } from './users.service'
 import { createDecipher } from 'crypto';
 import { UsersEntity } from './users.entity';
 import { UserGuard } from 'src/guard/user.guard';
+import { AuthGuard } from 'src/guard/auth.guard'
 import { CreateUserTdo } from './dto/create.user.dto'
 
 @Controller('users')
@@ -38,6 +39,7 @@ export class UsersController {
     }
 
     @Get()
+    @UseGuards(AuthGuard)
     async getUsers(){
         try{
             return await this.usersService.getUsers()
@@ -47,6 +49,7 @@ export class UsersController {
     }
 
     @Get(':id')
+    @UseGuards(AuthGuard)
     async getUserById(@Param('id') id:number){
         try{
             return await this.usersService.getUserById(id)

@@ -23,7 +23,7 @@ async function bootstrap() {
   app.use(bodyParser.urlencoded())
   app.use(new LogMiddleware().use)
   // 2 全局守卫
-  app.useGlobalGuards(new AuthGuard())
+  // app.useGlobalGuards(new AuthGuard())
   // 3 使用全局拦截器
   // app.useGlobalInterceptors(new LoggingInterceptor())
   app.useGlobalInterceptors(new TransformInterceptor())
