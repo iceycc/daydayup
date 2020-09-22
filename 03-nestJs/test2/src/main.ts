@@ -5,7 +5,7 @@ import 'dotenv/config'
 import { test1MiddleWares } from './middlewares/test1.express.middleware'
 import { LogMiddleware } from './middlewares/log.middleware'
 import { checkLoginMiddleWares } from './middlewares/checkLogin.express.middleware'
-import { AuthGuard } from './guard/auth.guard';
+// import { AuthGuard } from './guard/auth.guard';
 // import { LoggingInterceptor } from './interceptors/logging.interceptor';
 import { TransformInterceptor } from './interceptors/transform.interceptor'
 import { ValidationPipe } from './pipes/validation/valitation.pipe'
