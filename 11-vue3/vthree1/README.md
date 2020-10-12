@@ -1,4 +1,4 @@
-# test3
+# vthree1
 
 ## Project setup
 ```
@@ -7,17 +7,22 @@ yarn install
 
 ### Compiles and hot-reloads for development
 ```
-yarn serve
+yarn run serve
 ```
 
 ### Compiles and minifies for production
 ```
-yarn build
+yarn run build
+```
+
+### Run your tests
+```
+yarn run test
 ```
 
 ### Lints and fixes files
 ```
-yarn lint
+yarn run lint
 ```
 
 ### Customize configuration
