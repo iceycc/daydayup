@@ -45,6 +45,7 @@
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.XML文件" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -75,7 +76,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602470096500</updated>
-      <workItem from="1602470097723" duration="9690000" />
+      <workItem from="1602470097723" duration="10053000" />
     </task>
     <servers />
   </component>
