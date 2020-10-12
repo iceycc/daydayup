@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" xmlns="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <blog-post>
+        <template v-slot:header>
+            <h1>我的{{title}}</h1>
+        </template>
+        <template v-slot:default>
+            <ul>
+                <todo-item v-for="todo in todos" :key="todo.id" :todo="todo"></todo-item>
+            </ul>
+        </template>
+        <template v-slot:footer>
+            <anchor-heading :level="3">{{title}}</anchor-heading>
+        </template>
+    </blog-post>
+</div>
+<script src="https://unpkg.com/vue@next"></script>
+<script src="./todo.js"></script>
+</body>
+</html>

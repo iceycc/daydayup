@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Document</title> </head>   
+<body>
+<div id="counter">
+  Counter: {{ counter }}
+  <input type="text" v-model="message">
+  <p>{{ message }}</p>
+  <button @click="reverseMessage">反转</button>
+  <div>
+    <input type="text" v-model="todoMessage">
+    <ul>
+      <todo-item v-for="todo in todos" :key="todo.id" :todo="todo"></todo-item>
+    </ul>
+  </div>
+</div>
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+    const Counter = {
+      data() {
+        return {
+          counter: 0,
+          message:'Hello Vue.js!',
+          todos: [
+            { text: 'Learn JavaScript', id:1},
+            { text: 'Learn Vue', id:2 },
+            { text: 'Build something awesome', id:3 }
+          ],
+          todoMessage: ""
+        }
+      },
+      mounted(){
+        setInterval(()=>{
+          this.counter++
+        },1000)
+      },
+      methods:{
+        reverseMessage(){
+          console.log('reverseMessage')
+          this.message = this.message.split('').reverse().join('')
+        }
+      }
+    }
+    const app = Vue.createApp(Counter)
+    app.component('todo-item', {
+      template:`<li>{{todo.text}}</li>`,
+      props:["todo"]
+    })
+    app.mount('#counter')
+  </script>
+</body>
+</html>
