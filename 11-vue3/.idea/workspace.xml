@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39dd57f7-a239-4804-8f25-75a239d6d6cd" name="默认的" comment="">
-      <change afterPath="$PROJECT_DIR$/vthree1/.gitignoe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/.env.example" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/.eslintrc.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/.gitignore" beforeDir="false" />
@@ -56,29 +55,6 @@
       <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/tsconfig.build.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/tsconfig.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test1/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test2/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test2/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test2/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test2/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test2/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test2/src/App.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test2/src/assets/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test2/src/components/HelloWorld.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test2/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test2/src/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test3/.browserslistrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test3/.eslintrc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test3/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test3/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test3/babel.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test3/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test3/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test3/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test3/src/App.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test3/src/assets/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test3/src/components/HelloWorld.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test3/src/main.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +108,7 @@
       <option name="presentableId" value="Default" />
       <updated>1602470096500</updated>
       <workItem from="1602470097723" duration="10053000" />
-      <workItem from="1602521711513" duration="817000" />
+      <workItem from="1602521711513" duration="1526000" />
     </task>
     <servers />
   </component>
