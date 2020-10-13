@@ -36,11 +36,7 @@
       <change beforePath="$PROJECT_DIR$/../../03-nestJs/part08/test/jest-e2e.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../03-nestJs/part08/tsconfig.build.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../03-nestJs/part08/tsconfig.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vthree1/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../vthree1/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vthree1/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vthree1/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vthree1/src/components/HelloWorld.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../vthree1/src/components/HelloWorld.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vthree1/src/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +68,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602523556302</updated>
-      <workItem from="1602523557386" duration="1426000" />
+      <workItem from="1602523557386" duration="1529000" />
     </task>
     <servers />
   </component>
