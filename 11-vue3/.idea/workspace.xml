@@ -20,41 +20,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39dd57f7-a239-4804-8f25-75a239d6d6cd" name="默认的" comment="">
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/.env.example" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/.eslintrc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/.prettierrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/nest-cli.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/src/app.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/src/guard/auth.guard.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/src/guard/user.guard.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/src/interceptors/logging.interceptor.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/src/main.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/src/middlewares/checkLogin.express.middleware.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/src/middlewares/log.middleware.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/src/middlewares/test1.express.middleware.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/src/middlewares/user.middleware.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/src/modules/posts/posts.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/src/modules/posts/posts.entity.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/src/modules/posts/posts.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/src/modules/posts/posts.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/src/modules/role/role.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/src/modules/role/role.entity.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/src/modules/role/role.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/src/modules/role/role.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/src/modules/users/users.controller.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/src/modules/users/users.entity.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/src/modules/users/users.module.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/src/modules/users/users.service.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/src/modules/users/usersExtend.entity.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/test/app.e2e-spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/test/jest-e2e.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/tsconfig.build.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../03-nestJs/part08/tsconfig.json" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue3/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue3/server.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue3/src/1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue3/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vue3/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/11-vue3.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue3/1.html" beforeDir="false" afterPath="$PROJECT_DIR$/vue3/public/1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue3/proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue3/src/proxy.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vue3/响应式原理.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue3/src/响应式原理.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,27 +54,36 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="javascript.nodejs.core.library.configured.version" value="14.4.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="14.11.8" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.XML文件" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/vue3/public" />
+      <recent name="$PROJECT_DIR$/vue3/src" />
       <recent name="$PROJECT_DIR$/vue3/todos" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.响应式原理.js">
-    <configuration name="响应式原理.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/vue3/响应式原理.js" working-dir="$PROJECT_DIR$/vue3">
+  <component name="RunManager" selected="Node.js.1.js">
+    <configuration name="1.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/vue3/src/1.js" working-dir="$PROJECT_DIR$/vue3">
       <method v="2" />
     </configuration>
-    <configuration name="proxy.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/vue3/proxy.js" working-dir="$PROJECT_DIR$/vue3">
+    <configuration name="响应式原理.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/vue3/src/响应式原理.js" working-dir="$PROJECT_DIR$/vue3">
+      <method v="2" />
+    </configuration>
+    <configuration name="proxy.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/vue3/src/proxy.js" working-dir="$PROJECT_DIR$/vue3">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.1.js" />
         <item itemvalue="Node.js.响应式原理.js" />
         <item itemvalue="Node.js.proxy.js" />
       </list>
@@ -128,31 +118,37 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1078" y="507" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602522780887">
-      <screen x="0" y="0" width="2560" height="1440" />
+    <state x="707" y="370" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602556501299">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state x="707" y="370" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1680.1050/1680.-140.2560.1440@0.0.1680.1050" timestamp="1602556501299" />
     <state x="2758" y="367" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1680.1050/1680.-140.2560.1440@1680.-140.2560.1440" timestamp="1602474053765" />
     <state x="1078" y="507" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2560.1440@0.0.2560.1440" timestamp="1602522780887" />
-    <state width="2532" height="410" key="GridCell.Tab.0.bottom" timestamp="1602502225750">
-      <screen x="1680" y="-140" width="2560" height="1440" />
+    <state width="1652" height="281" key="GridCell.Tab.0.bottom" timestamp="1602556755549">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state width="1652" height="281" key="GridCell.Tab.0.bottom/0.0.1680.1050/1680.-140.2560.1440@0.0.1680.1050" timestamp="1602556755549" />
     <state width="2532" height="410" key="GridCell.Tab.0.bottom/0.0.1680.1050/1680.-140.2560.1440@1680.-140.2560.1440" timestamp="1602502225750" />
-    <state width="2532" height="410" key="GridCell.Tab.0.center" timestamp="1602502225748">
-      <screen x="1680" y="-140" width="2560" height="1440" />
+    <state width="1652" height="281" key="GridCell.Tab.0.center" timestamp="1602556755547">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state width="1652" height="281" key="GridCell.Tab.0.center/0.0.1680.1050/1680.-140.2560.1440@0.0.1680.1050" timestamp="1602556755547" />
     <state width="2532" height="410" key="GridCell.Tab.0.center/0.0.1680.1050/1680.-140.2560.1440@1680.-140.2560.1440" timestamp="1602502225748" />
-    <state width="2532" height="410" key="GridCell.Tab.0.left" timestamp="1602502225747">
-      <screen x="1680" y="-140" width="2560" height="1440" />
+    <state width="1652" height="281" key="GridCell.Tab.0.left" timestamp="1602556755547">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state width="1652" height="281" key="GridCell.Tab.0.left/0.0.1680.1050/1680.-140.2560.1440@0.0.1680.1050" timestamp="1602556755547" />
     <state width="2532" height="410" key="GridCell.Tab.0.left/0.0.1680.1050/1680.-140.2560.1440@1680.-140.2560.1440" timestamp="1602502225747" />
-    <state width="2532" height="410" key="GridCell.Tab.0.right" timestamp="1602502225749">
-      <screen x="1680" y="-140" width="2560" height="1440" />
+    <state width="1652" height="281" key="GridCell.Tab.0.right" timestamp="1602556755548">
+      <screen x="0" y="0" width="1680" height="1050" />
     </state>
+    <state width="1652" height="281" key="GridCell.Tab.0.right/0.0.1680.1050/1680.-140.2560.1440@0.0.1680.1050" timestamp="1602556755548" />
     <state width="2532" height="410" key="GridCell.Tab.0.right/0.0.1680.1050/1680.-140.2560.1440@1680.-140.2560.1440" timestamp="1602502225749" />
-    <state x="2373" y="131" key="SettingsEditor" timestamp="1602470322691">
-      <screen x="1680" y="-140" width="2560" height="1440" />
+    <state x="267" y="23" key="SettingsEditor" timestamp="1602570476949">
+      <screen x="40" y="23" width="1400" height="877" />
     </state>
     <state x="2373" y="131" key="SettingsEditor/0.0.1680.1050/1680.-140.2560.1440@1680.-140.2560.1440" timestamp="1602470322691" />
+    <state x="267" y="23" key="SettingsEditor/40.23.1400.877@40.23.1400.877" timestamp="1602570476949" />
     <state x="2570" y="222" width="779" height="716" key="find.popup" timestamp="1602496794727">
       <screen x="1680" y="-140" width="2560" height="1440" />
     </state>
