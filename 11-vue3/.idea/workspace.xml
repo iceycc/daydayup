@@ -61,7 +61,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="Errors" />
-    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="ts.external.directory.path" value="$webstorm$/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -72,13 +72,13 @@
     </key>
   </component>
   <component name="RunManager" selected="Node.js.1.js">
-    <configuration name="1.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/vue3/src/1.js" working-dir="$PROJECT_DIR$/vue3">
+    <configuration name="1.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/vue3demo/src/1.js" working-dir="$PROJECT_DIR$/vue3demo">
       <method v="2" />
     </configuration>
-    <configuration name="响应式原理.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/vue3/src/响应式原理.js" working-dir="$PROJECT_DIR$/vue3">
+    <configuration name="响应式原理.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/vue3demo/src/响应式原理.js" working-dir="$PROJECT_DIR$/vue3demo">
       <method v="2" />
     </configuration>
-    <configuration name="proxy.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/vue3/src/proxy.js" working-dir="$PROJECT_DIR$/vue3">
+    <configuration name="proxy.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/vue3demo/src/proxy.js" working-dir="$PROJECT_DIR$/vue3demo">
       <method v="2" />
     </configuration>
     <recent_temporary>
