@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7ba9f41a-2e59-42ff-9557-2a94e2d0f7b3" name="默认的" comment="" />
+    <list default="true" id="7ba9f41a-2e59-42ff-9557-2a94e2d0f7b3" name="默认的" comment="">
+      <change afterPath="$PROJECT_DIR$/src/reactivity/operations.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reactivity/baseHandlers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reactivity/baseHandlers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reactivity/computed.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reactivity/computed.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reactivity/effect.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reactivity/effect.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/utils.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1ipViHTzAUooV7rWcOHpsV6qSby" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -21,6 +34,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="$webstorm$/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -33,6 +47,7 @@
       <updated>1602604646033</updated>
       <workItem from="1602604647251" duration="105000" />
       <workItem from="1602604854032" duration="6612000" />
+      <workItem from="1602611770112" duration="14767000" />
     </task>
     <servers />
   </component>
