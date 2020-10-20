@@ -10,15 +10,15 @@ import { checkLoginMiddleWares } from './middlewares/checkLogin.express.middlewa
 import { TransformInterceptor } from './interceptors/transform.interceptor';
 import { ValidationPipe } from './pipes/validation/valitation.pipe';
 import { HttpExceptionFilter } from './filters/http-exceotion.filter';
-import bodyParser from 'body-parser';
+// import bodyParser from 'body-parser';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   // 1 使用全局中间件
   app.use(test1MiddleWares());
   // app.use(checkLoginMiddleWares())
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded());
+  // app.use(bodyParser.json());
+  // app.use(bodyParser.urlencoded());
   app.use(new LogMiddleware().use);
   // 2 全局守卫
   // app.useGlobalGuards(new AuthGuard())
