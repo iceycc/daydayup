@@ -20,22 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39dd57f7-a239-4804-8f25-75a239d6d6cd" name="默认的" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue3/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue3/server.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue3/src/1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue3/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vue3/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/11-vue3.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue3/1.html" beforeDir="false" afterPath="$PROJECT_DIR$/vue3/public/1.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue3/proxy.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue3/src/proxy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue3/响应式原理.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue3/src/响应式原理.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,14 +39,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="javascript.nodejs.core.library.configured.version" value="14.4.0" />
-    <property name="javascript.nodejs.core.library.typings.version" value="14.11.8" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.15.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="10.17.39" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="Errors" />
-    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/vthree1/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -72,13 +57,13 @@
     </key>
   </component>
   <component name="RunManager" selected="Node.js.1.js">
-    <configuration name="1.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/vue3/src/1.js" working-dir="$PROJECT_DIR$/vue3">
+    <configuration name="1.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/vue3-study-demo/src/1.js" working-dir="$PROJECT_DIR$/vue3-study-demo">
       <method v="2" />
     </configuration>
-    <configuration name="响应式原理.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/vue3/src/响应式原理.js" working-dir="$PROJECT_DIR$/vue3">
+    <configuration name="响应式原理.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/vue3-study-demo/src/响应式原理.js" working-dir="$PROJECT_DIR$/vue3-study-demo">
       <method v="2" />
     </configuration>
-    <configuration name="proxy.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/vue3/src/proxy.js" working-dir="$PROJECT_DIR$/vue3">
+    <configuration name="proxy.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/vue3-study-demo/src/proxy.js" working-dir="$PROJECT_DIR$/vue3-study-demo">
       <method v="2" />
     </configuration>
     <recent_temporary>
@@ -99,6 +84,7 @@
       <updated>1602470096500</updated>
       <workItem from="1602470097723" duration="10053000" />
       <workItem from="1602521711513" duration="1526000" />
+      <workItem from="1602810180241" duration="418000" />
     </task>
     <servers />
   </component>
