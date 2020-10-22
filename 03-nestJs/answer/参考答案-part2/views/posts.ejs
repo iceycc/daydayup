@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.css" rel="stylesheet">
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <title>帖子</title>
+</head>
+
+<body>
+  <div class="container">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">添加帖子</button>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">添加帖子</h4>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="title">帖子标题</label>
+                <input type="text" class="form-control" id="title" placeholder="请输入帖子名称" id="title"/>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            <button type="button" class="btn btn-primary" id="save">保存</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>标题</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+
+      <body>
+        <%for(item of list){%>
+        <tr>
+          <td><%=item.id%></td>
+          <td><%=item.title%></td>
+          <td>
+            <button class="btn btn-danger delete" data-id="<%=item.id%>">删除</button>
+            <button class="btn btn-default edit" data-id="<%=item.id%>">修改</button>
+          </td>
+        </tr>
+        <%}%>
+        </body>
+      </table>
+  </div>
+</body>
+<script>
+  $(function() {
+    $('.delete').on('click', function() {
+      const id = $(this).attr('data-id');
+      // 发送ajax请求到后端
+    })
+  })
+</script>
+</html>
