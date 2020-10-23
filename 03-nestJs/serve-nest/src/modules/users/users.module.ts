@@ -8,7 +8,7 @@ import { UserRoleController } from './controller/user-role/user-role.controller'
 import { UserRoleEntity } from './entities/user_role.entity';
 import { LoginController } from './controller/login/login.controller';
 import { LoginService } from './services/login/login.service';
-import { ToolsService } from './services/login/tool.service';
+import { ToolsService } from '../../services/tools/tools.service';
 import { NestLogModule } from 'nest-log-icey';
 
 @Module({

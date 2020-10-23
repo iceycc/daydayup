@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UsersEntity } from '../../entities/users.entity';
 import { Repository } from 'typeorm';
-import { ToolsService } from './tool.service';
+import { ToolsService } from '../../../../services/tools/tools.service';
 import { jwt } from 'src/utils';
 import { RedisUtilsService } from '../../../redis-utils/redis-utils.service';
 

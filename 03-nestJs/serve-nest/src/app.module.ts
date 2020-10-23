@@ -8,6 +8,7 @@ import { RoleModule } from './modules/role/role.module';
 // import { AuthGuard } from './guard/auth.guard';
 // import { APP_GUARD } from '@nestjs/core';
 import { RedisUtilsModule } from './modules/redis-utils/redis-utils.module';
+import { AccessModule } from './modules/access/access.module';
 
 @Module({
   imports: [
@@ -31,7 +32,8 @@ import { RedisUtilsModule } from './modules/redis-utils/redis-utils.module';
     UsersModule,
     PostsModule,
     RoleModule,
-    RedisUtilsModule],
+    RedisUtilsModule,
+    AccessModule],
   controllers: [],
   // providers: [{ // 依赖注入使用守卫
   //   provide: APP_GUARD,
