@@ -7,9 +7,8 @@ import {
   Param,
   ParseIntPipe,
   Patch,
-  // UseGuards,
   HttpCode,
-  HttpStatus, Query,
+  HttpStatus, Query, UseGuards,
 } from '@nestjs/common';
 // import { UpdateResult } from 'typeorm';
 import { ApiCreatedResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -18,11 +17,11 @@ import { UsersService } from '../../services/user/users.service';
 import { UsersEntity } from '../../entities/users.entity';
 import { CreateUserTdo } from '../../dto/create.user.dto';
 
-// import { AuthGuard } from '../../../../guard/auth.guard';
+import { AuthGuard } from '../../../../guard/auth.guard';
 
 @ApiTags('用户模块')
 @Controller('users')
-// @UseGuards(AuthGuard) // 模块内使用守卫
+@UseGuards(AuthGuard) // 模块内使用守卫
 export class UsersController {
   constructor(
     private readonly usersServices: UsersService,
@@ -77,6 +76,7 @@ export class UsersController {
     return this.usersServices.userList(queryOption);
   }
 
+  @ApiOperation({ summary: '获取单个用户信息', description: '根据id获取单个用户信息' })
   @Get(':id')
   userById(
     @Param('id', new ParseIntPipe()) id: number,

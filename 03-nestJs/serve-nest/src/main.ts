@@ -7,6 +7,10 @@ import { LoggingInterceptor } from './interceptors/logging.interceptor';
 import { ValidationPipe } from './pipes/validation/validation.pipe';
 import { TransformInterceptor } from './interceptors/transform.interceptor';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// import * as helmet from 'helmet';
+
 // import { AuthGuard } from './guard/auth.guard';
 // import { LogMiddleware } from './middlewares/log.middleware';
 const PORT = process.env.PORT || 4567;
@@ -14,6 +18,9 @@ const PREFIX = process.env.PREFIX || '';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  // app.use(helmet()); // 安全相关
+  app.enableCors(); // 开启cors
   // 给请求添加prefix
   app.setGlobalPrefix(PREFIX);
   // 配置文档信息

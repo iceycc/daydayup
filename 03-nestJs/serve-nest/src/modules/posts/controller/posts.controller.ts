@@ -3,7 +3,9 @@ import { PostsService } from '../services/posts.service';
 import { PostsEntity } from '../entities/posts.entity';
 import { UpdateResult } from 'typeorm';
 import { AuthGuard } from '../../../guard/auth.guard';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('文章模块')
 @Controller('posts')
 @UseGuards(AuthGuard)
 export class PostsController {

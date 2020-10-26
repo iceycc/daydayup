@@ -63,10 +63,10 @@ export class UsersService {
     const queryCondition = queryConditionList.join(' AND ');
 
     const [data, total] = await getConnection().createQueryBuilder(UsersEntity, 'user')
-      .andWhere(queryCondition, { username: `${username}`})
-      .orderBy({ 'user.createdAt': 'DESC' })
-      .skip((pageNumber-1) * pageSize)
-      .take(pageSize)
+      .andWhere(queryCondition, { username: `${username}`}) // 条件查询
+      .orderBy({ 'user.createdAt': 'DESC' }) // 排序 DESC
+      .skip((pageNumber-1) * pageSize) // 跳过多少数据，第几页 n x size
+      .take(pageSize) // 查询多少数据
       .leftJoin(UserRoleEntity, 'user_role', 'user.id=user_role.userId')
       .leftJoinAndMapMany('user.role', RoleEntity, 'role', 'user_role.roleId=role.id')
       .leftJoinAndMapMany('user.posts', PostsEntity, 'posts', 'user.id=posts.userId')
@@ -82,6 +82,10 @@ export class UsersService {
   }
 
   async userById(id: number): Promise<UsersEntity> {
+    return this.userRepository.findOne(id);
+  }
+
+  async userOne(id: number): Promise<UsersEntity> {
     return this.userRepository.findOne(id);
   }
 

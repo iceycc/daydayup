@@ -28,6 +28,7 @@ export class LoginService {
         user,
       };
       await this.redisUtilsService.set(String(user.id), redisData);
+
       return { ...user, token };
     } else {
       return '密码错误';

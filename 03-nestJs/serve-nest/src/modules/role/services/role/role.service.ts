@@ -7,11 +7,15 @@ import { Repository } from 'typeorm';
 export class RoleService {
   constructor(
     @InjectRepository(RoleEntity)
-    private readonly roleRepository:Repository<RoleEntity>
+    private readonly roleRepository: Repository<RoleEntity>,
   ) {
   }
 
-  async createRole(body:{[keyName:string]:any}):Promise<RoleEntity>{
-    return this.roleRepository.save(body)
+  async createRole(body: { [keyName: string]: any }): Promise<RoleEntity> {
+    return this.roleRepository.save(body);
+  }
+
+  async roleList(query: { [keyName: string]: any }): Promise<RoleEntity[]> {
+    return this.roleRepository.find();
   }
 }
