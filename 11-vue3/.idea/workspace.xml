@@ -20,7 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="39dd57f7-a239-4804-8f25-75a239d6d6cd" name="默认的" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vthree3ts/src/components/Header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/vthree3ts/src/components/Header/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +85,10 @@
       <updated>1602470096500</updated>
       <workItem from="1602470097723" duration="10053000" />
       <workItem from="1602521711513" duration="1526000" />
-      <workItem from="1602810180241" duration="418000" />
+      <workItem from="1602810180241" duration="1085000" />
+      <workItem from="1603327256211" duration="54000" />
+      <workItem from="1603454089921" duration="18000" />
+      <workItem from="1603723685546" duration="100000" />
     </task>
     <servers />
   </component>

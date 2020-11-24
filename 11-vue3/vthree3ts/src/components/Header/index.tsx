@@ -1,6 +1,5 @@
 import  { defineComponent, reactive, onBeforeMount, onBeforeUpdate, ref} from 'vue'
-import aixos from 'axios'
-import axios from "axios";
+import axios from 'axios';
 interface headerProps{
     title:string
 }
