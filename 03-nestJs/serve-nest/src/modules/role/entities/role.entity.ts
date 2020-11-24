@@ -50,5 +50,5 @@ export class RoleEntity extends BaseEntity {
     name: 'updated_at',
     comment: '更新时间',
   })
-  updateAt: Date;
+  updatedAt: Date;
 }
