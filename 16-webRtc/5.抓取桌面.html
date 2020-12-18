@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<video id="deskVideo" autoplay playsinline></video>
+<button id="record">开始录制</button>
+<script src="./src/record.js"></script>
+<script>
+    let localStream;
+    const isPC = true;
+    let recorder;
+
+    function shareDesktop() {
+        if (isPC) {
+            const promise = navigator.mediaDevices.getDisplayMedia({
+                video: true
+            })
+            promise.then(stream => {
+                localStream = stream
+                recorder = new Recorder(localStream)
+                document.querySelector("video#deskVideo").srcObject = stream
+            })
+        }
+    }
+
+    shareDesktop()
+    document.querySelector("button#record").addEventListener('click', function () {
+        if (this.textContent === '开始录制') {
+            recorder.startRecord()
+            this.textContent = '停止录制'
+        }
+        if (this.textContent === '停止录制') {
+            recorder.stopRecord();
+        }
+    })
+
+</script>
+</body>
+</html>
