@@ -29,13 +29,14 @@ export function initMixin (Vue: Class<Component>) {
 
     // a flag to avoid this being observed
     vm._isVue = true
-    // merge options
+    // merge options // 合并options，
     if (options && options._isComponent) {
       // optimize internal component instantiation
       // since dynamic options merging is pretty slow, and none of the
       // internal component options needs special treatment
       initInternalComponent(vm, options)
     } else {
+      // 挂载到vm实例上，可以通过this.$options.data / el 实现访问配置
       vm.$options = mergeOptions(
         resolveConstructorOptions(vm.constructor),
         options || {},
@@ -57,7 +58,7 @@ export function initMixin (Vue: Class<Component>) {
     initRender(vm) // 初始化 vm.$createElement  在实例上增加createElement方法。
     callHook(vm, 'beforeCreate') // 调用 breforeCreate方法。
     initInjections(vm) // 初始化注入数据 vm._injected  //  resovlveInject //   resolve injections before data/props
-    initState(vm) // 初始化状态 props,method,data,watch 响应式原理 => 
+    initState(vm) // 初始化状态 props,method,data,watch 响应式原理 =>
     initProvide(vm) // vm._provided   // resolve provide after data/props
     callHook(vm, 'created') // 调用了created
 
@@ -68,7 +69,7 @@ export function initMixin (Vue: Class<Component>) {
       measure(`vue ${vm._name} init`, startTag, endTag)
     }
 
-    if (vm.$options.el) {
+    if (vm.$options.el) { // 判断
       vm.$mount(vm.$options.el) // 挂载元素
     }
   }

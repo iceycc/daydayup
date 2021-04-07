@@ -7,13 +7,13 @@ import { warn } from '../util/index'
 
 /**
  *  Vue的构造函数
- * @param {*} options 
+ * @param {*} options
  */
 function Vue (options) {
   if (process.env.NODE_ENV !== 'production' &&
     !(this instanceof Vue)
   ) {
-    // 必须要new
+    // 必须要new实例化，疑问为啥不用es6 class实现呢？ 而是用es5？
     warn('Vue is a constructor and should be called with the `new` keyword')
   }
   // 使用vue时就会调用初始化
@@ -27,13 +27,13 @@ function Vue (options) {
 initMixin(Vue) // _init  初始化 mixin
 
 // 初始实例属性和方法 $set\$delete\$watch  挂载与实例相关到方法。
-stateMixin(Vue) 
+stateMixin(Vue)
 
 // vue实例中事件相关到方法 $on $emit $off 实现vue的发布订阅模式
-eventsMixin(Vue) 
+eventsMixin(Vue)
 
 // 声明周期相关到方法 $foreUpdate $destroy
-lifecycleMixin(Vue) // Vue.prototype._update   $destroy  $forceUpdate  
+lifecycleMixin(Vue) // Vue.prototype._update   $destroy  $forceUpdate
 
 // 渲染函数 提供_render方法
 renderMixin(Vue) // Vue.prototype._render  Vue.prototype.$nextTick

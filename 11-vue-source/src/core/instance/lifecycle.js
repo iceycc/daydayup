@@ -2,7 +2,7 @@
 
 import config from '../config'
 import Watcher from '../observer/watcher'
-import { mark, measure } from '../util/perf'
+import { mark, measure } from '../util/perf' // 性能方面的埋点？
 import { createEmptyVNode } from '../vdom/vnode'
 import { updateComponentListeners } from './events'
 import { resolveSlots } from './render-helpers/resolve-slots'
@@ -89,7 +89,7 @@ export function lifecycleMixin (Vue: Class<Component>) {
     // updated hook is called by the scheduler to ensure that children are
     // updated in a parent's updated hook.
   }
-  // 强制更新 
+  // 强制更新
   Vue.prototype.$forceUpdate = function () {
     const vm: Component = this
     if (vm._watcher) {
@@ -144,6 +144,7 @@ export function lifecycleMixin (Vue: Class<Component>) {
   }
 }
 
+// mount的函数
 export function mountComponent (
   vm: Component,
   el: ?Element,
@@ -151,9 +152,10 @@ export function mountComponent (
 ): Component {
   vm.$el = el
   if (!vm.$options.render) {
-    vm.$options.render = createEmptyVNode
+    vm.$options.render = createEmptyVNode // 创建vNode
     if (process.env.NODE_ENV !== 'production') {
       /* istanbul ignore if */
+      // 用了template并且没有用编译版本的vue，就会报错。
       if ((vm.$options.template && vm.$options.template.charAt(0) !== '#') ||
         vm.$options.el || el) {
         warn(
@@ -196,6 +198,7 @@ export function mountComponent (
       // 组件级更新
       // render会把渲染后的结果执行vm._update渲染到页面上
       // 把整个组件的模版渲染到页面上
+      // hydrating服务端相关的
       vm._update(vm._render(), hydrating)
     }
   }
@@ -206,8 +209,10 @@ export function mountComponent (
   // ⚠️
   // 只要一new就将watcher放到dep上
   //并行updateComponent
+  // 渲染watcher。 isRenderWatcher = true
+  //
   new Watcher(vm, updateComponent, noop, {
-    before () {
+    before () { // 配置
       if (vm._isMounted && !vm._isDestroyed) {
         callHook(vm, 'beforeUpdate')
       }

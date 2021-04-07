@@ -7,7 +7,7 @@ import { initExtend } from './extend'
 import { initAssetRegisters } from './assets'
 import { set, del } from '../observer/index'
 import { ASSET_TYPES } from 'shared/constants'
-import builtInComponents from '../components/index'
+import builtInComponents from '../components/index' // 内置组件 keepAlive
 import { observe } from 'core/observer/index'
 
 import {
@@ -20,7 +20,7 @@ import {
 
 /**
  * 定义vue 全局 config
- * @param {} Vue 
+ * @param {} Vue
  */
 export function initGlobalAPI (Vue: GlobalAPI) {
   // config
@@ -39,7 +39,7 @@ export function initGlobalAPI (Vue: GlobalAPI) {
   // NOTE: these are not considered part of the public API - avoid relying on
   // them unless you are aware of the risk.
   Vue.util = {
-    // 外部不建议直接使用 
+    // 外部不建议直接使用
     warn,
     extend, // 继承
     mergeOptions,
@@ -47,7 +47,7 @@ export function initGlobalAPI (Vue: GlobalAPI) {
   }
 
   Vue.set = set
-  Vue.delete = del 
+  Vue.delete = del
   Vue.nextTick = nextTick // 浏览器事件环
 
   // 2.6 explicit observable API
@@ -57,7 +57,7 @@ export function initGlobalAPI (Vue: GlobalAPI) {
   }
 
   Vue.options = Object.create(null)
-  
+
   // 注册 ASSET_TYPES   'component', 'directive', 'filter'
   ASSET_TYPES.forEach(type => {
     Vue.options[type + 's'] = Object.create(null)
@@ -69,8 +69,8 @@ export function initGlobalAPI (Vue: GlobalAPI) {
 
   extend(Vue.options.components, builtInComponents)
 
-  initUse(Vue) // 初始化 Vue.use , 默认会调用当前插件大install方法。
-  initMixin(Vue) // 初始化 Vue.mixin 混合 将传人大属性混合到this.options中
-  initExtend(Vue) // 初始化Vue.extend 会创建个子类 继承于父类
+  initUse(Vue) // 定义 Vue.use , 默认会调用当前插件大install方法。
+  initMixin(Vue) // 定义 Vue.mixin 混合 将传人大属性混合到this.options中
+  initExtend(Vue) // 定义 Vue.extend 会创建个子类 继承于父类
   initAssetRegisters(Vue)
 }

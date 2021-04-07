@@ -15,16 +15,16 @@ const idToTemplate = cached(id => {
 })
 
 // 根据package.json  build =》script confing =》 web/entry-runtime.js》
-// 找到入口文件 入口文件 
+// 找到入口文件 入口文件
 const mount = Vue.prototype.$mount
 // aop 如果有模版 就把 模版变成 render函数 对mount函数进行包装
 // 挂载组件的方法
 // vm.$options.el
-Vue.prototype.$mount = function ( 
+Vue.prototype.$mount = function (
   el?: string | Element,
   hydrating?: boolean
 ): Component {
-  el = el && query(el)
+  el = el && query(el) // 返回的就是一个dom对象了
 
   /* istanbul ignore if */
   if (el === document.body || el === document.documentElement) {
@@ -48,7 +48,7 @@ Vue.prototype.$mount = function (
       if (typeof template === 'string') {
         // 3 看模版是不是 # 方式传人
         // el:'#app'
-        if (template.charAt(0) === '#') { 
+        if (template.charAt(0) === '#') {
           template = idToTemplate(template)
           /* istanbul ignore if */
           if (process.env.NODE_ENV !== 'production' && !template) {
@@ -71,14 +71,14 @@ Vue.prototype.$mount = function (
     } else if (el) {
       // div id
       // 没有找到template引入外部模版
-      template = getOuterHTML(el)
+      template = getOuterHTML(el) // 最终返回的是个字符串？
     }
     if (template) {
       /* istanbul ignore if */
       if (process.env.NODE_ENV !== 'production' && config.performance && mark) {
         mark('compile')
       }
-      // 编译模版 编译成 render函数 
+      // 编译模版 编译成 render函数
       // 解析模版 complierToFunctions
       // complier ast 分词 语法拆分 分析 ast =》 在去生产字符串 =》外面 =》 with new Function
       const { render, staticRenderFns } = compileToFunctions(template, {
@@ -98,7 +98,7 @@ Vue.prototype.$mount = function (
       }
     }
   }
-  // 
+  //
   return mount.call(this, el, hydrating)
 }
 
