@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>WebRTC</title>
+  <link rel="stylesheet" , href="css/client.css" />
+</head>
+
+<body>
+  <h1>WebRTC </h1>
+  <video autoplay playsinline></video>
+  <script>
+    const mediaStreamContrains = {
+      video: true
+    };
+    
+    const localVideo = document.querySelector('video');
+
+    navigator.mediaDevices.getUserMedia(mediaStreamContrains).then((mediaStream) => {
+      localVideo.srcObject = mediaStream;
+    }).catch(error => {
+      console.log('navigator.getUserMedia error: ', error);
+    });
+  </script>
+</body>
+
+</html>

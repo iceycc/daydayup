@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="730b021f-1cce-42b8-a3e9-a1e56c8342fe" name="默认的" comment="">
+      <change afterPath="$PROJECT_DIR$/../33-umijs/myapp/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../33-umijs/myapp/config/config.local.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../33-umijs/myapp/config/routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../33-umijs/myapp/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../33-umijs/myapp/src/app.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../33-umijs/myapp/src/layouts/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/code1/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../33-umijs/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../33-umijs/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1mtn0fG9uDSshaFQYHAbfCd5J2o" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="730b021f-1cce-42b8-a3e9-a1e56c8342fe" name="默认的" comment="" />
+      <created>1610321532876</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610321532876</updated>
+      <workItem from="1610321534334" duration="1673000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="-1257" y="278" key="GitCloneDialog" timestamp="1610323106853">
+      <screen x="-1871" y="-155" width="1871" height="1055" />
+    </state>
+    <state x="-1257" y="278" key="GitCloneDialog/-1871.-155.1871.1055/0.25.1440.875@-1871.-155.1871.1055" timestamp="1610323106853" />
+  </component>
+</project>

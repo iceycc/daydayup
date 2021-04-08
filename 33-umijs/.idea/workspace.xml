@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21476494-2dbb-4f8b-9609-f5b1f7e717b4" name="默认的" comment="">
-      <change afterPath="$PROJECT_DIR$/umi1/pages/index.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/umi1/pages/profile.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/umi1/pages/user/_layout.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/umi1/pages/user/add.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/umi1/pages/user/list.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myapp/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myapp/config/config.local.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myapp/config/routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myapp/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myapp/src/app.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/myapp/src/layouts/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +30,31 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="$webstorm$/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/myapp/config" />
+      <recent name="$PROJECT_DIR$/myapp/src" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/myapp/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -38,7 +64,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1608047003899</updated>
-      <workItem from="1608047005130" duration="1221000" />
+      <workItem from="1608047005130" duration="4001000" />
     </task>
     <servers />
   </component>
@@ -46,9 +72,25 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-1156" y="146" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1608047051373">
+    <state x="-1156" y="146" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1608049026349">
       <screen x="-1920" y="-180" width="1920" height="1080" />
     </state>
-    <state x="-1156" y="146" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1608047051373" />
+    <state x="-1156" y="146" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1608049026349" />
+    <state width="1858" height="299" key="GridCell.Tab.0.bottom" timestamp="1608243245160">
+      <screen x="-1920" y="-180" width="1920" height="1080" />
+    </state>
+    <state width="1858" height="299" key="GridCell.Tab.0.bottom/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1608243245160" />
+    <state width="1858" height="299" key="GridCell.Tab.0.center" timestamp="1608243245159">
+      <screen x="-1920" y="-180" width="1920" height="1080" />
+    </state>
+    <state width="1858" height="299" key="GridCell.Tab.0.center/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1608243245159" />
+    <state width="1858" height="299" key="GridCell.Tab.0.left" timestamp="1608243245158">
+      <screen x="-1920" y="-180" width="1920" height="1080" />
+    </state>
+    <state width="1858" height="299" key="GridCell.Tab.0.left/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1608243245158" />
+    <state width="1858" height="299" key="GridCell.Tab.0.right" timestamp="1608243245159">
+      <screen x="-1920" y="-180" width="1920" height="1080" />
+    </state>
+    <state width="1858" height="299" key="GridCell.Tab.0.right/0.0.1440.900/-1920.-180.1920.1080@-1920.-180.1920.1080" timestamp="1608243245159" />
   </component>
 </project>

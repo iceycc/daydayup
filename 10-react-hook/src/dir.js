@@ -1,1 +1,0 @@
-const req = require.context('./examples', false, /\.js$/)
