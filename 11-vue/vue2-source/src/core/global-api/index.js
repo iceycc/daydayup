@@ -33,6 +33,7 @@ export function initGlobalAPI (Vue: GlobalAPI) {
       )
     }
   }
+  console.log(configDef,'configDef================')
   Object.defineProperty(Vue, 'config', configDef)
 
   // exposed util methods.
