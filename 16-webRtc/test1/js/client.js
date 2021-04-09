@@ -6,65 +6,68 @@ const btnRecord = document.querySelector("button#record");
 const recvideo = document.querySelector("video#recplayer");
 const videoType = 'webm'
 const mediaStreamContrains = {
-  video: {
-    frameRate: {
-      min: 20,
+    video: {
+        frameRate: {
+            min: 20,
+        },
+        width: {
+            min: 640,
+            ideal: 1280,
+        },
+        height: {
+            min: 360,
+            ideal: 720,
+        },
+        aspectRatio: 16 / 9,
     },
-    width: {
-      min: 640,
-      ideal: 1280,
-    },
-    height: {
-      min: 360,
-      ideal: 720,
-    },
-    aspectRatio: 16 / 9,
-  },
 };
 const MediaDevices = navigator.mediaDevices;
 var mediaRecorder;
 MediaDevices.getUserMedia(mediaStreamContrains) // 访问camera。第一次访问会让用户选择是否开启摄像头
-  .then((mediaStream) => {
-    console.log(mediaStream);
-    window.stream = mediaStream;
-    videoplay.srcObject = mediaStream; // 拿到流后将流赋给video
-    MediaDevices.enumerateDevices().then((deviceInfos) => {
-      console.table(deviceInfos);
+    .then((mediaStream) => {
+        console.log(mediaStream);
+        window.stream = mediaStream;
+        videoplay.srcObject = mediaStream; // 拿到流后将流赋给video
+        MediaDevices.enumerateDevices().then((deviceInfos) => {
+            console.table(deviceInfos);
+        });
+    }) //
+    .catch((error) => {
+        console.log("navigator.getUserMedia error: ", error);
     });
-  }) //
-  .catch((error) => {
-    console.log("navigator.getUserMedia error: ", error);
-  });
 
 // MediaTrack 媒体轨道
 // MediaStream 两个概念很重要
 
-// console.log(navigator.mediaDeviceInfo)
 var picture = document.querySelector("canvas#picture");
 picture.width = 640;
 picture.height = 480;
+//  点击-截屏并绘制截图
 document.querySelector("button#takePhoto").addEventListener("click", () => {
-  picture
-    .getContext("2d")
-    .drawImage(videoplay, 0, 0, picture.width, picture.height);
+    picture
+        .getContext("2d")
+        .drawImage(videoplay, 0, 0, picture.width, picture.height);
 });
 
+// 保存截图
 function downLoad(url) {
-  var oA = document.createElement("a");
-  oA.download = "photo";
-  oA.href = url;
-  document.body.appendChild(oA);
-  oA.click();
-  oA.remove();
+    var oA = document.createElement("a");
+    oA.download = "photo";
+    oA.href = url;
+    document.body.appendChild(oA);
+    oA.click();
+    oA.remove();
 }
 
+// 点击-保存截图
 document.querySelector("button#safe").addEventListener("click", () => {
-  downLoad(picture.toDataURL("image/jpeg"));
+    downLoad(picture.toDataURL("image/jpeg"));
 });
 
+// 点击- 增加滤镜
 document.querySelector("select#filter").addEventListener("change", (e) => {
-  console.log(e.target.value);
-  picture.className = e.target.value;
+    console.log(e.target.value);
+    picture.className = e.target.value;
 });
 
 // let buffer = new ArrayBuffer(16);
@@ -73,67 +76,76 @@ document.querySelector("select#filter").addEventListener("change", (e) => {
 
 // let blob = new Blob(view)
 
-document.querySelector("button#download").addEventListener("click", () => {});
+// document.querySelector("button#download").addEventListener("click", () => {
+// });
+
 var buffer;
-function handleDataAvailable(e) {
-  if (e && e.data && e.data.size > 0) {
-    buffer.push(e.data);
-  }
+
+// 录制视频
+function startRecord() {
+    buffer = [];
+
+    function handleDataAvailable(e) {
+        if (e && e.data && e.data.size > 0) {
+            buffer.push(e.data);
+        }
+    }
+
+    // 设置录制下来的多媒体格式
+    var options = {mimeType: "video/" + videoType + ";codecs=vp8"};
+    // 判断浏览器是否支持录制
+    if (!MediaRecorder.isTypeSupported(options.mimeType)) {
+        console.error(`${options.mimeType} is not supported!`);
+        return;
+    }
+    try {
+        // 创建录制对象
+        mediaRecorder = new MediaRecorder(window.stream, options);
+    } catch (e) {
+        console.error("Failed to create MediaRecorder:", e);
+        return;
+    } // 当有音视频数据来了之后触发该事件
+    mediaRecorder.ondataavailable = handleDataAvailable;
+    // 开始录制
+    mediaRecorder.start(10);
 }
 
-function startRecord() {
-  buffer = [];
-  // 设置录制下来的多媒体格式
-  var options = { mimeType: "video/"+videoType+";codecs=vp8" };
-  // 判断浏览器是否支持录制
-  if (!MediaRecorder.isTypeSupported(options.mimeType)) {
-    console.error(`${options.mimeType} is not supported!`);
-    return;
-  }
-  try {
-    // 创建录制对象
-    mediaRecorder = new MediaRecorder(window.stream, options);
-  } catch (e) {
-    console.error("Failed to create MediaRecorder:", e);
-    return;
-  } // 当有音视频数据来了之后触发该事件
-  mediaRecorder.ondataavailable = handleDataAvailable;
-  // 开始录制
-  mediaRecorder.start(10);
-}
+// 停止录制视频
 function stopRecord() {
-  mediaRecorder.stop();
+    mediaRecorder.stop();
 }
+
+// 点击-录制/停止视频
 btnRecord.addEventListener("click", () => {
-  console.log("--------------------");
-  if (btnRecord.textContent === "Start Record") {
-    startRecord();
-    btnRecord.textContent = "Stop Record";
-    btnPlay.disabled = true;
-    btnDownload.disabled = true;
-  } else {
-    stopRecord();
-    btnRecord.textContent = "Start Record";
-    btnPlay.disabled = false;
-    btnDownload.disabled = false;
-  }
+    if (btnRecord.textContent === "Start Record") {
+        startRecord(); // 录制视频
+        btnRecord.textContent = "Stop Record";
+        btnPlay.disabled = true;
+        btnDownload.disabled = true;
+    } else {
+        stopRecord(); // 停止录制视频
+        btnRecord.textContent = "Start Record";
+        btnPlay.disabled = false;
+        btnDownload.disabled = false;
+    }
 });
 
+// 点击-下载录制的视频
 btnDownload.onclick = () => {
-  var blob = new Blob(buffer, { type: "video/"+videoType });
-  var url = window.URL.createObjectURL(blob);
-  var a = document.createElement("a");
+    var blob = new Blob(buffer, {type: "video/" + videoType});
+    var url = window.URL.createObjectURL(blob);
+    var a = document.createElement("a");
 
-  a.href = url;
-  a.style.display = "none";
-  a.download = "aaa."+videoType;
-  a.click();
+    a.href = url;
+    a.style.display = "none";
+    a.download = "aaa." + videoType;
+    a.click();
 };
 
 btnPlay.onclick = () => {
-  var blob = new Blob(buffer, { type: "video/" +videoType });
-  recvideo.src = window.URL.createObjectURL(blob);
-  recvideo.srcObject = null;
-  recvideo.controls = true;
-  recvideo.play();
+    var blob = new Blob(buffer, {type: "video/" + videoType});
+    recvideo.src = window.URL.createObjectURL(blob);
+    recvideo.srcObject = null;
+    recvideo.controls = true;
+    recvideo.play();
 };

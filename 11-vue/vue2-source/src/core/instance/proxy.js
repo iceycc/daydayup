@@ -83,7 +83,7 @@ if (process.env.NODE_ENV !== 'production') {
       const handlers = options.render && options.render._withStripped
         ? getHandler
         : hasHandler
-      vm._renderProxy = new Proxy(vm, handlers)
+      vm._renderProxy = new Proxy(vm, handlers) // 对对象访问劫持
     } else {
       vm._renderProxy = vm
     }
