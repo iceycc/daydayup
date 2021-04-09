@@ -33,6 +33,7 @@ export function createElement (
   normalizationType: any,
   alwaysNormalize: boolean
 ): VNode | Array<VNode> {
+  // 参数对重载
   if (Array.isArray(data) || isPrimitive(data)) {
     normalizationType = children
     children = data
@@ -44,6 +45,7 @@ export function createElement (
   return _createElement(context, tag, data, children, normalizationType)
 }
 
+// 创建并返回vNode节点
 export function _createElement (
   context: Component,
   tag?: string | Class<Component> | Function | Object,
@@ -51,7 +53,8 @@ export function _createElement (
   children?: any,
   normalizationType?: number
 ): VNode | Array<VNode> {
-  if (isDef(data) && isDef((data: any).__ob__)) {
+  // todo: // data不允许是响应式对？？？
+  if (isDef(data) && isDef((data: any).__ob__)) { 
     process.env.NODE_ENV !== 'production' && warn(
       `Avoid using observed data object as vnode data: ${JSON.stringify(data)}\n` +
       'Always create fresh vnode data objects in each render!',
@@ -60,6 +63,7 @@ export function _createElement (
     return createEmptyVNode()
   }
   // object syntax in v-bind
+  // todo: data.is ??
   if (isDef(data) && isDef(data.is)) {
     tag = data.is
   }
@@ -87,6 +91,7 @@ export function _createElement (
     data.scopedSlots = { default: children[0] }
     children.length = 0
   }
+  // todo: 多维数组转一维数组
   if (normalizationType === ALWAYS_NORMALIZE) {
     children = normalizeChildren(children)
   } else if (normalizationType === SIMPLE_NORMALIZE) {
@@ -96,9 +101,10 @@ export function _createElement (
   if (typeof tag === 'string') {
     let Ctor
     ns = (context.$vnode && context.$vnode.ns) || config.getTagNamespace(tag)
-    if (config.isReservedTag(tag)) {
+    if (config.isReservedTag(tag)) { // 保留标签 如div啥的
       // platform built-in elements
       if (process.env.NODE_ENV !== 'production' && isDef(data) && isDef(data.nativeOn)) {
+        // v-on的.native修饰符仅在组件上有效，但在<tag>上
         warn(
           `The .native modifier for v-on is only valid on components but it was used on <${tag}>.`,
           context

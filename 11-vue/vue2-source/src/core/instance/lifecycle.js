@@ -56,7 +56,10 @@ export function initLifecycle (vm: Component) {
 }
 
 export function lifecycleMixin (Vue: Class<Component>) {
-  // 更新
+  // 更新 _update
+  // 调用更新的时机有两个
+    // 首次渲染的时候
+    // 数据更新的时候
   Vue.prototype._update = function (vnode: VNode, hydrating?: boolean) {
     const vm: Component = this
     const prevEl = vm.$el
@@ -67,9 +70,9 @@ export function lifecycleMixin (Vue: Class<Component>) {
     // based on the rendering backend used.
     if (!prevVnode) {
       // 第一次的话就执行初始化渲染
-      // initial render
+      // initial render  首次渲染
       vm.$el = vm.__patch__(vm.$el, vnode, hydrating, false /* removeOnly */)
-    } else {
+    } else -{
       // 否则的话就更新
       // updates
       vm.$el = vm.__patch__(prevVnode, vnode)
