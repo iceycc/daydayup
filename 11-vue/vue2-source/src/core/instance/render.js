@@ -119,6 +119,7 @@ export function renderMixin (Vue: Class<Component>) {
     // return empty vnode in case the render function errored out
     if (!(vnode instanceof VNode)) {
       if (process.env.NODE_ENV !== 'production' && Array.isArray(vnode)) {
+        // 警告，禁止多个vNode跟节点。为什么需要一个vNode
         warn(
           'Multiple root nodes returned from render function. Render function ' +
           'should return a single root node.',
