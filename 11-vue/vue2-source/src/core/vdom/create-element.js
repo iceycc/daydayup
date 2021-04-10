@@ -98,6 +98,7 @@ export function _createElement (
     children = simpleNormalizeChildren(children)
   }
   let vnode, ns
+  //  传入的是字符串的情况 render(h)=>h('div',{attrs:{id:'app'}})
   if (typeof tag === 'string') {
     let Ctor
     ns = (context.$vnode && context.$vnode.ns) || config.getTagNamespace(tag)
@@ -127,6 +128,7 @@ export function _createElement (
       )
     }
   } else {
+    // 传入的是组件
     // direct component options / constructor
     vnode = createComponent(tag, data, context, children)
   }

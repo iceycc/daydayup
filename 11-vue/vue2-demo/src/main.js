@@ -1,6 +1,6 @@
 import Vue from 'vue'
-// import App from './App.vue'
-// import router from './router'
+import App from './App.vue'
+import router from './router'
 // import store from './store'
 
 Vue.config.productionTip = false
@@ -10,16 +10,17 @@ Vue.config.productionTip = false
 //   store,
 //   render: h => h(App)
 // }).$mount('#app')
-// debugger
 debugger
 new Vue({
   el:'#app',
-  render(c){
-    return c('div',{
-      attrs:{
-        id:'app'
-      }
-    },this.message)
+  router,
+  render(h){
+    // return h('div',{
+    //   attrs:{
+    //     id:'app'
+    //   }
+    // },this.message)
+    return h(App)
   },
   data: {
     message: 'Hello!'

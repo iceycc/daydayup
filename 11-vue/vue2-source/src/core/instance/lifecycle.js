@@ -22,10 +22,10 @@ export let activeInstance: any = null
 export let isUpdatingChildComponent: boolean = false
 
 export function setActiveInstance(vm: Component) {
-  const prevActiveInstance = activeInstance
+  const prevActiveInstance = activeInstance // 上一个活动的实例
   activeInstance = vm
   return () => {
-    activeInstance = prevActiveInstance
+    activeInstance = prevActiveInstance // 当前活动的实例  // 父子关系？
   }
 }
 
@@ -33,6 +33,8 @@ export function initLifecycle (vm: Component) {
   const options = vm.$options
 
   // locate first non-abstract parent
+
+  // 创建父子关系
   let parent = options.parent
   if (parent && !options.abstract) {
     while (parent.$options.abstract && parent.$parent) {
@@ -41,7 +43,7 @@ export function initLifecycle (vm: Component) {
     parent.$children.push(vm)
   }
 
-  vm.$parent = parent
+  vm.$parent = parent 
   vm.$root = parent ? parent.$root : vm
 
   vm.$children = []
@@ -64,8 +66,8 @@ export function lifecycleMixin (Vue: Class<Component>) {
     const vm: Component = this
     const prevEl = vm.$el
     const prevVnode = vm._vnode
-    const restoreActiveInstance = setActiveInstance(vm)
-    vm._vnode = vnode
+    const restoreActiveInstance = setActiveInstance(vm) // 正在激活的vm实例 
+    vm._vnode = vnode // _vnode和$vnode的区别
     // Vue.prototype.__patch__ is injected in entry points
     // based on the rendering backend used.
     if (!prevVnode) {

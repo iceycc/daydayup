@@ -232,6 +232,7 @@ export function createPatchFunction (backend) {
     if (isDef(i)) {
       const isReactivated = isDef(vnode.componentInstance) && i.keepAlive
       if (isDef(i = i.hook) && isDef(i = i.init)) {
+        // 这init就是 create-component.js 中 componentVNodeHooks 的init方法
         i(vnode, false /* hydrating */)
       }
       // after calling the init hook, if the vnode is a child component
