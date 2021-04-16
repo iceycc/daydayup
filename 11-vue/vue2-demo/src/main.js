@@ -15,12 +15,12 @@ new Vue({
   el:'#app',
   router,
   render(h){
-    // return h('div',{
-    //   attrs:{
-    //     id:'app'
-    //   }
-    // },this.message)
-    return h(App)
+    return h('div',{
+      attrs:{
+        id:'app'
+      }
+    },this.message)
+    // return h(App)
   },
   data: {
     message: 'Hello!'

@@ -226,7 +226,7 @@ export function createPatchFunction (backend) {
       insert(parentElm, vnode.elm, refElm) // 插入到dom中
     }
   }
-  // 创建组件
+  // 创建组件 /// 
   function createComponent (vnode, insertedVnodeQueue, parentElm, refElm) {
     let i = vnode.data
     if (isDef(i)) {

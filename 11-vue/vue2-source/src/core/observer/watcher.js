@@ -101,7 +101,7 @@ export default class Watcher {
    * Evaluate the getter, and re-collect dependencies.
    */
   get () {
-    pushTarget(this)  // 先把自己保存下来
+    pushTarget(this)  // 先把自己保存下来,保存到Dep到target上
     let value
     const vm = this.vm
     try {
