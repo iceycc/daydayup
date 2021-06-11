@@ -2,9 +2,7 @@ const {parse} = require("acorn")
 const MagicString = require('magic-string') // 处理字符串的工具类
 let analyse = require('./ast/analyse');
 const path = require('path')
-function hasOwnProperty(obj,prop){
-    return Object.prototype.hasOwnProperty.call(obj,prop);
-}
+const {has} = require('./utils')
 class Module {
     constructor({code, path, bundle}) {
         // 处理字符串的类
@@ -22,7 +20,6 @@ class Module {
     analyse() {
         this.imports = {}; // 导出
         this.exports = {}; // 导入
-        this.modifies = {}; // 修改
         this.ast.body.forEach(node => {
             // 导入语句
             if (node.type === 'ImportDeclaration') {
@@ -50,11 +47,21 @@ class Module {
         })
         analyse(this.ast, this.code, this)
         // 在当前模块定义一个变量definitions，存放所有的变量定义语句
-        this.definitions = {};
+        this.definitions = {}; // 定义的语句
+        // 存放所有修改的语句
+        this.modifications= {}; // 修改
         this.ast.body.forEach(statement=>{
             Object.keys(statement._defines).forEach(name=>{
                 // 此模块内定义到全局变量名，值是定义此全局变量到语句
                 this.definitions[name] = statement;
+            })
+
+            Object.keys(statement._modifies).forEach(name=>{
+                // 存放所有修改的语句到module.modifications里去了
+                if(!has(this.modifications,name)){
+                    this.modifications[name] = []
+                }
+                this.modifications[name].push(statement)
             })
         })
     }
@@ -77,19 +84,36 @@ class Module {
         statement._include = true; // 标记为已经包含在输出结果里
         let result = [];
         // 真正的展开操作在这。
+        // 1、包含依赖的变量定义
         const dependencies = Object.keys(statement._dependsOn); // [name]
         dependencies.forEach(name=>{
             let definition = this.define(name); // 找到name变量到定义语句，然后返回
             console.log(definition)
             result.push(...definition)
         })
+        // 2 添加自己的语句
         result.push(statement)
+        // 3 获取或者说添加修改的语句
+        // 获取当前定义语句的变量
+        const defines = Object.keys(statement._defines);
+        defines.forEach(name=>{
+            const modifications = has(this.modifications,name) && this.modifications[name];
+            if(modifications){
+                modifications.forEach(statement=>{
+                    if(!statement._include){ // 防止重复添加
+                        // 递归 赋值的值也依赖了其他的语句
+                        let statements = this.expandStatements(statement);
+                        result.push(...statements);
+                    }
+                })
+            }
+        })
         return result
     }
     define(name){
         // 判断这个变量是不是导入到变量
         // this.imports[localName] = {source,name,localName}
-        if(hasOwnProperty(this.imports,name)){
+        if(has(this.imports,name)){
             const importDeclaration = this.imports[name];
             // 创建依赖到模块 source ./msg
             let module = this.bundle.fetchModule(importDeclaration.source,this.path)

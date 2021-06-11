@@ -58,9 +58,32 @@ function analyse(ast, magicString) {
     });
     // 找出当前模块依赖了哪些外部变量
     ast.body.forEach(statement => {
+        function checkForReads(node){
+            if(node.type === 'Identifier'){
+                // 如果是标识符，说明使用到或者读到这个变量了
+                // let DefiningScope = scope.findDefiningScope(node.name); // 找到该变量定义到作用域
+                // if(!DefiningScope){ // 如果找不到定义到作用域，
+                    statement._dependsOn[node.name] = true; // 添加外部依赖
+                // }
+            }
+        }
+        function checkForWrites(node) {
+            function addNode(node){
+                statement._modifies[node.name] = true
+            }
+            if (node.type === 'AssignmentExpression') {
+                // 赋值表达式 a=10
+                addNode(node.left)
+            }else if(node.type === 'UpdateExpression'){
+                // 更新表达式 a++
+                addNode(node.argument)
+            }
+        }
         walk(statement,{
             enter(node){
                 if(node._scope) scope = node._scope;
+                checkForReads(node);// 检查读取的标识符
+                checkForWrites(node); // 检查修改了哪些标识符
                 if(node.type === 'Identifier'){
                     // 如果是标识符，说明使用到或者读到这个变量了
                     let DefiningScope = scope.findDefiningScope(node.name); // 找到该变量定义到作用域
