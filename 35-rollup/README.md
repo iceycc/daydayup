@@ -112,9 +112,7 @@ rollup.js编译源码中的模块引用默认只支持 ES6+的模块方式import
 - 写文件output
 
 ### todo
--[x] 实现简单的tree-shaking, 合并导入代码，
--[ ] 实现变量名重命名
--[ ] 修改的代码也要包含 let age = 12; age++
--[ ] 块级作用域
+[我的rollup](../19-手写/16.myrollup)
+
 
 
