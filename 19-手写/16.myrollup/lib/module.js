@@ -3,6 +3,7 @@ const MagicString = require('magic-string') // 处理字符串的工具类
 let analyse = require('./ast/analyse');
 const path = require('path')
 const {has} = require('./utils')
+const SYSTEM_VARIABLES = ['console','log']
 class Module {
     constructor({code, path, bundle}) {
         // 处理字符串的类
@@ -110,6 +111,12 @@ class Module {
         })
         return result
     }
+
+    /**
+     *  找到这个变量的定义语句，并包含进来
+     * @param name
+     * @returns {[]|void|*[]}
+     */
     define(name){
         // 判断这个变量是不是导入到变量
         // this.imports[localName] = {source,name,localName}
@@ -120,11 +127,14 @@ class Module {
             const exportDeclaration = module.exports[importDeclaration.name];
             return module.define(exportDeclaration.localName)
         }else{
+            // 获取当前的模块内定义的变量，以及定义的语句
             let statement = this.definitions[name];
             if(statement && !statement._include){
                 return this.expandStatements(statement)
-            }else{
+            }else if(SYSTEM_VARIABLES.includes(name)){ // 系统变量
                 return [];
+            }else{
+                throw new Error(`变量${name}没有被导入也没有被声明`)
             }
         }
     }

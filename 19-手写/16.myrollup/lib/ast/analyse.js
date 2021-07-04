@@ -11,12 +11,12 @@ const walk = require("./walk")
 // 1、构建作用域链
 // 2、给树节点增加可用标签
 function analyse(ast, magicString) {
-    // 构建作用域链：添加变量到当前的作用域中,
     ast.body.forEach(statement => {
-        function addToScope(declarator){
+        // 构建作用域链：添加变量到当前的作用域中,
+        function addToScope(declarator,isBlockDeclaration = false){
             // scope
             var name = declarator.id.name;
-            scope.add(name); // 把变量添加到scope作用域对象里
+            scope.add(name,isBlockDeclaration); // 把变量添加到scope作用域对象里
             if(!scope.parent){
                 // 没有父作用域说明是顶级作用域,他声明的变量就是顶级作用变量了。
                 statement._defines[name] = true
@@ -39,11 +39,26 @@ function analyse(ast, magicString) {
                         const params = node.params.map(item=>item.name);
                         newScope = new Scope({
                             parent:scope,
-                            params
+                            params,
+                            block:false, // 函数就是false
+                        })
+                        break;
+                    case 'BlockStatement':
+                        // BlockStatement 块级语句
+                        newScope = new Scope({
+                            parent:scope,
+                            block:true // 块级作用域
                         })
                         break;
                     case 'VariableDeclaration': // 变量
-                        node.declarations.forEach(addToScope)
+                        node.declarations.forEach((variableDeclarator)=>{
+                            if(node.kind === 'let' || node.kind === 'const'){
+                                // 块级声明
+                                addToScope(variableDeclarator,true)
+                            }else{
+                                addToScope(variableDeclarator)
+                            }
+                        })
                         break;
                 }
                 if(newScope){
