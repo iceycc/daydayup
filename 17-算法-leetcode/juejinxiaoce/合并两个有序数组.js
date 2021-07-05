@@ -35,5 +35,7 @@ function merge(nums1, m, nums2, n) {
     }
     console.log(nums1)
 }
-merge(nums1,m,nums2,n)
+// merge(nums1,m,nums2,n)
 
+let target = nums1.concat(nums2).sort()
+console.log(target)

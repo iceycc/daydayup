@@ -38,3 +38,5 @@ function sums3(nums,target){
     } 
 }
 console.log(sums3(nums,target))
+
+
