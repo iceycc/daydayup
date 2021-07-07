@@ -82,17 +82,11 @@ npm install -g flow-bin
 ### /src/core/instance/lifecycle.js
 - mountComponent挂载组件
 
-## initState 
-vue源码解析/src/core/instance/state.js
-- initProps(vm, opts.props) // 初始化属性
-- initMethods(vm, opts.methods) // 初始化方法
-- initData(vm)  // 初始化数据
-- initComputed(vm, opts.computed) // 初始化计算属性
-- initWatch(vm, opts.watch) // 初始化watch
 
+# 响应式原理
 
-
-## Observer
+## 响应式对象
+### Observer
 - Observer类将一个可观测的 object
 - 给每一个value新增一个_ob_属性，值为value1的Observer实例。这个操作相当于为 value 打上标记，表示它已经被转化成响应式来，避免重复操作。
 - 判断数据类型，只有 object 类型的数据才会调用 walk
@@ -100,6 +94,13 @@ vue源码解析/src/core/instance/state.js
 - defineReactive函数会将对象上的属性 getter/setter化
 - 在defineReactive中传人的如果是 object ，new Observer进行递归，保证所有属性值都会被观测
 
+## initState 
+vue源码解析/src/core/instance/state.js
+- initProps(vm, opts.props) // 初始化属性
+- initMethods(vm, opts.methods) // 初始化方法
+- initData(vm)  // 初始化数据
+- initComputed(vm, opts.computed) // 初始化计算属性
+- initWatch(vm, opts.watch) // 初始化watch
 ## 依赖收集
 1. 什么是依赖收集
   创建一个数组 谁依赖了这个数据就放到数组中，当数据更新时，只需要通知数组中当视图更新就行
@@ -107,5 +108,10 @@ vue源码解析/src/core/instance/state.js
    在getter中收集依赖，在setter中通知依赖更新。
 3. 把依赖收集到哪里
    依赖管理器 Dep类 `/src/core/observer/dep.js`
-## 创建一个依赖 
+### 创建一个依赖 
 谁用到了数据，谁就是依赖，我们就为谁创建一个Watcher实例。
+
+## 派发更新
+
+## nextTick
+

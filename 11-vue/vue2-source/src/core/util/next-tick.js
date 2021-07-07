@@ -30,6 +30,11 @@ function flushCallbacks () {
 // where microtasks have too high a priority and fire in between supposedly
 // sequential events (e.g. #4521, #6690, which have workarounds)
 // or even between bubbling of the same event (#6566).
+
+// 在这里，我们有同时使用微任务和（宏）任务的异步延迟包装器。
+//  在<2.4中，我们到处都使用了微任务，但是在某些情况下，微任务的优先级过高，并且在假定的顺序事件之间（例如＃4521，＃6690）甚至在同一事件冒泡之间（＃6566）都会触发。
+// 但是，在重新绘制前立即更改状态时（例如＃6813，由外向内的转换），在各处使用（宏）任务也会产生一些细微问题。
+// 这里我们默认使用微任务，但是在需要时提供了一种强制执行（宏）任务的方法（例如，在v-on附加的事件处理程序中）。
 let timerFunc
 
 // The nextTick behavior leverages the microtask queue, which can be accessed
@@ -37,7 +42,15 @@ let timerFunc
 // MutationObserver has wider support, however it is seriously bugged in
 // UIWebView in iOS >= 9.3.3 when triggered in touch event handlers. It
 // completely stops working after triggering a few times... so, if native
-// Promise is available, we will use it:
+// Promise is available, we will use it: 
+
+// nextTick行为利用了微任务队列，该队列可以访问
+// 通过本地Promise.then或MutationObserver。
+//  MutationObserver拥有更广泛的支持，但是在此方面存在严重错误
+//  在触摸事件处理程序中触发时，iOS> = 9.3.3中的UIWebView。它
+//  触发几次后完全停止工作...因此，如果是本机的
+// Promise可用，我们将使用它：
+
 /* istanbul ignore next, $flow-disable-line */
 if (typeof Promise !== 'undefined' && isNative(Promise)) {
   const p = Promise.resolve()
