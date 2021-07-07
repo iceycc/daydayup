@@ -46,7 +46,7 @@ function render(element,parentNode){
             domElement.setAttribute(propName,props[propName]);
         }
     }
-    将生成的dom挂载到父节点上
+    // 将生成的dom挂载到父节点上
     parentNode.appendChild(domElement);
     //componentDidMount
 }
