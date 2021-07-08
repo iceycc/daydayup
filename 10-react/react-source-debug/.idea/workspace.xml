@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b5f54b7f-990d-4334-8848-75cdceabac7c" name="默认的" comment="">
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source-code-demo/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/source-code-demo/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source-code-demo/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/source-code-demo/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/source-code-demo/src/react/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/source-code-demo/src/react/.eslintrc.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1lowR7BCJAgaVoSFX19w67HsF7F" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/source-code-demo/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.start" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b5f54b7f-990d-4334-8848-75cdceabac7c" name="默认的" comment="" />
+      <created>1608276740648</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1608276740648</updated>
+      <workItem from="1608276741719" duration="6034000" />
+      <workItem from="1608345896668" duration="224000" />
+      <workItem from="1608389781338" duration="308000" />
+      <workItem from="1608518537983" duration="262000" />
+      <workItem from="1608710668182" duration="1314000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2765" y="475" key="#ESLint" timestamp="1608711013321">
+      <screen x="1680" y="-112" width="2560" height="1417" />
+    </state>
+    <state x="2765" y="475" key="#ESLint/0.23.1680.1027/1680.-112.2560.1417@1680.-112.2560.1417" timestamp="1608711013321" />
+    <state x="-1276" y="102" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1608389851861">
+      <screen x="-1920" y="-157" width="1920" height="1057" />
+    </state>
+    <state x="-1276" y="102" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.23.1440.877/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1608389851861" />
+    <state x="2589" y="267" key="#检查" timestamp="1608285980465">
+      <screen x="1680" y="-112" width="2560" height="1417" />
+    </state>
+    <state x="2589" y="267" key="#检查/0.23.1680.1027/1680.-112.2560.1417@1680.-112.2560.1417" timestamp="1608285980465" />
+    <state width="1412" height="486" key="GridCell.Tab.0.bottom" timestamp="1608288981336">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1412" height="486" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1608288981336" />
+    <state width="2532" height="486" key="GridCell.Tab.0.bottom/0.23.1680.1027/1680.-112.2560.1417@1680.-112.2560.1417" timestamp="1608285633489" />
+    <state width="1412" height="486" key="GridCell.Tab.0.center" timestamp="1608288981336">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1412" height="486" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1608288981336" />
+    <state width="2532" height="486" key="GridCell.Tab.0.center/0.23.1680.1027/1680.-112.2560.1417@1680.-112.2560.1417" timestamp="1608285633488" />
+    <state width="1412" height="486" key="GridCell.Tab.0.left" timestamp="1608288981335">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1412" height="486" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1608288981335" />
+    <state width="2532" height="486" key="GridCell.Tab.0.left/0.23.1680.1027/1680.-112.2560.1417@1680.-112.2560.1417" timestamp="1608285633487" />
+    <state width="1412" height="486" key="GridCell.Tab.0.right" timestamp="1608288981336">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1412" height="486" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1608288981336" />
+    <state width="2532" height="486" key="GridCell.Tab.0.right/0.23.1680.1027/1680.-112.2560.1417@1680.-112.2560.1417" timestamp="1608285633488" />
+    <state width="1412" height="486" key="GridCell.Tab.1.bottom" timestamp="1608288981337">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1412" height="486" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1608288981337" />
+    <state width="1412" height="486" key="GridCell.Tab.1.center" timestamp="1608288981336">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1412" height="486" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1608288981336" />
+    <state width="1412" height="486" key="GridCell.Tab.1.left" timestamp="1608288981336">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1412" height="486" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1608288981336" />
+    <state width="1412" height="486" key="GridCell.Tab.1.right" timestamp="1608288981337">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1412" height="486" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1608288981337" />
+    <state width="1412" height="486" key="GridCell.Tab.2.bottom" timestamp="1608288981337">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1412" height="486" key="GridCell.Tab.2.bottom/0.23.1440.877@0.23.1440.877" timestamp="1608288981337" />
+    <state width="1412" height="486" key="GridCell.Tab.2.center" timestamp="1608288981337">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1412" height="486" key="GridCell.Tab.2.center/0.23.1440.877@0.23.1440.877" timestamp="1608288981337" />
+    <state width="1412" height="486" key="GridCell.Tab.2.left" timestamp="1608288981337">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1412" height="486" key="GridCell.Tab.2.left/0.23.1440.877@0.23.1440.877" timestamp="1608288981337" />
+    <state width="1412" height="486" key="GridCell.Tab.2.right" timestamp="1608288981337">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1412" height="486" key="GridCell.Tab.2.right/0.23.1440.877@0.23.1440.877" timestamp="1608288981337" />
+    <state width="1412" height="486" key="GridCell.Tab.3.bottom" timestamp="1608288981338">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1412" height="486" key="GridCell.Tab.3.bottom/0.23.1440.877@0.23.1440.877" timestamp="1608288981338" />
+    <state width="1412" height="486" key="GridCell.Tab.3.center" timestamp="1608288981338">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1412" height="486" key="GridCell.Tab.3.center/0.23.1440.877@0.23.1440.877" timestamp="1608288981338" />
+    <state width="1412" height="486" key="GridCell.Tab.3.left" timestamp="1608288981337">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1412" height="486" key="GridCell.Tab.3.left/0.23.1440.877@0.23.1440.877" timestamp="1608288981337" />
+    <state width="1412" height="486" key="GridCell.Tab.3.right" timestamp="1608288981338">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state width="1412" height="486" key="GridCell.Tab.3.right/0.23.1440.877@0.23.1440.877" timestamp="1608288981338" />
+    <state x="-1547" y="-77" key="SettingsEditor" timestamp="1608389840891">
+      <screen x="-1920" y="-157" width="1920" height="1057" />
+    </state>
+    <state x="-1547" y="-77" key="SettingsEditor/0.23.1440.877/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1608389840891" />
+  </component>
+</project>
