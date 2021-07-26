@@ -16,5 +16,7 @@ let board = [
  */
 var isValidSudoku = function (board) {
   let rowsMap = {}
+  let column = {}
+  let 
 };
 console.log(isValidSudoku(board));

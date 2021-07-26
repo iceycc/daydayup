@@ -42,3 +42,8 @@ const postorderTraversal = function(root){
   }
   return res
 }
+
+
+const inorderTraversal = function(root){
+  
+}
