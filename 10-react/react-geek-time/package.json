@@ -1,0 +1,30 @@
+{
+  "name": "react-geek-time",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [],
+  "main": "src/index.js",
+  "dependencies": {
+    "antd": "3.7.1",
+    "axios": "0.18.0",
+    "d3": "5.5.0",
+    "react": "16.4.1",
+    "react-dom": "16.4.1",
+    "react-redux": "5.0.7",
+    "react-router": "latest",
+    "react-router-dom": "4.3.1",
+    "react-scripts": "1.1.4",
+    "redux": "4.0.0",
+    "redux-logger": "3.0.6",
+    "redux-thunk": "2.3.0",
+    "reselect": "3.0.1",
+    "simple-cache-provider": "0.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
