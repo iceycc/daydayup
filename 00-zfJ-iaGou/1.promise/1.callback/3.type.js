@@ -47,5 +47,13 @@ function fn(a,b){
     }
 }
 
-
-
+// 柯里化
+function curring(fn){
+    function curred(...args){
+        return args.length>=fn.length ? fn.apply(null,args) : (...args2)=>curred.apply(null,args.concat(args2))
+    }
+    return curred
+}
+function sum(a,b,c){
+    return a + b + c
+}
