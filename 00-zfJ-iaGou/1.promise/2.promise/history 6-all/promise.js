@@ -179,3 +179,8 @@ module.exports = Promise;
 // npm i promises-aplus-tests -g
 // promise 相关方法
 // generator
+let promise = new Promise((resolve,reject)=>{
+  setTimeout(()=>{
+    reject(111)
+  },0)
+})

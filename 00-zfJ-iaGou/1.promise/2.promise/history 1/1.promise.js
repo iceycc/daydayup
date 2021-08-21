@@ -2,14 +2,13 @@
 1. promise解决了什么问题
     * 1) 回调嵌套 回调地狱
     * 2）错误捕获不好处理错误
-    * 3）多个异步同步的问题 Promise.all
+    * 3）多个异步并发的问题 Promise.all
 
 2. promise规范：promiseA+
 3. promise的三个状态：等待Pending 成功fulfilled 失败rejected    
 4. executor 执行器   
 5. 每个promise的实例上都有.then
 6. 执行resolve() => fulfilled 成功态 . 执行reject => rejected（拒绝）失败态
-
  */
 
 
