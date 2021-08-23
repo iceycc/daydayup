@@ -22,7 +22,7 @@ module.exports = class Compiler {
         });
         this.emitFiles();
     }
-
+    // 
     buildModule(filename, isEntry) {
         let ast;
         if (isEntry) {
@@ -31,7 +31,7 @@ module.exports = class Compiler {
             let absolutePath = path.join(process.cwd(), './src', filename);
             ast = getAST(absolutePath);
         }
-
+        // ast
         return {
           filename,
           dependencies: getDependencis(ast),

@@ -1,6 +1,6 @@
 const glob = require('glob-all');
 
-describe('Checking generated css js files', () => {
+describe('Checking generated files exists', () => {
     it('should generate css js files', (done) => {
         const files = glob.sync([
             './dist/index_*.js',
