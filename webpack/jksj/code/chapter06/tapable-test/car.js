@@ -6,8 +6,11 @@ const {
 class Car {
     constructor() {
         this.hooks = {
+            // 加速
             accelerate: new SyncHook(['newspeed']),
+            // 刹车
             brake: new SyncHook(),
+            // 计算路径
             calculateRoutes: new AsyncSeriesHook(["source", "target", "routesList"])
         }
     }
@@ -40,7 +43,7 @@ myCar.hooks.accelerate.call(10);
 console.time('cost');
  
 //执行异步钩子
-myCar.hooks.calculateRoutes.promise('Async', 'hook', 'demo').then(() => {
+myCar.hooks.calculateRoutes.promise('Async1', 'hook1', 'demo1').then(() => {
     console.timeEnd('cost');
 }, err => {
     console.error(err);
