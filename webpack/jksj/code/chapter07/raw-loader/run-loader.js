@@ -12,9 +12,11 @@ runLoaders({
             }
         }
     ],
-    context: {
-        emitFile: () => {}
-    },
+    // context: {
+    //     emitFile: (data) => {
+    //         console.log(data)
+    //     }
+    // },
     readResource: fs.readFile.bind(fs)
 }, (err, result) => {
     err ? console.log(err) : console.log(result);

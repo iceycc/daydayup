@@ -27,8 +27,6 @@ function passthru(literals,...args) {
 
 console.log(msg) // "The total is 30 (31.5 with tax)"
 
-
-
 let width = '10px'
 let height = '20px'
 
