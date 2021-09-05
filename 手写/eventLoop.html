@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id='con'>this is con</div>
+<script>
+    // https://github.com/aooy/blog/issues/5
+    // https://github.com/aooy/asyncHelper
+    // 1. macrotask setTimeout
+    (function (done) {
+        if (!done) return;
+        var t = 0;
+        var con = document.getElementById('con');
+        con.onclick = function () {
+            setTimeout(function setTimeout1() {
+                con.textContent = t;
+            }, 0)
+        };
+    })();
+    // Promise1则是microtask
+    (function (done) {
+        if (!done) return;
+        var con = document.getElementById('con');
+        con.onclick = function () {
+            Promise.resolve().then(function () {
+                con.textContent = '3333333';
+            })
+            // setTimeout(() => {
+            //     con.textContent = '3333333';
+            // }, 0)
+        };
+    })();
+    // 当点击后，一共产生3个task，分别是click1、setTimeout1、setTimeout2，所以会分别在3次event loop中进行。
+    (function (done) {
+        if (!done) return;
+        var con = document.getElementById('con');
+        con.onclick = function click1() {
+            setTimeout(function setTimeout1() {
+                con.textContent = 0;
+            }, 0)
+            setTimeout(function setTimeout2() {
+                con.textContent = 1;
+            }, 0)
+        };
+    })();
+    // 在两个setTimeout中增加microtask。
+    (function (done) {
+        if (!done) return;
+        var con = document.getElementById('con');
+        con.onclick = function () {
+            setTimeout(function setTimeout1() {
+                con.textContent = 0;
+                Promise.resolve().then(function Promise1() {
+                    console.log('Promise1')
+                })
+            }, 0)
+            setTimeout(function setTimeout2() {
+                con.textContent = 1;
+                Promise.resolve().then(function Promise2() {
+                    console.log('Promise2')
+                })
+            }, 0)
+        }
+    })();
+    // 将时间间隔加大一些。
+    (function (done) {
+        if (!done) return;
+        var con = document.getElementById('con');
+        con.onclick = function () {
+            setTimeout(function  setTimeout1() {
+                con.textContent = 0;
+            }, 0);
+            setTimeout(function  setTimeout2() {
+                con.textContent = 1;
+            }, 16.7);
+        };
+    })();
+    // 我们在同一时间执行多个setTimeout来模拟执行间隔很短的task。
+    (function (done) {
+        if (!done) return;
+        var con = document.getElementById('con');
+        con.onclick = function () {
+            setTimeout(function(){
+                con.textContent = 0;
+            },0)
+            setTimeout(function(){
+                con.textContent = 1;
+            },0)
+            setTimeout(function(){
+                con.textContent = 2;
+            },0)
+            setTimeout(function(){
+                con.textContent = 3;
+            },0)
+            setTimeout(function(){
+                con.textContent = 4;
+            },0)
+            setTimeout(function(){
+                con.textContent = 5;
+            },0)
+            setTimeout(function(){
+                con.textContent = 6;
+            },0)
+        };
+    })();
+    // 有说法是一轮event loop执行的microtask有数量限制（可能是1000），多余的microtask会放到下一轮执行。下面例子将microtask的数量增加到25000。
+    (function (done) {
+        if (!done) return;
+        var con = document.getElementById('con');
+        con.onclick = function () {
+            setTimeout(function  setTimeout1() {
+                con.textContent = 'task1';
+                for(var i = 0; i  < 250000; i++){
+                    Promise.resolve().then(function(){
+                        con.textContent = i;
+                    });
+                }
+            }, 0);
+            setTimeout(function  setTimeout2() {
+                con.textContent = 'task2';
+            }, 0);
+        };
+    })();
+
+     // requestAnimationFrame
+    (function (done) {
+        if (!done) return;
+        var con = document.getElementById('con');
+        var i = 0;
+        var raf =  function(){
+            requestAnimationFrame(function() {
+                con.textContent = i;
+                Promise.resolve().then(function(){
+                    i++;
+                    if(i < 3) raf();
+                });
+            });
+        }
+        con.onclick = function () {
+            raf();
+        };
+    })();
+    // 验证postMessage是否是task
+    (function (done) {
+        if (!done) return
+        setTimeout(function setTimeout1() {
+            console.log('setTimeout1')
+        }, 0)
+        var channel = new MessageChannel();
+        channel.port1.onmessage = function onmessage1() {
+            console.log('postMessage')
+            Promise.resolve().then(function promise1() {
+                console.log('promise1')
+            })
+        };
+        channel.port2.postMessage(0);
+        setTimeout(function setTimeout2() {
+            console.log('setTimeout2')
+        }, 0)
+        console.log('sync')
+        // sync  postMessage  setTimeout1 setTimeout2 promise1
+    })();
+</script>
+</body>
+</html>

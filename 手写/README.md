@@ -13,6 +13,9 @@
     // 8- 实现一个co库
     // 9- debounce防抖 throttle节流
     // 10- call apply bind
+    // 11 - bind
+    // 12- new
+    // 13-数组对象与argumentsd
   ```
 - [简单手写集合 er1：](./集合手写二.js)
   ```js
@@ -26,6 +29,10 @@
     // 8. 实现一个once函数
     // 9. 如何找到当前页面出现次数最多的HTML标签
   ```
+- [函数式编程](./函数式编程.js)
+- [异步并行和异步传行](./异步并行和异步传行.js)
+- [深入理解JavaScript](./深入理解JavaScript.js)
+- [事件环](./eventLoop.html)
 ## 大佬的手写
 - https://github.com/sisterAn/JavaScript-Algorithms 下面手写源码系列
 - https://github.com/JinJieTan/Peter-
