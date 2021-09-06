@@ -172,8 +172,7 @@ const compose = (...fns) => fns.reduce((acc, cur) => (...x) => acc(cur(...x)));
     // var associative = compose(f, compose(g, h)) == compose(compose(f, g), h);
     // true
 
-})(1);
-
+})();
 // pointfree
 (function (done) {
     if (!done) return
@@ -183,11 +182,9 @@ const compose = (...fns) => fns.reduce((acc, cur) => (...x) => acc(cur(...x)));
     const toUpperCase = curry((str) => str.toLowerCase())
     const head = curry((arr) => arr[0])
     const map = curry((f, arr) => arr.map(f))
-    // todo 这里不对呀
     const initials = compose(join('. '), map(compose(toUpperCase, head)), split(' '));
-
     console.log(initials("hunter stockton thompson"));
-})();
+})(1);
 (function (done) {
     if (!done) return
 })();
