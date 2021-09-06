@@ -5,7 +5,11 @@ class Component{
     }
 }
 function ReactElement(type,props){
-  const element = {type,props};//Welcome1
+  const element = {
+      type,
+      props,
+      children
+    };//Welcome1
   return element;
 }
 function createElement(type,config={},children){
