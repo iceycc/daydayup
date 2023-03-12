@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ccf8099-1d80-4c2c-b43d-738f0e0a53c1" name="默认的" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/daydayup.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/daydayup.iml" afterDir="false" />
+    <list default="true" id="6ccf8099-1d80-4c2c-b43d-738f0e0a53c1" name="默认的" comment="feat: update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +79,21 @@
         <option value="$PROJECT_DIR$/10-react/react01/10.ts/src/index.d.ts" />
       </list>
     </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: update" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: update" />
   </component>
   <component name="VgoProject">
     <integration-enabled>false</integration-enabled>
